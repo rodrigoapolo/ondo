@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* Reset básico */
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: white;
 }
 
@@ -12,6 +14,10 @@ li, ul, a {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
 }
 
 /* Estilo da navbar */
@@ -62,3 +68,117 @@ li, ul, a {
     scale: 1.2;
 } 
 
+.banner img {
+    width: 100%;
+}
+
+.container_titulo {
+    margin: 130px auto 30px auto;
+    width: 67%;
+    text-align: justify;
+}
+
+.titulo{    
+    margin-bottom: 37px;
+    font-size: 59px;
+    font-weight: bold;
+    color: #50984E;
+}
+
+.container_texto {
+    font-size: 19px;
+}
+
+.edit_texto{
+    font-weight: bold;
+
+}
+.photo {
+    width: 422px;
+    height: 304px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    
+}
+.photo img {
+    width: 195px;
+    height: 137px;   
+}
+
+/*
+Define altura e centralização dos elementos
+*/
+.container_card_height {
+    height: 100%;
+    display: flex;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/*
+Define largura
+*/
+.container_card_width{
+    width: 67%;
+}
+
+/*
+Define a posição dos elementos, deixando os elementos lado a lado
+*/
+.container_card {
+    display: flex;
+    flex-wrap: wrap;
+    width: 105%;
+}
+
+.card {
+    margin-right: 15%;
+    margin-bottom: 30px;
+    p {
+        font-size: 24px;
+        font-weight: bold;   
+    }
+}
+
+.card-edit {
+    margin-left: 96px;
+}
+
+.footer {
+    width: 100%;
+    height: 183px;
+    background-color: #324224;
+    position: relative; 
+    margin-top: 20px;
+}
+
+.footer_verdeclaro {
+    width: 100%;
+    height: 24px; 
+    background-color: #50984E;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+.content_footer {
+    max-width: 90%;
+    margin: 0px auto;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 25px;
+    }
+
+.inf_center_footer {
+    color: white;
+    z-index: 1;
+}
+
+.inf_right_footer {
+    color: white;
+    z-index: 1;
+}
