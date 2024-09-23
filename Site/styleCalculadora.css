@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Mudando o corpo da pagina todo, e tudo que esta nele */
+html {
+    margin: 0;
+    /*A PAGINA DO NAVEGADOR VEM COM ALGUMAS PREDEFINIÇÕES ESTOU ZERANDO A MARGIM E OS PADDING*/
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /*ESTOU FALANDO PARA TODO QUE ESTAO NA TAG BODY, RECEBAM A FONT MOSTSERRAT E O FUNDO DO BODY VAI SER #F5F5F5 hexadecimal */
+    font-family: "Montserrat", sans-serif;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    /*TAG H1 (titulo), será verde e alinhada*/
+    padding-top: 20px;
+    color: #50984E;
+    text-align: center;
+}
+
+.div_conteudo {
+    display: flex;
+    width: 100%;
+    height: 100vh; 
+}
+
+.div_mensagem {
+    width: 50%;
+    height: fit-content;
+    padding: 30px 40px;
+    margin: 20px 40px 0px 20px;
+}
+
+.div_calculadora {
+    /*ESSA DIV FOI CRIADA COM TODOS OS INPUT
+            NELA COLOCO UM TAMAANHO, COR, ESPAÇAMENTO NA TELA, ESPAÇAMENTO DE DENTRO PARA FORA
+            SOMBRA E ARREDONDAMENTO*/
+    background-color: #ECECEC;
+    width: 50%;
+    height: fit-content;
+    padding: 30px 40px;
+    box-shadow: 0px 0px 10px #00000041;
+    border-radius: 8px;
+    margin: 20px 20px 0px 40px;
+}
+
+/* CHAMANDO A TAG SPAN QUE ESTA DENTRO DA DIV
+        DANDO UM TAMANHO, DEIXANDO ELA MEDIUM E DANDO UMA COR*/
+.div_calculadora span {
+    font-weight: 500;
+    color: #262421;
+}
+
+.div_calculadora input {
+    /*COLOCANDO UM ESTILO EM TODOS OS INPUT
+            TAMANHO 100% que ocupa todo espaco que pode na div.calculadora
+            padding é "espaçamento para dentro", margem do topo, borda solida com cor e redonda
+            e um background color, colocando uma cor de fundo*/
+    width: 100%;
+    padding: 6px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #BDBDBD;
+    background-color: #F5F5F5;
+}
+
+.container_input{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.title_input{
+    font-size: 1rem;
+}
+
+/* placeholder é a mensagem que aperece na input antes de ser selecionada*/
+input::placeholder {
+    /*Mexendo no placeholder (mensagem que aparece dentro da input, dando uma cor,
+            tamanho e opacidade )*/
+    color: #262421;
+    opacity: 0.5;
+    font-size: 12px;
+}
+
+input:focus {
+    /* focus é mexendo na input quando é selecionada */
+    border: 1px solid #545454;
+    /* Cor e espessura da borda */
+    outline: none;
+    /* Remove o contorno padrão */
+}
+
+/* Botoes*/
+.container_btn{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    padding: 10px 8px;
+    border-radius: 8px;
+    border: none;
+    color: #F5F5F5;
+    font-size: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn_lucro {
+    background-color: #50984E;
+    width: 150px;
+}
+
+.btn_gastos {
+    background-color: #b43f3f;
+    width: 150px;
+}
+
+.btn_reset {
+    background-color: #949494;
+    width: 90px;
+}
+
+.div_mensagem {
+    /*ESSA DIV FOI CRIADA COM TODOS OS INPUT
+            NELA COLOCO UM TAMAANHO, COR, ESPAÇAMENTO NA TELA, ESPAÇAMENTO DE DENTRO PARA FORA
+            SOMBRA E ARREDONDAMENTO*/
+    background-color: #f5f5f5;
+    width: 50%;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(47, 47, 47, 0.255);
+    margin: 20px 40px 0px 20px;
+    font-size: 16px;
+    color: #262421;
+
+}
+
+.div_mensagem h3 {
+    color: #262421;
+    opacity: 0.6;
+    font-size: 20px;
+}
+
+.valor_negativo{
+    color:red;
+    font-weight: bold;
+}
+
+.valor_positivo{
+    color:green;
+    font-weight: bold;
+}
+
+.valor_igual{
+    color:gray;
+    font-weight: bold;
+}
