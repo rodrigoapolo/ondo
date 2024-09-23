@@ -1,0 +1,57 @@
+.footer {
+
+    width: 100%;
+
+    height: 183px;
+
+    background-color: #324224;
+
+    position: relative; 
+
+    margin-top: 20px;
+
+}
+
+
+
+.footer_verdeclaro {
+
+    width: 100%;
+
+    height: 24px; 
+
+    background-color: #50984E;
+
+    position: absolute;
+
+    top: 0;
+
+}
+
+
+
+.content_footer {
+
+    max-width: 90%;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    text-align: center;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-top: 25px;
+
+}
+
+
+
+.inf_center_footer, .inf_right_footer {
+
+    color: white;
+
+}

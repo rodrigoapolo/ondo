@@ -1,0 +1,46 @@
+.container_card_missao{
+    margin: 0 185px;
+}
+.card_img {
+    position: relative;
+    display: inline-block;
+    border-radius: 10px; /* Cantos arredondados */
+    box-shadow: 10px 10px 0px 0px #4CAF50; /* Sombra sólida verde */
+}
+
+.card_img img {
+    display: block;
+    border-radius: 10px; /* Deve combinar com o container */
+}
+
+.card:nth-child(even) {
+    flex-direction: row-reverse; /* Inverte o layout (imagem à esquerda e texto à direita) */
+}
+
+.card:nth-child(odd) {
+    flex-direction: row; /* Mantém o layout padrão (imagem à direita e texto à esquerda) */
+}
+
+.container_card_missao .card{
+    display: flex;
+    align-items: center;
+    gap: 66px;
+    justify-content: flex-end;
+}
+
+.container_card_missao{
+    display: flex;
+    flex-direction: column;
+    gap: 145px;
+}
+
+.titulo {    
+    margin-bottom: 37px;
+    font-size: 59px;
+    font-weight: bold;
+    color: #50984E;
+}
+
+main{
+    margin-bottom: 200px;
+}

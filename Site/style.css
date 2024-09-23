@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* Reset básico */
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: white;
 }
 
@@ -12,6 +14,10 @@ li, ul, a {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
 }
 
 /* Estilo da navbar */
@@ -37,7 +43,6 @@ li, ul, a {
     padding: 10px 0;
     text-align: center;
     border-bottom: 2px solid transparent; /* Define o border sem cor inicialmente */
-
 }
 
 .navbar_lista a:hover {
@@ -57,8 +62,95 @@ li, ul, a {
     cursor: pointer;
 }
 
-.navbar_container-redesSociais img:hover{
+.navbar_container-redesSociais img:hover {
     transition: 0.3s ease-in-out;
     scale: 1.2;
-} 
+}
 
+/* Estilo do banner */
+.banner img {
+    width: 100%;
+}
+
+.container_titulo {
+    margin: 130px auto 30px auto;
+    width: 67%;
+    text-align: justify;
+}
+
+.titulo {    
+    margin-bottom: 37px;
+    font-size: 59px;
+    font-weight: bold;
+    color: #50984E;
+}
+
+.container_texto {
+    font-size: 19px;
+}
+
+/* Estilo das fotos */
+.photo {
+    width: 422px;
+    height: 304px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.photo img {
+    width: 195px;
+    height: 137px;   
+}
+
+/* Estilo dos cards */
+.container_card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 120px;
+    max-width: 65%;
+    margin: 0 185px;
+    justify-content: space-around;
+}
+
+.container_card .card {
+    margin-bottom: 30px;
+    max-width: 325px;
+}
+
+.card p {
+    font-size: 24px;
+    font-weight: bold; 
+    color: #324224;  
+}
+
+/* Estilo do rodapé */
+.footer {
+    width: 100%;
+    height: 183px;
+    background-color: #324224;
+    position: relative; 
+    margin-top: 20px;
+}
+
+.footer_verdeclaro {
+    width: 100%;
+    height: 24px; 
+    background-color: #50984E;
+    position: absolute;
+    top: 0;
+}
+
+.content_footer {
+    max-width: 90%;
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 25px;
+}
+
+.inf_center_footer, .inf_right_footer {
+    color: white;
+}
