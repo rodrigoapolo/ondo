@@ -4,37 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleCalculadora.css">
     <link rel="stylesheet" href="style.css">
-    <title>ONDO</title>
+    <link rel="stylesheet" href="./assets/css/calculadora.css">
+    <link rel="stylesheet" href="./assets/css/MenuNav.css">
+    <title>Calculadora</title>
 </head>
 
 <body>
     <header>
         <nav class="navbar">
-          <div class="navbar_container-logo">
-            <a href="#">
-              <img src="assets/img/Logo.svg" alt="Logo" />
-            </a>
-          </div>
-  
-          <ul class="navbar_lista">
-            <li><a href="#">Sobre nós</a></li>
-  
-            <li><a href="./missao.html">Nossa missão</a></li>
-  
-            <li><a href="./projeto.html">Nosso projeto</a></li>
-  
-            <li><a href="#">Contato</a></li>
-          </ul>
-  
-          <div class="navbar_container-redesSociais">
-            <img src="assets/img/linkedin.svg" alt="Logo linkedin" />
-  
-            <img src="assets/img/twitter.svg" alt="X" />
-  
-            <img src="assets/img/youtube.svg" alt="Youtube" />
-          </div>
+            <div class="navbar_container-logo">
+                <a href="#">
+                    <img src="assets/img/Logo.svg" alt="Logo" />
+                </a>
+            </div>
+
+            <ul class="navbar_lista">
+                <li><a href="#">Sobre nós</a></li>
+
+                <li><a href="./missao.html">Nossa missão</a></li>
+
+                <li><a href="./projeto.html">Nosso projeto</a></li>
+
+                <li><a href="#">Contato</a></li>
+            </ul>
+
+            <div class="navbar_container-redesSociais">
+                <img src="assets/img/linkedin.svg" alt="Logo linkedin" />
+
+                <img src="assets/img/twitter.svg" alt="X" />
+
+                <img src="assets/img/youtube.svg" alt="Youtube" />
+            </div>
         </nav>
     </header>
     <h1>Simulador Financeiro para produtores de WASABI</h1>
@@ -82,6 +83,7 @@
             <p id="p_info"></p>
         </div>
         <div>
+        </div>
 </body>
 
 </html>
@@ -98,7 +100,8 @@
         var espacoMetro = espaco / 100; //variavel que transforma os Centimetros do espaçamento em Metros
         var areaMuda = espacoMetro * espacoMetro; //variavel da area que cada muda em metros quadrados
         var qtdMuda = area / areaMuda; //variavel da quantidade de mudas. Area inteira / por area de cada planta
-        var pesoTotal = qtdMuda * 0.12; //variavel do peso aproximado da safra em quilo (IMPORTANTE SABER QUE ESSE VALOR 0.12 é a media do peso em gram do wasabi)
+        var pesoTotal = qtdMuda *
+        0.12; //variavel do peso aproximado da safra em quilo (IMPORTANTE SABER QUE ESSE VALOR 0.12 é a media do peso em gram do wasabi)
         var pesoSem = pesoTotal * 0.65;
         var pesoCom = pesoTotal * 0.90;
         var lucroBrutoSem = pesoSem * preco; //variavel do retorno completo da safra. peso kilo * preco kilo
@@ -159,7 +162,8 @@
         var espacoMetro = espaco / 100; //variavel que transforma os Centimetros do espaçamento em Metros
         var areaMuda = espacoMetro * espacoMetro; //variavel da area que cada muda em metros quadrados
         var qtdMuda = area / areaMuda; //variavel da quantidade de mudas. Area inteira / por area de cada planta
-        var pesoTotal = qtdMuda * 0.12; //variavel do peso aproximado da safra em quilo (IMPORTANTE SABER QUE ESSE VALOR 0.12 é a media do peso em gram do wasabi) 
+        var pesoTotal = qtdMuda *
+        0.12; //variavel do peso aproximado da safra em quilo (IMPORTANTE SABER QUE ESSE VALOR 0.12 é a media do peso em gram do wasabi) 
         var pesoSem = pesoTotal * 0.65;
         var pesoCom = pesoTotal * 0.90;
         var retorno = pesoTotal * preco; //variavel do retorno completo da safra. peso kilo * preço kilo
@@ -227,5 +231,4 @@
         mensagem = "";
         p_info.innerHTML = "";
     }
-
 </script>
