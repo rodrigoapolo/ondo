@@ -1,0 +1,131 @@
+/*ESTILIZAÇÃO GERAL DA PÁGINA*/
+
+body {
+    font-family: Montserrat;
+    background-color: #ffffff; 
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/*ESTILIZAÇÃO DA DIV CENTRAL*/
+
+.container {
+    background-color: #294722; 
+    color: #ffffff; /*COR DA LETRA*/
+    width: 350px; /*lARGURA DA DIV*/
+    padding: 20px; /*ESPAÇO ENTRE BORA E CONTEÚDO*/
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /*SOMBRINHA NA DIV CENTRAL*/
+    text-align: center; /*TEXTO CENTRALIZADO NO BOX*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;/*ALINHAMENTO AO CENTRO DOS ELEMENTOS NO BOX*/
+    align-items: center;/*ALINHAMENTO VERTICAL DOS ELEMENTOS NO BOX*/
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    background-color: transparent; 
+    border: 2px solid #ffffff; 
+    color: #ffffff; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espaço entre o ícone e o texto no botão */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* IMG DO FACE E GOOGLE */
+
+button img {
+    width: 20px;
+}
+/* TRANSIÇÃO DO BOTÃO */
+button:hover {
+    background-color: #ffffff; 
+    color: #203920; 
+}
+/* ---OU--- */
+.or-divider {
+    display: flex; /* Alinha os elementos*/
+    align-items: center; /* Alinha tudo ao centro */
+    text-align: center; /* Alinha o "ou" ao centro*/
+    margin: 20px 0;
+    width: 100%;/* coloca o separador em toda a parte do container*/
+}
+
+/* linha horizontal*/
+.or-divider hr {
+    flex: 1; /* faz a linha horizontal*/
+    border-top: 1px solid #9fa2a7; /* COR Da linha horizontal*/
+}
+
+.or-divider span {
+    margin: 0 10px;
+    color: #9fa2a7;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
+.input-container i {
+    color: #0A1F15;
+    margin-right: 10px;
+}
+
+input {
+    width: 95%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #ffffff; 
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: transparent; 
+    color: #ffffff; 
+    text-align: center; 
+}
+
+input::placeholder {
+    color: #9fa2a7; 
+}
+
+a {
+    color: black;
+    font-size: 14px;
+    display: block; /* faz o 'esqueceu a senha ficar em cima do botão e n colado*/
+    margin-bottom: 20px;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: black; 
+}
+
+button.login {
+    background-color: #192B16; 
+    border: 2px solid #ffffff; 
+    color: #ffffff; 
+    font-size: 16px;
+    text-transform: uppercase;
+    width: 90%; 
+}
+
+button.login:hover {
+    background-color: #ffffff;
+    color: #203920;
+}
