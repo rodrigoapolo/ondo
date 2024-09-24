@@ -17,7 +17,7 @@ body {
     background-color: #294722; 
     color: #ffffff; /*COR DA LETRA*/
     width: 350px; /*lARGURA DA DIV*/
-    padding: 20px; /*ESPAÇO ENTRE BORA E CONTEÚDO*/
+    padding: 20px; /*ESPAÇO ENTRE BORDA E CONTEÚDO*/
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /*SOMBRINHA NA DIV CENTRAL*/
     text-align: center; /*TEXTO CENTRALIZADO NO BOX*/
     display: flex;
