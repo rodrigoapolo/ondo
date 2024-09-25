@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.fale-conosco {
+    height: 85%;
+    background-image: url('/Site/assets/img/Wasabi_Site_0.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+body,
+html {
+    font-family: "Montserrat", sans-serif;
+    height: 100%;
+    background-color: #ECECEC;
+}
+
+.container {
+    position: absolute;
+    background-color: #1E2F1A;
+    height: 213px;
+    width: 544px;
+    margin-top: 220px;
+    margin-left: 90px;
+    border-radius: 8px;
+}
+
+#text-fale-conosco-1, #text-fale-conosco-2{
+    font-size: 60px;
+    text-align: start;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    margin-left: 40px;
+    color: white;
+    margin-top: 30px;
+
+}
+
+#text-fale-conosco-2{
+    font-size: 20px;
+}
+
+.text-fale-conosco{
+    font-size: 60px;
+    text-align: left;
+    display: flex;
+    margin-left: 50px;
+    color: #ECECEC;
+    margin-top: 30px;
+    font-weight: 600px;
+}
+
+#text-contato-1{
+    font-size: 60px;
+}
+#text-contato-2{
+    font-size: 25px;
+}
+
+.contato-ondo{
+
+}
+
+.sessao-contato{
+
+}
+
+.text-contato{
+    font-size: 60px;
+    text-align: left;
+    display: flex;
+    margin-left: 50px;
+    color: #0a3d0d;
+    margin-top: 30px;
+    font-weight: 600px;
+}
