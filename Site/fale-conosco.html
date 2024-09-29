@@ -1,44 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <link rel="stylesheet" href="/Site/assets/css/fale-conosco.css">
     <link rel="stylesheet" href="/Site/assets/css/MenuNav.css">
-    <link rel="stylesheet" href="/Site/fale-conosco.css">
-</head>
+    <link rel="stylesheet" href="/Site/assets/css/footer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>ONDO - fale conosco</title>
 
 <body>
+
     <section class="fale-conosco">
+
         <div class="container">
-            
-                <b id="text-fale-conosco-1">Fale conosco</b>
-                <p id="text-fale-conosco-2">Estamos disponíveis através do telefone,
-                    whatsapp ou formulário digital de
-                    segunda a sexta, das 8h até 17h.</p>
-           
+            <h2>Fale conosco</h2>
+            <span>
+                Estamos disponíveis através do telefone,
+                whatsapp ou formulário digital de
+                segunda a sexta, das 8h até 17h.
+            </span>
         </div>
+
     </section>
 
     <section class="contato-ondo">
-        <div class="sessao-contato">
-            <h2 id="text-contato-1">Contatos</h2>
-            <div id="text-contato-2">
-                <b>Para atendimento aos clientes</b>
-                <p>ondoSAC@agro.com</p>
-                <p>+55 11 99999-9999</p><br>
-                <p>Whatsapp: +55 11 123456789</p>
-                <b>Para adquiri nosso sistema</b>
-                <p>ondoVendas@agro.com</p>
-                <p>+55 11 99999-9999</p><br>
-                <p>Em todas as redes sociais: @ONDO</p>
+        <div class="container-contatos">
+            <h2> CONTATOS</h2>
+            <div class="card">
+                <div class="informacoes-contato">
+                    <div class="caixa-contato">
+                        <strong id="no-hover">Para atendimento aos clientes</strong><br><br>
+                        <p id="info"><b>E-mail:</b> ondoSAC@agro.com</p>
+                        <p id="info"><b>Telefone:</b> +55 11 99999-9999</p>
+                        <p id="info"><b>Whatsapp:</b> +55 11 123456789</p>
+                    </div>
+                    <div class="caixa-contato">
+                        <strong>Para comprar nosso sistema</strong><br><br>
+                        <p id="info"><b>E-mail:</b> ondoVendas@agro.com</p>
+                        <p id="info"><b>Telefone:</b> +55 11 99999-9999</p>
+                        <p id="info"><b>Redes sociais:</b> @ONDO</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div>
-            <div></div>
-        </div>
     </section>
+
+    <section class="container-mensagem">
+
+        <div class="form-container">
+            <h2>Preencha os campos para nos enviar uma mensagem</h2>
+            <form action="#" method="post">
+                <input type="text" name="nome" placeholder="Nome" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="mensagem" rows="5" placeholder="Mensagem" required></textarea>
+                <button type="submit">ENVIAR</button>
+            </form>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <div class="footer_verdeclaro"></div>
+
+        <div class="content_footer">
+            <div class="logo_ondo">
+                <img src="assets/img/Logo ONDO footer.svg" alt="" />
+            </div>
+
+            <div class="inf_center_footer">All rights reserved by ONDO</div>
+
+            <div class="inf_right_footer">© 2024</div>
+        </div>
+    </footer>
 
 </body>
 

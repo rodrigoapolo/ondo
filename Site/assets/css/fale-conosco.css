@@ -1,84 +1,249 @@
 * {
     margin: 0;
     padding: 0;
-}
-
-.fale-conosco {
-    height: 85%;
-    background-image: url('/Site/assets/img/Wasabi_Site_0.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: left;
-    align-items: flex-start;
-    flex-direction: column;
+    box-sizing: border-box;
 }
 
 body,
 html {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", system-ui;
+    font-optical-sizing: auto;
+    font-style: normal;
     height: 100%;
-    background-color: #ECECEC;
+    background-color: #e8e8e8;
 }
+
+
+/* PRIMEIRA SECTION - fale conosco */
+
+.fale-conosco {
+    background-image: url('https://images.stockcake.com/public/b/d/0/bd06c5a4-18df-4bd8-b97f-f5baf989dcc9/focused-call-center-stockcake.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    height: 85%;
+    box-shadow: 0px 20px 20px 20px #bebebe95;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.fale-conosco::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+}
+
 
 .container {
     position: absolute;
     background-color: #1E2F1A;
-    height: 213px;
-    width: 544px;
+    height: 220px;
+    width: 650px;
     margin-top: 220px;
     margin-left: 90px;
-    border-radius: 8px;
+    border-radius: 50px;
+    box-shadow: 0px 20px 20px 10px #0000009c;
 }
 
-#text-fale-conosco-1, #text-fale-conosco-2{
-    font-size: 60px;
+.container h2 {
+    font-size: 65px;
+    text-align: center;
+    display: flex;
+    margin-left: 50px;
+    margin-top: 20px;
+    padding: 10px;
+    color: white;
+}
+
+.container span {
+    font-size: 20px;
     text-align: start;
     display: flex;
-    justify-content: left;
-    align-items: flex-start;
-    margin-left: 40px;
+    justify-content: start;
+    align-items: center;
+    padding: 10px;
+    margin-left: 50px;
     color: white;
-    margin-top: 30px;
-
 }
 
-#text-fale-conosco-2{
+
+/* SEGUNDA SECTION - contato ONDO */
+
+.contato-ondo .container-contatos {
+    text-align: center;
+    margin-top: 100px;
+}
+
+/* estilo do título "contatos" */
+.container-contatos h2 {
+    color: #4CAF50;
+    margin-bottom: 40px;
+    font-size: 50px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 40px;
+    background-color: #f0f0f0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+/* hover do elemento 'contatos' */
+.container-contatos h2:hover {
+    transform: scale(1.05);
+    color: #bababa;
+}
+
+.card {
+    padding: 40px;
+    border-radius: 14px;
+    background: #f0f0f0;
+    box-shadow: 0px 20px 20px 10px #bebebe95;
+    max-width: 1200px;
+    width: 120%;
+    margin: 20px auto;
+}
+
+/* hover do elemento 'card' */
+.caixa-contato :hover {
+    transform: scale(1.10);
+    transition: transform 0.3s ease;
+    color: #4CAF50;
+}
+
+.informacoes-contato {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-left: 50px;
+    position: relative;
+}
+
+.container-contatos .caixa-contato strong {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.container-contatos .caixa-contato b {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.caixa-contato {
+    width: 45%;
+    text-align: left;
+}
+
+.caixa-contato p {
+    margin-bottom: 10px;
+    color: #333;
     font-size: 20px;
 }
 
-.text-fale-conosco{
-    font-size: 60px;
-    text-align: left;
+.caixa-contato strong {
+    color: #000;
+    font-size: 20px;
+
+}
+
+.informacoes-contato::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background-color: #bababa;
+    transform: translateX(-50%);
+}
+
+
+/* TERCEIRA SECTION - mensagem para ONDO*/
+
+.container-mensagem {
+    height: 100%;
+    margin-top: 100px;
     display: flex;
-    margin-left: 50px;
-    color: #ECECEC;
-    margin-top: 30px;
-    font-weight: 600px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-#text-contato-1{
-    font-size: 60px;
-}
-#text-contato-2{
-    font-size: 25px;
-}
-
-.contato-ondo{
-
-}
-
-.sessao-contato{
-
+.form-container {
+    background-color: #2d3a2e;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    width: 60%;
+    height: 90%;
 }
 
-.text-contato{
-    font-size: 60px;
-    text-align: left;
+.form-container h2 {
+    color: #f0f0f0;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    padding: 18px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    font-size: 1rem;
+    color: #333;
+    font-family: "Montserrat";
+}
+
+.form-container textarea {
+    height: 200px;
+}
+
+.form-container input::placeholder,
+.form-container textarea::placeholder {
+    color: #888888b7;
+    font-size: 15px;
+
+}
+
+.form-container input:focus,
+.form-container textarea:focus {
+    outline: none;
+    background-color: #d8d8d8;
+}
+
+.form-container button {
+    padding: 18px;
+    width: 15%;
     display: flex;
-    margin-left: 50px;
-    color: #0a3d0d;
-    margin-top: 30px;
-    font-weight: 600px;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #4CAF50;
+    color: #f0f0f0;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+    background-color: #45a049;
 }
