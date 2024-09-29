@@ -1,29 +1,36 @@
-/*ESTILIZAÇÃO GERAL DA PÁGINA*/
-
 body {
-    font-family: Montserrat;
-    background-color: #ffffff; 
+    font-family: Montserrat, sans-serif;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    flex-direction: row;
+    gap: 0; 
 }
 
-/*ESTILIZAÇÃO DA DIV CENTRAL*/
+.wrapper {
+    display: inline-flex;
+    align-items: stretch;
+    gap: 0; 
+    padding: 0;
+    margin: 0;
+}
 
 .container {
-    background-color: #294722; 
-    color: #ffffff; /*COR DA LETRA*/
-    width: 350px; /*lARGURA DA DIV*/
-    padding: 20px; /*ESPAÇO ENTRE BORDA E CONTEÚDO*/
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /*SOMBRINHA NA DIV CENTRAL*/
-    text-align: center; /*TEXTO CENTRALIZADO NO BOX*/
+    background-color: #294722;
+    color: #ffffff;
+    width: 350px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;/*ALINHAMENTO AO CENTRO DOS ELEMENTOS NO BOX*/
-    align-items: center;/*ALINHAMENTO VERTICAL DOS ELEMENTOS NO BOX*/
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }
 
 h2 {
@@ -38,39 +45,36 @@ button {
     font-size: 16px;
     cursor: pointer;
     margin-bottom: 15px;
-    background-color: transparent; 
-    border: 2px solid #ffffff; 
-    color: #ffffff; 
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px; /* Espaço entre o ícone e o texto no botão */
+    gap: 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-
-/* IMG DO FACE E GOOGLE */
 
 button img {
     width: 20px;
 }
-/* TRANSIÇÃO DO BOTÃO */
+
 button:hover {
-    background-color: #ffffff; 
-    color: #203920; 
-}
-/* ---OU--- */
-.or-divider {
-    display: flex; /* Alinha os elementos*/
-    align-items: center; /* Alinha tudo ao centro */
-    text-align: center; /* Alinha o "ou" ao centro*/
-    margin: 20px 0;
-    width: 100%;/* coloca o separador em toda a parte do container*/
+    background-color: #ffffff;
+    color: #203920;
 }
 
-/* linha horizontal*/
+.or-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    width: 100%;
+}
+
 .or-divider hr {
-    flex: 1; /* faz a linha horizontal*/
-    border-top: 1px solid #9fa2a7; /* COR Da linha horizontal*/
+    flex: 1;
+    border-top: 1px solid #9fa2a7;
 }
 
 .or-divider span {
@@ -92,40 +96,57 @@ input {
     width: 95%;
     padding: 10px;
     margin: 10px 0;
-    border: 2px solid #ffffff; 
+    border: 2px solid #ffffff;
     font-size: 16px;
     box-sizing: border-box;
-    background-color: transparent; 
-    color: #ffffff; 
-    text-align: center; 
+    background-color: transparent;
+    color: #ffffff;
+    text-align: center;
 }
 
 input::placeholder {
-    color: #9fa2a7; 
+    color: #9fa2a7;
 }
 
 a {
     color: black;
     font-size: 14px;
-    display: block; /* faz o 'esqueceu a senha ficar em cima do botão e n colado*/
+    display: block;
     margin-bottom: 20px;
 }
 
 a:hover {
     text-decoration: underline;
-    color: black; 
+    color: black;
 }
 
 button.login {
-    background-color: #192B16; 
-    border: 2px solid #ffffff; 
-    color: #ffffff; 
+    background-color: #192B16;
+    border: 2px solid #ffffff;
+    color: #ffffff;
     font-size: 16px;
     text-transform: uppercase;
-    width: 90%; 
+    width: 90%;
 }
 
 button.login:hover {
     background-color: #ffffff;
     color: #203920;
+}
+
+.image-container {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
 }
