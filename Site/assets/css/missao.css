@@ -1,17 +1,51 @@
-.container_card_missao{
-    margin: 0 185px;
+main{
+    margin-bottom: 200px;
 }
 
-.card_img {
+.missao .container{
+    display: flex;
+    flex-direction: column;
+    width: 73%;
+    margin: auto;
+    text-align: justify;
+    color: #262421;
+}
+
+.missao h2{
+    font-size: 60px;
+    color: #50984E;
+    text-align: center;
+    margin: 95px 0 25px 0;
+}
+
+.missao .container span{
+    margin-bottom: 100px;
+}
+
+.missao .container .cards{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.missao .card img {
     position: relative;
     display: inline-block;
-    border-radius: 10px; /* Cantos arredondados */
-    box-shadow: 10px 10px 0px 0px #4CAF50; /* Sombra sólida verde */
+    border-radius: 10px; 
+    box-shadow: 10px 10px 0px 0px #4CAF50;
 }
 
-.card_img img {
-    display: block;
-    border-radius: 10px; /* Deve combinar com o container */
+.missao .container .cards .card .descricao{
+    margin-right: 66px;
+}
+
+.card:nth-child(even) img {
+    box-shadow: -10px 10px 0px 0px #4CAF50; /* Sombra negativa apenas para cartas pares */
+}
+
+.card:nth-child(even) .descricao{
+    margin-left: 66px;
+    margin-right: 0;
 }
 
 .card:nth-child(even) {
@@ -22,26 +56,7 @@
     flex-direction: row; /* Mantém o layout padrão (imagem à direita e texto à esquerda) */
 }
 
-.container_card_missao .card{
+.missao .card{
     display: flex;
-    align-items: center;
-    gap: 66px;
-    justify-content: flex-end;
 }
 
-.container_card_missao{
-    display: flex;
-    flex-direction: column;
-    gap: 145px;
-}
-
-.titulo {    
-    margin-bottom: 37px;
-    font-size: 59px;
-    font-weight: bold;
-    color: #50984E;
-}
-
-main{
-    margin-bottom: 200px;
-}
