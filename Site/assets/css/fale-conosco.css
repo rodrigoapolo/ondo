@@ -13,15 +13,12 @@ html {
     background-color: #e8e8e8;
 }
 
-
 /* PRIMEIRA SECTION - fale conosco */
-
 .fale-conosco {
     background-image: url('https://images.stockcake.com/public/b/d/0/bd06c5a4-18df-4bd8-b97f-f5baf989dcc9/focused-call-center-stockcake.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 100%;
     height: 85%;
     box-shadow: 0px 20px 20px 20px #bebebe95;
     display: flex;
@@ -43,65 +40,60 @@ html {
     background-position: center;
 }
 
-
 .container {
     position: absolute;
     background-color: #1E2F1A;
     height: 220px;
-    width: 650px;
+    width: 100%;
+    max-width: 650px;
     margin-top: 220px;
-    margin-left: 90px;
+    margin-left: 5%;
     border-radius: 50px;
     box-shadow: 0px 20px 20px 10px #0000009c;
 }
 
 .container h2 {
-    font-size: 65px;
+    font-size: 4vw;
     text-align: center;
     display: flex;
-    margin-left: 50px;
+    margin-left: 5%;
     margin-top: 20px;
     padding: 10px;
     color: white;
 }
 
 .container span {
-    font-size: 20px;
+    font-size: 1.5vw;
     text-align: start;
     display: flex;
     justify-content: start;
     align-items: center;
     padding: 10px;
-    margin-left: 50px;
+    margin-left: 5%;
     color: white;
 }
 
-
 /* SEGUNDA SECTION - contato ONDO */
-
 .contato-ondo .container-contatos {
     text-align: center;
     margin-top: 100px;
 }
 
-/* estilo do título "contatos" */
 .container-contatos h2 {
     color: #4CAF50;
     margin-bottom: 40px;
-    font-size: 50px;
+    font-size: 3vw;
     font-weight: bold;
-    position: relative;
-    display: inline-block;
     padding: 15px 30px;
     border-radius: 40px;
+    display: inline-block;
+    position: relative;
     background-color: #f0f0f0;
-    text-transform: uppercase;
     letter-spacing: 2px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
 }
 
-/* hover do elemento 'contatos' */
 .container-contatos h2:hover {
     transform: scale(1.05);
     color: #bababa;
@@ -113,11 +105,10 @@ html {
     background: #f0f0f0;
     box-shadow: 0px 20px 20px 10px #bebebe95;
     max-width: 1200px;
-    width: 120%;
+    width: 90%;
     margin: 20px auto;
 }
 
-/* hover do elemento 'card' */
 .caixa-contato :hover {
     transform: scale(1.10);
     transition: transform 0.3s ease;
@@ -126,20 +117,11 @@ html {
 
 .informacoes-contato {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 20px;
-    margin-left: 50px;
+    padding: 20px;
     position: relative;
-}
-
-.container-contatos .caixa-contato strong {
-    font-size: 30px;
-    font-weight: 500;
-}
-
-.container-contatos .caixa-contato b {
-    font-size: 20px;
-    font-weight: 500;
 }
 
 .caixa-contato {
@@ -147,16 +129,16 @@ html {
     text-align: left;
 }
 
-.caixa-contato p {
-    margin-bottom: 10px;
-    color: #333;
-    font-size: 20px;
-}
 
 .caixa-contato strong {
     color: #000;
-    font-size: 20px;
+    font-size: 2.5rem;
+}
 
+.caixa-contato p {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1.7rem;
 }
 
 .informacoes-contato::before {
@@ -170,9 +152,7 @@ html {
     transform: translateX(-50%);
 }
 
-
-/* TERCEIRA SECTION - mensagem para ONDO*/
-
+/* TERCEIRA SECTION - mensagem para ONDO */
 .container-mensagem {
     height: 100%;
     margin-top: 100px;
@@ -188,14 +168,14 @@ html {
     border-radius: 15px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
     text-align: center;
-    width: 60%;
-    height: 90%;
+    width: 90%;
+    max-width: 1000px;
 }
 
 .form-container h2 {
     color: #f0f0f0;
     margin-bottom: 50px;
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: 600;
 }
 
@@ -220,7 +200,6 @@ html {
 .form-container textarea::placeholder {
     color: #888888b7;
     font-size: 15px;
-
 }
 
 .form-container input:focus,
@@ -232,6 +211,7 @@ html {
 .form-container button {
     padding: 18px;
     width: 15%;
+    max-width: 200px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -246,4 +226,26 @@ html {
 
 .form-container button:hover {
     background-color: #45a049;
+}
+
+/* MEDIA QUERIES PARA RESPONSIVIDADE */
+@media (max-width: 1200px) {
+    .container {
+        margin-left: 5%;
+        width: 90%;
+    }
+    
+    .informacoes-contato {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .caixa-contato {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .form-container button {
+        width: 50%;
+    }
 }
