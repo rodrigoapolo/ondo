@@ -10,7 +10,6 @@ html {
     font-optical-sizing: auto;
     font-style: normal;
     height: 100%;
-    background-color: #e8e8e8;
 }
 
 /* PRIMEIRA SECTION - fale conosco */
@@ -99,7 +98,7 @@ html {
     color: #bababa;
 }
 
-.card {
+.card-contato-ondo {
     padding: 40px;
     border-radius: 14px;
     background: #f0f0f0;
@@ -128,7 +127,6 @@ html {
     width: 45%;
     text-align: left;
 }
-
 
 .caixa-contato strong {
     color: #000;
