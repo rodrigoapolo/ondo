@@ -12,6 +12,7 @@
     z-index: 10;
 }
 
+
 .navbar ul {
     display: flex;
     gap: 24px;
@@ -24,12 +25,12 @@
     color: #324224;
     padding: 10px 0;
     text-align: center;
-    border-bottom: 2px solid transparent; /* Define o border sem cor inicialmente */
+    border-bottom: 2px solid transparent; 
 }
 
 .navbar_lista a:hover {
     transition: 0.3s ease-in-out;
-    border-bottom: 2px solid #C19A6B; /* Aplica a cor ao passar o mouse */
+    border-bottom: 2px solid #C19A6B;
     color: #C19A6B;
 }
 

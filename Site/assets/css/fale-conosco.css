@@ -174,7 +174,6 @@ html {
 /* TERCEIRA SECTION - mensagem para ONDO*/
 
 .container-mensagem {
-    height: 100%;
     margin-top: 100px;
     display: flex;
     justify-content: center;
