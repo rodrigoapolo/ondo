@@ -3,11 +3,19 @@ CREATE DATABASE ondo;
 USE ondo;
 
 -- Tabela usuario
+CREATE TABLE Login (
+    idLogin INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(45) NOT NULL,
+    senha VARCHAR(45) NOT NULL,
+    dtUltimoAcesso DATE
+);
+
 CREATE TABLE usuario (
     idUsuario INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100),
-    email VARCHAR(100),
-    senha VARCHAR(100)
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    fkLogin INT unique,
+    CONSTRAINT fk_login FOREIGN KEY (fkLogin) REFERENCES Login(idLogin)
 );
 
 -- Tabela empresa
@@ -66,12 +74,18 @@ CREATE TABLE aviso (
     FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 );
 
+INSERT INTO Login (username, senha, dtUltimoAcesso) 
+VALUES 
+('johndoe',MD5('senha123'), '2024-09-01'),
+('janedoe', MD5('senha456'), '2024-09-02'),
+('admin', MD5('senha789'), '2024-09-03');
 
 -- Inserir dados da tabela usuario
-INSERT INTO usuario (nome, email, senha) VALUES
-('João Silva', 'joao.silva@example.com',  MD5('senha123')),
-('Maria Oliveira', 'maria.oliveira@example.com',  MD5('senha456')),
-('Pedro Santos', 'pedro.santos@example.com',  MD5('senha789'));
+INSERT INTO usuario (nome, email, fkLogin) 
+VALUES 
+('John Doe', 'john.doe@example.com', 1),
+('Jane Doe', 'jane.doe@example.com', 2),
+('Admin User', 'admin@example.com', 3);
 
 SELECT * FROM usuario;
 
@@ -119,6 +133,8 @@ INSERT INTO aviso (temperatura, mensagem, fkEmpresa) VALUES
 (5.0, 'Alerta! A temperatura está fora do limite.', 3);
 
 SELECT * FROM aviso;
+
+
 
 
 -- criar select para aviso com o nome da estufa
