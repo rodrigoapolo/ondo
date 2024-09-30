@@ -1,28 +1,37 @@
-body {
-    font-family: Montserrat, sans-serif;
-    background-color: #ffffff;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff;
+    height: 100%; 
+    width: 100%; 
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    flex-direction: row;
-    gap: 0; 
+    overflow-x: hidden;
+}
+
+body {
+    padding: 0;
 }
 
 .wrapper {
-    display: inline-flex;
+    display: flex;
+    justify-content: flex-start;
     align-items: stretch;
-    gap: 0; 
-    padding: 0;
-    margin: 0;
+    width: 100%; 
+    height: 100vh;
 }
 
 .container {
     background-color: #294722;
     color: #ffffff;
-    width: 350px;
+    width: 40%; 
+    height: 100%;
     padding: 20px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -30,7 +39,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0;
+    gap: 20px;
 }
 
 h2 {
@@ -40,8 +49,8 @@ h2 {
 }
 
 button {
-    width: 100%;
-    padding: 12px;
+    width: 70%;
+    padding: 15px;
     font-size: 16px;
     cursor: pointer;
     margin-bottom: 15px;
@@ -61,20 +70,22 @@ button img {
 
 button:hover {
     background-color: #ffffff;
-    color: #203920;
+    color: #50984E;
 }
 
 .or-divider {
     display: flex;
     align-items: center;
     text-align: center;
-    margin: 20px 0;
-    width: 100%;
+    margin: 10px 0;
+    width: 70%;
 }
 
 .or-divider hr {
     flex: 1;
     border-top: 1px solid #9fa2a7;
+    height: 1px;
+    margin: 0;
 }
 
 .or-divider span {
@@ -93,7 +104,7 @@ button:hover {
 }
 
 input {
-    width: 95%;
+    width: calc(100% - 40px);
     padding: 10px;
     margin: 10px 0;
     border: 2px solid #ffffff;
@@ -109,15 +120,16 @@ input::placeholder {
 }
 
 a {
-    color: black;
+    color: #ffffff;
     font-size: 14px;
     display: block;
     margin-bottom: 20px;
+    font-weight: bold;
 }
 
 a:hover {
     text-decoration: underline;
-    color: black;
+    color: #ffffff;
 }
 
 button.login {
@@ -126,7 +138,8 @@ button.login {
     color: #ffffff;
     font-size: 16px;
     text-transform: uppercase;
-    width: 90%;
+    width: 70%;
+    padding: 15px;
 }
 
 button.login:hover {
@@ -135,18 +148,14 @@ button.login:hover {
 }
 
 .image-container {
-    width: auto;
+    width: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0;
-    padding: 0;
 }
 
 .image-container img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0;
-    padding: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
