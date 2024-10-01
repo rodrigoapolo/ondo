@@ -3,9 +3,20 @@
     padding: 0;
 }
 
-.tela-inicial {
+body,
+html {
+    font-family: "Montserrat", system-ui;
+    font-optical-sizing: auto;
+    font-style: normal;
     height: 100%;
-    background-image: url('/Site/assets/img/Wasabi_Site_0.jpg');
+}
+
+
+/* PRIMEIRA SECTION - tela inicial */
+
+.tela-inicial {
+    height: 85%;
+    background-image: url('https://ndnr.com/wp-content/uploads/2015/10/46295581_ml.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -13,32 +24,31 @@
     justify-content: left;
     align-items: flex-start;
     flex-direction: column;
-}
-
-body,
-html {
-    font-family: "Montserrat", sans-serif;
-    height: 100%;
-    background-color: #ECECEC;
+    box-shadow: 0px 20px 20px 20px #bebebe95;
+    margin-bottom: 80px;
 }
 
 .container {
     position: absolute;
     background-color: #1E2F1A;
-    height: 167px;
-    width: 684px;
-    margin-top: 220px;
-    margin-left: 90px;
-    border-radius: 8px;
+    height: 180px;
+    width: 100%;
+    max-width: 650px;
+    margin-top: 150px;
+    margin-left: 5%;
+    border-radius: 50px;
+    box-shadow: 0px 20px 20px 10px #0000009c;
 }
 
 .container span {
     font-size: 3vw;
     text-align: left;
     display: flex;
-    margin-left: 30px;
+    justify-content: left;
+    align-items: center;
     color: white;
-    margin-top: 30px;
+    margin-left: 30px;
+    margin-top: 50px;
 }
 
 .container .div-button {
@@ -76,10 +86,11 @@ html {
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    margin-bottom: 100px;
 }
 
 #card {
-    height: 500px;
+    height: 450px;
     width: 490px;
     background-color: #ECECEC;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
@@ -94,7 +105,6 @@ html {
     width: 100%;
     height: 50%;
     background-color: black;
-
 }
 
 #card-image img {
@@ -128,8 +138,10 @@ html {
     width: 80%;
     height: 15%;
     margin-top: 20px;
-
 }
+
+
+/* SEGUNDA SECTION - tela beneficios */
 
 .tela-ben {
     background-color: #1E2F1A;
@@ -145,7 +157,6 @@ html {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
 }
 
 .container-text-ben h1 {
@@ -174,6 +185,11 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.container-card-ben :hover {
+    transition: transform 0.3s ease;
+    background-color: #2E852C;
 }
 
 #image-box {
@@ -213,16 +229,16 @@ html {
     letter-spacing: 0.50px;
 }
 
+
+/* TERCEIRA SECTION - contato ONDO */
+
 .contato-ondo {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60%;
-}
-
-.container-contato {
-    width: 90%;
-    height: 100%;
+    height: 80%;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
 }
 
 .contato {
@@ -231,42 +247,39 @@ html {
     font-size: 40px;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    margin-bottom: 2vh;
+    margin-left: 13vh;
 }
 
 .container-social {
-    height: 30%;
+    width: 150vh;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
     flex-direction: row;
-    width: 100%;
+    padding: 8vh;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    box-shadow: 0px 20px 20px 10px #bebebe95;
 }
 
-#text-contato-1 {
-    border-right: solid 3.50px #2E852C;
+#text-contato {
     padding-right: 30px;
+    width: 31%;
+    font-size: 20px;
 }
 
-#text-contato-2 {
-    margin-left: 30px;
-}
-
-#text-contato-1,
-#text-contato-2 {
+p {
     font-size: 28px;
+    font-weight: 500;
 }
-
-
 
 .btn-contato {
     background-color: #50984e00;
     color: #50984E;
     font-size: 20px;
-    padding-top: 20px;
-    border: none;
     border-radius: 8px;
+    border: none;
     cursor: pointer;
     font-weight: bolder;
-
 }

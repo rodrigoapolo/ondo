@@ -6,7 +6,7 @@
 
     background-color: #1E2F1A;
 
-    position: relative; 
+    position: relative;
 
     margin-top: 20px;
 
@@ -18,7 +18,7 @@
 
     width: 100%;
 
-    height: 24px; 
+    height: 24px;
 
     background-color: #50984E;
 
@@ -50,7 +50,8 @@
 
 
 
-.inf_center_footer, .inf_right_footer {
+.inf_center_footer,
+.inf_right_footer {
 
     color: white;
 
