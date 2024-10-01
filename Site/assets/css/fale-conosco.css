@@ -40,11 +40,11 @@ html {
 }
 
 .container {
+    height: 40%;
+    max-width: 680px;
     position: absolute;
     background-color: #1E2F1A;
-    height: 220px;
     width: 100%;
-    max-width: 650px;
     margin-top: 160px;
     margin-left: 5%;
     border-radius: 50px;
