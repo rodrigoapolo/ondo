@@ -14,32 +14,34 @@
     <header>
         <nav class="navbar">
             <div class="navbar_container-logo">
-              <a href="index.html">
-                <img src="assets/img/Logo.svg" alt="Logo" />
-              </a>
+                <a href="index.html">
+                    <img src="assets/img/Logo.svg" alt="Logo" />
+                </a>
             </div>
-      
+
             <ul class="navbar_lista">
-              <li><a href="./sobrenos.html">Sobre nós</a></li>
-      
-              <li><a href="./missao.html">Nossa missão</a></li>
-      
-              <li><a href="./projeto.html">Nosso projeto</a></li>
-      
-              <li><a href="./fale-conosco.html">Contato</a></li>
+                <li><a href="./sobrenos.html">Sobre nós</a></li>
+
+                <li><a href="./calculadora.html">Simulador Financeiro</a></li>
+
+                <li><a href="./missao.html">Nossa missão</a></li>
+
+                <li><a href="./projeto.html">Nosso projeto</a></li>
+
+                <li><a href="./fale-conosco.html">Contato</a></li>
             </ul>
-      
+
             <div class="container-btn">
-              <ul class="btn-acao">
-                <li class="btn_login">
-                  <a href="./login.html">Entrar</a>
-                </li>
-                <li class="btn_cadastro">
-                  <a href="./cadastro.html">Cadastrar</a>
-                </li>
-              </ul>
+                <ul class="btn-acao">
+                    <li class="btn_login">
+                        <a href="./login.html">Entrar</a>
+                    </li>
+                    <li class="btn_cadastro">
+                        <a href="./cadastro.html">Cadastrar</a>
+                    </li>
+                </ul>
             </div>
-      
+
             <!-- <div class="navbar_container-redesSociais">
               <img src="assets/img/linkedin.svg" alt="Logo linkedin" />
       
@@ -47,7 +49,7 @@
       
               <img src="assets/img/youtube.svg" alt="Youtube" />
             </div> -->
-          </nav>
+        </nav>
     </header>
     <h1>Simulador Financeiro para produtores de WASABI</h1>
     <div class="div_conteudo">
@@ -93,8 +95,20 @@
             <h3>Resultado:</h3>
             <p id="p_info"></p>
         </div>
-        <div>
+    </div>
+    <footer class="footer">
+        <div class="footer_verdeclaro"></div>
+
+        <div class="content_footer">
+            <div class="logo_ondo">
+                <img src="assets/img/Logo ONDO footer.svg" alt="" />
+            </div>
+
+            <div class="inf_center_footer">All rights reserved by ONDO</div>
+
+            <div class="inf_right_footer">© 2024</div>
         </div>
+    </footer>
 </body>
 
 </html>
@@ -112,7 +126,7 @@
         var areaMuda = espacoMetro * espacoMetro; //variavel da area que cada muda em metros quadrados
         var qtdMuda = area / areaMuda; //variavel da quantidade de mudas. Area inteira / por area de cada planta
         var pesoTotal = qtdMuda *
-        0.12; //variavel do peso aproximado da safra em quilo (IMPORTANTE SABER QUE ESSE VALOR 0.12 é a media do peso em gram do wasabi)
+            0.12; //variavel do peso aproximado da safra em quilo (IMPORTANTE SABER QUE ESSE VALOR 0.12 é a media do peso em gram do wasabi)
         var pesoSem = pesoTotal * 0.65;
         var pesoCom = pesoTotal * 0.90;
         var lucroBrutoSem = pesoSem * preco; //variavel do retorno completo da safra. peso kilo * preco kilo
@@ -174,7 +188,7 @@
         var areaMuda = espacoMetro * espacoMetro; //variavel da area que cada muda em metros quadrados
         var qtdMuda = area / areaMuda; //variavel da quantidade de mudas. Area inteira / por area de cada planta
         var pesoTotal = qtdMuda *
-        0.12; //variavel do peso aproximado da safra em quilo (IMPORTANTE SABER QUE ESSE VALOR 0.12 é a media do peso em gram do wasabi) 
+            0.12; //variavel do peso aproximado da safra em quilo (IMPORTANTE SABER QUE ESSE VALOR 0.12 é a media do peso em gram do wasabi) 
         var pesoSem = pesoTotal * 0.65;
         var pesoCom = pesoTotal * 0.90;
         var retorno = pesoTotal * preco; //variavel do retorno completo da safra. peso kilo * preço kilo
