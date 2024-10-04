@@ -20,7 +20,7 @@
 }
 
 .navbar a {
-    font-size: 22px;
+    font-size: 19px;
     font-weight: 500;
     color: #324224;
     padding: 10px 0;
@@ -58,8 +58,8 @@
 }
 
 .btn_login a:hover {
-    background-color: #33522c;
-    border: 2px solid #33522c;
+    background-color: #2E852C;
+    border: 2px solid #2E852C;
     color: #ffffff;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.295);
     transition: all 0.3s linear; 
@@ -70,11 +70,15 @@
     color: white;
     padding: 9px 16px;
     border-radius: 5px;
+    border: 2px solid transparent;
     background-color: #2E852C;
 }
 
 .btn_cadastro a:hover {
-    background-color: #33522c;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.295);
     transition: all 0.3s linear; 
+    color: #2E852C;
+    background-color: transparent;
+    border: 2px solid #2E852C;
+    padding: 8px 16px;
+    border-radius: 5px;
 }
