@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  
+  <link rel="stylesheet" href="./assets/css/MenuNav.css">
   <link rel="stylesheet" href="./assets/css/fale-conosco.css">
   <link rel="stylesheet" href="./assets/css/footer.css">
   <link rel="stylesheet" href="./assets/css/style.css">
@@ -12,8 +13,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
-
-  <link rel="stylesheet" href="./assets/css/MenuNav.css">
   <title>ONDO - fale conosco</title>
 
 <body>
@@ -26,7 +25,7 @@
       </div>
 
       <ul class="navbar_lista">
-        <li><a href="./sobrenos.html">Sobre nós</a></li>
+        <li><a href="./sobre-ondo.html">Sobre nós</a></li>
 
         <li><a href="./calculadora.html">Simulador Financeiro</a></li>
 
@@ -58,53 +57,51 @@
     </nav>
   </header>
 
-  <section class="fale-conosco">
-
-    <div class="container">
-      <h2>Fale conosco</h2>
-      <span>
-        Estamos disponíveis através do telefone,
-        whatsapp ou formulário digital de
-        segunda a sexta, das 8h até 17h.
-      </span>
-    </div>
+  <section>
+    <section class="fale-conosco">
+      <div class="container">
+        <h1>Fale conosco</h1>
+        <p>Estamos disponíveis através do telefone, WhatsApp ou formulário digital de segunda a sexta, das 8h até 17h.
+        </p>
+      </div>
+    </section>
 
   </section>
 
-  <section class="contato-ondo">
-    <div class="container-contatos">
-      <h2> CONTATOS</h2>
-      <div class="card-contato-ondo">
-        <div class="informacoes-contato">
-          <div class="caixa-contato">
-            <strong>Para atendimento aos clientes</strong><br><br>
-            <p><b>E-mail:</b> ondoSAC@agro.com</p>
-            <p><b>Telefone:</b> +55 11 99999-9999</p>
-            <p><b>Whatsapp:</b> +55 11 123456789</p>
-          </div>
-          <div class="caixa-contato">
-            <strong>Para comprar nosso sistema</strong><br><br>
-            <p><b>E-mail:</b> ondoVendas@agro.com</p>
-            <p><b>Telefone:</b> +55 11 99999-9999</p>
-            <p><b>Redes sociais:</b> @ONDO</p>
-          </div>
-        </div>
+  <section class="container-segunda-sessao">
+    <h1 id="titulo">Contatos</h1>
+    <div class="grade-contato">
+      <div class="coluna-contato">
+        <span id="titulo-contato">Para atendimento aos clientes</span>
+        <p>ondoSAC@agro.com</p>
+        <p>+55 11 99999-9999</p>
+        <p id="redes-sociais">Whatsapp: +55 11 123456789</p>
+      </div>
+      <div class="coluna-contato">
+        <span id="titulo-contato">Para comprar nosso sistema</span>
+        <p>ondoVendas@agro.com</p>
+        <p>+55 11 99999-9999</p>
+        <p id="redes-sociais">Em todas as redes sociais: @ONDO</p>
       </div>
     </div>
   </section>
 
-  <section class="container-mensagem">
-
-    <div class="form-container">
-      <h2>Preencha os campos para nos enviar uma mensagem</h2>
-      <form action="#" method="post">
-        <input type="text" name="nome" placeholder="Nome" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <textarea name="mensagem" rows="5" placeholder="Mensagem" required></textarea>
-        <button type="submit">ENVIAR</button>
+  <section class="formulario">
+    <div class="formulario-contato">
+      <h2 id="titulo-formulario">Preencha os campos para <br> nos enviar uma mensagem</h2>
+      <form>
+        <div class="grupo-formulario">
+          <input type="text" id="nome" name="nome" placeholder="Nome" required>
+        </div>
+        <div class="grupo-formulario">
+          <input type="email" id="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="grupo-formulario">
+          <textarea id="mensagem" name="mensagem" placeholder="Mensagem" required></textarea>
+        </div>
+        <button type="submit">Enviar</button>
       </form>
     </div>
-
   </section>
 
   <footer class="footer">

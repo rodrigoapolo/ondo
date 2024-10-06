@@ -1,148 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body,
 html {
-    font-family: "Montserrat", system-ui;
-    font-optical-sizing: auto;
-    font-style: normal;
     height: 100%;
+    font-family: 'Montserrat', sans-serif;
 }
 
-
-/* PRIMEIRA SECTION - tela inicial */
-
+/* Sessão inicial */
 .tela-inicial {
-    height: 85%;
+    position: relative;
+    min-height: 85vh;
     background-image: url('https://ndnr.com/wp-content/uploads/2015/10/46295581_ml.jpg');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     display: flex;
-    justify-content: left;
+    justify-content: flex-start;
     align-items: flex-start;
-    flex-direction: column;
-    box-shadow: 0px 20px 20px 20px #bebebe95;
-    margin-bottom: 80px;
 }
 
-.container {
-    position: absolute;
-    background-color: #1E2F1A;
+.texto-container {
+    position: relative;
+    background-color: rgb(34, 66, 37);
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 680px;
     height: 180px;
-    width: 100%;
-    max-width: 650px;
-    margin-top: 150px;
-    margin-left: 5%;
-    border-radius: 50px;
-    box-shadow: 0px 20px 20px 10px #0000009c;
+    margin-top: 20vh;
+    margin-left: 8%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
-.container span {
-    font-size: 3vw;
-    text-align: left;
-    display: flex;
-    justify-content: left;
-    align-items: center;
+.texto-container p {
     color: white;
-    margin-left: 30px;
-    margin-top: 50px;
+    font-size: 48px;
+    font-weight: 400;
+    margin-left: 15px;
 }
 
-.container .div-button {
-    position: absolute;
-    bottom: 10px;
-    right: 35px;
-    width: 137px;
-    height: 10px;
+.texto-container span {
+    font-weight: 700;
 }
 
-.btn-default {
-    font-size: 15px;
-    padding: 10px 35px;
-    color: #F5F5F5;
-    background-color: #50984E;
-    border: none;
-    border-radius: 8px;
+.btn-entenda {
+    display: inline-block;
     cursor: pointer;
+    border: none;
+    position: absolute;
+    padding: 10px 20px;
+    color: #F5F5F5;
+    background-color: #50984e9f;
+    border-radius: 6px;
+    font-size: 15px;
     font-weight: 600;
-    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+    bottom: 30px;
+    right: 40px;
 }
 
-.tela-ondo {
-    height: 100%;
+.btn-entenda:hover {
+    background-color: #3d8d41;
+}
+
+
+/* Sessão Sobre */
+.sobre-nos-section {
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row;
-}
-
-.container-card {
-    height: 100%;
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    margin-bottom: 100px;
-}
-
-#card {
-    height: 450px;
-    width: 490px;
-    background-color: #ECECEC;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 8px;
-}
-
-#card-image {
-    width: 100%;
-    height: 50%;
-    background-color: black;
-}
-
-#card-image img {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-}
-
-#card-text {
-    width: 80%;
-    height: 35%;
-    display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     align-items: flex-start;
+    margin: 50px auto;
+    max-width: 1100px;
+    gap: 80px;
+    flex-wrap: nowrap;
 }
 
-#card-text h3 {
-    color: #334224;
+.card {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    width: 48%;
+    height: 620px;
+    transition: transform 0.3s ease;
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-image {
+    width: 100%;
+    height: 310px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+    height: 310px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card #titulo-conteudo {
     font-size: 28px;
+    margin-bottom: 10px;
     font-weight: 600;
-    margin: 25px 0 20px 0;
 }
 
-#card-text p {
-    font-size: 18px;
+.card #card-texto-conteudo{
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 500;
+    margin: 10px;
 }
 
-#card-button {
-    width: 80%;
-    height: 15%;
+.btn-conheca {
+    background-color: #50984E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 130px;
+    height: 38px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
     margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    text-align: center;
+    align-self: flex-start;
+}
+
+.btn-conheca:hover {
+    background-color: #3d8d41;
 }
 
 
-/* SEGUNDA SECTION - tela beneficios */
-
+/* Sessão Benefícios */
 .tela-ben {
     background-color: #1E2F1A;
     height: 100%;
@@ -166,7 +173,6 @@ html {
 }
 
 .container-card-ben {
-
     width: 100%;
     height: 50%;
     display: flex;
@@ -176,7 +182,7 @@ html {
 }
 
 #box {
-    color: #2E852C;
+    color: #50984E;
     height: 92%;
     width: 20%;
     border: solid 4px;
@@ -189,7 +195,7 @@ html {
 
 .container-card-ben :hover {
     transition: transform 0.3s ease;
-    background-color: #2E852C;
+    background-color: #50984E;
 }
 
 #image-box {
@@ -206,7 +212,6 @@ html {
     color: #F5F5F5;
     width: 90%;
     height: 30%;
-
 }
 
 .card-btn-ben {
@@ -229,57 +234,147 @@ html {
     letter-spacing: 0.50px;
 }
 
-
-/* TERCEIRA SECTION - contato ONDO */
-
-.contato-ondo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
+.card-btn-ben :hover {
+    background-color: #2a632d;
 }
 
-.contato {
-    color: #1E2F1A;
-    height: 35%;
+
+/* Sessão Contato */
+.conteiner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 20px;
+}
+
+h2 {
+    color: #1e3a29;
     font-size: 40px;
+    margin-bottom: 32px;
+}
+
+.grade-contato {
     display: flex;
-    justify-content: flex-start;
-    margin-bottom: 2vh;
-    margin-left: 13vh;
+    justify-content: space-between;
+    margin-bottom: 32px;
 }
 
-.container-social {
-    width: 150vh;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-    padding: 8vh;
-    border-radius: 10px;
-    background-color: #f5f5f5;
-    box-shadow: 0px 20px 20px 10px #bebebe95;
+.coluna-contato {
+    flex: 1;
 }
 
-#text-contato {
-    padding-right: 30px;
-    width: 31%;
-    font-size: 20px;
-}
-
-p {
+.coluna-contato #titulo-conteudo-contato {
+    color: #333;
     font-size: 28px;
+    margin-bottom: 16px;
     font-weight: 500;
 }
 
-.btn-contato {
-    background-color: #50984e00;
+.coluna-contato p {
+    color: #666;
+    margin: 8px 0;
+    font-size: 28px;
+}
+
+.divisor {
+    width: 3px;
+    background-color: #50984E;
+    margin: 0 50px;
+}
+
+.ver-todos {
     color: #50984E;
+    text-decoration: none;
+    font-weight: bold;
     font-size: 20px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-weight: bolder;
+}
+
+.ver-todos:hover {
+    text-decoration: underline;
+}
+
+
+/* Media Queries para responsividade */
+@media (max-width: 1024px) {
+    .tela-inicial {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .texto-container {
+        margin-left: 5%;
+        max-width: 90%;
+    }
+
+    .texto-container p {
+        font-size: 36px;
+    }
+
+    .btn-entenda {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .sobre-nos-section {
+        gap: 40px;
+    }
+
+    .card {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .grade-contato {
+        flex-direction: column;
+    }
+
+    .divisor {
+        display: none;
+    }
+
+    .coluna-contato + .coluna-contato {
+        margin-top: 20px;
+    }
+
+    .sobre-nos-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .card {
+        width: 100%;
+        height: auto;
+    }
+
+    .card-image {
+        height: 150px;
+    }
+
+    .card-content {
+        height: auto;
+    }
+
+    .container-text-ben h1 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .texto-container p {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    .btn-entenda, .button-ben {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .container-text-ben h1 {
+        font-size: 24px;
+    }
 }
