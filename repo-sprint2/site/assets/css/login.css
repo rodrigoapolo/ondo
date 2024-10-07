@@ -12,7 +12,6 @@
 
 .container {
     display: flex;
-    height: 100%;
     width: 100%;    
 }
 
@@ -28,6 +27,7 @@
 .img_btn_voltar {
     height: 36px;
     width: 20px;
+    margin-top: 20px;
 }
 
 .txt_login{
