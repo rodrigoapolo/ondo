@@ -110,11 +110,6 @@ input:focus {
     outline: none;
 }
 
-.ipt-container:focus {
-    outline: none;
-    border: 20px solid #0328f7;
-}
-
 .ipt-container{
     display: flex;
     justify-content: center;
