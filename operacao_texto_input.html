@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input oninput="analisar()" type="text" id="input_texto">
+</body>
+</html>
+
+<script>
+    function analisar() {
+        var texto = input_texto.value;
+
+        input_texto.value = texto.toUpperCase()
+                                 .replaceAll('A', 4) // ACONTECE LOGO APÓS O 'toUpperCase()', então manipula o valor já convertido para MAIÚSCULO
+                                 .replaceAll('E', 3)
+                                 .replaceAll('I', 1)
+                                 .replaceAll('O', 0)
+                                 .replaceAll('S', 5)
+                                 .replaceAll('T', 7);
+    }
+</script>

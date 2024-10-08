@@ -35,20 +35,20 @@
           <span class="or-text"><b>ou</b></span>
           <hr>
         </div>
-
-        <label class="ipt-container">
+        <p id="erro_email" class="tex_erro"></p>
+        <div class="ipt-container" id="div_email">
           <img src="assets/img/personal.png" alt="">
-          <input type="text" placeholder="E-mail ou nome de usuário">
-        </label>
-
-        <div class="ipt-container">
+          <input oninput="validarEmail()" id="ipt_email" type="text" placeholder="E-mail ou nome de usuário">
+        </div>
+        <p id="erro_senha" class="tex_erro"></p>
+        <div class="ipt-container" id="div_senha">
           <img src="assets/img/personal.png" alt="">
-          <input type="password" placeholder="Senha">
+          <input oninput="validarSenha()" id="ipt_senha" type="password" placeholder="Senha">
         </div>
 
         <a class="texSenha" href="#">Esqueceu sua senha?<span class="texSpan"> Clique aqui.</span></a>
         <div class="container-btn">
-          <button class="btn_entrar">Entrar</button>
+          <button onclick="login()" class="btn_entrar">Entrar</button>
         </div>
 
         <div class="img_logo_ondo"></div>
@@ -61,3 +61,95 @@
 </body>
 
 </html>
+<script>
+  var isEmail = false;
+  var isSenha = false;
+  var display_block = 'block';
+  var mensagem_error_email = "E-mail inválido"
+  var mensagem_error_senha = "Senha inválida"
+
+  function login(){
+    var email = ipt_email.value;
+    var senha = ipt_senha.value
+
+    if(!isEmail && !isSenha){
+      erro_email.style.display = display_block
+      erro_email.innerHTML = mensagem_error_email
+      div_email.style.border = '2px solid red';
+
+      erro_senha.style.display = display_block
+      erro_senha.innerHTML = mensagem_error_senha
+      div_senha.style.border = '2px solid red';
+    }else if(email == "frizar@sptec.school" && senha == "urubu100"){
+      //fazer login
+    }else{
+      erro_email.style.display = display_block
+      erro_email.innerHTML = mensagem_error_email
+      div_email.style.border = '2px solid red';
+
+      erro_senha.style.display = display_block
+      erro_senha.innerHTML = mensagem_error_senha
+      div_senha.style.border = '2px solid red';
+    }
+  }
+  
+  function validarEmail(){
+    var email = ipt_email.value;
+    email = email.toLowerCase();
+
+    var comeca_ponto = email.startsWith('.');
+    var termina_com = email.endsWith('.com');
+    var termina_br = email.endsWith('.br');
+    var termina_school = email.endsWith('.school')
+    var possui_arroba = email.includes('@');
+    var possui_barra = email.includes('\\');
+    var possui_barra_direita = email.includes('/');
+    var possui_aspas = email.includes('"');
+
+  
+    if(possui_barra){
+      isEmail = false
+    }else if(possui_barra_direita){
+      isEmail = false
+    }else if(possui_aspas){
+      isEmail = false
+    } else if(comeca_ponto){
+      isEmail = false
+    }else if(!termina_br && !termina_com && !termina_school){
+      isEmail = false
+    }else if(!possui_arroba) {
+      isEmail = false
+    }else{
+      isEmail = true
+    }
+
+    if(isEmail){
+      erro_email.style.display = 'none'
+      div_email.style.border = 'none';
+    }else{
+      erro_email.style.display = display_block
+      erro_email.innerHTML = mensagem_error_email
+      div_email.style.border = '2px solid red';
+    }
+  }
+
+  function validarSenha() {
+    var senha = ipt_senha.value
+
+    if(senha.length < 3){
+      isSenha = false
+    }else{
+      isSenha = true
+    }
+
+    if(isSenha){
+      erro_senha.style.display = 'none'
+      div_senha.style.border = 'none';
+    }else{
+      erro_senha.style.display = display_block
+      erro_senha.innerHTML = mensagem_error_senha
+      div_senha.style.border = '2px solid red';
+    }
+    
+  }
+</script>

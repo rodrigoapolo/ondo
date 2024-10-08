@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Digite um texto: 
+
+    <input oninput="analisar()" type="text" id="input_texto">
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function analisar() {
+        var texto_original = input_texto.value;
+        var mensagem = "";
+
+        console.log(texto_original);
+
+
+        
+        /* comprimento da frase / quantidade de caracteres */
+        var tamanho_frase = texto_original.length; // length significa "comprimento", que indica a quantidade de caracteres da frase
+        mensagem += `Quantidade de caracteres: ${tamanho_texto} <br>`;
+
+        // valida se possui ao menos 8 caracteres
+        if (tamanho_texto >= 8) {
+            mensagem += `O texto possui AO MENOS 8 caracteres <br>`;
+        } else {
+            mensagem += `O texto NÃO POSSUI 8 caracteres <br>`;
+        }
+
+
+
+        /* verificar se texto termina com algum trecho específico */
+        var termina_com = texto_original.endsWith('.com'); // '.endsWith()' é um método nativo, que faz uma pesquisa na frase e compara se o texto TERMINA com os mesmos caracteres do trecho_pesquisado
+        var termina_br =  texto_original.endsWith('.br');  // '.endsWith()' é um método nativo, que faz uma pesquisa na frase e compara se o texto TERMINA com os mesmos caracteres do trecho_pesquisado
+        
+        // validar se termina com '.com', '.br', '.school' ou nenhum
+        if (termina_com) {
+            mensagem += `Texto original termina com '.com' <br>`;
+        } else if (termina_br) {
+            mensagem += `Texto original termina com '.br' <br>`;
+        } else if (texto_original.endsWith('.school')) { // usa direto a função, sem armazenar em variávle
+            mensagem += `Texto original termina com '.school' <br>`;
+        } else {
+            mensagem += `Não termina com '.com', '.br' nem '.school' <br>`;
+        }
+
+
+
+
+        /* verificar se texto termina com algum trecho específico */
+        var comeca_abc = texto_original.startsWith('abc'); // '.startsWith()' é um método nativo, que faz uma pesquisa na frase e compara se o texto COMEÇA com os mesmos caracteres do trecho_pesquisado
+        if (comeca_abc) {
+            mensagem += `Texto original começa com "abc"! <br>`;
+        } else {
+            mensagem += `O texto original não começa com 'abc'! <br>`;
+        }
+
+
+
+
+        /* caixa baixa / CAIXA ALTA - '.toLowerCase()' vs '.toUpperCase()' */
+        var texto_minusculo = texto_original.toLowerCase(); // transforma o texto original em 'minúscula'
+        var texto_maiusculo = texto_original.toUpperCase();  // transforma o texto original em 'MAIÚSCULA'
+        
+        mensagem += `
+            Texto original: ${texto_original} <br>
+            Texto minusculo: ${texto_minusculo} <br>
+            Texto maiúsculo: ${texto_maiusculo} <br>
+        `;
+
+
+        /* validação se o texto possui maiúsculas e minúsculas */
+        if (texto_original != texto_maiusculo) { 
+            mensagem += `Possui caractere minúsculo<br>`;
+        } else {
+            mensagem += `Não possui caractere minúsculo. O texto INTEIRO está em MAIÚSCULO<br>`;
+        }
+
+        if (texto_original != texto_minusculo) {
+            mensagem += `Possui caractere MAIÚSCULO<br>`;
+        } else {
+            mensagem += `Não possui caractere MAIÚSCULO. O texto inteiro está em minúsculo<br>`;
+        }
+        /* 
+            Nos exemplos acima, utilizar toLowerCase() ou toUpperCase() transformam o texto original
+            Caso o texto original sofra alterações após o 'toLowerCase()', significa que haviam caracteres MAIÚSCULOS.
+                - se o texto era "TESTE" e ficou 'teste', significa que haviam caracteres maiúsculos antes, então está diferente do texto original
+            Caso o texto original sofra alterações após o 'toUpperCase()', significa que haviam caracteres minúsculos.
+                - se o texto era "tESte" e ficou 'TESTE', significa que haviam caracteres minúsculos antes, então está diferente do texto original
+            Com isso, ao validar se o texto original é diferente dos textos manipulados, podemos confirmar se havia caractere maiúsculo ou minúsculo no texto original.
+        */
+
+
+
+       
+        /* indexação - índices e posições de caracteres */
+        // EXEMPLO DE CARACTERES E ÍNDICES
+        // var exemplo = 'teste abc';  -> 9 caracteres
+        //                012345678    -> 9 índices/posições, começando em 0 e indo até 8
+        // DETALHE: o último índice válido sempre será o 'tamanho da frase -1', ou seja, basta obter a quantidade de caracteres e reduzir em 1 para obter o último índice da frase.
+        var primeira_caractere = texto_original[0]; // acessa o caractere no primeiro índice da frase (começa de 0)
+        var terceira_caractere = texto_original[2]; // acessa o caractere no índice '2' da frase (seria o terceiro caractere - 0, 1, 2)
+        var ultimo_caractere = texto_original[tamanho_texto - 1]; // acessa o caractere no último índice válido da frase, de acordo com o tamanho do texto -1
+        mensagem += `
+            Primeiro caractere: ${primeiro_caractere} <br>
+            Terceiro caractere: ${terceiro_caractere} <br>
+            Último caractere: ${ultimo_caractere} <br>
+        `;
+
+
+
+        /* verificar o índice de um trecho específico na frase */
+        var indice_com = frase_original.indexOf('.com'); // pesquisa o trecho '.com' na frase e retorna o índice encontrado
+        var indice_arroba = frase_original.indexOf('@'); // caso não encontre o trecho na frase, retorna o índice -1 por padrão, um índice inválido
+        mensagem += `Índice de @: ${indice_arroba} <br>`;
+        mensagem += `Índice de '.com': ${indice_com} <br>`;
+
+        // se não existe arroba na frase, retorna o índice '-1'
+        if (indice_arroba == -1) {
+            mensagem += `NÃO POSSUI "@" no texto original <br>`;
+        } else { // se não devolveu -1, significa que possui @ em algum índice válido na frase
+            mensagem += `Contém '@' no texto original <br>`;
+        }
+
+        // valida se o '@' vem antes do '.com'
+        if (indice_arroba < indice_com) {
+            mensagem += `VÁLIDO - O  '@' está antes do '.com'<br>`;
+        } else {
+            mensagem += `INVÁLIDO - O '.com' está antes do '@'<br>`;
+        }
+
+
+
+        /* verificar se texto inclui algum trecho específico - MAIS FÁCIL QUE VALIDAR O INDEXOF */
+        var possui_arroba = texto_original.includes('@');
+        mensagem += `Texto possui @? ${possui_arroba} <br>`
+
+
+
+        /* substituição de caracteres - '.replace()' vs '.replaceAll()'*/
+        var frase_sem_espacos = frase_original.replaceAll(' ', '');         // substituindo TODOS os ' ' por '', removendo TODOS os espaços da frase
+        var frase_sem_primeiro_espaco = frase_original.replace(' ', '__');    // substituindo APENAS O PRIMEIRO ' ' por '__'
+        var frase_com_1_no_primeiro_i = frase_original.replace('I', '1');   // substituindo APENAS O PRIMEIRO 'I' por '1'
+        var frase_com_5 = frase_original.replaceAll('s', '5').replaceAll('S', '5'); // substitui TODOS os 's' por 5, na sequência substitui todos os 'S' por 5, garantindo que todos sejam substituidos, independentemente da formatação ('s' ou 'S')            
+        mensagem += `
+            Frase sem o primeiro espaço: <b>${frase_sem_primeiro_espaco}</b> <br>
+            Frase sem espaços: <b>${frase_sem_espacos}</b> <br>
+            Frase com 1 no primeiro 'I' (maiúsculo): <b>${frase_com_1_no_primeiro_i}</b> <br>
+            Frase com '5' nos 's' e 'S': <b>${frase_com_5}</b> <br>
+        `;
+        // replace() e replaceAll() recebem 2 parâmetros: o texto a ser encontrado e o que irá sobrescrevê-lo
+        // ambos são similares, porém o replace() executa a alteração somente no primeiro trecho que ele der match, enquanto o replaceAll substitui TODOS ("all").
+
+
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

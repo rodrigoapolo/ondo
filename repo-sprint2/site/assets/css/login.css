@@ -68,6 +68,18 @@
     background-repeat: no-repeat;
 }
 
+.tex_erro{
+    display: none;
+    color: rgba(255, 0, 0, 0.719);
+    font-size: 1.2rem;
+    align-self: center;
+    background-color: white;
+    border-radius: 8px;
+    border: 2px solid red;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
 .or-text{
     color: white;
 }
@@ -92,6 +104,15 @@ margin-bottom: 25px;
 
 input{
     font-size: 1.2rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+.ipt-container:focus {
+    outline: none;
+    border: 20px solid #0328f7;
 }
 
 .ipt-container{
@@ -141,6 +162,12 @@ input{
     font-size: 1rem;
     font-weight: 900;
     padding: 15px 80px;
+    transition: background-color 0.4s, transform 0.5s;
+}
+
+.btn_entrar:hover {
+    color: white;
+    background-color: #50984E;
 }
 
 .img_logo_ondo{
