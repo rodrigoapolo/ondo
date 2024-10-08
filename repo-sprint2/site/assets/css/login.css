@@ -43,6 +43,11 @@
     width: 31px;
 }
 
+.textLogin{
+    font-size: 1rem;
+    font-weight: 600;
+}
+
 .btn_login{
     display: flex;
     justify-content: center;
@@ -83,6 +88,10 @@ margin-bottom: 25px;
     /* Adiciona uma linha fina e define a cor */
     margin: 0 10px;
     /* Espaçamento entre o texto e as linhas */
+}
+
+input{
+    font-size: 1.2rem;
 }
 
 .ipt-container{
