@@ -1,0 +1,131 @@
+body {
+    background-color: white;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.image-section {
+    width: 60%;
+    background-image: url("../img/image_cadastro.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+
+.form-section {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    width: 80%;
+    height: 90%;
+    max-width: none;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-container h2 {
+    color: #4CAF50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    position: relative; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group input {
+    width: 85%; 
+    padding: 10px;
+    padding-left: 40px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group i {
+    position: absolute;
+    left: 10px; 
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.form-group.gender {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group.gender label {
+    display: flex;
+    align-items: center;
+}
+
+.form-group.gender input {
+    margin-right: 5px;
+}
+
+.form-group.gender label span {
+    margin-right: 10px;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form-group button:hover {
+    background-color: #45a049;
+}
+
+.terms {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.terms a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.logo {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.logo img {
+    width: 100px;
+}
+.img_btn_voltar {
+    height: 36px;
+    width: 20px;
+    margin-top: 20px;
+}
