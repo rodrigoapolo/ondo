@@ -39,6 +39,13 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+}
+
+.btn_voltar {
+    position: absolute;
+    top: 10px;
+    right: 30px; 
 }
 
 .form-container h2 {
@@ -66,8 +73,7 @@ body {
 .form-group i {
     position: absolute;
     left: 10px; 
-    top: 50%;
-    transform: translateY(-50%);
+    top: 25%;
     color: #999;
 }
 
@@ -124,8 +130,8 @@ body {
 .logo img {
     width: 100px;
 }
+
 .img_btn_voltar {
     height: 36px;
     width: 20px;
-    margin-top: 20px;
 }
