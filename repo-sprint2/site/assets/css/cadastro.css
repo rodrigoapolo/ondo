@@ -61,7 +61,7 @@ body {
 }
 
 .form-group input {
-    width: 85%; 
+    width: 80%; 
     padding: 10px;
     padding-left: 40px; 
     border: 1px solid #ccc;
@@ -83,6 +83,7 @@ body {
 .form-group.gender label {
     display: flex;
     align-items: center;
+    width: 110px;
 }
 
 .form-group.gender input {
@@ -132,4 +133,7 @@ body {
 .img_btn_voltar {
     height: 60px;
     width: 50px;
+}
+.input-data{
+    justify-content: space-between;
 }
