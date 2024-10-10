@@ -2,20 +2,11 @@ CREATE DATABASE ondo;
 
 USE ondo;
 
--- Tabela usuario
-CREATE TABLE Login (
-    idLogin INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(45) NOT NULL,
-    senha VARCHAR(45) NOT NULL,
-    dtUltimoAcesso DATE
-);
-
 CREATE TABLE usuario (
     idUsuario INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    fkLogin INT unique,
-    CONSTRAINT fk_login FOREIGN KEY (fkLogin) REFERENCES Login(idLogin)
+	senha VARCHAR(45) NOT NULL
 );
 
 -- Tabela empresa
@@ -55,23 +46,23 @@ CREATE TABLE sensor (
 );
 
 -- Tabela temperatura
-CREATE TABLE temperatura (
-    idTemperatura INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE medicao (
+    idTemperatura INT AUTO_INCREMENT,
     temperatura FLOAT(7,2),
     dataHora DATETIME,
     fkSensor INT,
-    CONSTRAINT fkTemperaturaSensor
+    CONSTRAINT pkCompostaMedicao PRIMARY KEY(idTemperatura, fkSensor),
     FOREIGN KEY (fkSensor) REFERENCES sensor(idSensor)
 );
 
 -- Tabela aviso
-CREATE TABLE aviso (
-    idAviso INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE alerta (
+    idAviso INT AUTO_INCREMENT,
     temperatura DECIMAL(10,2),
     mensagem VARCHAR(200),
-    fkEmpresa INT,
-    CONSTRAINT fkAvisoEmpresa
-    FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
+    fkSensor INT,
+	CONSTRAINT pkCompostaMedicao PRIMARY KEY(idAviso, fkSensor),
+    FOREIGN KEY (fkSensor) REFERENCES sensor(idSensor)
 );
 
 INSERT INTO Login (username, senha, dtUltimoAcesso) 
