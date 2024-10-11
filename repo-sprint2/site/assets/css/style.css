@@ -7,7 +7,7 @@ body {
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     background-color: white;
-    padding-top: 100px; /* Isso vai "empurrar" o conteúdo para baixo, equivalente à altura da navbar */
+    padding-top: 75px; /* Isso vai "empurrar" o conteúdo para baixo, equivalente à altura da navbar */
     font-size: 19px;
 }
 
@@ -78,35 +78,4 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 24px;
     font-weight: bold; 
     color: #1E2F1A;  
-}
-
-/* Estilo do rodapé */
-.footer {
-    width: 100%;
-    height: 183px;
-    background-color: #1E2F1A;
-    position: relative; 
-    margin-top: 20px;
-}
-
-.footer_verdeclaro {
-    width: 100%;
-    height: 24px; 
-    background-color: #50984E;
-    position: absolute;
-    top: 0;
-}
-
-.content_footer {
-    max-width: 90%;
-    margin: 0 auto;
-    display: flex;
-    text-align: center;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 25px;
-}
-
-.inf_center_footer, .inf_right_footer {
-    color: white;
 }
