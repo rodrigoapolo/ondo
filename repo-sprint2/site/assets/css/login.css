@@ -63,7 +63,7 @@
 }
 
 input{
-    font-size: 1.2rem;
+    font-size: 0.8rem;
 }
 
 input:focus {
@@ -77,13 +77,13 @@ input:focus {
     gap: 10px;
     background-color: white;
     border-radius: 8px;
-    height: 26px;
-    padding: 25px;
+    height: 20px;
+    padding: 20px;
 }
 
 .ipt-container img{
-    width: 25px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
 }
 
 .ipt-container input{
@@ -96,6 +96,7 @@ input:focus {
 .texSenha{
     font-weight: bold;
     text-decoration: none;
+    font-size: 0.9rem;
     color: white;
     margin: 0 auto;
 }
@@ -127,6 +128,7 @@ input:focus {
 
 .texCadastro{
     color: white;
+    font-size: 0.8rem;
 }
 
 .img_logo_ondo{
