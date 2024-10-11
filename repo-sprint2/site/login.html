@@ -11,30 +11,14 @@
 
 <body>
 
-  <div class="wrapper">
-    <div class="container">
-      <div class="login">
-        <a href="index.html">
-          <img class="img_btn_voltar" src="assets/img/btn_voltar.png" alt="btn voltar">
-        </a>
-        <h2 class="txt_login"><b>BEM - VINDO, FAÇA SEU LOGIN ABAIXO!</b></h2>
-      
-        <button class="btn_login">
-          <img class="img_btn" src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Google Logo">
-          <span class="textLogin">Fazer login com o Google</span>
-        </button>
 
-        <button class="btn_login">
-          <img class="img_btn" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
-            alt="Facebook Logo">
-            <span class="textLogin">Fazer login com o Facebook</span>
-        </button>
-
-        <div class="or-divider">
-          <hr>
-          <span class="or-text"><b>ou</b></span>
-          <hr>
-        </div>
+  <div class="container">
+    <div class="login">
+      <a href="index.html">
+        <img class="img_btn_voltar" src="assets/img/btn_voltar.png" alt="btn voltar">
+      </a>
+      <h2 class="txt_login"><b>BEM - VINDO, FAÇA SEU LOGIN ABAIXO!</b></h2>
+      <div class="container_input">
         <p id="erro_email" class="tex_erro"></p>
         <div class="ipt-container" id="div_email">
           <img src="assets/img/personal.png" alt="">
@@ -45,18 +29,19 @@
           <img src="assets/img/personal.png" alt="">
           <input oninput="validarSenha()" id="ipt_senha" type="password" placeholder="Senha">
         </div>
-
         <a class="texSenha" href="#">Esqueceu sua senha?<span class="texSpan"> Clique aqui.</span></a>
-        <div class="container-btn">
-          <button onclick="login()" class="btn_entrar">Entrar</button>
-        </div>
-
-        <div class="img_logo_ondo"></div>
       </div>
-      <div class="image-wasabi"></div>
-    </div>
+      <div class="container-btn">
+        <button onclick="login()" class="btn_entrar">Entrar</button>
+        <a class="texCadastro" href="cadastro.html">Ainda não tem uma conta?</a>
+      </div>
 
+      <div class="img_logo_ondo"></div>
+    </div>
+    <div class="image-wasabi"></div>
   </div>
+
+
 
 </body>
 
@@ -68,11 +53,11 @@
   var mensagem_error_email = "E-mail inválido"
   var mensagem_error_senha = "Senha inválida"
 
-  function login(){
+  function login() {
     var email = ipt_email.value;
     var senha = ipt_senha.value
 
-    if(!isEmail && !isSenha){
+    if (!isEmail && !isSenha) {
       erro_email.style.display = display_block
       erro_email.innerHTML = mensagem_error_email
       div_email.style.border = '2px solid red';
@@ -80,9 +65,9 @@
       erro_senha.style.display = display_block
       erro_senha.innerHTML = mensagem_error_senha
       div_senha.style.border = '2px solid red';
-    }else if(email == "frizar@sptec.school" && senha == "urubu100"){
+    } else if (email == "frizar@sptec.school" && senha == "urubu100") {
       //fazer login
-    }else{
+    } else {
       erro_email.style.display = display_block
       erro_email.innerHTML = mensagem_error_email
       div_email.style.border = '2px solid red';
@@ -92,8 +77,8 @@
       div_senha.style.border = '2px solid red';
     }
   }
-  
-  function validarEmail(){
+
+  function validarEmail() {
     var email = ipt_email.value;
     email = email.toLowerCase();
 
@@ -106,27 +91,27 @@
     var possui_barra_direita = email.includes('/');
     var possui_aspas = email.includes('"');
 
-  
-    if(possui_barra){
+
+    if (possui_barra) {
       isEmail = false
-    }else if(possui_barra_direita){
+    } else if (possui_barra_direita) {
       isEmail = false
-    }else if(possui_aspas){
+    } else if (possui_aspas) {
       isEmail = false
-    } else if(comeca_ponto){
+    } else if (comeca_ponto) {
       isEmail = false
-    }else if(!termina_br && !termina_com && !termina_school){
+    } else if (!termina_br && !termina_com && !termina_school) {
       isEmail = false
-    }else if(!possui_arroba) {
+    } else if (!possui_arroba) {
       isEmail = false
-    }else{
+    } else {
       isEmail = true
     }
 
-    if(isEmail){
+    if (isEmail) {
       erro_email.style.display = 'none'
       div_email.style.border = 'none';
-    }else{
+    } else {
       erro_email.style.display = display_block
       erro_email.innerHTML = mensagem_error_email
       div_email.style.border = '2px solid red';
@@ -136,20 +121,20 @@
   function validarSenha() {
     var senha = ipt_senha.value
 
-    if(senha.length < 3){
+    if (senha.length < 3) {
       isSenha = false
-    }else{
+    } else {
       isSenha = true
     }
 
-    if(isSenha){
+    if (isSenha) {
       erro_senha.style.display = 'none'
       div_senha.style.border = 'none';
-    }else{
+    } else {
       erro_senha.style.display = display_block
       erro_senha.innerHTML = mensagem_error_senha
       div_senha.style.border = '2px solid red';
     }
-    
+
   }
 </script>
