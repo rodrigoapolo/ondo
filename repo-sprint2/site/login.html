@@ -17,20 +17,21 @@
       </a>
       <h2 class="txt_login"><b>BEM - VINDO, FAÇA SEU LOGIN ABAIXO!</b></h2>
       <div class="container_input">
-        <p id="erro_email" class="tex_erro"></p>
+        <ul class="container_erro" id="ul_erro">
+        </ul>
         <div class="ipt-container" id="div_email">
           <img src="assets/img/personal.png" alt="">
-          <input oninput="validarEmail()" id="ipt_email" type="text" placeholder="E-mail ou nome de usuário">
+          <input id="ipt_email" type="text" placeholder="E-mail ou nome de usuário">
         </div>
-        <p id="erro_senha" class="tex_erro"></p>
+        
         <div class="ipt-container" id="div_senha">
           <img src="assets/img/password.png" alt="">
-          <input oninput="validarSenha()" id="ipt_senha" type="password" placeholder="Senha">
+          <input id="ipt_senha" type="password" placeholder="Senha">
         </div>
         <a class="texSenha" href="#">Esqueceu sua senha?<span class="texSpan"> Clique aqui.</span></a>
       </div>
       <div class="container-btn">
-        <button onclick="login()" class="btn_entrar">Entrar</button>
+        <button onclick="validarEmail()" class="btn_entrar">Entrar</button>
         <a class="texCadastro" href="cadastro.html">Ainda não tem uma conta?</a>
       </div>
       <div class="img_logo_ondo"></div>
@@ -42,41 +43,16 @@
 </html>
 <script>
   var isEmail = false;
-  var isSenha = false;
-  var display_block = 'block';
-  var mensagem_error_email = "E-mail inválido"
-  var mensagem_error_senha = "Senha inválida"
-
-  function login() {
-    var email = ipt_email.value;
-    var senha = ipt_senha.value
-
-    if (!isEmail && !isSenha) {
-      erro_email.style.display = display_block
-      erro_email.innerHTML = mensagem_error_email
-      div_email.style.border = '2px solid red';
-
-      erro_senha.style.display = display_block
-      erro_senha.innerHTML = mensagem_error_senha
-      div_senha.style.border = '2px solid red';
-    } else if (email == "frizar@sptec.school" && senha == "urubu100") {
-      //fazer login
-    } else {
-      erro_email.style.display = display_block
-      erro_email.innerHTML = mensagem_error_email
-      div_email.style.border = '2px solid red';
-
-      erro_senha.style.display = display_block
-      erro_senha.innerHTML = mensagem_error_senha
-      div_senha.style.border = '2px solid red';
-    }
-  }
-
+  
   function validarEmail() {
     var email = ipt_email.value;
     email = email.toLowerCase();
+    var mensagem_error_email = ""
+    var senha = ipt_senha.value
 
     var comeca_ponto = email.startsWith('.');
+    var ponto_ponto = email.includes('..');
+    var arroba_ponto = email.includes('@.');
     var termina_com = email.endsWith('.com');
     var termina_br = email.endsWith('.br');
     var termina_school = email.endsWith('.school')
@@ -85,50 +61,48 @@
     var possui_barra_direita = email.includes('/');
     var possui_aspas = email.includes('"');
 
-
-    if (possui_barra) {
+    if(ponto_ponto){
       isEmail = false
+      mensagem_error_email += "<li>Não pode ter .. no email</li>"
+    } else if(arroba_ponto){
+      isEmail = false
+      mensagem_error_email += "<li>Não pode ter @. no email</li>"
+    }else if (possui_barra) {
+      isEmail = false
+      mensagem_error_email += "<li>Não pode ter \\ no email ggg</li>"
     } else if (possui_barra_direita) {
       isEmail = false
+      mensagem_error_email += " <li>Não pode ter / no email</li>"
     } else if (possui_aspas) {
       isEmail = false
+      mensagem_error_email += `<li>Não pode ter " no email</li>`
     } else if (comeca_ponto) {
       isEmail = false
+      mensagem_error_email += "<li>Não pode ter . no início no email</li>"
     } else if (!termina_br && !termina_com && !termina_school) {
       isEmail = false
+      mensagem_error_email += "<li>Ter que terminar o email com .com ou .br ou .school.</li>"
     } else if (!possui_arroba) {
       isEmail = false
-    } else {
+      mensagem_error_email += "<li>Ter que ter o @ no email</li>"
+    } else if(senha.length < 3){
+      mensagem_error_email += "<li>A senha tem que ter no mínimo 3 caráter</li>"
+      isEmail = false
+    }else {
       isEmail = true
     }
 
     if (isEmail) {
-      erro_email.style.display = 'none'
-      div_email.style.border = 'none';
+      ul_erro.style.display = 'none'
+      if (email == "frizza@sptec.school" && senha == "urubu100") {
+        alert("ok")
+      }else{
+        alert("senha e email errado")
+      }
     } else {
-      erro_email.style.display = display_block
-      erro_email.innerHTML = mensagem_error_email
-      div_email.style.border = '2px solid red';
+      ul_erro.style.display = 'block'
+      ul_erro.innerHTML = mensagem_error_email
     }
   }
 
-  function validarSenha() {
-    var senha = ipt_senha.value
-
-    if (senha.length < 3) {
-      isSenha = false
-    } else {
-      isSenha = true
-    }
-
-    if (isSenha) {
-      erro_senha.style.display = 'none'
-      div_senha.style.border = 'none';
-    } else {
-      erro_senha.style.display = display_block
-      erro_senha.innerHTML = mensagem_error_senha
-      div_senha.style.border = '2px solid red';
-    }
-
-  }
 </script>

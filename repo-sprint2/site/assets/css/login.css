@@ -37,6 +37,11 @@
     gap: 20px;
 }
 
+.container_erro{
+    color: white;
+    font-weight: bold;
+}
+
 .img_btn {
     height: 25px;
     width: 31px;
