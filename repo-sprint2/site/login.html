@@ -41,13 +41,12 @@
 </body>
 
 </html>
-<script>
-  var isEmail = false;
-  
+<script>  
   function validarEmail() {
     var email = ipt_email.value;
     email = email.toLowerCase();
     var mensagem_error_email = ""
+    var isEmail = true;
     var senha = ipt_senha.value
 
     var comeca_ponto = email.startsWith('.');
@@ -64,32 +63,40 @@
     if(ponto_ponto){
       isEmail = false
       mensagem_error_email += "<li>Não pode ter .. no email</li>"
-    } else if(arroba_ponto){
+    }
+    if(arroba_ponto){
       isEmail = false
       mensagem_error_email += "<li>Não pode ter @. no email</li>"
-    }else if (possui_barra) {
+    }
+    if (possui_barra) {
       isEmail = false
-      mensagem_error_email += "<li>Não pode ter \\ no email ggg</li>"
-    } else if (possui_barra_direita) {
+      mensagem_error_email += "<li>Não pode ter \\ no email</li>"
+    }
+    if (possui_barra_direita) {
       isEmail = false
       mensagem_error_email += " <li>Não pode ter / no email</li>"
-    } else if (possui_aspas) {
+    }
+    if (possui_aspas) {
       isEmail = false
       mensagem_error_email += `<li>Não pode ter " no email</li>`
-    } else if (comeca_ponto) {
+    }
+    
+    if (comeca_ponto) {
       isEmail = false
       mensagem_error_email += "<li>Não pode ter . no início no email</li>"
-    } else if (!termina_br && !termina_com && !termina_school) {
+    }
+    
+    if (!termina_br && !termina_com && !termina_school) {
       isEmail = false
       mensagem_error_email += "<li>Ter que terminar o email com .com ou .br ou .school.</li>"
-    } else if (!possui_arroba) {
+    }
+    if (!possui_arroba) {
       isEmail = false
       mensagem_error_email += "<li>Ter que ter o @ no email</li>"
-    } else if(senha.length < 3){
+    }
+    if(senha.length < 3){
       mensagem_error_email += "<li>A senha tem que ter no mínimo 3 caráter</li>"
       isEmail = false
-    }else {
-      isEmail = true
     }
 
     if (isEmail) {

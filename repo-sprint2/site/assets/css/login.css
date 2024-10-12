@@ -39,7 +39,7 @@
 
 .container_erro{
     color: white;
-    font-weight: bold;
+    text-decoration: underline;
 }
 
 .img_btn {
@@ -53,18 +53,6 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
-
-.tex_erro{
-    display: none;
-    color: rgba(255, 0, 0, 0.719);
-    font-size: 1.2rem;
-    align-self: center;
-    background-color: white;
-    border-radius: 8px;
-    border: 2px solid red;
-    margin-bottom: 5px;
-    padding: 5px;
 }
 
 input{
