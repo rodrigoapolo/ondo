@@ -1,0 +1,48 @@
+.home_dashboard{
+    width: 80%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+}
+
+.boasVindas{
+    background-color: white;
+    height: 65px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.home_dashboard .content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.home_dashboard .content .kpi_cards{
+    display: flex;
+}
+
+.home_dashboard .content .kpi_cards .card{
+    width: 21.6%;
+    height: 163px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.home_dashboard .content .estufa_cards, .home_dashboard .content .kpi_cards{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.home_dashboard .content .estufa_cards .card{
+    width: 29.5%;
+    border-radius: 10px;
+    background-color: white;
+    height: 200px;
+}
+
