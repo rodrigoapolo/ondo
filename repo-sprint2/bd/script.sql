@@ -1,3 +1,10 @@
+mysql -u root -p -P 3307
+SPTech#2024
+create user 'api'@'%' identified by 'Sptech#2024';
+GRANT INSERT ON *.* TO 'api';
+-- grant all privileges on *.* to aluno;
+flush privileges;
+exit
 mysql -u api -p -P 3307
 Sptech#2024
 
