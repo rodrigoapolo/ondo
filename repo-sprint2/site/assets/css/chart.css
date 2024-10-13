@@ -1,0 +1,26 @@
+body {
+    margin: 2%;
+    height: 100vh; /* Altura total da tela */
+}
+
+.graficos {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os gráficos se movam para a próxima linha */
+    justify-content: center; /* Centraliza os gráficos horizontalmente */
+    align-items: center; /* Centraliza os gráficos verticalmente */
+    height: 100%; /* Ocupa toda a altura da tela */
+    gap: 20px; /* Espaçamento entre os gráficos */
+}
+
+.graficos .graficobarra,
+.graficos .graficolinha,
+.graficos .graficopizza {
+    width: 1000px; /* Largura dos gráficos */
+    height: 500px; /* Altura dos gráficos */
+    background-color: white; /* Cor de fundo dos gráficos */
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo dentro do gráfico */
+    align-items: center; /* Centraliza o conteúdo dentro do gráfico */
+    border-radius: 8px; /* Bordas arredondadas para os gráficos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para os gráficos */
+}
