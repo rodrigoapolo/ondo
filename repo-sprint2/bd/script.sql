@@ -1,3 +1,6 @@
+mysql -u api -p -P 3307
+Sptech#2024
+
 CREATE DATABASE ondo;
 
 USE ondo;
