@@ -17,7 +17,7 @@
 <body>
     <div class="container">
         <div class="image-section"></div>
-        <a href="cadastro.html">
+        <a href="index.html">
             <img class="img_btn_voltar" src="assets/img/btn_voltar cadastro.png" alt="btn voltar">
         </a>
         <div class="form-container">
@@ -48,19 +48,21 @@
                 <input class="main-input" id="input_senha" placeholder="Senha" type="password" oninput="validarSenha()" />
             </div>
             <br>
-            <span style="margin-left: 75px;"><b>Endereço:</b></span> <br>
+            <span style="margin-left: 130px;"><b>Endereço:</b></span> <br>
             <div class="form-group">
-                <input class="endereco-input" id="input_cep" placeholder="CEP" type="text" style="width: 100px; margin-right: 10px; margin-bottom: 10px;" oninput="validarCEP()" />
-                <input class="endereco-input" id="input_bairro" placeholder="Bairro" type="text" style="width: 485px; margin-left: 0px;" oninput="validarBairro()" />
-                <input class="endereco-input" id="input_logradouro" placeholder="Logradouro" type="text" style="margin-bottom: 10px; width: 620px;" oninput="validarRua()" />
-                <input class="endereco-input" id="input_cidade" placeholder="Cidade" type="text" style="width:485px; margin-right: 10px;" oninput="validarCidade()" />
-                <input class="endereco-input" id="input_estado" placeholder="Estado" type="text" style="width: 100px; margin-left: 0px;" oninput="validarEstado()" /> 
+                <input class="endereco-input" id="input_cep" placeholder="CEP" type="text" style=" margin-left: 130px; width: 100px; margin-right: 10px; margin-bottom: 10px;" oninput="validarCEP()" />
+                <input class="endereco-input" id="input_bairro" placeholder="Bairro" type="text" style="width: 345px; margin-left: 0px;" oninput="validarBairro()" />
+                <input class="endereco-input" id="input_logradouro" placeholder="Logradouro" type="text" style=" margin-left: 130px; margin-bottom: 10px; width: 480px;" oninput="validarRua()" />
+                <input class="endereco-input" id="input_cidade" placeholder="Cidade" type="text" style=" margin-left: 130px;  width:345px; margin-right: 11px;" oninput="validarCidade()" />
+                <input class="endereco-input" id="input_estado" placeholder="UF" type="text" style="width: 100px; margin-left: 0px;" oninput="validarEstado()" /> 
             </div><br>
             <div id="div_mensagem"></div>
             <div class="form-group">
                 <button id="btn_cadastrar" onclick="cadastrar()" type="button">CADASTRE-SE</button>
             </div>
             <br>
+            <span><a class="texLogin" href="login.html">Já tem uma conta? <br></a></span>
+
             <div class="terms">
                 Ao clicar em Cadastre-se, você concorda com nossos
                 <a href="#">Termos</a>, 
@@ -75,6 +77,9 @@
 </body>
 </html>
 <script>
+  var isEmail = false;
+  var isSenha = false;
+  var mensagem_error_email = "";
   function validarCNPJ() {
     var cnpj = input_cnpj.value;
     var tamanho_cnpj = cnpj.length;
@@ -160,20 +165,69 @@ function validarResponsavel() {
     div_mensagem.innerHTML = mensagem;
 }
 
-function validarEmail() {
+    function validarEmail() {
     var email = input_email.value;
+    email = email.toLowerCase();
     var mensagem = "";
-    var possui_arroba = email.includes("@");
+
+    var comeca_ponto = email.startsWith('.');
+    var ponto_ponto = email.includes('..');
+    var arroba_ponto = email.includes('@.');
     var termina_com = email.endsWith('.com');
     var termina_br = email.endsWith('.br');
-    var termina_school = email.endsWith('.school');
+    var termina_school = email.endsWith('.school')
+    var possui_arroba = email.includes('@');
+    var possui_barra = email.includes('\\');
+    var possui_barra_direita = email.includes('/');
+    var possui_aspas = email.includes('"');
 
-    if (email.length > 3 && possui_arroba && (termina_com || termina_br || termina_school)) {
-        input_email.style.borderColor = "green";
-        mensagem += "<span style='color: green;'>E-mail válido</span>";
+    if(ponto_ponto){
+        input_email.style.borderColor = "red";
+        correto = false;
+      mensagem_error_email += "<b>Não pode ter .. no email</b><br>"
+    }
+    if(arroba_ponto){
+        input_email.style.borderColor = "red";
+
+        correto = false;
+      mensagem += " <b>Não pode ter @. no email</b><br>"
+    }
+    if (possui_barra) {
+        input_email.style.borderColor = "red";
+
+        correto = false;
+        mensagem += "<b>Não pode ter \\ no email</b><br>"
+    }
+    if (possui_barra_direita) {
+        input_email.style.borderColor = "red";
+
+        correto = false;
+        mensagem += "<b>Não pode ter / no email</b><br>"
+    }
+    if (possui_aspas) {
+        input_email.style.borderColor = "red";
+        correto = false;
+        mensagem += `<b>Não pode ter " no email</b><br>`
+    }
+    
+    if (comeca_ponto) {
+        input_email.style.borderColor = "red";
+        correto = false;
+        mensagem += " <b>Não pode ter . no início no email</b><br>"
+    }
+    
+    if (!termina_br && !termina_com && !termina_school) {
+        input_email.style.borderColor = "red";
+        correto = false;
+        mensagem += "<b>O e-mail deve terminar com .com, .br ou .school.</b><br>"
+    }
+    if (!possui_arroba) {
+        input_email.style.borderColor = "red";
+        correto = false;
+        mensagem += " <b>Inclua '@' no e-mail. </b><br> ";
     } else {
         input_email.style.borderColor = "red";
-        mensagem += "Formato de e-mail inválido. <b>Certifique-se de que o e-mail contém '@' e termina com '.com', '.br' ou '.school'. </b><br> ";
+        mensagem += " <b>Certifique-se de que o e-mail contém '@' e termina com '.com', '.br' ou '.school'. </b><br> ";
         correto = false;
     }
     div_mensagem.innerHTML = mensagem;
@@ -185,7 +239,7 @@ function validarSenha() {
 
     if (senha.length < 6) {
         input_senha.style.borderColor = "red";
-        mensagem += "A senha deve ter pelo menos 6 caracteres. <b>Atualmente, possui " + senha.length + " caracteres. </b><br>";
+        mensagem += "A senha precisa de ao menos 6 caracteres. <b>Atualmente, possui " + senha.length + " caracteres. </b><br>";
         correto = false;
     } else {
         input_senha.style.borderColor = "green";

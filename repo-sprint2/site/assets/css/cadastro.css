@@ -44,8 +44,8 @@ body, html {
 }
 
 .form-group input.main-input {
-    margin-left: 10%;
-    width: 80%; 
+    margin-left: 17%;
+    width: 60%; 
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -62,7 +62,7 @@ body, html {
 }
 
 .form-group i {
-    margin-left: 10%;
+    margin-left: 17%;
     position: absolute;
     left: 10px;
     top: 50%;
@@ -123,7 +123,6 @@ body, html {
 
 .form-group input.endereco-input {
     margin-left: 10%;
-    width: 80%;
     padding: 10px; 
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -133,8 +132,12 @@ body, html {
     background-color: #f9f9f9; 
 }
 
-.form-group input.address-input:focus {
+.form-group input.endereco-input:focus {
     border-color: #4CAF50;
     outline: none; 
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+.texLogin{
+    color: white;
+    font-size: 0.8rem;
 }
