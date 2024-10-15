@@ -1,7 +1,7 @@
 /* Estilo da navbar */
 .navbar {
     background-color: #F5F5F5;
-    height: 75px;
+    height: 65px;
     display: flex;
     justify-content: space-around;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
@@ -20,10 +20,10 @@
 }
 
 .navbar a {
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 500;
     color: #324224;
-    padding: 10px 0;
+    padding: 10px 0 5px;
     text-align: center;
     border-bottom: 2px solid transparent; 
 }
@@ -53,7 +53,7 @@
 .btn_login a {
     color: #2E852C;
     border: 2px solid #2E852C;
-    padding: 8px 16px;
+    padding: 6px 12px;
     border-radius: 5px;
 }
 
@@ -68,7 +68,7 @@
 
 .btn_cadastro a {
     color: white;
-    padding: 9px 16px;
+    padding: 6px 12px;
     border-radius: 5px;
     border: 2px solid transparent;
     background-color: #2E852C;
@@ -79,6 +79,6 @@
     color: #2E852C;
     background-color: transparent;
     border: 2px solid #2E852C;
-    padding: 8px 16px;
+    /* padding: 8px 16px; */
     border-radius: 5px;
 }
