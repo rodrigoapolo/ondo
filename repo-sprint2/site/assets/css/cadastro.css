@@ -115,8 +115,9 @@ body, html {
 .img_btn_voltar {
     position: absolute;
     top: 20px;
-    left: 20px;
-    width: 40px;
+    left: 1860px;
+    height: 37px;
+    width: 21px;
     cursor: pointer;
 }
 

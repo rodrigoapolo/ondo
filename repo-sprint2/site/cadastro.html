@@ -18,7 +18,7 @@
     <div class="container">
         <div class="image-section"></div>
         <a href="cadastro.html">
-            <img class="img_btn_voltar" src="assets/img/btn_voltar.png" alt="btn voltar">
+            <img class="img_btn_voltar" src="assets/img/btn_voltar cadastro.png" alt="btn voltar">
         </a>
         <div class="form-container">
             <h2>CADASTRE-SE AQUI</h2>
@@ -85,7 +85,7 @@
 
     if (tamanho_cnpj < 14) {
         input_cnpj.style.borderColor = "red";
-        mensagem += "O CNPJ deve possuir exatamente 14 números. Você digitou " + tamanho_cnpj + " números. <br>";
+        mensagem += "O CNPJ deve possuir exatamente 14 números. <b>Você digitou " + tamanho_cnpj + " números.</b> <br>";
         correto = false;
     } else if (tamanho_cnpj == 14) {
         input_cnpj.style.borderColor = "green";
@@ -105,7 +105,7 @@ function validarRazaoSocial() {
 
     if (tamanho_razao < 3) {
         input_razao_social.style.borderColor = "red";
-        mensagem += "A razão social deve ter pelo menos 3 caracteres. Atualmente, possui " + tamanho_razao + " caracteres. <br>";
+        mensagem += "A razão social deve ter pelo menos 3 caracteres. <b>Atualmente, possui " + tamanho_razao + " caracteres. </b><br>";
         correto = false;
     } else {
         input_razao_social.style.borderColor = "green";
@@ -121,7 +121,7 @@ function validarNomeFantasia() {
 
     if (tamanho_fantasia < 3) {
         input_nome_fantasia.style.borderColor = "red";
-        mensagem += "O nome fantasia deve ter pelo menos 3 caracteres. Você digitou apenas " + tamanho_fantasia + " caracteres. <br>";
+        mensagem += "O nome fantasia deve ter pelo menos 3 caracteres. <b>Você digitou apenas " + tamanho_fantasia + " caracteres. </b><br>";
         correto = false;
     } else {
         input_nome_fantasia.style.borderColor = "green";
@@ -147,11 +147,11 @@ function validarResponsavel() {
 
     if (tamanho_responsavel < 10) {
         input_responsavel.style.borderColor = "red";
-        mensagem += "O nome do responsável deve ter pelo menos 10 caracteres. Você digitou " + tamanho_responsavel + " caracteres. <br>";
+        mensagem += "O nome do responsável deve ter pelo menos 10 caracteres. <b>Você digitou " + tamanho_responsavel + " caracteres. </b><br>";
         correto = false;
     } else if (possui_1 || possui_2 || possui_3 || possui_4 || possui_5 || possui_6 || possui_7 || possui_8 || possui_9 || possui_0 ) {
         input_responsavel.style.borderColor = "red";
-        mensagem += "O nome do responsável não pode conter números. Por favor, remova os dígitos numéricos. <br>";
+        mensagem += "O nome do responsável não pode conter números.  <b>Por favor, remova os dígitos numéricos.</b> <br>";
         correto = false;
     } else {
         input_responsavel.style.borderColor = "green";
@@ -173,7 +173,7 @@ function validarEmail() {
         mensagem += "<span style='color: green;'>E-mail válido</span>";
     } else {
         input_email.style.borderColor = "red";
-        mensagem += "Formato de e-mail inválido. Certifique-se de que o e-mail contém '@' e termina com '.com', '.br' ou '.school'. <br>";
+        mensagem += "Formato de e-mail inválido. <b>Certifique-se de que o e-mail contém '@' e termina com '.com', '.br' ou '.school'. </b><br> ";
         correto = false;
     }
     div_mensagem.innerHTML = mensagem;
@@ -185,7 +185,7 @@ function validarSenha() {
 
     if (senha.length < 6) {
         input_senha.style.borderColor = "red";
-        mensagem += "A senha deve ter pelo menos 6 caracteres. Atualmente, possui " + senha.length + " caracteres. <br>";
+        mensagem += "A senha deve ter pelo menos 6 caracteres. <b>Atualmente, possui " + senha.length + " caracteres. </b><br>";
         correto = false;
     } else {
         input_senha.style.borderColor = "green";
@@ -201,7 +201,7 @@ function validarCEP() {
 
     if (tamanho_cep < 8) {
         input_cep.style.borderColor = "red";
-        mensagem += "O CEP deve ter exatamente 8 dígitos. Você digitou " + tamanho_cep + " dígitos. <br>";
+        mensagem += "O CEP deve ter exatamente 8 dígitos. <b> Você digitou " + tamanho_cep + " dígitos. </b><br>";
         correto = false;
     } else {
         input_cep.style.borderColor = "green";
@@ -216,7 +216,7 @@ function validarEstado() {
 
     if (estado.length != 2) {
         input_estado.style.borderColor = "red";
-        mensagem += "A sigla do estado deve ter exatamente 2 caracteres. Você digitou " + estado.length + " caracteres. <br>";
+        mensagem += "A sigla do estado deve ter exatamente 2 caracteres.  <b>Você digitou " + estado.length + " caracteres.</b> <br>";
         correto = false;
     } else {
         input_estado.style.borderColor = "green";
