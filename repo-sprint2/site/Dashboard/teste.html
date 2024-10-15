@@ -8,6 +8,34 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <style>
+        .chart-legend {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .chart-legend ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .chart-legend li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .chart-legend span {
+            display: inline-block;
+            width: 20px;
+            height: 12px;
+            margin-right: 10px;
+            background-color: #ccc;
+        }
+
+
         /* Estilos para a legenda */
         .custom-legend {
             display: flex;
@@ -56,8 +84,15 @@
             <span>Umidade</span>
         </div>
     </div>
+    <div class="chart-legend">
+        <ul>
+            <li><span style="background-color: #FF6384"></span>Dataset 1</li>
+            <li><span style="background-color: #36A2EB"></span>Dataset 2</li>
+            <li><span style="background-color: #FFCE56"></span>Dataset 3</li>
+        </ul>
+    </div>
 
-   
+
 </body>
 
 </html>
@@ -74,7 +109,7 @@
             datasets: [
                 {
                     label: 'Temperatura',
-                    data: [10,20,30,40],
+                    data: [10, 20, 30, 40],
                     borderWidth: 1,
                     borderColor: '#FF6384',
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
