@@ -1,93 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="menuLateral.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="dashboard.css">
-    <link rel="stylesheet" href="graficos.css">
-    
-    <title>Grafico</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="menuLateral.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="graficos.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+
+  <title>Grafico</title>
 </head>
+
 <body>
-    <header class="menu_dashboard">
-        <nav class="menuLateral">
-            <img src="../assets/img/logo_branco.png" alt="">
-            <ul class="container_lista">
-                <li class="menu_item" >
-                    <div class="container_img" >
-                        <img src="../assets/img/Dashboard/House_branco.svg" alt="">
-                    </div>
-                    <a href="./index.html">Home</a>
-                </li>
-                <li class="menu_item select" >
-                    <div class="container_img disable" style="height: 25px;">
-                        <img src="../assets/img/Dashboard/chart-line-solid_verde.svg" alt="">
-                    </div>
-                    <a href="graficos.html">Graficos</a>
-                </li>
-                <li class="menu_item">
-                    <div class="container_img disable">
-                        <img src="../assets/img/Dashboard/bell-regular_branco.svg" alt="">
-                    </div>
-                    <a href="notificacao.html">Notificação</a>
-                </li>
-    
-                <li class="menu_item">
-                    <div class="container_img disable">
-                        <img src="../assets/img/Dashboard/info_branco.svg" alt="">
-                    </div>
-                    <a href="help.html">Ajuda e Suporte</a>
-                </li>
-    
-                <li class="menu_item">
-                    <div class="container_img disable">
-                        <img src="../assets/img/Dashboard/sair.svg" alt="">
-                    </div>
-                    <a href="../index.html">Sair</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main class="grafico_dashboard">
-        <div class="boasVindas">
-            <div class="container">
-                <h3>Graficos - Estufa 1</h3>
-                <h5>Bem vindo, John Don</h5>
-            </div>
+  <header class="menu_dashboard">
+    <nav class="menuLateral">
+      <img src="../assets/img/logo_branco.png" alt="">
+      <ul class="container_lista">
+        <li class="menu_item">
+          <div class="container_img">
+            <img src="../assets/img/Dashboard/House_branco.svg" alt="">
+          </div>
+          <a href="./index.html">Home</a>
+        </li>
+        <li class="menu_item select">
+          <div class="container_img disable" style="height: 25px;">
+            <img src="../assets/img/Dashboard/chart-line-solid_verde.svg" alt="">
+          </div>
+          <a href="graficos.html">Graficos</a>
+        </li>
+        <li class="menu_item">
+          <div class="container_img disable">
+            <img src="../assets/img/Dashboard/bell-regular_branco.svg" alt="">
+          </div>
+          <a href="notificacao.html">Notificação</a>
+        </li>
+
+        <li class="menu_item">
+          <div class="container_img disable">
+            <img src="../assets/img/Dashboard/info_branco.svg" alt="">
+          </div>
+          <a href="help.html">Ajuda e Suporte</a>
+        </li>
+
+        <li class="menu_item">
+          <div class="container_img disable">
+            <img src="../assets/img/Dashboard/sair.svg" alt="">
+          </div>
+          <a href="../index.html">Sair</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="grafico_dashboard">
+    <div class="boasVindas">
+      <div class="container">
+        <h3>Graficos - Estufa 1</h3>
+        <h5>Bem vindo, John Don</h5>
+      </div>
+    </div>
+    <div class="content">
+      <div class="kpi_cards">
+        <div class="card">
+
         </div>
-        <div class="content">
-            <div class="kpi_cards">
-                <div class="card">
+        <div class="card">
 
-                </div>
-                <div class="card">
-
-                </div>
-                <div class="card">
-
-                </div>
-                <div class="card">
-
-                </div>
-            </div>
-
-            <div class="grafico_cards">
-                <canvas class="grafico"></canvas>
-            </div>
-            <div class="grafico_cards">
-                <canvas class="grafico"></canvas>
-            </div>
-            <div class="grafico_cards">
-                <canvas class="grafico"></canvas>
-            </div>
-            <div class="notificacoes_recentes">
-                <div class="notificacao">
-
-                </div>
-            </div>
         </div>
-    </main>    
+        <div class="card">
+
+        </div>
+        <div class="card">
+
+        </div>
+      </div>
+
+      <div class="grafico_cards" style="display: flex;">
+        <div style="display: flex;" class="grafico_container">
+          
+          <div class="grafico">
+            <h3>Análise de Temperaturas</h3>
+            <canvas  id="grafico_barra" style="height: 100%; width: 100%;"></canvas>
+              
+          </div>
+        </div>
+      </div>
+
+      <div class="grafico_cards">
+
+        <div style="display: flex;" class="grafico_container">
+          
+          <div class="grafico">
+            <h3>Proporção de alertas</h3>
+            <canvas id="grafico_pizza" style="padding-left: 20px;"></canvas>
+              
+          </div>
+        </div>
+      </div>
+
+      <div class="grafico_cards">
+        <canvas class="grafico" id="grafico_linha"></canvas>
+      </div>
+      <div class="notificacoes_recentes">
+        <div class="notificacao">
+
+        </div>
+      </div>
+    </div>
+  </main>
 </body>
+
 </html>
+
+<script>
+  const graficoBarra = document.getElementById("grafico_barra");
+  const graficoLinha = document.getElementById("grafico_linha");
+  const graficoPizza = document.getElementById("grafico_pizza");
+
+
+
+  new Chart(graficoBarra, {
+    type: "bar",
+    data: {
+      labels: ["Temperatura"],
+      datasets: [
+        {
+          label: "Média",
+          data: [13],
+          borderWidth: 1,
+        },
+        {
+          label: "Mínima",
+          data: [8],
+          borderWidth: 1,
+        },
+        {
+          label: "Máxima",
+          data: [21],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        title: {
+          display: false, // Define se o título deve ser exibido
+          text: "Análise de Temperaturas", // O texto do título
+          font: {
+            size: 20, // Tamanho da fonte do título
+            weight: "bold", // Peso da fonte do título
+          },
+          padding: {
+            top: 10, // Espaçamento acima do título
+            bottom: 30, // Espaçamento abaixo do título
+          },
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+  new Chart(graficoLinha, {
+    type: "line",
+    data: {
+      labels: [
+        "7:00",
+        "8:00",
+        "9:00",
+        "10:00",
+        "11:00",
+        "12:00",
+        "13:00",
+        "14:00",
+        "15:00",
+        "16:00",
+        "17:00",
+        "18:00",
+        "19:00",
+        "20:00",
+        "21:00",
+        "22:00",
+        "23:00",
+      ],
+      datasets: [
+        {
+          label: "Temperatura",
+          data: [
+            8, 8, 8.65, 9, 10, 12, 13, 16, 17, 19, 21, 18, 17, 16, 15, 14, 13,
+          ],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true, // Define se o título deve ser exibido
+          text: "Análise de Temperaturas", // O texto do título
+          font: {
+            size: 20, // Tamanho da fonte do título
+            weight: "bold", // Peso da fonte do título
+          },
+          padding: {
+            top: 10, // Espaçamento acima do título
+            bottom: 30, // Espaçamento abaixo do título
+          },
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+
+  new Chart(graficoPizza, {
+    type: "pie",
+    data: {
+      labels: ["Total ", "Alertas acionados"],
+      datasets: [
+        {
+          label: "Alertas do Dia",
+          data: [90, 10], // se a fatia toda é 10, subtrai os alertas para ele apresentar da forma certa 
+          backgroundColor: [
+            // Cores para cada fatia
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)"
+          ],
+          borderColor: [
+            // Cores das bordas
+            "rgba(255, 99, 132, 1)",
+            "rgba(54, 162, 235, 1)"
+          ],
+          borderWidth: 1, // Largura da borda
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        datalabels: {
+          display: 'auto',
+          formatter: (value, ctx) => {
+            // Soma total dos dados do dataset
+            let totalSum = 0;
+            const data = ctx.chart.data.datasets[0].data;
+
+            // Loop para somar os valores
+            for (let i = 0; i < data.length; i++) {
+              totalSum += data[i];
+            }
+
+            // Cálculo da porcentagem usando a regra de três
+            var percentage = (value / totalSum) * 100;
+            if(percentage == 100){
+              percentage = 50
+            }
+
+            return `${percentage.toFixed(1)}%`; // Retorna a porcentagem formatada
+          },
+        },
+        legend: {
+          display: false, // Exibir a legenda
+          // position: 'right', // Posiciona a legenda à direita
+          labels: {
+            boxWidth: 20, // Largura da caixa de legenda
+            font: {
+              size: 14, // Tamanho da fonte da legenda
+            }
+          },
+        },
+        // title: {
+        //   // position: 'top',
+        //   display: false, // Define se o título deve ser exibido
+        //   text: "Análise de Temperaturas", // O texto do título
+        //   font: {
+        //     size: 20, // Tamanho da fonte do título
+        //     weight: "bold", // Peso da fonte do título
+        //   },
+
+        // }
+      },
+
+    },
+    plugins: [ChartDataLabels]
+  });
+
+
+
+
+
+
+</script>
