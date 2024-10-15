@@ -75,194 +75,203 @@
 </body>
 </html>
 <script>
-    var correto = true;
+  function validarCNPJ() {
+    var cnpj = input_cnpj.value;
+    var tamanho_cnpj = cnpj.length;
+    var possui_traco = cnpj.includes("-");
+    var possui_barra = cnpj.includes("/");
+    var possui_ponto = cnpj.includes(".");
+    var mensagem = "";
 
-    function validarCNPJ() {
-        var cnpj = input_cnpj.value;
-        var tamanho_cnpj = cnpj.length;
-        var possui_traco = cnpj.includes("-");
-        var possui_barra = cnpj.includes("/");
-        var possui_ponto = cnpj.includes(".");
-
-        var mensagem = "";
-
-        if (tamanho_cnpj < 14) {
-            input_cnpj.style.borderColor = "red";
-            mensagem += "O CNPJ deve possuir exatamente 14 números <br>";
-            correto = false;
-        } else if (tamanho_cnpj == 14) {
-            input_cnpj.style.borderColor = "green";
-            mensagem += "<span style='color: green;'>CNPJ válido <br></span>";
-        } else if(possui_ponto || possui_barra || possui_ponto){
-            input_cnpj.style.borderColor = "red";
-            mensagem += "Por favor, insira o seu CNPJ sem pontos, traços ou barras <br>";
-            correto = false;
-        }
-        div_mensagem.innerHTML = mensagem;
+    if (tamanho_cnpj < 14) {
+        input_cnpj.style.borderColor = "red";
+        mensagem += "O CNPJ deve possuir exatamente 14 números. Você digitou " + tamanho_cnpj + " números. <br>";
+        correto = false;
+    } else if (tamanho_cnpj == 14) {
+        input_cnpj.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>CNPJ válido</span><br>";
+    } else if (possui_traco || possui_barra || possui_ponto) {
+        input_cnpj.style.borderColor = "red";
+        mensagem += "Por favor, insira o CNPJ sem pontos, traços ou barras. Caracteres inválidos encontrados. <br>";
+        correto = false;
     }
+    div_mensagem.innerHTML = mensagem;
+}
 
-    function validarRazaoSocial() {
-        var razao_social = input_razao_social.value;
+function validarRazaoSocial() {
+    var razao_social = input_razao_social.value;
+    var tamanho_razao = razao_social.length;
+    var mensagem = "";
 
-        var tamanho_razao = razao_social.length; 
-
-        var mensagem = "";
-
-        if (tamanho_razao < 3) {
-            input_razao_social.style.borderColor = "red";
-            mensagem += "Razão social muito curta <br>";
-            correto = false;
-        } else {
-            input_razao_social.style.borderColor = "green";
-            mensagem += "<span style='color: green;'>Razão social válida</span>";
-        }
-
-        div_mensagem.innerHTML = mensagem;
+    if (tamanho_razao < 3) {
+        input_razao_social.style.borderColor = "red";
+        mensagem += "A razão social deve ter pelo menos 3 caracteres. Atualmente, possui " + tamanho_razao + " caracteres. <br>";
+        correto = false;
+    } else {
+        input_razao_social.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Razão social válida</span>";
     }
+    div_mensagem.innerHTML = mensagem;
+}
 
-    function validarNomeFantasia() {
-        var nome_fantasia = input_nome_fantasia.value;
+function validarNomeFantasia() {
+    var nome_fantasia = input_nome_fantasia.value;
+    var tamanho_fantasia = nome_fantasia.length;
+    var mensagem = "";
 
-        var tamanho_fantasia = nome_fantasia.length;
-        var mensagem = "";
-
-        if (tamanho_fantasia < 3) {
-            input_nome_fantasia.style.borderColor = "red";
-            mensagem += "Nome fantasia muito curto <br>";
-            correto = false;
-        } else {
-            input_nome_fantasia.style.borderColor = "green";
-            mensagem += "<span style='color: green;'>Nome fantasia válido</span>";
-        }
-        div_mensagem.innerHTML = mensagem;
+    if (tamanho_fantasia < 3) {
+        input_nome_fantasia.style.borderColor = "red";
+        mensagem += "O nome fantasia deve ter pelo menos 3 caracteres. Você digitou apenas " + tamanho_fantasia + " caracteres. <br>";
+        correto = false;
+    } else {
+        input_nome_fantasia.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Nome fantasia válido</span>";
     }
+    div_mensagem.innerHTML = mensagem;
+}
 
-    function validarResponsavel() {
-        var responsavel = input_responsavel.value;
+function validarResponsavel() {
+    var responsavel = input_responsavel.value;
+    var tamanho_responsavel = responsavel.length;
+    var possui_1 = input_responsavel.value.includes("1")
+    var possui_2 = input_responsavel.value.includes("2")
+    var possui_3 = input_responsavel.value.includes("3")
+    var possui_4 = input_responsavel.value.includes("4")
+    var possui_5 = input_responsavel.value.includes("5")
+    var possui_6 = input_responsavel.value.includes("6")
+    var possui_7 = input_responsavel.value.includes("7")
+    var possui_8 = input_responsavel.value.includes("8")
+    var possui_9 = input_responsavel.value.includes("9")
+    var possui_0 = input_responsavel.value.includes("0")
+    var mensagem = "";
 
-        var tamanho_responsavel = responsavel.length;
-        var mensagem = "";
-
-        if (tamanho_responsavel < 10) {
-            input_responsavel.style.borderColor = "red";
-            mensagem += "Nome do responsável muito curto <br>";
-            correto = false;
-        } else {
-            input_responsavel.style.borderColor = "green";
-            mensagem += "<span style='color: green;'>Nome do responsável válido</span>";
-        }
-        div_mensagem.innerHTML = mensagem;
+    if (tamanho_responsavel < 10) {
+        input_responsavel.style.borderColor = "red";
+        mensagem += "O nome do responsável deve ter pelo menos 10 caracteres. Você digitou " + tamanho_responsavel + " caracteres. <br>";
+        correto = false;
+    } else if (possui_1 || possui_2 || possui_3 || possui_4 || possui_5 || possui_6 || possui_7 || possui_8 || possui_9 || possui_0 ) {
+        input_responsavel.style.borderColor = "red";
+        mensagem += "O nome do responsável não pode conter números. Por favor, remova os dígitos numéricos. <br>";
+        correto = false;
+    } else {
+        input_responsavel.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Nome do responsável válido</span>";
     }
+    div_mensagem.innerHTML = mensagem;
+}
 
-    function validarEmail() {
-        var email = input_email.value;
-        var mensagem = "";
-        var possui_arroba = email.includes("@");
-        var termina_com = email.endsWith('.com');
-        var termina_br = email.endsWith('.br');
-        var termina_school = email.endsWith('.school');
-        
-        if (email.length > 3 && possui_arroba && (termina_com || termina_br || termina_school)) {
-            input_email.style.borderColor = "green";
-            mensagem += "<span style='color: green;'>E-mail válido</span>";
-        } else {
-            input_email.style.borderColor = "red";
-            mensagem += "E-mail inválido, verifique o formato <br>";
-            correto = false;
-        }
-        div_mensagem.innerHTML = mensagem;
+function validarEmail() {
+    var email = input_email.value;
+    var mensagem = "";
+    var possui_arroba = email.includes("@");
+    var termina_com = email.endsWith('.com');
+    var termina_br = email.endsWith('.br');
+    var termina_school = email.endsWith('.school');
+
+    if (email.length > 3 && possui_arroba && (termina_com || termina_br || termina_school)) {
+        input_email.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>E-mail válido</span>";
+    } else {
+        input_email.style.borderColor = "red";
+        mensagem += "Formato de e-mail inválido. Certifique-se de que o e-mail contém '@' e termina com '.com', '.br' ou '.school'. <br>";
+        correto = false;
     }
+    div_mensagem.innerHTML = mensagem;
+}
 
-    function validarSenha() {
-        var senha = input_senha.value;
-        var mensagem = "";
+function validarSenha() {
+    var senha = input_senha.value;
+    var mensagem = "";
 
-        if (senha.length < 6) {
-            input_senha.style.borderColor = "red";
-            mensagem += "A senha deve ter pelo menos 6 caracteres <br>";
-            correto = false;
-        } else {
-            input_senha.style.borderColor = "green";
-            mensagem += "<span style='color: green;'>Senha válida</span>";
-        }
-        div_mensagem.innerHTML = mensagem;
+    if (senha.length < 6) {
+        input_senha.style.borderColor = "red";
+        mensagem += "A senha deve ter pelo menos 6 caracteres. Atualmente, possui " + senha.length + " caracteres. <br>";
+        correto = false;
+    } else {
+        input_senha.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Senha válida</span>";
     }
+    div_mensagem.innerHTML = mensagem;
+}
 
-    function validarCEP() {
-        var cep = input_cep.value;
-        var tamanho_cep = cep.length;
-        var mensagem = "";
+function validarCEP() {
+    var cep = input_cep.value;
+    var tamanho_cep = cep.length;
+    var mensagem = "";
 
-        if (tamanho_cep < 8) {
-            input_cep.style.borderColor = "red";
-            mensagem += "CEP deve ter exatamente 8 dígitos <br>";
-            correto = false;
-        } else {
-            input_cep.style.borderColor = "green";
-            mensagem += "<span style='color: green;'>CEP válido</span>";
-        }
-        div_mensagem.innerHTML = mensagem;
+    if (tamanho_cep < 8) {
+        input_cep.style.borderColor = "red";
+        mensagem += "O CEP deve ter exatamente 8 dígitos. Você digitou " + tamanho_cep + " dígitos. <br>";
+        correto = false;
+    } else {
+        input_cep.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>CEP válido</span>";
     }
+    div_mensagem.innerHTML = mensagem;
+}
 
-    function validarEstado() {
-        var estado = input_estado.value;
-        var mensagem = "";
+function validarEstado() {
+    var estado = input_estado.value;
+    var mensagem = "";
 
-        if (estado.length != 2) {
-            input_estado.style.borderColor = "red";
-            mensagem += "Estado deve ter somente 2 caracteres (sigla) <br>";
-            correto = false;
-        } else {
-            input_estado.style.borderColor = "green";
-            mensagem += "<span style='color: green;'>Estado válido</span>";
-        }
-        div_mensagem.innerHTML = mensagem;
+    if (estado.length != 2) {
+        input_estado.style.borderColor = "red";
+        mensagem += "A sigla do estado deve ter exatamente 2 caracteres. Você digitou " + estado.length + " caracteres. <br>";
+        correto = false;
+    } else {
+        input_estado.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Estado válido</span>";
     }
-    function validarBairro(){
-        var mensagem = "";
+    div_mensagem.innerHTML = mensagem;
+}
 
-        var bairro = input_bairro.value
-        if (bairro.length <= 0) {
-            input_bairro.style.borderColor = "red";
-            mensagem += "Insira um bairro <br>";
-            correto = false;
-        } else {
-            input_bairro.style.borderColor = "green";
-            mensagem += "<span style='color: green;'>Bairro válido</span>";
-        }
-        div_mensagem.innerHTML = mensagem;
-        }
-        function validarRua(){
-        var mensagem = "";
+function validarBairro() {
+    var mensagem = "";
+    var bairro = input_bairro.value;
 
-        var rua = input_logradouro.value
-        if (rua.length <= 0) {
-            input_logradouro.style.borderColor = "red";
-            mensagem += "Insira uma rua <br>";
-            correto = false;
-        } else {
-            input_logradouro.style.borderColor = "green";
-            mensagem += "<span style='color: green;'>Rua válida</span>";
-        }
-        div_mensagem.innerHTML = mensagem;
-        }
-        function validarCidade(){
-        var mensagem = "";
+    if (bairro.length <= 0) {
+        input_bairro.style.borderColor = "red";
+        mensagem += "Por favor, insira o nome do bairro. <br>";
+        correto = false;
+    } else {
+        input_bairro.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Bairro válido</span>";
+    }
+    div_mensagem.innerHTML = mensagem;
+}
 
-        var cidade = input_cidade.value
-        if (cidade.length <= 0) {
-            input_cidade.style.borderColor = "red";
-            mensagem += "Insira uma cidade <br>";
-            correto = false;
-        } else {
-            input_cidade.style.borderColor = "green";
-            mensagem += "<span style='color: green;'>Cidade válida</span>";
-        }
-        div_mensagem.innerHTML = mensagem;
+function validarRua() {
+    var mensagem = "";
+    var rua = input_logradouro.value;
+
+    if (rua.length <= 0) {
+        input_logradouro.style.borderColor = "red";
+        mensagem += "Por favor, insira o nome da rua. <br>";
+        correto = false;
+    } else {
+        input_logradouro.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Rua válida</span>";
+    }
+    div_mensagem.innerHTML = mensagem;
+}
+
+function validarCidade() {
+    var mensagem = "";
+    var cidade = input_cidade.value;
+
+    if (cidade.length <= 0) {
+        input_cidade.style.borderColor = "red";
+        mensagem += "Por favor, insira o nome da cidade. <br>";
+        correto = false;
+    } else {
+        input_cidade.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Cidade válida</span>";
+    }
+    div_mensagem.innerHTML = mensagem;
+}
+
         div_mensagem.innerHTML  = "";
 
-
-        }
     
 
     function cadastrar() {
