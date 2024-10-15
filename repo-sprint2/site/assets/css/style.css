@@ -7,7 +7,7 @@ body {
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     background-color: white;
-    padding-top: 75px; /* Isso vai "empurrar" o conteúdo para baixo, equivalente à altura da navbar */
+    padding-top: 65px; /* Isso vai "empurrar" o conteúdo para baixo, equivalente à altura da navbar */
     font-size: 19px;
 }
 

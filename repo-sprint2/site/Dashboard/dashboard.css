@@ -24,11 +24,15 @@
     display: flex;
 }
 
-.home_dashboard .content .kpi_cards .card{
+.home_dashboard .content .kpi_cards .card {
     width: 21.6%;
     height: 163px;
     background-color: white;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 .home_dashboard .content .estufa_cards, .home_dashboard .content .kpi_cards{
@@ -46,3 +50,25 @@
     height: 200px;
 }
 
+
+.card .kpi_titulo{
+    font-size: 16px;
+    padding: 15px;
+    display: flex;
+    font-weight: 600;
+    color: #1E2F1A;
+    justify-content: space-between;
+}
+
+.card .kpi_titulo span{
+    width: 80%;
+}
+
+.card .kpi_dado{
+    color: #1E2F1A;
+}
+
+
+.img_sino{
+    width: 22px;
+}
