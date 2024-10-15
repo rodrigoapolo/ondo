@@ -64,7 +64,7 @@
     </div>
     <div class="content">
       <div class="kpi_cards">
-        <div class="card">
+        <div class="card" id="div_temperatura_real">
 
         </div>
         <div class="card">
@@ -177,34 +177,13 @@
       },
     },
   });
-  new Chart(graficoLinha, {
+  var linha = new Chart(graficoLinha, {
     type: "line",
     data: {
-      labels: [
-        "7:00",
-        "8:00",
-        "9:00",
-        "10:00",
-        "11:00",
-        "12:00",
-        "13:00",
-        "14:00",
-        "15:00",
-        "16:00",
-        "17:00",
-        "18:00",
-        "19:00",
-        "20:00",
-        "21:00",
-        "22:00",
-        "23:00",
-      ],
       datasets: [
         {
           label: "Temperatura",
-          data: [
-            8, 8, 8.65, 9, 10, 12, 13, 16, 17, 19, 21, 18, 17, 16, 15, 14, 13,
-          ],
+        
           borderWidth: 1,
         },
       ],
@@ -307,7 +286,55 @@
 
 
 
+            var paginacao = {};
+            var tempo = {};
+
+            function obterDados(grafico, endpoint) {
+              fetch('http://localhost:3300/sensores/' + endpoint)
+                .then(response => response.json())
+                .then(valores => {
+                  if (paginacao[endpoint] == null) {
+                    paginacao[endpoint] = 0;
+                  }
+                  if (tempo[endpoint] == null) {
+                    tempo[endpoint] = 0;
+                  }
+
+                  var ultimaPaginacao = paginacao[endpoint];
+                  paginacao[endpoint] = valores.length;
+                  valores = valores.slice(ultimaPaginacao);
+
+                  valores.forEach((valor) => {
+                    if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+                      grafico.data.labels.shift();
+                      grafico.data.datasets[0].data.shift();
+                    }
+
+                    grafico.data.labels.push(valor.hora);
+                    grafico.data.datasets[0].data.push(parseFloat(valor.temperatura));
+                    grafico.update();
+                  });
+                })
+                .catch(error => console.error('Erro ao obter dados:', error));
+            }
+
+            function temperaturaReal(){
+              fetch('http://localhost:3300/sensores/analogico')
+                .then(response => response.json())
+                .then(valores =>{
+                  var temperatura = valores[valores.length -1];
+                  div_temperatura_real.innerHTML = temperatura.temperatura
+                })
+            }
 
 
+            setInterval(() => {
+              obterDados(linha, 'analogico');
+            }, 5000);
 
+            setInterval(() => {
+                temperaturaReal()
+              }, 1000);
+
+          
 </script>

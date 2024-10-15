@@ -57,7 +57,13 @@ const serial = async (
         const sensorAnalogico = parseFloat(data);
 
         // armazena os valores dos sensores nos arrays correspondentes
-        valoresSensorAnalogico.push(sensorAnalogico);
+        const agora = new Date();
+        const hora = agora.getHours();
+        const minutos = agora.getMinutes();
+        const segundos = agora.getSeconds();
+
+        var horaa = `${hora}:${minutos}:${segundos}`;
+        valoresSensorAnalogico.push({ temperatura: sensorAnalogico, hora: horaa});
         //valoresSensorDigital.push(sensorDigital);
 
         // insere os dados no banco de dados (se habilitado)
