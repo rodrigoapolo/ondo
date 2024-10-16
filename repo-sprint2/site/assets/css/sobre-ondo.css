@@ -36,14 +36,14 @@ html {
 #titulo-sobre {
     color: #50984E;
     margin-bottom: 60px;
-    font-size: 64px;
+    font-size: 50px;
 }
 
 #paragrafo-sobre {
     color: #333;
     margin-bottom: 15px;
     text-align: justify;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 1.2;
     font-weight: 400;
 }

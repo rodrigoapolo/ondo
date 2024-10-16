@@ -76,7 +76,6 @@
                     </div>
                     <div class="kpi_dado">
                         <h2>1</h2>
-
                     </div>
 
                 </div>
@@ -104,7 +103,7 @@
                 <div class="card check">
                     <div class="kpi_titulo">
                         <span>Estufa 1</span>
-                        <h2>20°C</h2>
+                        <h2 id="h2_temperatura_real" >20°C</h2>
                     </div>
                     <div class="estufa_icone ">
                         <img src="../assets/img/Dashboard/termometro.svg" alt="" class="termometro">
@@ -193,3 +192,17 @@
 </body>
 
 </html>
+
+<script>
+    function temperaturaReal() {
+    fetch('http://localhost:3300/sensores/analogico')
+      .then(response => response.json())
+      .then(valores => {
+        var temperatura = valores[valores.length - 1];
+        h2_temperatura_real.innerHTML = temperatura.temperatura
+      })
+  }
+  setInterval(() => {
+    temperaturaReal()
+  }, 1000);
+</script>
