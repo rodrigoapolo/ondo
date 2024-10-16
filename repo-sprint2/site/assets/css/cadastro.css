@@ -3,101 +3,91 @@ body, html {
     padding: 0;
     font-family: Arial, sans-serif;
     height: 100%;
+    box-sizing: border-box;
 }
 
 .container {
     display: flex; 
+    height: 100vh;
 }
 
-.image-section img {
-    width: 100%;
-    /* flex-grow: 1; 
-    background-image: url("../img/img_cadastro.png");
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; */
+.titulo_principal{
+    color: #4CAF50;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.image-section {
+    width: 60%;
+}
+
+.image-section{
+    background-image: url("../img/cadastro.svg");
+    width: 60%;
+    flex-grow: 1;
+    background-size: auto;
+    background-position: left;
+    background-repeat: no-repeat;
 }
 
 .form-container {
-    /* width: 40%;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  */
+    width: 40%;
     flex-direction: column;
     align-items: center;
     display: flex;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0;
-    border-radius: 8px;  */
 }
 
-.form-container h2 {
-    color: #4CAF50;
-    text-align: center;
-    margin-bottom: 30px;
-}
-.form_cointainer_empresa{
-    width: 70%;
+.form_cointainer_empresa, .form_container_endereco {
+    width: 75%;
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
-.form_cointainer_empresa .form-group input{
-    width: 82%;
-    padding: 15px 0 15px 48px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    /* padding-left: 40px;  */
-    /* transition: border-color 0.3s, box-shadow 0.3s; */
-    font-size: 16px;
-    background-color: #f9f9f9;
-}
-.form-group {
-    /* margin-bottom: 15px; */
-    position: relative;
-}
-
-/* .form-group input.main-input {
-    margin-left: 17%;
-    width: 60%; 
+.form-group input {
+    width: 100%;
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    padding-left: 40px; 
+    padding-left: 40px;
     transition: border-color 0.3s, box-shadow 0.3s;
     font-size: 16px;
     background-color: #f9f9f9;
-} */
+    box-sizing: border-box;
+}
 
-.form-group input.main-input:focus {
+.form-group {
+    position: relative;
+}
+
+.form-group input.main-input:focus, .endereco-input:focus {
     border-color: #4CAF50;
     outline: none; 
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
 .form-group i {
-    margin-left: 2%;
     position: absolute;
     left: 10px;
-    top: 50%;
+    top: 47%;
     transform: translateY(-50%);
     color: #999;
     font-size: 18px;
 }
 
 .form-group button {
-    margin-top: 20px; 
+    /* margin-top: 20px; 
     margin-bottom: 20px; 
-    margin-left: 20%;
-    width: 60%;
+    margin-left: 20%; */
+    width: 100%;
     padding: 12px;
     background-color: #4CAF50;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-weight: 700;
+
     font-size: 16px;
     transition: background-color 0.3s, transform 0.3s;
 }
@@ -128,55 +118,48 @@ body, html {
     width: 100px;
 }
 
-/* .img_btn_voltar {
+.img_btn_voltar {
     position: absolute;
     top: 20px;
-    left: 1860px;
-    height: 37px;
-    width: 21px;
+    left: 96%;
+    height: 33px;
+    width: 17px;
     cursor: pointer;
-} */
-
-.form-group input.endereco-input {
-    margin-left: 10%;
-    padding: 10px; 
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding-left: 10px; 
-    transition: border-color 0.3s, box-shadow 0.3s;
-    font-size: 16px;
-    background-color: #f9f9f9; 
 }
 
-.form-group input.endereco-input:focus {
-    border-color: #4CAF50;
-    outline: none; 
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-}
 .texLogin{
     color: white;
     font-size: 0.8rem;
 }
-.form-group input.endereco-input {
-    margin-left: 17%;
-    height: 3%;
-    width: 60%; 
-    padding: 15px;
-    border: 1px solid #ccc;
+
+.form_container_endereco .form-group input{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.titulo_form{
+    margin: 0;
+    font-size: 18px;
+    color: #616161;
+}
+
+.btn_acao{
+    padding: 12px;
+    background-color: transparent;
+    border: solid 2px #4CAF50;
+    color: #4CAF50;
+    font-weight: 700;
+
     border-radius: 4px;
-    padding-left: 40px; 
-    transition: border-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
     font-size: 16px;
-    background-color: #f9f9f9;
 }
 
-.form-group input#input_cep {
-    width: 60px;
+.btn_acao:hover{
+    background-color: #4CAF50;
+    border: solid 2px #4CAF50;
+    color: white;
+    font-weight: 700;
+    transition: all 0.3s linear; 
 }
-
-.form-group input#input_bairro {
-    width: 10px;
-}
-
-
 

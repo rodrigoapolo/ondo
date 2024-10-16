@@ -17,15 +17,15 @@
 <body>
     <div class="container">
         <div class="image-section">
-            <img src="assets/img/image_cadastro.jpg" alt="">
+            <!-- <img src="assets/img/cadastro.svg" alt=""> -->
         </div>
         <a href="index.html">
             <img class="img_btn_voltar" src="assets/img/btn_voltar cadastro.png" alt="btn voltar">
         </a>
         <div class="form-container">
-            <h2>CADASTRE-SE AQUI</h2>
-            <div class="form_cointainer_empresa">
-
+            <h2 class="titulo_principal">Cadastre-se aqui</h2>
+            <div class="form_cointainer_empresa" id="div_form1">
+                <h3 class="titulo_form">Dados da empresa:</h3>
                 <div class="form-group">
                     <i class="fas fa-id-card"></i>
                     <input class="main-input" id="input_cnpj" placeholder="CNPJ" type="text" oninput="validarCNPJ()" />
@@ -50,24 +50,34 @@
                     <i class="fas fa-lock"></i>
                     <input class="main-input" id="input_senha" placeholder="Senha" type="password" oninput="validarSenha()" />
                 </div>
-
-            </div>
-
-            <br>
-            <span style="margin-left: 130px;"><b>Endereço:</b></span> <br>
-            <div class="form_container_endereco">
+                <div class="form-group">
+                    <button onclick="ocultar()">Seguinte</button>
+                </div>
+            </div>            
+            <div class="form_container_endereco" id="div_form2"  style="display: none;">
+                <h3 class="titulo_form">Endereço:</h3> 
                 <div class="form-group">
                     <input class="endereco-input" id="input_cep" placeholder="CEP" type="text"  oninput="validarCEP()" />
+                </div>
+                <div class="form-group">
                     <input class="endereco-input" id="input_bairro" placeholder="Bairro"  type="text" oninput="validarBairro()" />
+                </div>
+                <div class="form-group">
                     <input class="endereco-input" id="input_logradouro" placeholder="Logradouro" type="text"  oninput="validarRua()" />
+                </div>
+                <div class="form-group">                    
                     <input class="endereco-input" id="input_cidade" placeholder="Cidade" type="text" oninput="validarCidade()" />
+                </div>
+                <div class="form-group">
                     <input class="endereco-input" id="input_estado" placeholder="UF" type="text"  oninput="validarEstado()" /> 
-                </div><br>
+                </div>
+                    <button class="btn_acao" onclick="voltar()">Voltar</button>
+                <div class="form-group">
+                    <button id="btn_cadastrar" onclick="cadastrar()" type="button">CADASTRE-SE</button>
+                </div>
             </div>
             <div id="div_mensagem"></div>
-            <div class="form-group">
-                <button id="btn_cadastrar" onclick="cadastrar()" type="button">CADASTRE-SE</button>
-            </div>
+<!-- 
             <br>
             <span><a class="texLogin" href="login.html">Já tem uma conta? <br></a></span>
 
@@ -79,12 +89,22 @@
             </div>
             <div class="logo">
                 <img alt="" src="../site/assets/img/logo_ondo_cadastro.png"/>
-            </div>
+            </div> -->
         </div>
     </div>
 </body>
 </html>
 <script>
+
+    function ocultar (){
+        div_form1.style.display = 'none';
+        div_form2.style.display = 'flex';
+    }
+    function voltar (){
+        div_form1.style.display = 'flex';
+        div_form2.style.display = 'none';
+    }
+
   var isEmail = false;
   var isSenha = false;
   var mensagem_error_email = "";
