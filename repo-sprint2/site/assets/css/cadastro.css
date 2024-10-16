@@ -6,30 +6,31 @@ body, html {
 }
 
 .container {
-    display: flex;
-    width: 100%;
-    height: 100vh; 
+    display: flex; 
 }
 
-.image-section {
-    width: 60%;
-    flex-grow: 1; 
+.image-section img {
+    width: 100%;
+    /* flex-grow: 1; 
     background-image: url("../img/img_cadastro.png");
     background-size: cover; 
     background-position: center; 
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
 }
 
 .form-container {
-    width: 40%;
+    /* width: 40%;
     background-color: #fff;
     padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  */
+    flex-direction: column;
+    align-items: center;
     display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 0;
-    border-radius: 8px; 
+    border-radius: 8px;  */
 }
 
 .form-container h2 {
@@ -37,13 +38,28 @@ body, html {
     text-align: center;
     margin-bottom: 30px;
 }
-
+.form_cointainer_empresa{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.form_cointainer_empresa .form-group input{
+    width: 82%;
+    padding: 15px 0 15px 48px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /* padding-left: 40px;  */
+    /* transition: border-color 0.3s, box-shadow 0.3s; */
+    font-size: 16px;
+    background-color: #f9f9f9;
+}
 .form-group {
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
     position: relative;
 }
 
-.form-group input.main-input {
+/* .form-group input.main-input {
     margin-left: 17%;
     width: 60%; 
     padding: 15px;
@@ -53,7 +69,7 @@ body, html {
     transition: border-color 0.3s, box-shadow 0.3s;
     font-size: 16px;
     background-color: #f9f9f9;
-}
+} */
 
 .form-group input.main-input:focus {
     border-color: #4CAF50;
@@ -62,7 +78,7 @@ body, html {
 }
 
 .form-group i {
-    margin-left: 17%;
+    margin-left: 2%;
     position: absolute;
     left: 10px;
     top: 50%;
@@ -112,14 +128,14 @@ body, html {
     width: 100px;
 }
 
-.img_btn_voltar {
+/* .img_btn_voltar {
     position: absolute;
     top: 20px;
     left: 1860px;
     height: 37px;
     width: 21px;
     cursor: pointer;
-}
+} */
 
 .form-group input.endereco-input {
     margin-left: 10%;
@@ -141,3 +157,26 @@ body, html {
     color: white;
     font-size: 0.8rem;
 }
+.form-group input.endereco-input {
+    margin-left: 17%;
+    height: 3%;
+    width: 60%; 
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-left: 40px; 
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 16px;
+    background-color: #f9f9f9;
+}
+
+.form-group input#input_cep {
+    width: 60px;
+}
+
+.form-group input#input_bairro {
+    width: 10px;
+}
+
+
+
