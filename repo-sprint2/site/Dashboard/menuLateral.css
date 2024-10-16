@@ -8,6 +8,8 @@ body{
     display: flex;
     width: 20%;
     background-color: #1E2F1A;
+    max-height: 100%;
+    height: auto;
 }
 
 
@@ -26,6 +28,7 @@ body{
     align-items: center;
     gap: 70px;
     margin-top: 75px;
+    height: 100vh;
 }
 
 .menuLateral img{
