@@ -22,6 +22,9 @@
     height: 163px;
     background-color: white;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .grafico_dashboard .content .estufa_cards,
@@ -123,4 +126,9 @@ canvas#grafico_barra {
     flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
+}
+
+.kpi_titulo img{
+    width: 25px;
+    height: 25px;
 }
