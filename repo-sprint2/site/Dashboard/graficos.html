@@ -350,7 +350,7 @@
       .then(response => response.json())
       .then(valores => {
         var temperatura = valores[valores.length - 1];
-        h2_temperatura_real.innerHTML = temperatura.temperatura
+        h2_temperatura_real.innerHTML = temperatura.temperatura + "°C"
       })
   }
 
