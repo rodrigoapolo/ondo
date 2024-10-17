@@ -26,7 +26,7 @@ body, html {
     background-image: url("../img/cadastro.svg");
     width: 60%;
     flex-grow: 1;
-    background-size: auto;
+    background-size: cover;
     background-position: left;
     background-repeat: no-repeat;
 }
