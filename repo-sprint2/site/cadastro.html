@@ -116,7 +116,13 @@
     var possui_ponto = cnpj.includes(".");
     var mensagem = "";
 
-    if (tamanho_cnpj < 14) {
+    if (possui_traco || possui_barra || possui_ponto) {
+        input_cnpj.style.borderColor = "red";
+        mensagem += "Por favor, insira o CNPJ sem pontos, traços ou barras. Caracteres inválidos encontrados. <br>";
+        correto = false;
+    }
+
+     else if (tamanho_cnpj !== 14) {
         input_cnpj.style.borderColor = "red";
         mensagem += "O CNPJ deve possuir exatamente 14 números. <b>Você digitou " + tamanho_cnpj + " números.</b> <br>";
         correto = false;
@@ -178,13 +184,14 @@ function validarResponsavel() {
     var possui_0 = input_responsavel.value.includes("0")
     var mensagem = "";
 
-    if (tamanho_responsavel < 10) {
-        input_responsavel.style.borderColor = "red";
-        mensagem += "O nome do responsável deve ter pelo menos 10 caracteres. <b>Você digitou " + tamanho_responsavel + " caracteres. </b><br>";
-        correto = false;
-    } else if (possui_1 || possui_2 || possui_3 || possui_4 || possui_5 || possui_6 || possui_7 || possui_8 || possui_9 || possui_0 ) {
+    if (possui_1 || possui_2 || possui_3 || possui_4 || possui_5 || possui_6 || possui_7 || possui_8 || possui_9 || possui_0 ) {
         input_responsavel.style.borderColor = "red";
         mensagem += "O nome do responsável não pode conter números.  <b>Por favor, remova os dígitos numéricos.</b> <br>";
+        correto = false;
+    } 
+    else if (tamanho_responsavel < 10) {
+        input_responsavel.style.borderColor = "red";
+        mensagem += "O nome do responsável deve ter pelo menos 10 caracteres. <b>Você digitou " + tamanho_responsavel + " caracteres. </b><br>";
         correto = false;
     } else {
         input_responsavel.style.borderColor = "green";
@@ -212,51 +219,56 @@ function validarResponsavel() {
     if(ponto_ponto){
         input_email.style.borderColor = "red";
         correto = false;
-      mensagem_error_email += "<b>Não pode ter .. no email</b><br>"
+      mensagem_error_email += "Não pode ter .. no email<br>"
     }
     if(arroba_ponto){
         input_email.style.borderColor = "red";
 
         correto = false;
-      mensagem += " <b>Não pode ter @. no email</b><br>"
+      mensagem += " Não pode ter @. no email<br>"
     }
     if (possui_barra) {
         input_email.style.borderColor = "red";
 
         correto = false;
-        mensagem += "<b>Não pode ter \\ no email</b><br>"
+        mensagem += "Não pode ter \\ no email<br>"
     }
     if (possui_barra_direita) {
         input_email.style.borderColor = "red";
 
         correto = false;
-        mensagem += "<b>Não pode ter / no email</b><br>"
+        mensagem += "Não pode ter / no emai<br>"
     }
     if (possui_aspas) {
         input_email.style.borderColor = "red";
         correto = false;
-        mensagem += `<b>Não pode ter " no email</b><br>`
+        mensagem += `Não pode ter " no emai<br>`
     }
     
     if (comeca_ponto) {
         input_email.style.borderColor = "red";
         correto = false;
-        mensagem += " <b>Não pode ter . no início no email</b><br>"
+        mensagem += " Não pode ter . no início no emai<br>"
     }
     
     if (!termina_br && !termina_com && !termina_school) {
         input_email.style.borderColor = "red";
         correto = false;
-        mensagem += "<b>O e-mail deve terminar com .com, .br ou .school.</b><br>"
+        mensagem += "O e-mail deve terminar com .com, .br ou .school<br>"
     }
     if (!possui_arroba) {
         input_email.style.borderColor = "red";
         correto = false;
-        mensagem += " <b>Inclua '@' no e-mail. </b><br> ";
-    } else {
-        input_email.style.borderColor = "red";
-        mensagem += " <b>Certifique-se de que o e-mail contém '@' e termina com '.com', '.br' ou '.school'. </b><br> ";
-        correto = false;
+        mensagem += " Inclua '@' no e-mail.<br> ";
+    } 
+    if (!possui_arroba || (!termina_com && !termina_br && !termina_school)) {
+    input_email.style.borderColor = "red";
+    mensagem += "Certifique-se de que o e-mail contém '@' e termina com '.com', '.br' ou '.school'.<br>";
+    correto = false;
+    }
+    else {
+        input_email.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Email válido</span>";
     }
     div_mensagem.innerHTML = mensagem;
 }
