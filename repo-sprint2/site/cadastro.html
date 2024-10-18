@@ -276,15 +276,36 @@ function validarResponsavel() {
 function validarSenha() {
     var senha = input_senha.value;
     var mensagem = "";
+    var tem_especial = senha.includes("!") || senha.includes("@") || senha.includes("#") ||
+                       senha.includes("$") || senha.includes("%") || senha.includes("&");
+    
+    var possui_numero = senha.includes("0") || senha.includes("1") || senha.includes("2") ||
+                        senha.includes("3") || senha.includes("4") || senha.includes("5") ||
+                        senha.includes("6") || senha.includes("7") || senha.includes("8") ||
+                        senha.includes("9");
+    
+    var temMaiuscula = senha != senha.toLowerCase();
+    var temMinuscula = senha != senha.toUpperCase();
+    
+    var correto = true;
 
     if (senha.length < 6) {
         input_senha.style.borderColor = "red";
-        mensagem += "A senha precisa de ao menos 6 caracteres. <b>Atualmente, possui " + senha.length + " caracteres. </b><br>";
+        mensagem += "A senha precisa de ao menos 6 caracteres.<br><b>Atualmente, possui " + senha.length + " caracteres.</b><br>";
         correto = false;
-    } else {
+    } else if (senha.length > 6 && tem_especial && possui_numero && temMaiuscula && temMinuscula) {
         input_senha.style.borderColor = "green";
         mensagem += "<span style='color: green;'>Senha válida</span>";
+    } else {
+        mensagem += "A senha precisa ter:<br>" +
+                    "- Ao menos um caractere especial (! @ # $ % &)<br>" +
+                    "- Ao menos uma letra maiúscula<br>" +
+                    "- Ao menos um numero maiúscula<br>" +
+                    "- Ao menos uma letra minúscula";
+        input_senha.style.borderColor = "red";
+        correto = false;
     }
+    
     div_mensagem.innerHTML = mensagem;
 }
 
@@ -362,6 +383,8 @@ function validarCidade() {
         mensagem += "<span style='color: green;'>Cidade válida</span>";
     }
     div_mensagem.innerHTML = mensagem;
+    div_mensagem.innerHTML  = "";
+
 }
 
         div_mensagem.innerHTML  = "";
