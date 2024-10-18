@@ -89,3 +89,7 @@ body{
     color: #1E2F1A;
     border: solid 2px white;
 }
+
+.disable{
+    pointer-events: none;
+}
