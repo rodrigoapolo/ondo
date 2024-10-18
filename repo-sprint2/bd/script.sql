@@ -1,4 +1,4 @@
-mysql -u root -p -P 3307
+/*sql -u root -p -P 3307
 SPTech#2024
 create user 'api'@'%' identified by 'Sptech#2024';
 GRANT INSERT ON *.* TO 'api';
@@ -6,7 +6,7 @@ GRANT INSERT ON *.* TO 'api';
 flush privileges;
 exit
 mysql -u api -p -P 3307
-Sptech#2024
+Sptech#2024*/
 
 CREATE DATABASE ondo;
 
@@ -96,7 +96,6 @@ VALUES
 
 SELECT * FROM empresa;
 
-
 -- Inserir dados na tabela estufa
 INSERT INTO estufa (nome, tamanho, espaco, fkEmpresa) 
 VALUES 
@@ -106,7 +105,6 @@ VALUES
 ('Estufa D', 45.3, 15.60, 3);
 
 SELECT * FROM estufa;
-
 
 -- Inserir dados na tabela sensor
 INSERT INTO sensor (localidade, tipo, fkEstufa) 
@@ -118,7 +116,6 @@ VALUES
 ('corredor Azul', 'temperatura', 4);
 
 SELECT * FROM sensor;
-
 
 -- Inserir dados na tabela temperatura
 INSERT INTO medicao (temperatura, dataHora, fkSensor) 
@@ -134,16 +131,28 @@ SELECT * FROM medicao;
 -- Inserir dados na tabela aviso
 INSERT INTO alerta (temperatura, mensagem, fkSensor) 
 VALUES 
-(11.0, 'A temperatura exige atenção na Estufa A', 1),
-(9.0, 'A temperatura exige atenção na Estufa B', 2),
-(5.0, 'Alerta! A temperatura está fora do limite na Estufa C', 3);
+(20.0, 'A temperatura exige atenção na Estufa A', 1),
+(9.0, 'A temperatura exige atenção na Estufa B', 3),
+(5.0, 'Alerta! A temperatura está fora do limite na Estufa C', 4),
+(22.0, 'Alerta! A temperatura está fora do limite na Estufa D', 5);
 
 SELECT * FROM alerta;
 
+	
+-- select por hora
+SELECT a.temperatura, a.mensagem, e.nome as nomeEstufam, m.dataHora as 'Data e Hora'
+     FROM alerta as a
+     JOIN sensor as s ON a.fkSensor = s.idSensor
+     JOIN estufa as e ON s.fkEstufa = e.idEstufa
+     JOIN medicao as m ON m.fkSensor = s.idSensor
+	where m.dataHora LIKE '% 16:%'
+;
+
 -- criar select para aviso com o nome da estufa
-SELECT a.temperatura, a.mensagem, e.nome AS nomeEstufa
+SELECT a.temperatura, a.mensagem, e.nome AS nomeEstufa, m.dataHora as 'Data e hora'
 FROM alerta a
 JOIN sensor s ON a.fkSensor = s.idSensor
-JOIN estufa e ON s.fkEstufa = e.idEstufa;
-
-
+JOIN estufa e ON s.fkEstufa = e.idEstufa
+JOIN medicao m ON m.fkSensor = s.idSensor
+ORDER BY m.dataHora desc
+;
