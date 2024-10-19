@@ -53,12 +53,31 @@
 
 .notificacoes_recentes {
     width: 94%;
-}
-
-.notificacao {
+    display: flex;
     background-color: white;
     border-radius: 10px;
-    height: 100px;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.notificacoes_recentes .titulos {
+    display: flex;
+    justify-content: space-around;
+    font-size: 14px;
+    border-bottom: solid 1px grey;
+    padding: 10px 0;
+}
+.notificacoes_recentes  span{
+    flex: 1; /* Cada span ocupará um espaço igual */
+    text-align: center; /* Centraliza o texto */
+}
+
+.notificacoes_recentes .dados {
+    display: flex;
+    justify-content: space-around;
+    font-size: 12px;
+    align-items: center;
 }
 
 #grafico_pizza {
@@ -67,7 +86,6 @@
     padding: 20px;
 }
 canvas#grafico_barra {
-    /* height: 100% !important; */
     padding:  0 20px;
     width: 100% !important;
 }
