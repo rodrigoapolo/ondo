@@ -64,7 +64,7 @@
                 <input placeholder="Digite o espaco entre as plantas" type="number" id="input_espaco">
             </div>
             <div class="container_input">
-                <span class="title_input">Custo de energia mensal (R$): </span>
+                <span class="title_input" >Custo de energia mensal (R$): </span>
                 <input placeholder="Digite qual é o custo de energia por mês" type="number" id="input_energia"
                     width="200px">
             </div>
@@ -118,6 +118,7 @@
 <!-- Inicio do Java Script -->
 <script>
     // VARIAVEIS GLOBAIS, QUE SERÃO UTILIZADAS NAS DUAS FUNCTIONS
+    var mensagem = '';
     function VerLucro() {
 
         var area = Number(input_area.value); //variavel da area de plantação em Metros quadrados
@@ -141,7 +142,9 @@
         var lucroLiquidoCom = lucroBrutoCom - custoTotal //variavel do lucro liquido
         var porCentoLucro = ((lucroLiquidoCom - lucroLiquidoSem) / lucroLiquidoSem) * 100
 
-        mensagem = `<p>
+        mensagem += `
+         <h3 style="color: green;opacity:1;">Com o nosso sistema</h3>    
+            <p>
             Com o cuidado correto e o auxilio do nosso sistema, 
             as perdas da safra que chegam até <span class="valor_negativo">35%</span>, reduzirão para até <span class="valor_positivo">10%.</span>
             </p>
@@ -176,8 +179,9 @@
             `
         }
         // MOSTRANDO A MENSAGEM 
-        p_info.innerHTML = mensagem;
+        // p_info.innerHTML = mensagem;
         // p_infoCom.innerHTML = mensagemCom
+
     }
     // FUNCTION VER OS GASTOS 
     function CalcularSem() {
@@ -188,8 +192,7 @@
         var espacoMetro = espaco / 100; //variavel que transforma os Centimetros do espaçamento em Metros
         var areaMuda = espacoMetro * espacoMetro; //variavel da area que cada muda em metros quadrados
         var qtdMuda = area / areaMuda; //variavel da quantidade de mudas. Area inteira / por area de cada planta
-        var pesoTotal = qtdMuda *
-            0.12; //variavel do peso aproximado da safra em quilo (IMPORTANTE SABER QUE ESSE VALOR 0.12 é a media do peso em gram do wasabi) 
+        var pesoTotal = qtdMuda * 0.12; //variavel do peso aproximado da safra em quilo (IMPORTANTE SABER QUE ESSE VALOR 0.12 é a media do peso em gram do wasabi) 
         var pesoSem = pesoTotal * 0.65;
         var pesoCom = pesoTotal * 0.90;
         var retorno = pesoTotal * preco; //variavel do retorno completo da safra. peso kilo * preço kilo
@@ -207,7 +210,8 @@
         var porCentoLucro = ((lucroLiquidoCom - lucroLiquidoSem) / lucroLiquidoSem) * 100
 
 
-        mensagem = `
+        mensagem += `
+            <h3 style="color: red; opacity:1;">Sem o nosso sistema</h3>
             <p>
             Sem o cuidado correto e o auxilio do nosso sistema, 
             as perdas por falta de desenvolvimento das raízes são de até <span class="valor_negativo">35% </span> 
@@ -243,6 +247,7 @@
         }
 
         // MOSTRANDO A MENSAGEM 
+        VerLucro();
         p_info.innerHTML = mensagem;
     }
 
