@@ -1,4 +1,4 @@
-/*sql -u root -p -P 3307
+/*mysql -u root -p -P 3307
 SPTech#2024
 create user 'api'@'%' identified by 'Sptech#2024';
 GRANT INSERT ON *.* TO 'api';
@@ -149,10 +149,10 @@ SELECT a.temperatura, a.mensagem, e.nome as nomeEstufam, m.dataHora as 'Data e H
 ;
 
 -- criar select para aviso com o nome da estufa
-SELECT a.temperatura, a.mensagem, e.nome AS nomeEstufa, m.dataHora as 'Data e hora'
-FROM alerta a
-JOIN sensor s ON a.fkSensor = s.idSensor
-JOIN estufa e ON s.fkEstufa = e.idEstufa
-JOIN medicao m ON m.fkSensor = s.idSensor
-ORDER BY m.dataHora desc
-;
+SELECT a.temperatura, a.mensagem, e.nome AS nomeEstufa, a.dataHora as 'Data e hora'
+FROM alerta as a
+JOIN sensor as s ON a.fkSensor = s.idSensor
+JOIN estufa as e ON s.fkEstufa = e.idEstufa
+JOIN medicao as m ON m.fkSensor = s.idSensor
+ORDER BY m.dataHora desc;
+
