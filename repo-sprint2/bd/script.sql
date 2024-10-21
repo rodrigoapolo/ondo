@@ -46,7 +46,7 @@ CREATE TABLE estufa (
     CONSTRAINT fkEstufaEmpresa
     FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 );
-
+    
 -- Tabela sensor
 CREATE TABLE sensor (
     idSensor INT AUTO_INCREMENT PRIMARY KEY,
@@ -56,6 +56,8 @@ CREATE TABLE sensor (
     CONSTRAINT fkSensorEstufa
     FOREIGN KEY (fkEstufa) REFERENCES estufa(idEstufa)
 );
+
+
 
 -- Tabela temperatura
 CREATE TABLE medicao (
@@ -131,14 +133,13 @@ SELECT * FROM medicao;
 -- Inserir dados na tabela aviso
 INSERT INTO alerta (temperatura, mensagem, fkSensor) 
 VALUES 
-(20.0, 'A temperatura exige atenção na Estufa A', 1),
-(9.0, 'A temperatura exige atenção na Estufa B', 3),
-(5.0, 'Alerta! A temperatura está fora do limite na Estufa C', 4),
-(22.0, 'Alerta! A temperatura está fora do limite na Estufa D', 5);
+(22.0, 'Alerta! A temperatura está fora do limite na Estufa', 1),
+(7.0, 'Alerta! A temperatura está fora do limite na Estufa', 3),
+(5.0, 'Alerta! A temperatura está fora do limite na Estufa', 4),
+(25.0, 'Alerta! A temperatura está fora do limite na Estufa', 5);
 
 SELECT * FROM alerta;
 
-	
 -- select por hora
 SELECT a.temperatura, a.mensagem, e.nome as nomeEstufam, m.dataHora as 'Data e Hora'
      FROM alerta as a
@@ -149,10 +150,28 @@ SELECT a.temperatura, a.mensagem, e.nome as nomeEstufam, m.dataHora as 'Data e H
 ;
 
 -- criar select para aviso com o nome da estufa
-SELECT a.temperatura, a.mensagem, e.nome AS nomeEstufa, a.dataHora as 'Data e hora'
-FROM alerta as a
-JOIN sensor as s ON a.fkSensor = s.idSensor
-JOIN estufa as e ON s.fkEstufa = e.idEstufa
-JOIN medicao as m ON m.fkSensor = s.idSensor
-ORDER BY m.dataHora desc;
+SELECT a.temperatura, a.mensagem, e.nome AS nomeEstufa, m.dataHora as 'Data e hora'
+FROM alerta a
+JOIN sensor s ON a.fkSensor = s.idSensor
+JOIN estufa e ON s.fkEstufa = e.idEstufa
+JOIN medicao m ON m.fkSensor = s.idSensor
+ORDER BY m.dataHora desc
+;
+
+SELECT a.temperatura, a.mensagem, e.nome AS nomeEstufa, m.dataHora as 'Data e hora'
+FROM alerta a
+JOIN sensor s ON a.fkSensor = s.idSensor
+JOIN estufa e ON s.fkEstufa = e.idEstufa
+JOIN medicao m ON m.fkSensor = s.idSensor
+ORDER BY m.dataHora desc
+;
+
+SELECT m.temperatura, m.dataHora, s.localidade, e.nome as 'Nome Estufa'
+	FROM medicao as m
+    JOIN sensor as s
+    ON m.fkSensor = s.idSensor
+    JOIN estufa as e 
+    ON s.fkEstufa = e.idEstufa
+	ORDER BY m.dataHora DESC
+;
 
