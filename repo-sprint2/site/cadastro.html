@@ -314,7 +314,7 @@ function validarCEP() {
     var tamanho_cep = cep.length;
     var mensagem = "";
 
-    if (tamanho_cep < 8) {
+    if (tamanho_cep !== 8) {
         input_cep.style.borderColor = "red";
         mensagem += "O CEP deve ter exatamente 8 dígitos. <b> Você digitou " + tamanho_cep + " dígitos. </b><br>";
         correto = false;
