@@ -86,9 +86,9 @@
             </div>
             <!-- Botões que chamam a função -->
             <div class="container_btn">
-                <!-- <Button class="btn_lucro" onclick="VerLucro()">LUCRO COM SISTEMA</Button> -->
-                <!-- <Button class="btn_gastos" onclick="CalcularSem()">LUCRO SEM SISTEMA</Button> -->
-                <Button class="btn_lucro" onclick="CalcularSem()">Calcular</Button>
+                <Button class="btn_lucro" onclick="VerLucro()">LUCRO COM SISTEMA</Button>
+                <Button class="btn_gastos" onclick="CalcularSem()">LUCRO SEM SISTEMA</Button>
+                <!-- <Button class="btn_lucro" onclick="CalcularSem()">Calcular</Button> -->
 
                 <Button class="btn_reset" onclick="Redefinir()">REDEFINIR</Button>
             </div>
@@ -122,7 +122,6 @@
     // VARIAVEIS GLOBAIS, QUE SERÃO UTILIZADAS NAS DUAS FUNCTIONS
     var mensagem = '';
     function VerLucro() {
-
         var area = Number(input_area.value); //variavel da area de plantação em Metros quadrados
         var espaco = Number(input_espaco.value); //variavel de espaçamento entre as mudas em Centimetros
         var preco = Number(input_preco.value); //variavel do preco do quilo
@@ -181,10 +180,11 @@
             `
         }
         // MOSTRANDO A MENSAGEM 
-        // p_info.innerHTML = mensagem;
+        p_info.innerHTML = mensagem;
         // p_infoCom.innerHTML = mensagemCom
 
     }
+
     // FUNCTION VER OS GASTOS 
     function CalcularSem() {
         //CHMAMANDO AS VARIAVEIS E ATRIBUINDO VALORES 
@@ -249,7 +249,7 @@
         }
 
         // MOSTRANDO A MENSAGEM 
-        VerLucro();
+        // VerLucro();
         p_info.innerHTML = mensagem;
     }
 
