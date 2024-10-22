@@ -79,7 +79,7 @@
             <img src="../assets/img/Dashboard/danger.svg" alt="" class="img_sino">
           </div>
           <div class="kpi_dado">
-            <h2>3</h2>
+            <h2>10</h2>
           </div>
 
         </div>
@@ -148,39 +148,31 @@
       <section class="notificacoes_recentes">
         <div class="titulos">
           <span>NO</span>
-          <span>ID Alerta</span>
           <span>Localização</span>
           <span>Data</span>
           <span>Hora</span>
-          <span>Tipo</span>
-          <span>Status</span>
+          <span>Mensagem</span>
         </div>
         <div class="dados">
           <span>1</span>
-          <span>281863</span>
           <span>Principal</span>
-          <span>10/10/2024</span>
+          <span>09/10/2024</span>
           <span>09:30</span>
-          <span>Em Zona de Alerta</span>
-          <span>Sob Observação</span>
+          <span>Limite Excedido</span>
         </div>
         <div class="dados">
           <span>2</span>
-          <span>281874</span>
           <span>Principal</span>
-          <span>10/10/2024</span>
+          <span>111/10/2024</span>
           <span>10:30</span>
           <span>Limite Excedido</span>
-          <span>Cuidado</span>
         </div>
         <div class="dados">
           <span>3</span>
-          <span>281884</span>
           <span>Principal</span>
-          <span>10/10/2024</span>
+          <span>13/10/2024</span>
           <span>12:30</span>
-          <span>Dentro do Padrão</span>
-          <span>Estável</span>
+          <span>Limite Excedido</span>
         </div>
       </section>
     </div>
@@ -278,7 +270,7 @@
       datasets: [
         {
           label: "Alertas do Dia",
-          data: [90, 10], // se a fatia toda é 10, subtrai os alertas para ele apresentar da forma certa 
+          data: [90, 10], // se a fatia toda é 100, subtrai os alertas para ele apresentar da forma certa 
           backgroundColor: [
             // Cores para cada fatia
             "rgba(54, 162, 235, 0.2)",
@@ -301,19 +293,19 @@
           display: 'auto',
           formatter: (value, ctx) => {
             // Soma total dos dados do dataset
-            let totalSum = 0;
-            const data = ctx.chart.data.datasets[0].data;
+            // let totalSum = 0;
+            // const data = ctx.chart.data.datasets[0].data;
 
             // Loop para somar os valores
-            for (let i = 0; i < data.length; i++) {
-              totalSum += data[i];
-            }
+            // for (let i = 0; i < data.length; i++) {
+            //   totalSum += data[i];
+            // }
 
             // Cálculo da porcentagem usando a regra de três
-            var percentage = (value / totalSum) * 100;
-            if (percentage == 100) {
-              percentage = 50
-            }
+            var percentage = (value / 100) * 100;
+            // if (percentage == 100) {
+            //   percentage = 50
+            // }
 
             return `${percentage.toFixed(1)}%`; // Retorna a porcentagem formatada
           },
