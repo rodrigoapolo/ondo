@@ -189,7 +189,7 @@ function validarResponsavel() {
         mensagem += "O nome do responsável não pode conter números.  <b>Por favor, remova os dígitos numéricos.</b> <br>";
         correto = false;
     } 
-    else if (tamanho_responsavel < 10) {
+    else if (tamanho_responsavel < 3) {
         input_responsavel.style.borderColor = "red";
         mensagem += "O nome do responsável deve ter pelo menos 10 caracteres. <b>Você digitou " + tamanho_responsavel + " caracteres. </b><br>";
         correto = false;
@@ -300,7 +300,7 @@ function validarSenha() {
         mensagem += "A senha precisa ter:<br>" +
                     "- Ao menos um caractere especial (! @ # $ % &)<br>" +
                     "- Ao menos uma letra maiúscula<br>" +
-                    "- Ao menos um numero maiúscula<br>" +
+                    "- Ao menos um numero <br>" +
                     "- Ao menos uma letra minúscula";
         input_senha.style.borderColor = "red";
         correto = false;
