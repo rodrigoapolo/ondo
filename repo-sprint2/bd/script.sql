@@ -144,4 +144,5 @@ FROM alerta a
 JOIN sensor s ON a.fkSensor = s.idSensor
 JOIN estufa e ON s.fkEstufa = e.idEstufa;
 
+SELECT m.temperatura, m.dataHora, s.localidade, e.nome as 'Nome Estufa'	FROM medicao as m  JOIN sensor as s  ON m.fkSensor = s.idSensor  JOIN estufa as e   ON s.fkEstufa = e.idEstufa ORDER BY m.dataHora DESC;
 
