@@ -1,14 +1,14 @@
-/*mysql -u root -p -P 3307
-SPTech#2024
-create user 'api'@'%' identified by 'Sptech#2024';
-GRANT INSERT ON *.* TO 'api';
+-- mysql -u root -p -P 3307
+-- SPTech#2024
+-- create user 'api'@'%' identified by 'Sptech#2024';
+-- GRANT INSERT ON *.* TO 'api';
 -- grant all privileges on *.* to aluno;
-flush privileges;
-exit
-mysql -u api -p -P 3307
-Sptech#2024*/
+-- flush privileges;
+-- exit
+-- mysql -u api -p -P 3307
+-- Sptech#2024
 
-CREATE DATABASE ondo;
+-- CREATE DATABASE ondo;
 
 USE ondo;
 
@@ -46,18 +46,16 @@ CREATE TABLE estufa (
     CONSTRAINT fkEstufaEmpresa
     FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 );
-    
+
 -- Tabela sensor
 CREATE TABLE sensor (
     idSensor INT AUTO_INCREMENT PRIMARY KEY,
     localidade VARCHAR(100),
     tipo VARCHAR(45),
-    fkEstufa INT,
-    CONSTRAINT fkSensorEstufa
+    fkEstufa INT unique,
+    CONSTRAINT fkSensorEstufa 
     FOREIGN KEY (fkEstufa) REFERENCES estufa(idEstufa)
 );
-
-
 
 -- Tabela temperatura
 CREATE TABLE medicao (
@@ -98,6 +96,7 @@ VALUES
 
 SELECT * FROM empresa;
 
+
 -- Inserir dados na tabela estufa
 INSERT INTO estufa (nome, tamanho, espaco, fkEmpresa) 
 VALUES 
@@ -108,16 +107,17 @@ VALUES
 
 SELECT * FROM estufa;
 
+
 -- Inserir dados na tabela sensor
 INSERT INTO sensor (localidade, tipo, fkEstufa) 
 VALUES 
 ('corredor principal', 'temperatura', 1),
-('corredor entrada', 'temperatura', 1),
 ('corredor 1', 'temperatura', 2),
 ('corredor A', 'temperatura', 3),
 ('corredor Azul', 'temperatura', 4);
 
 SELECT * FROM sensor;
+
 
 -- Inserir dados na tabela temperatura
 INSERT INTO medicao (temperatura, dataHora, fkSensor) 
@@ -125,53 +125,23 @@ VALUES
 (15.5, '2024-09-01 12:30:00', 1),
 (8.1, '2024-09-01 13:30:00', 2),
 (18.0, '2024-09-02 14:30:00', 3),
-(10.8, '2024-09-02 15:30:00', 4),
-(13.7, '2024-09-02 16:30:00', 5);
+(10.8, '2024-09-02 15:30:00', 4);
 
 SELECT * FROM medicao;
 
 -- Inserir dados na tabela aviso
 INSERT INTO alerta (temperatura, mensagem, fkSensor) 
 VALUES 
-(22.0, 'Alerta! A temperatura está fora do limite na Estufa', 1),
-(7.0, 'Alerta! A temperatura está fora do limite na Estufa', 3),
-(5.0, 'Alerta! A temperatura está fora do limite na Estufa', 4),
-(25.0, 'Alerta! A temperatura está fora do limite na Estufa', 5);
+(11.0, 'A temperatura exige atenção na Estufa A', 1),
+(9.0, 'A temperatura exige atenção na Estufa B', 2),
+(5.0, 'Alerta! A temperatura está fora do limite na Estufa C', 3);
 
 SELECT * FROM alerta;
 
--- select por hora
-SELECT a.temperatura, a.mensagem, e.nome as nomeEstufam, m.dataHora as 'Data e Hora'
-     FROM alerta as a
-     JOIN sensor as s ON a.fkSensor = s.idSensor
-     JOIN estufa as e ON s.fkEstufa = e.idEstufa
-     JOIN medicao as m ON m.fkSensor = s.idSensor
-	where m.dataHora LIKE '% 16:%'
-;
-
 -- criar select para aviso com o nome da estufa
-SELECT a.temperatura, a.mensagem, e.nome AS nomeEstufa, m.dataHora as 'Data e hora'
+SELECT a.temperatura, a.mensagem, e.nome AS nomeEstufa
 FROM alerta a
 JOIN sensor s ON a.fkSensor = s.idSensor
-JOIN estufa e ON s.fkEstufa = e.idEstufa
-JOIN medicao m ON m.fkSensor = s.idSensor
-ORDER BY m.dataHora desc
-;
+JOIN estufa e ON s.fkEstufa = e.idEstufa;
 
-SELECT a.temperatura, a.mensagem, e.nome AS nomeEstufa, m.dataHora as 'Data e hora'
-FROM alerta a
-JOIN sensor s ON a.fkSensor = s.idSensor
-JOIN estufa e ON s.fkEstufa = e.idEstufa
-JOIN medicao m ON m.fkSensor = s.idSensor
-ORDER BY m.dataHora desc
-;
-
-SELECT m.temperatura, m.dataHora, s.localidade, e.nome as 'Nome Estufa'
-	FROM medicao as m
-    JOIN sensor as s
-    ON m.fkSensor = s.idSensor
-    JOIN estufa as e 
-    ON s.fkEstufa = e.idEstufa
-	ORDER BY m.dataHora DESC
-;
 
