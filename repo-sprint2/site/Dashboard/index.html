@@ -101,24 +101,24 @@
             </div>
             <div class="estufa_cards ">
                 <a href="./graficos.html" style="width: 29.5%;">
-                    <div class="card check" style="width: 100%;">
+                    <div class="card " id="div_check" style="width: 100%;">
                         <div class="kpi_titulo">
                             <span>Estufa 1</span>
                             <h2 id="h2_temperatura_real" >20°C</h2>
                         </div>
-                        <div class="estufa_icone ">
-                            <!-- <img src="../assets/img/Dashboard/termometro.svg" alt="" class="termometro"> -->
+                        <div class="estufa_icone " id="div_icones">
+                            <img src="../assets/img/Dashboard/TempAlta.svg" alt="" class="termometro" style="display: none;" id="img_TempAlta">
                             <img src="../assets/img/Dashboard/danger.svg" alt="">
                         </div>
                     </div>
                 </a>
-                <div class="card danger">
+                <div class="card check">
                     <div class="kpi_titulo">
                         <span>Estufa 2</span>
-                        <h2>22°C</h2>
+                        <h2>20°C</h2>
                     </div>
-                    <div class="estufa_icone">
-                        <img src="../assets/img/Dashboard/TempAlta.svg" alt="" >
+                    <div class="estufa_icone" id="div_icones">
+                        <!-- <img src="../assets/img/Dashboard/TempAlta.svg" alt="" > -->
                         
                         <img src="../assets/img/Dashboard/danger.svg" alt="">
                     </div>
@@ -202,6 +202,14 @@
       .then(response => response.json())
       .then(valores => {
         var temperatura = valores[valores.length - 1];
+
+        if(temperatura.temperatura > 21){
+            div_check.style.border = '2px solid red'
+            img_TempAlta.style.display = 'flex';
+        }else{
+            div_check.style.border = '2px solid green'
+            img_TempAlta.style.display = 'none';
+        }
         h2_temperatura_real.innerHTML = temperatura.temperatura + "°C";
       })
   }
