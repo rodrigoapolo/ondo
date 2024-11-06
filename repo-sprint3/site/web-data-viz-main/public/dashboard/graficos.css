@@ -1,0 +1,152 @@
+.grafico_dashboard {
+    width: 80%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+}
+
+.grafico_dashboard .content {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.grafico_dashboard .content .kpi_cards {
+    display: flex;
+}
+
+.grafico_dashboard .content .kpi_cards .card {
+    width: 49.4%;
+    height: 163px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grafico_dashboard .content .estufa_cards,
+.grafico_dashboard .content .kpi_cards {
+    width: 46%;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.grafico_container {
+    width: 100%;
+}
+
+.grafico_cards {
+    width: 46%;
+}
+
+.grafico_cards .grafico {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+.notificacoes_recentes {
+    width: 94%;
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.notificacoes_recentes .titulos {
+    display: flex;
+    justify-content: space-around;
+    font-size: 14px;
+    border-bottom: solid 1px grey;
+    padding: 10px 0;
+}
+.notificacoes_recentes  span{
+    flex: 1; /* Cada span ocupará um espaço igual */
+    text-align: center; /* Centraliza o texto */
+}
+
+.notificacoes_recentes .dados {
+    display: flex;
+    justify-content: space-around;
+    font-size: 12px;
+    align-items: center;
+}
+
+#grafico_pizza {
+    width: 45% !important;
+    height: 45% !important;
+    padding: 20px;
+}
+canvas#grafico_barra {
+    padding:  0 20px;
+    width: 100% !important;
+}
+
+#grafico_linha {
+    height: 100% !important;
+    padding: 0 20px;
+}
+
+.grafico h3 {
+    color: #666666;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 10px;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+.legenda{
+    width: 55%;
+}
+
+/* Estilos para a legenda */
+.custom-legend {
+    display: flex;
+    flex-direction: column;
+    /* Coluna para cada item da legenda */
+    align-items: flex-start;
+    /* Alinhamento à esquerda */
+    margin-left: 20px;
+    /* Margem para afastar da esquerda */
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    /* Centralizar verticalmente */
+    margin-bottom: 5px;
+    /* Espaçamento entre itens */
+    
+    font-size: 14px;
+}
+
+.legend-box {
+    width: 35px;
+    /* Tamanho da caixa da legenda */
+    height: 12px;
+    /* Altura da caixa da legenda */
+    margin-right: 10px;
+    /* Espaçamento entre a caixa e o texto */
+    font-size: 14px;
+}
+
+.grafico .container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.kpi_titulo img{
+    width: 25px;
+    height: 25px;
+}
