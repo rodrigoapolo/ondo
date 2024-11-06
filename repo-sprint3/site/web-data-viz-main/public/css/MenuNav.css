@@ -1,0 +1,84 @@
+/* Estilo da navbar */
+.navbar {
+    background-color: #F5F5F5;
+    height: 65px;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+
+.navbar ul {
+    display: flex;
+    gap: 24px;
+    padding: 0;
+}
+
+.navbar a {
+    font-size: 18px;
+    font-weight: 500;
+    color: #324224;
+    padding: 10px 0 5px;
+    text-align: center;
+    border-bottom: 2px solid transparent; 
+}
+
+.navbar_lista a:hover {
+    transition: 0.3s ease-in-out;
+    border-bottom: 2px solid #C19A6B;
+    color: #C19A6B;
+}
+
+.navbar_container-redesSociais {
+    display: flex;
+    gap: 12px;
+    margin-right: 58px;
+}
+
+.navbar_container-redesSociais img {
+    height: 26px;
+    cursor: pointer;
+}
+
+.navbar_container-redesSociais img:hover {
+    transition: 0.3s ease-in-out;
+    scale: 1.2;
+}
+
+.btn_login a {
+    color: #2E852C;
+    border: 2px solid #2E852C;
+    padding: 6px 12px;
+    border-radius: 5px;
+}
+
+.btn_login a:hover {
+    background-color: #2E852C;
+    border: 2px solid #2E852C;
+    color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.295);
+    transition: all 0.3s linear; 
+}
+
+
+.btn_cadastro a {
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background-color: #2E852C;
+}
+
+.btn_cadastro a:hover {
+    transition: all 0.3s linear; 
+    color: #2E852C;
+    background-color: transparent;
+    border: 2px solid #2E852C;
+    /* padding: 8px 16px; */
+    border-radius: 5px;
+}

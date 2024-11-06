@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./css/chart.css" />
+    <title>Graficos</title>
+  </head>
+  <body>
+
+
+    <div class="kpis">
+        <div class="kpi_temp_atual">
+          <span>Temperatura Atual</span>
+        </div>
+
+        <div class="kpi_temp_max_dia">
+          <span>Temperatura Máxima do Dia</span>
+        </div>
+
+        <div class="kpi_temp_min_dia">
+          <span>Temperatura Míxima do Dia</span>
+        </div>
+
+        <div class="kpi_alarme">
+          <span>Incidência de Alarmes</span>
+        </div>
+    </div>
+
+    <div class="graficos">
+      <div class="graficopizza">
+        <canvas id="grafico_pizza"></canvas>
+      </div>
+
+      <div class="graficobarra">
+        <canvas id="grafico_barra"></canvas>
+      </div>
+
+      <div class="graficolinha">
+        <canvas id="grafico_linha"></canvas>
+      </div>
+    </div>
+    
+  </body>
+</html>
+
+<script>
+  const graficoBarra = document.getElementById("grafico_barra");
+  const graficoLinha = document.getElementById("grafico_linha");
+  const graficoPizza = document.getElementById("grafico_pizza");
+
+  new Chart(graficoBarra, {
+    type: "bar",
+    data: {
+      labels: ["Temperatura do dia"],
+      datasets: [
+        {
+          label: "Temperatura Média",
+          data: [13],
+          borderWidth: 1,
+        },
+        {
+          label: "Temperatura Mínima",
+          data: [8],
+          borderWidth: 1,
+        },
+        {
+          label: "Temperatura Máxima",
+          data: [21],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true, // Define se o título deve ser exibido
+          text: "Análise de Temperatura Min, Máx e Média diária", // O texto do título
+          font: {
+            size: 20, // Tamanho da fonte do título
+            weight: "bold", // Peso da fonte do título
+          },
+          padding: {
+            top: 10, // Espaçamento acima do título
+            bottom: 30, // Espaçamento abaixo do título
+          },
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+
+  new Chart(graficoLinha, {
+    type: "line",
+    data: {
+      labels: [
+        "7:00",
+        "8:00",
+        "9:00",
+        "10:00",
+        "11:00",
+        "12:00",
+        "13:00",
+        "14:00",
+        "15:00",
+        "16:00",
+        "17:00",
+        "18:00",
+        "19:00",
+        "20:00",
+        "21:00",
+        "22:00",
+        "23:00",
+      ],
+      datasets: [
+        {
+          label: "Temperatura",
+          data: [
+            8, 8, 8.65, 9, 10, 12, 13, 16, 17, 19, 24, 18, 17, 16, 15, 14, 13,
+          ],
+          borderWidth: 1,
+        },
+        {
+      label: 'Temperatura mínima', 
+      data: [8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+      borderWidth: 1
+      },
+      {
+      label: 'Temperatura máxima', 
+      data: [21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21],
+      borderWidth: 1
+      }
+      ],
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true, // Define se o título deve ser exibido
+          text: "Análise de Temperatura por Hora", // O texto do título
+          font: {
+            size: 20, // Tamanho da fonte do título
+            weight: "bold", // Peso da fonte do título
+          },
+          padding: {
+            top: 10, // Espaçamento acima do título
+            bottom: 30, // Espaçamento abaixo do título
+          },
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+
+  new Chart(graficoPizza, {
+    type: "pie",
+    data: {
+      labels: ["Total ", "Alertas acionados"],
+      datasets: [
+        {
+          label: "Alertas do Dia",
+          data: [17, 1], // Valores para cada fatia
+          backgroundColor: [
+            // Cores para cada fatia
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            //'rgba(255, 206, 86, 0.2)',
+            //'rgba(75, 192, 192, 0.2)'
+          ],
+          borderColor: [
+            // Cores das bordas
+            "rgba(54, 162, 235, 1)",
+            "rgba(255, 99, 132, 1)",
+            //'rgba(255, 206, 86, 1)',
+            //'rgba(75, 192, 192, 1)'
+          ],
+          borderWidth: 1, // Largura da borda
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true, // Define se o título deve ser exibido
+          text: "Análise de Alertas sobre Aferições de Temperatura", // O texto do título
+          font: {
+            size: 20, // Tamanho da fonte do título
+            weight: "bold", // Peso da fonte do título
+          },
+          padding: {
+            top: 10, // Espaçamento acima do título
+            bottom: 30, // Espaçamento abaixo do título
+          },
+        },
+      },
+     
+    },
+  });
+</script>
+

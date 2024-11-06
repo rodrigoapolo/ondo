@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;900&display=swap');
+
+/* Estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    font-family: "Montserrat", system-ui;
+    text-align: center;
+    background-color: #F0F0F0;
+}
+
+#sobre-nos-equipe-ondo{
+    width: 100%;
+    margin-bottom: 40px;
+    max-width: 100%;
+    display: block;
+}
+
+/* Sessão Sobre */
+.sobre {
+    background-color: #F0F0F0;
+    padding: 20px 0;
+}
+
+.conteiner {
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#titulo-sobre {
+    color: #50984E;
+    margin-bottom: 60px;
+    font-size: 50px;
+}
+
+#paragrafo-sobre {
+    color: #333;
+    margin-bottom: 15px;
+    text-align: justify;
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+/* Tornando a página responsiva */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .conteiner {
+        width: 95%;
+    }
+}
