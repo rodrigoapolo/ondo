@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link rel="stylesheet" href="./css/login.css">
+  
+  <script src="./js/sessao.js"></script>
+
 
 </head>
 
@@ -23,30 +26,39 @@
           <img src="assets/img/personal.png" alt="">
           <input oninput="validarEmail()" id="ipt_email" type="text" placeholder="E-mail ou nome de usuário">
         </div>
-        
+
         <div class="ipt-container" id="div_senha">
           <img src="assets/img/password.png" alt="">
           <input oninput="validarSenha()" id="ipt_senha" type="password" placeholder="Senha">
         </div>
-        <a class="texSenha" style="display: none;" href="#">Esqueceu sua senha?<span class="texSpan"> Clique aqui.</span></a>
+        <a class="texSenha" style="display: none;" href="#">Esqueceu sua senha?<span class="texSpan"> Clique
+            aqui.</span></a>
       </div>
       <div class="container-btn">
-        <a href="./Dashboard/index.html" style="color: white;"><button onclick="login()" class="btn_entrar">Entrar </button></a>
+        <!-- <a href="./Dashboard/index.html" style="color: white;"><button onclick="login()" class="btn_entrar">Entrar </button></a> -->
+        <button class="botao btn_entrar" onclick="entrar()">Entrar</button>
         <a class="texCadastro" href="cadastro.html">Ainda não tem uma conta?</a>
       </div>
+      
       <div class="img_logo_ondo"></div>
     </div>
     <div class="image-wasabi"></div>
+
+    <div id="div_aguardar" class="loading-div">
+      <img src="./assets/circle-loading.gif" id="loading-gif">
+    </div>
+
+  <div id="div_erros_login"></div>
   </div>
 </body>
 
 </html>
-<script>  
+<script>
   var isEmail = false;
   var isSenha = false;
   var mensagem_error_email = "";
 
-  function validarSenha(){
+  function validarSenha() {
     var senha = ipt_senha.value
     mensagem_error_email = ""
     isSenha = true;
@@ -55,7 +67,7 @@
       mensagem_error_email = "<li>A senha precisa de ao menos 6 caracteres.</li>"
       div_senha.style.border = '1px solid red'
       isSenha = false;
-    }else{
+    } else {
       isSenha = true;
       ul_erro.style.display = 'none'
       div_senha.style.border = 'none'
@@ -81,11 +93,11 @@
     var possui_barra_direita = email.includes('/');
     var possui_aspas = email.includes('"');
 
-    if(ponto_ponto){
+    if (ponto_ponto) {
       isEmail = false
       mensagem_error_email += "<li>Não pode ter .. no email</li>"
     }
-    if(arroba_ponto){
+    if (arroba_ponto) {
       isEmail = false
       mensagem_error_email += "<li>Não pode ter @. no email</li>"
     }
@@ -101,12 +113,12 @@
       isEmail = false
       mensagem_error_email += `<li>Não pode ter " no email</li>`
     }
-    
+
     if (comeca_ponto) {
       isEmail = false
       mensagem_error_email += "<li>Não pode ter . no início no email</li>"
     }
-    
+
     if (!termina_br && !termina_com && !termina_school) {
       isEmail = false
       mensagem_error_email += "<li>O e-mail deve terminar com .com, .br ou .school.</li>"
@@ -116,7 +128,7 @@
       mensagem_error_email += "<li>Inclua '@' no e-mail.</li>"
     }
 
-    
+
     if (isEmail) {
       ul_erro.style.display = 'none'
       div_email.style.border = 'none'
@@ -127,20 +139,90 @@
     }
   }
 
-  function login(){
+  function login() {
     var email = ipt_email.value;
     var senha = ipt_senha.value;
 
-    if(isEmail && isSenha){
+    if (isEmail && isSenha) {
       if (email == "frizza@sptech.school" && senha == "Urubu@100") {
         alert("Login Success")
         //window.location.replace('')
       } else {
         alert("senha ou email errado")
       }
-    }else{
+    } else {
       alert("senha ou email errado")
     }
   }
+
+  function entrar() {
+    aguardar();
+    var emailVar = ipt_email.value;
+    var senhaVar = ipt_senha.value;
+    
+    console.log(emailVar, senhaVar)
+    if (emailVar == "" || senhaVar == "") {
+      cardErro.style.display = "block"
+      mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+      finalizarAguardar();
+      return false;
+    }
+    else {
+      setInterval(sumirMensagem, 5000)
+    }
+
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/usuarios/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar
+      })
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO entrar()!")
+
+      if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+          sessionStorage.EMAIL_USUARIO = json.email;
+          sessionStorage.NOME_USUARIO = json.nome;
+          sessionStorage.ID_USUARIO = json.id;
+          sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+          setTimeout(function () {
+            window.location = "./dashboard/cards.html";
+          }, 1000); // apenas para exibir o loading
+
+        });
+
+      } else {
+
+        console.log("Houve um erro ao tentar realizar o login!");
+
+        resposta.text().then(texto => {
+          console.error(texto);
+          finalizarAguardar(texto);
+        });
+      }
+
+    }).catch(function (erro) {
+      console.log(erro);
+    })
+
+    return false;
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none"
+  }
+
 
 </script>
