@@ -8,7 +8,7 @@
 -- mysql -u api -p -P 3307
 -- Sptech#2024
 
--- CREATE DATABASE ondo;
+CREATE DATABASE ondo;
 
 USE ondo;
 
@@ -52,10 +52,11 @@ CREATE TABLE sensor (
     idSensor INT AUTO_INCREMENT PRIMARY KEY,
     localidade VARCHAR(100),
     tipo VARCHAR(45),
-    fkEstufa INT unique,
+    fkEstufa INT,
     CONSTRAINT fkSensorEstufa 
     FOREIGN KEY (fkEstufa) REFERENCES estufa(idEstufa)
 );
+
 
 -- Tabela temperatura
 CREATE TABLE medicao (
@@ -67,7 +68,7 @@ CREATE TABLE medicao (
     FOREIGN KEY (fkSensor) REFERENCES sensor(idSensor)
 );
 
--- Tabela aviso
+-- Tabela aviso/alerta
 CREATE TABLE alerta (
     idAlerta INT AUTO_INCREMENT,
     temperatura DECIMAL(10,2),
@@ -112,7 +113,9 @@ SELECT * FROM estufa;
 INSERT INTO sensor (localidade, tipo, fkEstufa) 
 VALUES 
 ('corredor principal', 'temperatura', 1),
+('corredor lateral esquerdo', 'temperatura', 1),
 ('corredor 1', 'temperatura', 2),
+('corredor 2', 'temperatura', 2),
 ('corredor A', 'temperatura', 3),
 ('corredor Azul', 'temperatura', 4);
 
@@ -123,7 +126,9 @@ SELECT * FROM sensor;
 INSERT INTO medicao (temperatura, dataHora, fkSensor) 
 VALUES 
 (15.5, '2024-09-01 12:30:00', 1),
+(17, '2024-09-01 12:50:00', 1),
 (8.1, '2024-09-01 13:30:00', 2),
+(8.7, '2024-09-01 13:50:00', 2),
 (18.0, '2024-09-02 14:30:00', 3),
 (10.8, '2024-09-02 15:30:00', 4);
 
@@ -132,9 +137,9 @@ SELECT * FROM medicao;
 -- Inserir dados na tabela aviso
 INSERT INTO alerta (temperatura, mensagem, fkSensor) 
 VALUES 
-(11.0, 'A temperatura exige atenção na Estufa A', 1),
-(9.0, 'A temperatura exige atenção na Estufa B', 2),
-(5.0, 'Alerta! A temperatura está fora do limite na Estufa C', 3);
+(19.0, 'A temperatura exige atenção', 1),
+(9.0, 'A temperatura exige atenção', 3),
+(5.0, 'Alerta! A temperatura está fora do limite', 3);
 
 SELECT * FROM alerta;
 

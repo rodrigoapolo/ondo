@@ -148,33 +148,36 @@
         var logradouroVar = input_logradouro.value;
         var cidadeVar = input_cidade.value;
         var estadoVar = input_estado.value;
-        
+        var idEmpresaVincular = null;
 
-       
-        // var idEmpresaVincular 
-
-        // // Verificação do código de ativação da empresa (caso necessário)
-        // for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-        //     if (listaEmpresasCadastradas[i].codigo_ativacao === "codigoVar") {  // Aqui "codigoVar" é apenas um exemplo; substitua conforme necessário.
-        //         idEmpresaVincular = listaEmpresasCadastradas[i].id;
-        //         console.log("Código de ativação válido.");
-        //         break;
-        //     }
-        // }
+        // Verificação do código de ativação da empresa (caso necessário)
+        for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
+            if (listaEmpresasCadastradas[i].codigo_ativacao === "codigoVar") {  // Aqui "codigoVar" é apenas um exemplo; substitua conforme necessário.
+                idEmpresaVincular = listaEmpresasCadastradas[i].id;
+                console.log("Código de ativação válido.");
+                break;
+            }
+        }
 
         // Enviando os dados para o servidor
-    
         fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                
-                responsavelServer: responsavelVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-               
+                cnpj: cnpjVar,
+                razao_social: razao_socialVar,
+                nome_fantasia: nome_fantasiaVar,
+                responsavel: responsavelVar,
+                email: emailVar,
+                senha: senhaVar,
+                cep: cepVar,
+                bairro: bairroVar,
+                logradouro: logradouroVar,
+                cidade: cidadeVar,
+                estado: estadoVar,
+                idEmpresaVincular: idEmpresaVincular
             }),
         })
         .then(function (resposta) {
@@ -190,42 +193,6 @@
             div_mensagem.innerHTML = "<span style='color: red;'>Erro ao conectar ao servidor.</span>";
         });
     }
-    // function vincular_empresa () {
-    //      // Enviando os dados para o servidor
-    
-    //      fetch("/empresas/cadastrar", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({
-                
-    //             cnpjServer: cnpjVar,
-    //             razao_socialServer: razao_socialVar,
-    //             nome_fantasiaServer: nome_fantasiaVar,
-    //             cepServer: cepVar,
-    //             bairroServer: bairroVar,
-    //             logradouroServer: logradouroVar,
-    //             cidadeServer: cidadeVar,
-    //             estadoServer: estadoVar
-               
-    //         }),
-    //     })
-    //     .then(function (resposta) {
-    //         if (resposta.ok) {
-    //             console.log("Cadastro realizado com sucesso!");
-    //             div_mensagem.innerHTML = "<span style='color: green;'>Cadastro realizado com sucesso!</span>";
-    //         } else {
-    //             correto = false;
-    //             div_mensagem.innerHTML = "<span style='color: red;'>Erro ao cadastrar. Tente novamente.</span>";
-    //         }
-    //     })
-    //     .catch(function (erro) {
-    //         console.error("Erro:", erro);
-    //         div_mensagem.innerHTML = "<span style='color: red;'>Erro ao conectar ao servidor.</span>";
-    //     });
-
-    // }
     function ocultar (){
         div_form1.style.display = 'none';
         div_form2.style.display = 'flex';
