@@ -1,4 +1,3 @@
-
 -- mysql -u root -p -P 3307
 -- SPTech#2024
 -- create user 'api'@'%' identified by 'Sptech#2024';
@@ -11,7 +10,7 @@
 
 CREATE DATABASE ondo;
 
-USE  ondo;
+USE ondo;
 
 CREATE TABLE usuario (
     idUsuario INT AUTO_INCREMENT PRIMARY KEY,
@@ -23,20 +22,19 @@ CREATE TABLE usuario (
 -- Tabela empresa
 CREATE TABLE empresa (
     idEmpresa INT AUTO_INCREMENT PRIMARY KEY,
-	cnpj CHAR(14),
     razaoSocial VARCHAR(100),
     nomeFantasia VARCHAR(45),
+    cnpj CHAR(14),
     cep CHAR(8),
-    bairro VARCHAR(45),
-    logradouro VARCHAR(100),
-	numero VARCHAR(45),
+    numero VARCHAR(45),
+    rua VARCHAR(100),
     cidade VARCHAR(100),
-    UF VARCHAR(100),
+    estado VARCHAR(100),
+    pais VARCHAR(100),
     fkUsuario INT,
     CONSTRAINT fkEmpresaUsuario
     FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
-
 
 -- Tabela estufa
 CREATE TABLE estufa (
@@ -91,11 +89,11 @@ VALUES
 SELECT * FROM usuario;
 
 -- Inserir dados na tabela empresa
-INSERT INTO empresa (razaoSocial, nomeFantasia, cnpj, cep, numero, logradouro, cidade, UF, fkUsuario) 
+INSERT INTO empresa (razaoSocial, nomeFantasia, cnpj, cep, numero, rua, cidade, estado, pais, fkUsuario) 
 VALUES 
-('Minato Wasabi LTDA', 'Minato Wasabi', '12345678901234', '12345678', '101', 'Rua Verde', 'São Paulo', 'SP', 1),
-('Wasabi Chicara LTDA', 'Wasabi Chicara', '98765432109876', '87654321', '202', 'Avenida Azul', 'Rio de Janeiro', 'RJ', 2),
-('Yama Wasabi LTDA', 'Yama Wasabi', '11223344556677', '13579135', '303', 'Rua das Plantas', 'Belo Horizonte', 'MG', 3);
+('Minato Wasabi LTDA', 'Minato Wasabi', '12345678901234', '12345678', '101', 'Rua Verde', 'São Paulo', 'SP', 'Brasil', 1),
+('Wasabi Chicara LTDA', 'Wasabi Chicara', '98765432109876', '87654321', '202', 'Avenida Azul', 'Rio de Janeiro', 'RJ', 'Brasil', 2),
+('Yama Wasabi LTDA', 'Yama Wasabi', '11223344556677', '13579135', '303', 'Rua das Plantas', 'Belo Horizonte', 'MG', 'Brasil', 3);
 
 SELECT * FROM empresa;
 
