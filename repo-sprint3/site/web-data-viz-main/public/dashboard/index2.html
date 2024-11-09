@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="menuLateral.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <header class="menu_dashboard">
+        <nav class="menuLateral">
+            <img src="../assets/img/logo_branco.png" alt="">
+            <ul class="container_lista">
+                <li class="menu_item select">
+                    <div class="container_img">
+                        <img src="../assets/img/Dashboard/House_verde.svg" alt="">
+                    </div>
+                    <a href="./index.html">Home</a>
+                </li>
+                <li class="menu_item">
+                    <div class="container_img " style="height: 25px;">
+                        <img src="../assets/img/Dashboard/chart-line-solid_branco.svg" alt="">
+                    </div>
+                    <a href="graficos.html">Graficos</a>
+                </li>
+                <li class="menu_item disable" >
+                    <div class="container_img ">
+                        <img src="../assets/img/Dashboard/bell-regular_branco.svg" alt="">
+                    </div>
+                    <a href="notificacao.html">Notificação</a>
+                </li>
+
+                <li class="menu_item disable" >
+                    <div class="container_img ">
+                        <img src="../assets/img/Dashboard/info_branco.svg" alt="">
+                    </div>
+                    <a href="help.html">Ajuda e Suporte</a>
+                </li>
+
+                <li class="menu_item">
+                    <div class="container_img ">
+                        <img src="../assets/img/Dashboard/sair.svg" alt="">
+                    </div>
+                    <a href="../index.html">Sair</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="home_dashboard">
+        <div class="boasVindas">
+            <div class="container">
+                <h3>Inicio</h3>
+                <h5>Bem vindo, Frizza</h5>
+            </div>
+        </div>
+        <div class="content">
+            <div class="kpi_cards">
+                <div class="card">
+                    <div class="kpi_titulo">
+                        <span>Estufas monitoradas</span>
+                        <img src="../assets/img/Dashboard/olho.svg" alt="">
+                    </div>
+                    <div class="kpi_dado">
+                        <h2>3</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="kpi_titulo">
+                        <span>Temperaturas adequadas</span>
+                        <img src="../assets/img/Dashboard/termometro.svg" alt="">
+                    </div>
+                    <div class="kpi_dado">
+                        <h2>1</h2>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="kpi_titulo">
+                        <span>Temperaturas inadequadas</span>
+                        <img src="../assets/img/Dashboard/termometro.svg" alt="">
+                    </div>
+                    <div class="kpi_dado">
+                        <h2>2</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="kpi_titulo">
+                        <span>Estufas com alertas</span>
+                        <img src="../assets/img/Dashboard/danger_green.svg" alt="" class="img_sino">
+                    </div>
+                    <div class="kpi_dado">
+                        <h2>3</h2>
+                    </div>
+
+                </div>
+            </div>
+            <div class="estufa_cards ">
+                <a href="./graficos.html" style="width: 29.5%;">
+                    <div class="card " id="div_check" style="width: 100%;">
+                        <div class="kpi_titulo">
+                            <span>Estufa 1</span>
+                            <h2 id="h2_temperatura_real" >20°C</h2>
+                        </div>
+                        <div class="estufa_icone " id="div_icones">
+                            <img src="../assets/img/Dashboard/TempAlta.svg" alt="" class="termometro" style="display: none;" id="img_TempAlta">
+                            <img src="../assets/img/Dashboard/danger.svg" alt="">
+                        </div>
+                    </div>
+                </a>
+                <div class="card check">
+                    <div class="kpi_titulo">
+                        <span>Estufa 2</span>
+                        <h2>20°C</h2>
+                    </div>
+                    <div class="estufa_icone" id="div_icones">
+                        <img src="../assets/img/Dashboard/danger.svg" alt="">
+                    </div>
+                </div>
+                <div class="card danger">
+                    <div class="kpi_titulo">
+                        <span>Estufa 3</span>
+                        <h2>7°C</h2>
+                    </div>
+                    <div class="estufa_icone">
+                        <img src="../assets/img/Dashboard/TempBaixa.svg" alt="" >
+                        
+                        <img src="../assets/img/Dashboard/danger.svg" alt="">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+
+</html>
+
+<script>
+    function temperaturaReal() {
+    fetch('http://localhost:3300/sensores/analogico')
+      .then(response => response.json())
+      .then(valores => {
+        var temperatura = valores[valores.length - 1];
+
+        if(temperatura.temperatura > 21){
+            div_check.style.border = '2px solid red'
+            img_TempAlta.style.display = 'flex';
+        }else{
+            div_check.style.border = '2px solid green'
+            img_TempAlta.style.display = 'none';
+        }
+        h2_temperatura_real.innerHTML = temperatura.temperatura + "°C";
+      })
+  }
+  setInterval(() => {
+    temperaturaReal()
+  }, 1000);
+</script>
