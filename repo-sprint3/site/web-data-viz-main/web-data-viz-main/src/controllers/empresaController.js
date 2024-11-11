@@ -41,7 +41,7 @@ function cadastrar(req, res) {
         .status(401)
         .json({ mensagem: `a empresa com o cnpj ${cnpj} já existe` });
     } else {
-      empresaModel.cadastrar(cnpj,razaoSocial,nomeFantasia,cep,bairro, logradouro, numero, cidade, estado, fkUsuario ).then((resultado) => {
+      empresaModel.cadastrar(cnpj,razaoSocial,nomeFantasia,cep,bairro, logradouro, numero, cidade, estado, fkUsuario).then((resultado) => {
         res.status(201).json(resultado);
       });
     }

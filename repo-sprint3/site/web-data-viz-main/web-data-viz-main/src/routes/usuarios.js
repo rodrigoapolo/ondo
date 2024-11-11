@@ -3,7 +3,9 @@ const router = express.Router();
 const usuarioController = require("../controllers/usuarioController");
 
 // Rota para cadastrar um novo usuário
-router.post("/cadastrar", usuarioController.cadastrar);
+router.post("/cadastrar",function (req, res) {
+    usuarioController.cadastrar(req, res);
+});
 
 
 
