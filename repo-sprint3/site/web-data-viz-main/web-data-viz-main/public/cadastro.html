@@ -65,6 +65,9 @@
                 <div class="form-group">
                     <input class="endereco-input" id="input_logradouro" placeholder="Logradouro" type="text"  oninput="validarRua()" />
                 </div>
+                <div class="form-group">
+                    <input class="endereco-input" id="input_numero" placeholder="Numero" type="text"  oninput="validarNumero()" />
+                </div>
                 <div class="form-group">                    
                     <input class="endereco-input" id="input_cidade" placeholder="Cidade" type="text" oninput="validarCidade()" />
                 </div>
@@ -126,6 +129,10 @@
         validarBairro();
         validarRua();
         validarCidade();
+<<<<<<< HEAD:repo-sprint3/site/web-data-viz-main/web-data-viz-main/public/cadastro.html
+=======
+        validarNumero()
+>>>>>>> 34590d5638d14fecb2f6ea0b0a4d6fc680656ac4:repo-sprint3/site/web-data-viz-main/public/cadastro.html
 
         if (correto) {
            alert("Usuário cadastrado com sucesso!");
@@ -151,6 +158,10 @@
         var logradouroVar = input_logradouro.value;
         var cidadeVar = input_cidade.value;
         var estadoVar = input_estado.value;
+<<<<<<< HEAD:repo-sprint3/site/web-data-viz-main/web-data-viz-main/public/cadastro.html
+=======
+        var numeroVar = input_numero.value
+>>>>>>> 34590d5638d14fecb2f6ea0b0a4d6fc680656ac4:repo-sprint3/site/web-data-viz-main/public/cadastro.html
         
 
        
@@ -499,6 +510,20 @@ function validarRua() {
     } else {
         input_logradouro.style.borderColor = "green";
         mensagem += "<span style='color: green;'>Rua válida</span>";
+    }
+    div_mensagem.innerHTML = mensagem;
+}
+function validarNumero() {
+    var mensagem = "";
+    var numero = input_numero.value;
+
+    if (numero.length <= 0) {
+        input_numero.style.borderColor = "red";
+        mensagem += "Por favor, insira um número. <br>";
+        correto = false;
+    } else {
+        input_numero.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Número válido</span>";
     }
     div_mensagem.innerHTML = mensagem;
 }

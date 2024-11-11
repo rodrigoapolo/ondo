@@ -554,5 +554,554 @@ function validarCidade() {
 
     
 
+<<<<<<< HEAD:repo-sprint3/site/web-data-viz-main/web-data-viz-main/public/cadastro-teste.html
+=======
+    function cadastrar() {
+        correto = true;
+
+        validarCNPJ();
+        validarRazaoSocial();
+        validarNomeFantasia();
+        validarResponsavel();
+        validarEmail();
+        validarSenha();
+        validarCEP();
+        validarEstado();
+        validarBairro();
+        validarRua();
+        validarCidade();
+
+        if (correto) {
+           alert("Usuário cadastrado com sucesso!");
+
+        } else {
+            alert("Corrija os campos destacados");
+        }
+    }
+</script>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/css/cadastro.css">
+    <style>
+        #div_mensagem {
+            text-align: center;
+            margin-bottom: 10px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-section">
+            <!-- <img src="assets/img/cadastro.svg" alt=""> -->
+        </div>
+        <a href="index.html">
+            <img class="img_btn_voltar" src="assets/img/btn_voltar cadastro.png" alt="btn voltar">
+        </a>
+        <div class="form-container">
+            <h2 class="titulo_principal">Cadastre-se aqui</h2>
+            <div class="form_cointainer_empresa" id="div_form1">
+                <h3 class="titulo_form">Dados da empresa:</h3>
+                <div class="form-group">
+                    <i class="fas fa-id-card"></i>
+                    <input class="main-input" id="input_cnpj" placeholder="CNPJ" type="text" oninput="validarCNPJ()" />
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-building"></i>
+                    <input class="main-input" id="input_razao_social" placeholder="Razão social" type="text" oninput="validarRazaoSocial()" />
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-industry"></i>
+                    <input class="main-input" id="input_nome_fantasia" placeholder="Nome fantasia" type="text" oninput="validarNomeFantasia()" />
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-user-tie"></i>
+                    <input class="main-input" id="input_responsavel" placeholder="Responsável" type="text" oninput="validarResponsavel()" />
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <input class="main-input" id="input_email" placeholder="E-mail" type="text" oninput="validarEmail()" />
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input class="main-input" id="input_senha" placeholder="Senha" type="password" oninput="validarSenha()" />
+                </div>
+                <div class="form-group">
+                    <button onclick="ocultar()">Seguinte</button>
+                </div>
+            </div>            
+            <div class="form_container_endereco" id="div_form2"  style="display: none;">
+                <h3 class="titulo_form">Endereço:</h3> 
+                <div class="form-group">
+                    <input class="endereco-input" id="input_cep" placeholder="CEP" type="text"  oninput="validarCEP()" />
+                </div>
+                <div class="form-group">
+                    <input class="endereco-input" id="input_bairro" placeholder="Bairro"  type="text" oninput="validarBairro()" />
+                </div>
+                <div class="form-group">
+                    <input class="endereco-input" id="input_logradouro" placeholder="Logradouro" type="text"  oninput="validarRua()" />
+                </div>
+                <div class="form-group">                    
+                    <input class="endereco-input" id="input_cidade" placeholder="Cidade" type="text" oninput="validarCidade()" />
+                </div>
+                <div class="form-group">
+                    <input class="endereco-input" id="input_estado" placeholder="UF" type="text"  oninput="validarEstado()" /> 
+                </div>
+                    <button class="btn_acao" onclick="voltar()">Voltar</button>
+                <div class="form-group">
+                    <button id="btn_cadastrar" onclick="cadastrar()" type="button">CADASTRE-SE</button>
+                </div>
+            </div>
+            <div id="div_mensagem"></div>
+<!-- 
+            <br>
+            <span><a class="texLogin" href="login.html">Já tem uma conta? <br></a></span>
+
+            <div class="terms">
+                Ao clicar em Cadastre-se, você concorda com nossos
+                <a href="#">Termos</a>, 
+                <a href="#">Política de Privacidade</a> e 
+                <a href="#">Política de Cookies</a>. 
+            </div>
+            <div class="logo">
+                <img alt="" src="../site/assets/img/logo_ondo_cadastro.png"/>
+            </div> -->
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    // Array para armazenar empresas cadastradas para validação de código de ativação
+    var listaEmpresasCadastradas = [];
+
+    function ocultar() {
+        div_form1.style.display = 'none';
+        div_form2.style.display = 'flex';
+    }
+    
+    function voltar() {
+        div_form1.style.display = 'flex';
+        div_form2.style.display = 'none';
+    }
+
+    function cadastrar() {
+        var correto = true;
+
+        // Validar todos os campos antes de cadastrar
+       
+        correto = true;
+
+        validarCNPJ();
+        validarRazaoSocial();
+        validarNomeFantasia();
+        validarResponsavel();
+        validarEmail();
+        validarSenha();
+        validarCEP();
+        validarEstado();
+        validarBairro();
+        validarRua();
+        validarCidade();
+
+        if (correto) {
+           alert("Usuário cadastrado com sucesso!");
+        
+        }
+
+       
+
+        // Armazenar os valores dos inputs
+   
+        var responsavelVar = input_responsavel.value;
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
+
+        var cnpjVar = input_cnpj.value;
+        var razao_socialVar = input_razao_social.value;
+        var nome_fantasiaVar = input_nome_fantasia.value;
+        var cepVar = input_cep.value;
+        var bairroVar = input_bairro.value;
+        var logradouroVar = input_logradouro.value;
+        var cidadeVar = input_cidade.value;
+        var estadoVar = input_estado.value;
+        
+
+       
+        // var idEmpresaVincular 
+
+        // // Verificação do código de ativação da empresa (caso necessário)
+        // for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
+        //     if (listaEmpresasCadastradas[i].codigo_ativacao === "codigoVar") {  // Aqui "codigoVar" é apenas um exemplo; substitua conforme necessário.
+        //         idEmpresaVincular = listaEmpresasCadastradas[i].id;
+        //         console.log("Código de ativação válido.");
+        //         break;
+        //     }
+        // }
+
+        // Enviando os dados para o servidor
+    
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                
+                responsavelServer: responsavelVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+               
+            }),
+        })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                console.log("Cadastro realizado com sucesso!");
+                div_mensagem.innerHTML = "<span style='color: green;'>Cadastro realizado com sucesso!</span>";
+            } else {
+                div_mensagem.innerHTML = "<span style='color: red;'>Erro ao cadastrar. Tente novamente.</span>";
+            }
+        })
+        .catch(function (erro) {
+            console.error("Erro:", erro);
+            div_mensagem.innerHTML = "<span style='color: red;'>Erro ao conectar ao servidor.</span>";
+        });
+    }
+    // function vincular_empresa () {
+    //      // Enviando os dados para o servidor
+    
+    //      fetch("/empresas/cadastrar", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({
+                
+    //             cnpjServer: cnpjVar,
+    //             razao_socialServer: razao_socialVar,
+    //             nome_fantasiaServer: nome_fantasiaVar,
+    //             cepServer: cepVar,
+    //             bairroServer: bairroVar,
+    //             logradouroServer: logradouroVar,
+    //             cidadeServer: cidadeVar,
+    //             estadoServer: estadoVar
+               
+    //         }),
+    //     })
+    //     .then(function (resposta) {
+    //         if (resposta.ok) {
+    //             console.log("Cadastro realizado com sucesso!");
+    //             div_mensagem.innerHTML = "<span style='color: green;'>Cadastro realizado com sucesso!</span>";
+    //         } else {
+    //             correto = false;
+    //             div_mensagem.innerHTML = "<span style='color: red;'>Erro ao cadastrar. Tente novamente.</span>";
+    //         }
+    //     })
+    //     .catch(function (erro) {
+    //         console.error("Erro:", erro);
+    //         div_mensagem.innerHTML = "<span style='color: red;'>Erro ao conectar ao servidor.</span>";
+    //     });
+
+    // }
+    function ocultar (){
+        div_form1.style.display = 'none';
+        div_form2.style.display = 'flex';
+    }
+    function voltar (){
+        div_form1.style.display = 'flex';
+        div_form2.style.display = 'none';
+    }
+
+  var isEmail = false;
+  var isSenha = false;
+  var mensagem_error_email = "";
+  function validarCNPJ() {
+    var cnpj = input_cnpj.value;
+    var tamanho_cnpj = cnpj.length;
+    var possui_traco = cnpj.includes("-");
+    var possui_barra = cnpj.includes("/");
+    var possui_ponto = cnpj.includes(".");
+    var mensagem = "";
+
+    if (possui_traco || possui_barra || possui_ponto) {
+        input_cnpj.style.borderColor = "red";
+        mensagem += "Por favor, insira o CNPJ sem pontos, traços ou barras. Caracteres inválidos encontrados. <br>";
+        correto = false;
+    }
+
+     else if (tamanho_cnpj !== 14) {
+        input_cnpj.style.borderColor = "red";
+        mensagem += "O CNPJ deve possuir exatamente 14 números. <b>Você digitou " + tamanho_cnpj + " números.</b> <br>";
+        correto = false;
+    } else if (tamanho_cnpj == 14) {
+        input_cnpj.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>CNPJ válido</span><br>";
+    } else if (possui_traco || possui_barra || possui_ponto) {
+        input_cnpj.style.borderColor = "red";
+        mensagem += "Por favor, insira o CNPJ sem pontos, traços ou barras. Caracteres inválidos encontrados. <br>";
+        correto = false;
+    }
+    div_mensagem.innerHTML = mensagem;
+}
+
+function validarRazaoSocial() {
+    var razao_social = input_razao_social.value;
+    var tamanho_razao = razao_social.length;
+    var mensagem = "";
+
+    if (tamanho_razao < 3) {
+        input_razao_social.style.borderColor = "red";
+        mensagem += "A razão social deve ter pelo menos 3 caracteres. <b>Atualmente, possui " + tamanho_razao + " caracteres. </b><br>";
+        correto = false;
+    } else {
+        input_razao_social.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Razão social válida</span>";
+    }
+    div_mensagem.innerHTML = mensagem;
+}
+
+function validarNomeFantasia() {
+    var nome_fantasia = input_nome_fantasia.value;
+    var tamanho_fantasia = nome_fantasia.length;
+    var mensagem = "";
+
+    if (tamanho_fantasia < 3) {
+        input_nome_fantasia.style.borderColor = "red";
+        mensagem += "O nome fantasia deve ter pelo menos 3 caracteres. <b>Você digitou apenas " + tamanho_fantasia + " caracteres. </b><br>";
+        correto = false;
+    } else {
+        input_nome_fantasia.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Nome fantasia válido</span>";
+    }
+    div_mensagem.innerHTML = mensagem;
+}
+
+function validarResponsavel() {
+    var responsavel = input_responsavel.value;
+    var tamanho_responsavel = responsavel.length;
+    var possui_1 = input_responsavel.value.includes("1")
+    var possui_2 = input_responsavel.value.includes("2")
+    var possui_3 = input_responsavel.value.includes("3")
+    var possui_4 = input_responsavel.value.includes("4")
+    var possui_5 = input_responsavel.value.includes("5")
+    var possui_6 = input_responsavel.value.includes("6")
+    var possui_7 = input_responsavel.value.includes("7")
+    var possui_8 = input_responsavel.value.includes("8")
+    var possui_9 = input_responsavel.value.includes("9")
+    var possui_0 = input_responsavel.value.includes("0")
+    var mensagem = "";
+
+    if (possui_1 || possui_2 || possui_3 || possui_4 || possui_5 || possui_6 || possui_7 || possui_8 || possui_9 || possui_0 ) {
+        input_responsavel.style.borderColor = "red";
+        mensagem += "O nome do responsável não pode conter números.  <b>Por favor, remova os dígitos numéricos.</b> <br>";
+        correto = false;
+    } 
+    else if (tamanho_responsavel <= 3) {
+        input_responsavel.style.borderColor = "red";
+        mensagem += "O nome do responsável deve ter pelo menos 3 caracteres. <b>Você digitou " + tamanho_responsavel + " caracteres. </b><br>";
+        correto = false;
+    } else {
+        input_responsavel.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Nome do responsável válido</span>";
+    }
+    div_mensagem.innerHTML = mensagem;
+}
+
+    function validarEmail() {
+    var email = input_email.value;
+    email = email.toLowerCase();
+    var mensagem = "";
+
+    var comeca_ponto = email.startsWith('.');
+    var ponto_ponto = email.includes('..');
+    var arroba_ponto = email.includes('@.');
+    var termina_com = email.endsWith('.com');
+    var termina_br = email.endsWith('.br');
+    var termina_school = email.endsWith('.school')
+    var possui_arroba = email.includes('@');
+    var possui_barra = email.includes('\\');
+    var possui_barra_direita = email.includes('/');
+    var possui_aspas = email.includes('"');
+
+    if(ponto_ponto){
+        input_email.style.borderColor = "red";
+        correto = false;
+      mensagem_error_email += "Não pode ter .. no email<br>"
+    }
+    if(arroba_ponto){
+        input_email.style.borderColor = "red";
+
+        correto = false;
+      mensagem += " Não pode ter @. no email<br>"
+    }
+    if (possui_barra) {
+        input_email.style.borderColor = "red";
+
+        correto = false;
+        mensagem += "Não pode ter \\ no email<br>"
+    }
+    if (possui_barra_direita) {
+        input_email.style.borderColor = "red";
+
+        correto = false;
+        mensagem += "Não pode ter / no emai<br>"
+    }
+    if (possui_aspas) {
+        input_email.style.borderColor = "red";
+        correto = false;
+        mensagem += `Não pode ter " no emai<br>`
+    }
+    
+    if (comeca_ponto) {
+        input_email.style.borderColor = "red";
+        correto = false;
+        mensagem += " Não pode ter . no início no emai<br>"
+    }
+    
+    if (!termina_br && !termina_com && !termina_school) {
+        input_email.style.borderColor = "red";
+        correto = false;
+        mensagem += "O e-mail deve terminar com .com, .br ou .school<br>"
+    }
+    if (!possui_arroba) {
+        input_email.style.borderColor = "red";
+        correto = false;
+        mensagem += " Inclua '@' no e-mail.<br> ";
+    } 
+    if (!possui_arroba || (!termina_com && !termina_br && !termina_school)) {
+    input_email.style.borderColor = "red";
+    mensagem += "Certifique-se de que o e-mail contém '@' e termina com '.com', '.br' ou '.school'.<br>";
+    correto = false;
+    }
+    else {
+        input_email.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Email válido</span>";
+    }
+    div_mensagem.innerHTML = mensagem;
+}
+
+function validarSenha() {
+    var senha = input_senha.value;
+    var mensagem = "";
+    var tem_especial = senha.includes("!") || senha.includes("@") || senha.includes("#") ||
+                       senha.includes("$") || senha.includes("%") || senha.includes("&");
+    
+    var possui_numero = senha.includes("0") || senha.includes("1") || senha.includes("2") ||
+                        senha.includes("3") || senha.includes("4") || senha.includes("5") ||
+                        senha.includes("6") || senha.includes("7") || senha.includes("8") ||
+                        senha.includes("9");
+    
+    var temMaiuscula = senha != senha.toLowerCase();
+    var temMinuscula = senha != senha.toUpperCase();
+    
+    var correto = true;
+
+    if (senha.length < 6) {
+        input_senha.style.borderColor = "red";
+        mensagem += "A senha precisa de ao menos 6 caracteres.<br><b>Atualmente, possui " + senha.length + " caracteres.</b><br>";
+        correto = false;
+    } else if (senha.length > 6 && tem_especial && possui_numero && temMaiuscula && temMinuscula) {
+        input_senha.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Senha válida</span>";
+    } else {
+        mensagem += "A senha precisa ter:<br>" +
+                    "- Ao menos um caractere especial (! @ # $ % &)<br>" +
+                    "- Ao menos uma letra maiúscula<br>" +
+                    "- Ao menos um numero <br>" +
+                    "- Ao menos uma letra minúscula";
+        input_senha.style.borderColor = "red";
+        correto = false;
+    }
+    
+    div_mensagem.innerHTML = mensagem;
+}
+
+function validarCEP() {
+    var cep = input_cep.value;
+    var tamanho_cep = cep.length;
+    var mensagem = "";
+
+    if (tamanho_cep !== 8) {
+        input_cep.style.borderColor = "red";
+        mensagem += "O CEP deve ter exatamente 8 dígitos. <b> Você digitou " + tamanho_cep + " dígitos. </b><br>";
+        correto = false;
+    } else {
+        input_cep.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>CEP válido</span>";
+    }
+    div_mensagem.innerHTML = mensagem;
+}
+
+function validarEstado() {
+    var estado = input_estado.value;
+    var mensagem = "";
+
+    if (estado.length != 2) {
+        input_estado.style.borderColor = "red";
+        mensagem += "A sigla do estado deve ter exatamente 2 caracteres.  <b>Você digitou " + estado.length + " caracteres.</b> <br>";
+        correto = false;
+    } else {
+        input_estado.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Estado válido</span>";
+    }
+    div_mensagem.innerHTML = mensagem;
+}
+
+function validarBairro() {
+    var mensagem = "";
+    var bairro = input_bairro.value;
+
+    if (bairro.length <= 0) {
+        input_bairro.style.borderColor = "red";
+        mensagem += "Por favor, insira o nome do bairro. <br>";
+        correto = false;
+    } else {
+        input_bairro.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Bairro válido</span>";
+    }
+    div_mensagem.innerHTML = mensagem;
+}
+
+function validarRua() {
+    var mensagem = "";
+    var rua = input_logradouro.value;
+
+    if (rua.length <= 0) {
+        input_logradouro.style.borderColor = "red";
+        mensagem += "Por favor, insira o nome da rua. <br>";
+        correto = false;
+    } else {
+        input_logradouro.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Rua válida</span>";
+    }
+    div_mensagem.innerHTML = mensagem;
+}
+
+function validarCidade() {
+    var mensagem = "";
+    var cidade = input_cidade.value;
+
+    if (cidade.length <= 0) {
+        input_cidade.style.borderColor = "red";
+        mensagem += "Por favor, insira o nome da cidade. <br>";
+        correto = false;
+    } else {
+        input_cidade.style.borderColor = "green";
+        mensagem += "<span style='color: green;'>Cidade válida</span>";
+    }
+    div_mensagem.innerHTML = mensagem;
+    div_mensagem.innerHTML  = "";
+
+}
+
+        div_mensagem.innerHTML  = "";
+
+    
+
+>>>>>>> 34590d5638d14fecb2f6ea0b0a4d6fc680656ac4:repo-sprint3/site/web-data-viz-main/public/cadastro-teste.html
    
 </script>

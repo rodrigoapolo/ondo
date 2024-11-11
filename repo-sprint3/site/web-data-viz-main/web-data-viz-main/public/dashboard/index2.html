@@ -1,4 +1,30 @@
 <!DOCTYPE html>
+<<<<<<< HEAD:repo-sprint3/site/web-data-viz-main/web-data-viz-main/public/dashboard/index2.html
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaTech | Tempo Real</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="menuLateral.css">
+    <link rel="stylesheet" href="graficos.css" />
+    <script src="../js/sessao.js"></script>
+    <script src="../js/alerta.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
+
+    <!-- menu -->
+=======
 <html lang="en">
 
 <head>
@@ -13,10 +39,85 @@
 </head>
 
 <body>
+>>>>>>> 34590d5638d14fecb2f6ea0b0a4d6fc680656ac4:repo-sprint3/site/web-data-viz-main/public/dashboard/index2.html
     <header class="menu_dashboard">
         <nav class="menuLateral">
             <img src="../assets/img/logo_branco.png" alt="">
             <ul class="container_lista">
+<<<<<<< HEAD:repo-sprint3/site/web-data-viz-main/web-data-viz-main/public/dashboard/index2.html
+                    <li class="menu_item select">
+                        <div class="container_img">
+                            <img src="../assets/img/Dashboard/House_verde.svg" alt="">
+                        </div>
+                        <a href="./index.html">Home</a>
+                    </li>
+                    <li class="menu_item">
+                        <div class="container_img " style="height: 25px;">
+                            <img src="../assets/img/Dashboard/chart-line-solid_branco.svg" alt="">
+                        </div>
+                        <a href="graficos.html">Graficos</a>
+                    </li>
+                    <li class="menu_item disable" >
+                        <div class="container_img ">
+                            <img src="../assets/img/Dashboard/bell-regular_branco.svg" alt="">
+                        </div>
+                        <a href="notificacao.html">Notificação</a>
+                    </li>
+    
+                    <li class="menu_item disable" >
+                        <div class="container_img ">
+                            <img src="../assets/img/Dashboard/info_branco.svg" alt="">
+                        </div>
+                        <a href="help.html">Ajuda e Suporte</a>
+                    </li>
+    
+                    <li class="menu_item">
+                        <div class="container_img ">
+                            <img src="../assets/img/Dashboard/sair.svg" alt="">
+                        </div>
+                        <a href="../index.html">Sair</a>
+                    </li>
+            </ul>
+        </nav>
+    </header>
+        
+    <div class="janela">
+        <!-- principal -->
+        <!-- <div class="dash">
+            <div id="alerta">
+            </div>
+            <div class="area-parametros-alerta">
+                <p class="titulo-legenda">
+                    Legenda - Parâmetros para Alertas
+                </p>
+                <div class="parametros-alerta">
+                    <div class="item-regua perigo-frio">
+                        <p>Perigo</p>
+                        <p>&lt;=5°C</p>
+                    </div>
+                    <div class="item-regua alerta-frio">
+                        <p>Alerta</p>
+                        <p>&lt;=10°C</p>
+                    </div>
+                    <div class="item-regua ideal">
+                        <p>Ideal</p>
+                        <p>20°C</p>
+                    </div>
+                    <div class="item-regua alerta-quente">
+                        <p>Alerta</p>
+                        <p>&gt;=22°C</p>
+                    </div>
+                    <div class="item-regua perigo-quente">
+                        <p>Perigo</p>
+                        <p>&gt;=23°C</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div> -->
+    </div>
+=======
                 <li class="menu_item select">
                     <div class="container_img">
                         <img src="../assets/img/Dashboard/House_verde.svg" alt="">
@@ -52,11 +153,16 @@
             </ul>
         </nav>
     </header>
+>>>>>>> 34590d5638d14fecb2f6ea0b0a4d6fc680656ac4:repo-sprint3/site/web-data-viz-main/public/dashboard/index2.html
     <main class="home_dashboard">
         <div class="boasVindas">
             <div class="container">
                 <h3>Inicio</h3>
+<<<<<<< HEAD:repo-sprint3/site/web-data-viz-main/web-data-viz-main/public/dashboard/index2.html
+                <h5>Bem vindo, <b id="b_usuario"></b></h5>
+=======
                 <h5>Bem vindo, Frizza</h5>
+>>>>>>> 34590d5638d14fecb2f6ea0b0a4d6fc680656ac4:repo-sprint3/site/web-data-viz-main/public/dashboard/index2.html
             </div>
         </div>
         <div class="content">
@@ -100,7 +206,59 @@
 
                 </div>
             </div>
+<<<<<<< HEAD:repo-sprint3/site/web-data-viz-main/web-data-viz-main/public/dashboard/index2.html
+            <div class="estufa_cards" id="cardAquarios">
+                <!-- <a href="./graficos.html" style="width: 29.5%;">
+                    <div class="card " id="div_check" style="width: 100%;">
+                        <div class="kpi_titulo">
+                            <span>Estufa 1</span>
+                            <h2 id="h2_temperatura_real" >20°C</h2>
+                        </div>
+                        <div class="estufa_icone " id="div_icones">
+                            <img src="../assets/img/Dashboard/TempAlta.svg" alt="" class="termometro" style="display: none;" id="img_TempAlta">
+                            <img src="../assets/img/Dashboard/danger.svg" alt="">
+                        </div>
+                    </div>
+                </a> -->
+                <!-- <div class="card check">
+                    <div class="kpi_titulo">
+                        <span>Estufa 2</span>
+                        <h2>20°C</h2>
+                    </div>
+                    <div class="estufa_icone" id="div_icones">
+                        <img src="../assets/img/Dashboard/danger.svg" alt="">
+                    </div>
+                </div> -->
+                <!-- <div class="card danger">
+                    <div class="kpi_titulo">
+                        <span>Estufa 3</span>
+                        <h2>7°C</h2>
+                    </div>
+                    <div class="estufa_icone">
+                        <img src="../assets/img/Dashboard/TempBaixa.svg" alt="" >
+                        
+                        <img src="../assets/img/Dashboard/danger.svg" alt="">
+                    </div>
+                </div> -->
+
+            </div>
+
+        </div>
+    </main>
+        <!-- <div class="estufa_cards" id="cardAquarios">
+
+        </div> -->
+
+</body>
+
+<script>
+
+    function exibirAquarios() {
+        JSON.parse(sessionStorage.ESTUFAS).forEach(item => {
+            document.getElementById("cardAquarios").innerHTML += `
+=======
             <div class="estufa_cards ">
+>>>>>>> 34590d5638d14fecb2f6ea0b0a4d6fc680656ac4:repo-sprint3/site/web-data-viz-main/public/dashboard/index2.html
                 <a href="./graficos.html" style="width: 29.5%;">
                     <div class="card " id="div_check" style="width: 100%;">
                         <div class="kpi_titulo">
@@ -113,6 +271,15 @@
                         </div>
                     </div>
                 </a>
+<<<<<<< HEAD:repo-sprint3/site/web-data-viz-main/web-data-viz-main/public/dashboard/index2.html
+                    `
+        });
+    }
+
+</script>
+
+</html>
+=======
                 <div class="card check">
                     <div class="kpi_titulo">
                         <span>Estufa 2</span>
@@ -162,3 +329,4 @@
     temperaturaReal()
   }, 1000);
 </script>
+>>>>>>> 34590d5638d14fecb2f6ea0b0a4d6fc680656ac4:repo-sprint3/site/web-data-viz-main/public/dashboard/index2.html
