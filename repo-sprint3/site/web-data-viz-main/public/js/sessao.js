@@ -1,12 +1,12 @@
 // sessão
 function validarSessao() {
     var email = sessionStorage.EMAIL_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
+    var responsavel = sessionStorage.NOME_RESPONSAVEL;
 
     var b_usuario = document.getElementById("b_usuario");
 
-    if (email != null && nome != null) {
-        b_usuario.innerHTML = nome;
+    if (email != null && responsavel != null) {
+        b_usuario.innerHTML = responsavel;
     } else {
         window.location = "../login.html";
     }
