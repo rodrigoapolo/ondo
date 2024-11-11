@@ -144,22 +144,6 @@
     }
   }
 
-  function login() {
-    var email = ipt_email.value;
-    var senha = ipt_senha.value;
-
-    if (isEmail && isSenha) {
-      if (email == "frizza@sptech.school" && senha == "Urubu@100") {
-        alert("Login Success")
-        //window.location.replace('')
-      } else {
-        alert("senha ou email errado")
-      }
-    } else {
-      alert("senha ou email errado")
-    }
-  }
-
   function entrar() {
     aguardar();
     var emailVar = ipt_email.value;
@@ -197,7 +181,7 @@
           console.log(json);
           console.log(JSON.stringify(json));
           sessionStorage.EMAIL_USUARIO = json.email;
-          sessionStorage.NOME_USUARIO = json.nome;
+          sessionStorage.NOME_RESPONSAVEL = json.responsavel;
           sessionStorage.ID_USUARIO = json.id;
           sessionStorage.ESTUFA = JSON.stringify(json.estufa)
 
