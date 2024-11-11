@@ -4,6 +4,7 @@ function buscarAquariosPorEmpresa(req, res) {
   var idUsuario = req.params.idUsuario;
 
   aquarioModel.buscarAquariosPorEmpresa(idUsuario).then((resultado) => {
+    console.log(idUsuario)
     if (resultado.length > 0) {
       res.status(200).json(resultado);
     } else {

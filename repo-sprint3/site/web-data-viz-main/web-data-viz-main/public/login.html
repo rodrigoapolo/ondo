@@ -15,6 +15,11 @@
 <body>
   <div class="container">
     <div class="login">
+      <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+    </div>
       <a href="index.html">
         <img class="img_btn_voltar" src="assets/img/btn_voltar.png" alt="btn voltar">
       </a>
@@ -185,7 +190,6 @@
       })
     }).then(function (resposta) {
       console.log("ESTOU NO THEN DO entrar()!")
-
       if (resposta.ok) {
         console.log(resposta);
 
@@ -195,10 +199,10 @@
           sessionStorage.EMAIL_USUARIO = json.email;
           sessionStorage.NOME_USUARIO = json.nome;
           sessionStorage.ID_USUARIO = json.id;
-          sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+          sessionStorage.ESTUFA = JSON.stringify(json.estufa)
 
           setTimeout(function () {
-            window.location = "./dashboard/cards.html";
+            window.location = "./dashboard/index.html";
           }, 1000); // apenas para exibir o loading
 
         });

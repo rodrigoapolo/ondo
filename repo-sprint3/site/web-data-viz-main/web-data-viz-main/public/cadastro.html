@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="assets/css/cadastro.css">
+    <link rel="stylesheet" href="css/cadastro.css">
     <style>
         #div_mensagem {
             text-align: center;
@@ -73,7 +73,7 @@
                 </div>
                     <button class="btn_acao" onclick="voltar()">Voltar</button>
                 <div class="form-group">
-                    <button id="btn_cadastrar" onclick="cadastrar()" type="button"><a href="./login.html" style="color: white;"> CADASTRE-SE</a></button>
+                    <button id="btn_cadastrar" onclick="cadastrar()" type="button">CADASTRE-SE</button>
                 </div>
             </div>
             <div id="div_mensagem"></div>
@@ -112,6 +112,9 @@
         var correto = true;
 
         // Validar todos os campos antes de cadastrar
+       
+        correto = true;
+
         validarCNPJ();
         validarRazaoSocial();
         validarNomeFantasia();
@@ -124,45 +127,34 @@
         validarRua();
         validarCidade();
 
+        if (correto) {
+           alert("Usuário cadastrado com sucesso!");
+        
+        }
+        else{
+            alert("Erro ao cadastrar o usuário");
+        }
+
+       
+
         // Armazenar os valores dos inputs
-        var cnpjVar = input_cnpj.value;
-        var razao_socialVar = input_razao_social.value;
-        var nome_fantasiaVar = input_nome_fantasia.value;
+   
         var responsavelVar = input_responsavel.value;
         var emailVar = input_email.value;
         var senhaVar = input_senha.value;
+
+        var cnpjVar = input_cnpj.value;
+        var razao_socialVar = input_razao_social.value;
+        var nome_fantasiaVar = input_nome_fantasia.value;
         var cepVar = input_cep.value;
         var bairroVar = input_bairro.value;
         var logradouroVar = input_logradouro.value;
         var cidadeVar = input_cidade.value;
         var estadoVar = input_estado.value;
-        var idEmpresaVincular 
+        
 
-         // Verificando se há algum campo em branco
-    if (
-      cnpjVar == "" ||
-      razao_socialVar == "" ||
-      senhaVar == "" ||
-      nome_fantasiaVar == "" ||
-      responsavelVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      cepVar == "" ||
-      bairroVar == "" ||
-      logradouroVar == "" ||
-      cidadeVar == "" ||
-      estadoVar == "" 
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
-      finalizarAguardar();
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
-
+       
+        // var idEmpresaVincular 
 
         // // Verificação do código de ativação da empresa (caso necessário)
         // for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
@@ -173,81 +165,70 @@
         //     }
         // }
 
-         // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        cnpjServer: cnpjVar,
-        razao_socialServer: razao_socialVar,
-        nome_fantasiaServer: nome_fantasiaVar ,
-        input_responsavelServer: responsavelVar  ,
-        emailServer: emailVar  ,
-        senhaServer: senhaVar ,
-        cepServer: cepVar  ,
-        bairroServer: bairroVar     ,
-        logradouroServer: logradouroVar  ,
-        cidadeServer: cidadeVar  ,
-        estadoServer: estadoVar   ,
-
-        idEmpresaVincularServer: idEmpresaVincular
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-          cardErro.style.display = "block";
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
-
-          limparFormulario();
-          finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
-      });
-
-    return false;
-  }
-
-  // Listando empresas cadastradas 
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresasCadastradas.push(empresa);
-
-            console.log("listaEmpresasCadastradas")
-            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
-
-  function sumirMensagem() {
-    cardErro.style.display = "none";
-  }
+        // Enviando os dados para o servidor
     
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                
+                responsavelServer: responsavelVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+               
+            }),
+        })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                console.log("Cadastro realizado com sucesso!");
+                div_mensagem.innerHTML = "<span style='color: green;'>Cadastro realizado com sucesso!</span>";
+            } else {
+                div_mensagem.innerHTML = "<span style='color: red;'>Erro ao cadastrar. Tente novamente.</span>";
+            }
+        })
+        .catch(function (erro) {
+            console.error("Erro:", erro);
+            div_mensagem.innerHTML = "<span style='color: red;'>Erro ao conectar ao servidor.</span>";
+        });
+    }
+    // function vincular_empresa () {
+    //      // Enviando os dados para o servidor
+    
+    //      fetch("/empresas/cadastrar", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({
+                
+    //             cnpjServer: cnpjVar,
+    //             razao_socialServer: razao_socialVar,
+    //             nome_fantasiaServer: nome_fantasiaVar,
+    //             cepServer: cepVar,
+    //             bairroServer: bairroVar,
+    //             logradouroServer: logradouroVar,
+    //             cidadeServer: cidadeVar,
+    //             estadoServer: estadoVar
+               
+    //         }),
+    //     })
+    //     .then(function (resposta) {
+    //         if (resposta.ok) {
+    //             console.log("Cadastro realizado com sucesso!");
+    //             div_mensagem.innerHTML = "<span style='color: green;'>Cadastro realizado com sucesso!</span>";
+    //         } else {
+    //             correto = false;
+    //             div_mensagem.innerHTML = "<span style='color: red;'>Erro ao cadastrar. Tente novamente.</span>";
+    //         }
+    //     })
+    //     .catch(function (erro) {
+    //         console.error("Erro:", erro);
+    //         div_mensagem.innerHTML = "<span style='color: red;'>Erro ao conectar ao servidor.</span>";
+    //     });
+
+    // }
     function ocultar (){
         div_form1.style.display = 'none';
         div_form2.style.display = 'flex';
@@ -543,26 +524,5 @@ function validarCidade() {
 
     
 
-    function cadastrar() {
-        correto = true;
-
-        validarCNPJ();
-        validarRazaoSocial();
-        validarNomeFantasia();
-        validarResponsavel();
-        validarEmail();
-        validarSenha();
-        validarCEP();
-        validarEstado();
-        validarBairro();
-        validarRua();
-        validarCidade();
-
-        if (correto) {
-           alert("Usuário cadastrado com sucesso!");
-
-        } else {
-            alert("Corrija os campos destacados");
-        }
-    }
+   
 </script>
