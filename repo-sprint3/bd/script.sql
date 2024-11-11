@@ -153,3 +153,39 @@ JOIN estufa e ON s.fkEstufa = e.idEstufa;
 
 SELECT m.temperatura, m.dataHora, s.localidade, e.nome as 'Nome Estufa'	FROM medicao as m  JOIN sensor as s  ON m.fkSensor = s.idSensor  JOIN estufa as e   ON s.fkEstufa = e.idEstufa ORDER BY m.dataHora DESC;
 
+SELECT e.*,
+
+max(temperatura) FROM medicao;
+
+SELECT s.localidade, 
+       MAX(m.temperatura) AS temperatura_maxima
+FROM medicao AS m
+JOIN sensor AS s ON m.fkSensor = s.idSensor
+JOIN estufa AS e ON s.fkEstufa = e.idEstufa
+WHERE e.nome = 'Estufa A'  
+GROUP BY s.localidade;
+
+SELECT s.localidade, 
+       MIN(m.temperatura) AS temperatura_maxima
+FROM medicao AS m
+JOIN sensor AS s ON m.fkSensor = s.idSensor
+JOIN estufa AS e ON s.fkEstufa = e.idEstufa
+WHERE e.nome = 'Estufa A'  
+GROUP BY s.localidade;
+
+SELECT 
+    s.localidade,
+    round(AVG(m.temperatura),2) AS temperatura_media,
+    MIN(m.temperatura) AS temperatura_minima,
+    MAX(m.temperatura) AS temperatura_maxima
+FROM 
+    medicao AS m
+JOIN 
+    sensor AS s ON m.fkSensor = s.idSensor
+JOIN 
+    estufa AS e ON s.fkEstufa = e.idEstufa
+WHERE 
+    e.nome = 'Estufa A'  
+    AND s.localidade = 'corredor principal'  
+GROUP BY 
+    s.localidade;
