@@ -27,42 +27,43 @@
         <nav class="menuLateral">
             <img src="../assets/img/logo_branco.png" alt="">
             <ul class="container_lista">
-                    <li class="menu_item select">
-                        <div class="container_img">
-                            <img src="../assets/img/Dashboard/House_verde.svg" alt="">
-                        </div>
-                        <a href="./index.html">Home</a>
-                    </li>
-                    <li class="menu_item">
-                        <div class="container_img " style="height: 25px;">
-                            <img src="../assets/img/Dashboard/chart-line-solid_branco.svg" alt="">
-                        </div>
-                        <a href="graficos.html">Graficos</a>
-                    </li>
-                    <li class="menu_item disable" >
-                        <div class="container_img ">
-                            <img src="../assets/img/Dashboard/bell-regular_branco.svg" alt="">
-                        </div>
-                        <a href="notificacao.html">Notificação</a>
-                    </li>
-    
-                    <li class="menu_item disable" >
-                        <div class="container_img ">
-                            <img src="../assets/img/Dashboard/info_branco.svg" alt="">
-                        </div>
-                        <a href="help.html">Ajuda e Suporte</a>
-                    </li>
-    
-                    <li class="menu_item">
-                        <div class="container_img ">
-                            <img src="../assets/img/Dashboard/sair.svg" alt="">
-                        </div>
-                        <a href="../index.html">Sair</a>
-                    </li>
+                <li class="menu_item select">
+                    <div class="container_img">
+                        <img src="../assets/img/Dashboard/House_verde.svg" alt="">
+                    </div>
+                    <a href="./index.html">Home</a>
+                </li>
+                <li class="menu_item">
+                    <div class="container_img " style="height: 25px;">
+                        <img src="../assets/img/Dashboard/chart-line-solid_branco.svg" alt="">
+                    </div>
+                    <a href="graficos.html">Graficos</a>
+                </li>
+                <li class="menu_item disable">
+                    <div class="container_img ">
+                        <img src="../assets/img/Dashboard/bell-regular_branco.svg" alt="">
+                    </div>
+                    <a href="notificacao.html">Notificação</a>
+                </li>
+
+                <li class="menu_item disable">
+                    <div class="container_img ">
+                        <img src="../assets/img/Dashboard/info_branco.svg" alt="">
+                    </div>
+                    <a href="help.html">Ajuda e Suporte</a>
+                </li>
+
+                <li class="menu_item">
+                    <div class="container_img ">
+                        <img src="../assets/img/Dashboard/sair.svg" alt="">
+                    </div>
+                    <!-- <a href="../index.html">Sair</a> -->
+                     <span onclick="limparSessao()">Sair</span>
+                </li>
             </ul>
         </nav>
     </header>
-        
+
     <div class="janela">
         <!-- principal -->
         <!-- <div class="dash">
@@ -185,30 +186,39 @@
 
         </div>
     </main>
-        <!-- <div class="estufa_cards" id="cardAquarios">
-
-        </div> -->
 
 </body>
 
 <script>
 
     function exibirAquarios() {
-        JSON.parse(sessionStorage.ESTUFAS).forEach(item => {
-            document.getElementById("cardAquarios").innerHTML += `
-                <a href="./graficos.html" style="width: 29.5%;">
-                    <div class="card " id="div_check" style="width: 100%;">
-                        <div class="kpi_titulo">
-                            <span>Estufa 1</span>
-                            <h2 id="h2_temperatura_real" >20°C</h2>
+        console.log(sessionStorage.ID_EMPRESA)
+        fetch(`/aquarios/${sessionStorage.ID_EMPRESA}`, {
+            method: "GET",
+        })
+        .then(function (resposta) {
+            
+            resposta.json().then((estufas) => {
+                estufas.forEach((estufa) => {
+                document.getElementById("cardAquarios").innerHTML += `
+                    <a href="./graficos.html" style="width: 29.5%;">
+                        <div class="card " id="div_check" style="width: 100%;">
+                            <div class="kpi_titulo">
+                                <span>${estufa.nome}</span>
+                                <h2 id="h2_temperatura_real" >20°C</h2>
+                            </div>
+                            <div class="estufa_icone " id="div_icones">
+                                <img src="../assets/img/Dashboard/TempAlta.svg" alt="" class="termometro" style="display: none;" id="img_TempAlta">
+                                <img src="../assets/img/Dashboard/danger.svg" alt="">
+                            </div>
                         </div>
-                        <div class="estufa_icone " id="div_icones">
-                            <img src="../assets/img/Dashboard/TempAlta.svg" alt="" class="termometro" style="display: none;" id="img_TempAlta">
-                            <img src="../assets/img/Dashboard/danger.svg" alt="">
-                        </div>
-                    </div>
-                </a>
-                    `
+                    </a>
+                `
+                });
+            });
+        })
+        .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
         });
     }
 
