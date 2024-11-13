@@ -112,6 +112,7 @@ input:focus {
     font-weight: 900;
     padding: 15px 80px;
     transition: background-color 0.4s, transform 0.5s;
+    cursor: pointer;
 }
 
 .btn_entrar:hover {

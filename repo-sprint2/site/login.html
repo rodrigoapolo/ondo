@@ -28,10 +28,10 @@
           <img src="assets/img/password.png" alt="">
           <input oninput="validarSenha()" id="ipt_senha" type="password" placeholder="Senha">
         </div>
-        <a class="texSenha" href="#">Esqueceu sua senha?<span class="texSpan"> Clique aqui.</span></a>
+        <a class="texSenha" style="display: none;" href="#">Esqueceu sua senha?<span class="texSpan"> Clique aqui.</span></a>
       </div>
       <div class="container-btn">
-        <button onclick="login()" class="btn_entrar">Entrar</button>
+        <a href="./Dashboard/index.html" style="color: white;"><button onclick="login()" class="btn_entrar">Entrar </button></a>
         <a class="texCadastro" href="cadastro.html">Ainda não tem uma conta?</a>
       </div>
       <div class="img_logo_ondo"></div>
@@ -132,8 +132,9 @@
     var senha = ipt_senha.value;
 
     if(isEmail && isSenha){
-      if (email == "frizza@sptec.school" && senha == "urubu100") {
+      if (email == "frizza@sptech.school" && senha == "Urubu@100") {
         alert("Login Success")
+        //window.location.replace('')
       } else {
         alert("senha ou email errado")
       }

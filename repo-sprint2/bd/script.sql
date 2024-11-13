@@ -1,14 +1,14 @@
-mysql -u root -p -P 3307
-SPTech#2024
-create user 'api'@'%' identified by 'Sptech#2024';
-GRANT INSERT ON *.* TO 'api';
+-- mysql -u root -p -P 3307
+-- SPTech#2024
+-- create user 'api'@'%' identified by 'Sptech#2024';
+-- GRANT INSERT ON *.* TO 'api';
 -- grant all privileges on *.* to aluno;
-flush privileges;
-exit
-mysql -u api -p -P 3307
-Sptech#2024
+-- flush privileges;
+-- exit
+-- mysql -u api -p -P 3307
+-- Sptech#2024
 
-CREATE DATABASE ondo;
+-- CREATE DATABASE ondo;
 
 USE ondo;
 
@@ -52,8 +52,8 @@ CREATE TABLE sensor (
     idSensor INT AUTO_INCREMENT PRIMARY KEY,
     localidade VARCHAR(100),
     tipo VARCHAR(45),
-    fkEstufa INT,
-    CONSTRAINT fkSensorEstufa
+    fkEstufa INT unique,
+    CONSTRAINT fkSensorEstufa 
     FOREIGN KEY (fkEstufa) REFERENCES estufa(idEstufa)
 );
 
@@ -112,7 +112,6 @@ SELECT * FROM estufa;
 INSERT INTO sensor (localidade, tipo, fkEstufa) 
 VALUES 
 ('corredor principal', 'temperatura', 1),
-('corredor entrada', 'temperatura', 1),
 ('corredor 1', 'temperatura', 2),
 ('corredor A', 'temperatura', 3),
 ('corredor Azul', 'temperatura', 4);
@@ -126,8 +125,7 @@ VALUES
 (15.5, '2024-09-01 12:30:00', 1),
 (8.1, '2024-09-01 13:30:00', 2),
 (18.0, '2024-09-02 14:30:00', 3),
-(10.8, '2024-09-02 15:30:00', 4),
-(13.7, '2024-09-02 16:30:00', 5);
+(10.8, '2024-09-02 15:30:00', 4);
 
 SELECT * FROM medicao;
 
@@ -146,4 +144,5 @@ FROM alerta a
 JOIN sensor s ON a.fkSensor = s.idSensor
 JOIN estufa e ON s.fkEstufa = e.idEstufa;
 
+SELECT m.temperatura, m.dataHora, s.localidade, e.nome as 'Nome Estufa'	FROM medicao as m  JOIN sensor as s  ON m.fkSensor = s.idSensor  JOIN estufa as e   ON s.fkEstufa = e.idEstufa ORDER BY m.dataHora DESC;
 

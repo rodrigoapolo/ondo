@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="menuLateral.css">
+  <link rel="stylesheet" href="././assets/css/style.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="graficos.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+
+  <title>Grafico</title>
+</head>
+
+<body>
+  <header class="menu_dashboard">
+    <nav class="menuLateral">
+      <img src="../assets/img/logo_branco.png" alt="">
+      <ul class="container_lista">
+        <li class="menu_item">
+          <div class="container_img">
+            <img src="../assets/img/Dashboard/House_branco.svg" alt="">
+          </div>
+          <a href="./index.html">Home</a>
+        </li>
+        <li class="menu_item select">
+          <div class="container_img disable" style="height: 25px;">
+            <img src="../assets/img/Dashboard/chart-line-solid_verde.svg" alt="">
+          </div>
+          <a href="graficos.html">Graficos</a>
+        </li>
+        <li class="menu_item disable">
+          <div class="container_img disable">
+            <img src="../assets/img/Dashboard/bell-regular_branco.svg" alt="">
+          </div>
+          <a href="notificacao.html">Notificação</a>
+        </li>
+
+        <li class="menu_item disable">
+          <div class="container_img disable">
+            <img src="../assets/img/Dashboard/info_branco.svg" alt="">
+          </div>
+          <a href="help.html">Ajuda e Suporte</a>
+        </li>
+
+        <li class="menu_item disable">
+          <div class="container_img disable">
+            <img src="../assets/img/Dashboard/sair.svg" alt="">
+          </div>
+          <a href="../index.html">Sair</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="grafico_dashboard">
+    <div class="boasVindas">
+      <div class="container">
+        <h3>Graficos - Estufa 1</h3>
+        <h5>Bem vindo, Frizza</h5>
+      </div>
+    </div>
+    <div class="content">
+      <div class="kpi_cards">
+        <div class="card">
+          <div class="kpi_titulo">
+            <span>Temperaturas Atual</span>
+            <img src="../assets/img/Dashboard/termometro.svg" alt="">
+          </div>
+          <div class="kpi_dado">
+            <h2 id="h2_temperatura_real">20°C</h2>
+          </div>
+        </div>
+        <div class="card">
+          <div class="kpi_titulo">
+            <span>Alertas</span>
+            <img src="../assets/img/Dashboard/danger.svg" alt="" class="img_sino">
+          </div>
+          <div class="kpi_dado">
+            <h2>10</h2>
+          </div>
+
+        </div>
+        <div class="card">
+          <div class="kpi_titulo">
+            <span>Temperaturas Maxima</span>
+            <img src="../assets/img/Dashboard/TempAlta.svg" alt="">
+          </div>
+          <div class="kpi_dado">
+            <h2>27°C</h2>
+          </div>
+
+        </div>
+        <div class="card">
+          <div class="kpi_titulo">
+            <span>Temperaturas Minima</span>
+            <img src="../assets/img/Dashboard/TempBaixa.svg" alt="">
+          </div>
+          <div class="kpi_dado">
+            <h2>10°C</h2>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="grafico_cards" style="display: flex;">
+        <div style="display: flex;" class="grafico_container">
+
+          <div class="grafico">
+            <!-- <h3>Análise de Temperaturas</h3> -->
+            <canvas id="grafico_barra" style="height: 100%; width: 100%;"></canvas>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="grafico_cards">
+
+        <div style="display: flex;" class="grafico_container">
+
+          <div class="grafico">
+            <h3>Proporção de alertas</h3>
+            <div class="container">
+              <div class="legenda">
+                <div class="legend-item">
+                  <div class="legend-box"
+                    style="background-color: rgba(255, 99, 132, 0.2); border: 1px solid rgba(255, 99, 132, 1);"></div>
+                  <span>Alertas</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-box"
+                    style="background-color: rgba(54, 162, 235, 0.2); border: 1px solid rgba(54, 162, 235, 1);"></div>
+                  <span>Leituras de Temperatura</span>
+                </div>
+              </div>
+              <canvas id="grafico_pizza" style="padding-left: 20px;"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grafico_cards">
+        <canvas class="grafico" id="grafico_linha"></canvas>
+      </div>
+
+      <section class="notificacoes_recentes">
+        <div class="titulos">
+          <span>NO</span>
+          <span>Localização</span>
+          <span>Data</span>
+          <span>Hora</span>
+          <span>Mensagem</span>
+        </div>
+        <div class="dados">
+          <span>1</span>
+          <span>Principal</span>
+          <span>09/10/2024</span>
+          <span>09:30</span>
+          <span>Limite Excedido</span>
+        </div>
+        <div class="dados">
+          <span>2</span>
+          <span>Principal</span>
+          <span>111/10/2024</span>
+          <span>10:30</span>
+          <span>Limite Excedido</span>
+        </div>
+        <div class="dados">
+          <span>3</span>
+          <span>Principal</span>
+          <span>13/10/2024</span>
+          <span>12:30</span>
+          <span>Limite Excedido</span>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+
+</html>
+
+<script>
+  const graficoBarra = document.getElementById("grafico_barra");
+  const graficoLinha = document.getElementById("grafico_linha");
+  const graficoPizza = document.getElementById("grafico_pizza");
+
+  new Chart(graficoBarra, {
+    type: "bar",
+    data: {
+      labels: ["Temperatura"],
+      datasets: [
+        {
+          label: "Média",
+          data: [18.5],
+          borderWidth: 1,
+        },
+        {
+          label: "Mínima",
+          data: [10],
+          borderWidth: 1,
+        },
+        {
+          label: "Máxima",
+          data: [27],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true, // Define se o título deve ser exibido
+          text: "Visão Geral das Temperaturas", // O texto do título
+          font: {
+            size: 20, // Tamanho da fonte do título
+            weight: "bold", // Peso da fonte do título
+          },
+          padding: {
+            top: 10, // Espaçamento acima do título
+            bottom: 30, // Espaçamento abaixo do título
+          },
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+  var linha = new Chart(graficoLinha, {
+    type: "line",
+    data: {
+      datasets: [
+        {
+          label: "Temperatura",
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true, // Define se o título deve ser exibido
+          text: "Variação Horária de Temperatura", // O texto do título
+          font: {
+            size: 20, // Tamanho da fonte do título
+            weight: "bold", // Peso da fonte do título
+          },
+          padding: {
+            top: 10, // Espaçamento acima do título
+            bottom: 30, // Espaçamento abaixo do título
+          },
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+
+  new Chart(graficoPizza, {
+    type: "pie",
+    data: {
+      labels: ["Total ", "Alertas acionados"],
+      datasets: [
+        {
+          label: "Alertas do Dia",
+          data: [90, 10], // se a fatia toda é 100, subtrai os alertas para ele apresentar da forma certa 
+          backgroundColor: [
+            // Cores para cada fatia
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 99, 132, 0.2)"
+          ],
+          borderColor: [
+            // Cores das bordas
+
+            "rgba(54, 162, 235, 1)",
+            "rgba(255, 99, 132, 1)",
+          ],
+          borderWidth: 1, // Largura da borda
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        datalabels: {
+          display: 'auto',
+          formatter: (value, ctx) => {
+            // Soma total dos dados do dataset
+            // let totalSum = 0;
+            // const data = ctx.chart.data.datasets[0].data;
+
+            // Loop para somar os valores
+            // for (let i = 0; i < data.length; i++) {
+            //   totalSum += data[i];
+            // }
+
+            // Cálculo da porcentagem usando a regra de três
+            var percentage = (value / 100) * 100;
+            // if (percentage == 100) {
+            //   percentage = 50
+            // }
+
+            return `${percentage.toFixed(1)}%`; // Retorna a porcentagem formatada
+          },
+        },
+        legend: {
+          display: false, // Exibir a legenda
+          // position: 'right', // Posiciona a legenda à direita
+          labels: {
+            boxWidth: 20, // Largura da caixa de legenda
+            font: {
+              size: 14, // Tamanho da fonte da legenda
+            },
+          },
+        },
+        title: {
+          // position: 'top',
+          display: false, // Define se o título deve ser exibido
+          text: "Análise de Temperaturas", // O texto do título
+          font: {
+            size: 20, // Tamanho da fonte do título
+            weight: "bold", // Peso da fonte do título
+          },
+
+        }
+      },
+
+    },
+    plugins: [ChartDataLabels]
+  });
+
+  var paginacao = {};
+  var tempo = {};
+
+  function obterDados(grafico, endpoint) {
+    fetch('http://localhost:3300/sensores/' + endpoint)
+      .then(response => response.json())
+      .then(valores => {
+        if (paginacao[endpoint] == null) {
+          paginacao[endpoint] = 0;
+        }
+        if (tempo[endpoint] == null) {
+          tempo[endpoint] = 0;
+        }
+
+        var ultimaPaginacao = paginacao[endpoint];
+        paginacao[endpoint] = valores.length;
+        valores = valores.slice(ultimaPaginacao);
+
+        valores.forEach((valor) => {
+          if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+            grafico.data.labels.shift();
+            grafico.data.datasets[0].data.shift();
+          }
+
+          grafico.data.labels.push(valor.hora);
+          grafico.data.datasets[0].data.push(parseFloat(valor.temperatura));
+          grafico.update();
+        });
+      })
+      .catch(error => console.error('Erro ao obter dados:', error));
+  }
+
+  function temperaturaReal() {
+    fetch('http://localhost:3300/sensores/analogico')
+      .then(response => response.json())
+      .then(valores => {
+        var temperatura = valores[valores.length - 1];
+        h2_temperatura_real.innerHTML = temperatura.temperatura + "°C"
+      })
+  }
+
+
+  setInterval(() => {
+    obterDados(linha, 'analogico');
+  }, 5000);
+
+  setInterval(() => {
+    temperaturaReal()
+  }, 1000);
+
+
+</script>

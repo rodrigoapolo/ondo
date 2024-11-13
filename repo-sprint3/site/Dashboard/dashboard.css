@@ -1,0 +1,119 @@
+.home_dashboard{
+    width: 80%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+}
+
+.boasVindas{
+    background-color: white;
+    height: 65px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.home_dashboard .content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.home_dashboard .content .kpi_cards{
+    display: flex;
+}
+
+.home_dashboard .content .kpi_cards .card {
+    width: 21.6%;
+    height: 163px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.home_dashboard .content .estufa_cards, .home_dashboard .content .kpi_cards{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.home_dashboard .content .estufa_cards .card{
+    width: 29.5%;
+    border-radius: 10px;
+    background-color: white;
+    height: 200px;
+}
+
+.kpi_cards .card .kpi_titulo{
+    font-size: 16px;
+    padding: 15px;
+    display: flex;
+    font-weight: 600;
+    height: 39px;
+    color: #1E2F1A;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+}
+
+.kpi_cards .card .kpi_titulo span{
+    width: 50%;
+}
+
+.card .kpi_dado{
+    color: #1E2F1A;
+}
+
+
+.kpi_titulo img{
+    width: 25px;
+    height: 25px;
+}
+
+.img_sino{
+    width: 22px;
+}
+
+.estufa_cards .card{
+    display: flex;
+    justify-content: center;
+}
+
+.estufa_cards .card .kpi_titulo{
+    font-size: 16px;
+    padding: 35px 0;
+    gap: 20px;
+    display: flex;
+    font-weight: 600;
+    color: #1E2F1A;
+    width: 60%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.estufa_icone{
+    display: flex;
+    padding: 30px 0;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.estufa_icone .termometro{
+    width: 25px;
+}
+
+.danger {
+    border: solid 2px #C35454;
+}
+
+.check {
+    border: solid 2px #57C354;
+}

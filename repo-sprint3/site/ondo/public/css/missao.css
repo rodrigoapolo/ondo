@@ -1,0 +1,62 @@
+smain{
+    margin-bottom: 200px;
+}
+
+.missao .container{
+    display: flex;
+    flex-direction: column;
+    width: 73%;
+    margin: auto;
+    text-align: justify;
+    color: #262421;
+}
+
+.missao h2{
+    font-size: 50px;
+    color: #50984E;
+    text-align: center;
+    margin: 95px 0 25px 0;
+}
+
+.missao .container span{
+    margin-bottom: 100px;
+}
+
+.missao .container .cards{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.missao .card img {
+    position: relative;
+    display: inline-block;
+    border-radius: 10px; 
+    box-shadow: 10px 10px 0px 0px #4CAF50;
+}
+
+.missao .container .cards .card .descricao{
+    margin-right: 66px;
+}
+
+.card:nth-child(even) img {
+    box-shadow: -10px 10px 0px 0px #4CAF50; /* Sombra negativa apenas para cartas pares */
+}
+
+.card:nth-child(even) .descricao{
+    margin-left: 66px;
+    margin-right: 0;
+}
+
+.card:nth-child(even) {
+    flex-direction: row-reverse; /* Inverte o layout (imagem à esquerda e texto à direita) */
+}
+
+.card:nth-child(odd) {
+    flex-direction: row; /* Mantém o layout padrão (imagem à direita e texto à esquerda) */
+}
+
+.missao .card{
+    display: flex;
+}
+

@@ -168,7 +168,7 @@ html {
 
 .container-text-ben h1 {
     color: #F5F5F5;
-    font-size: 50px;
+    font-size: 40px;
     font-weight: 600;
 }
 
@@ -211,7 +211,7 @@ html {
     font-size: 20px;
     color: #F5F5F5;
     width: 90%;
-    height: 30%;
+    height: 38%;
 }
 
 .card-btn-ben {
@@ -248,7 +248,7 @@ html {
 
 h2 {
     color: #1e3a29;
-    font-size: 40px;
+    font-size: 35px;
     margin-bottom: 32px;
 }
 
@@ -264,7 +264,7 @@ h2 {
 
 .coluna-contato #titulo-conteudo-contato {
     color: #333;
-    font-size: 28px;
+    font-size: 18px;
     margin-bottom: 16px;
     font-weight: 500;
 }
@@ -272,7 +272,7 @@ h2 {
 .coluna-contato p {
     color: #666;
     margin: 8px 0;
-    font-size: 28px;
+    font-size: 18px;
 }
 
 .divisor {

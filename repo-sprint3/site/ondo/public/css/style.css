@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Reset básico */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    background-color: white;
+    padding-top: 65px; /* Isso vai "empurrar" o conteúdo para baixo, equivalente à altura da navbar */
+    font-size: 19px;
+}
+
+li, ul, a {
+    text-decoration: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+
+/* Estilo do banner */
+.banner img {
+    width: 100%;
+}
+
+.container_titulo {
+    margin: 130px auto 30px auto;
+    width: 67%;
+    text-align: justify;
+}
+
+.titulo {    
+    margin-bottom: 37px;
+    font-size: 50px;
+    font-weight: bold;
+    color: #50984E;
+}
+
+.container_texto {
+    font-size: 19px;
+}
+
+/* Estilo das fotos */
+.photo {
+    width: 422px;
+    height: 304px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.photo img {
+    width: 195px;
+    height: 137px;   
+}
+
+/* Estilo dos cards */
+.container_card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 120px;
+    max-width: 65%;
+    margin: 0 185px;
+    justify-content: space-around;
+}
+
+.container_card .card {
+    margin-bottom: 30px;
+    max-width: 325px;
+}
+
+.card p {
+    font-size: 24px;
+    font-weight: bold; 
+    color: #1E2F1A;  
+}
