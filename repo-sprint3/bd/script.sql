@@ -8,7 +8,6 @@
 -- exit
 -- mysql -u api -p -P 3307
 -- Sptech#2024
-
 CREATE DATABASE ondo;
 
 USE  ondo;
@@ -175,10 +174,8 @@ JOIN estufa AS e ON s.fkEstufa = e.idEstufa
 WHERE e.nome = 'Estufa A'  
 GROUP BY s.localidade;
 
+-- SELECT de temperatura MÁXIMA da ''ESTUFA A'' no ''Corredor principal'' 
 SELECT 
-    s.localidade,
-    round(AVG(m.temperatura),2) AS temperatura_media,
-    MIN(m.temperatura) AS temperatura_minima,
     MAX(m.temperatura) AS temperatura_maxima
 FROM 
     medicao AS m
@@ -187,7 +184,47 @@ JOIN
 JOIN 
     estufa AS e ON s.fkEstufa = e.idEstufa
 WHERE 
-    e.nome = 'Estufa A'  
-    AND s.localidade = 'corredor principal'  
-GROUP BY 
-    s.localidade;
+    e.nome = 'Estufa A';
+    
+    
+-- SELECT de temperatura MÍNIMA da ''ESTUFA A'' no ''Corredor principal''     
+    SELECT 
+    MIN(m.temperatura) AS temperatura_maxima
+FROM 
+    medicao AS m
+JOIN 
+    sensor AS s ON m.fkSensor = s.idSensor
+JOIN 
+    estufa AS e ON s.fkEstufa = e.idEstufa
+WHERE 
+    e.nome = 'Estufa A';
+    
+-- SELECT de temperatura MÉDIA, MÍNIMA e MÁXIMA da ''ESTUFA A'' 
+SELECT 
+    ROUND(AVG(m.temperatura),2) AS temperatura_media,
+    MIN(m.temperatura) AS temperatura_minima,
+    MAX(m.temperatura) AS temperatura_maxima
+FROM 
+    medicao m
+JOIN 
+    sensor s ON m.fkSensor = s.idSensor
+JOIN 
+    estufa e ON s.fkEstufa = e.idEstufa
+WHERE 
+    e.nome = 'Estufa A';
+
+-- SELECT quantidade de alertas da ''ESTUFA A''
+SELECT 
+    COUNT(a.idAlerta) AS quantidade_alertas
+FROM 
+    alerta a
+JOIN 
+    sensor s ON a.fkSensor = s.idSensor
+JOIN 
+    estufa e ON s.fkEstufa = e.idEstufa
+WHERE 
+    e.nome = 'Estufa A';
+    
+
+    
+    
