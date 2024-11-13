@@ -31,12 +31,15 @@ CREATE TABLE empresa (
     logradouro VARCHAR(100),
 	numero VARCHAR(45),
     cidade VARCHAR(100),
-    UF VARCHAR(100),
+    estado VARCHAR(100),
     fkUsuario INT,
     CONSTRAINT fkEmpresaUsuario
     FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
 
+SELECT * FROM empresa;
+
+ALTER TABLE empresa RENAME COLUMN UF TO estado;
 
 -- Tabela estufa
 CREATE TABLE estufa (
@@ -91,7 +94,7 @@ VALUES
 SELECT * FROM usuario;
 
 -- Inserir dados na tabela empresa
-INSERT INTO empresa (razaoSocial, nomeFantasia, cnpj, cep, numero, logradouro, cidade, UF, fkUsuario) 
+INSERT INTO empresa (razaoSocial, nomeFantasia, cnpj, cep, numero, logradouro, cidade, estado, fkUsuario) 
 VALUES 
 ('Minato Wasabi LTDA', 'Minato Wasabi', '12345678901234', '12345678', '101', 'Rua Verde', 'São Paulo', 'SP', 1),
 ('Wasabi Chicara LTDA', 'Wasabi Chicara', '98765432109876', '87654321', '202', 'Avenida Azul', 'Rio de Janeiro', 'RJ', 2),
