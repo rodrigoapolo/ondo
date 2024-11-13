@@ -38,6 +38,7 @@ CREATE TABLE empresa (
 
 SELECT * FROM empresa;
 
+ALTER TABLE empresa RENAME COLUMN UF TO estado;
 
 -- Tabela estufa
 CREATE TABLE estufa (
