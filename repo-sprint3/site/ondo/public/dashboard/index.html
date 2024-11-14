@@ -115,7 +115,7 @@
                         <img src="../assets/img/Dashboard/olho.svg" alt="">
                     </div>
                     <div class="kpi_dado">
-                        <h2>3</h2>
+                        <h2 id="h2_qtdEstufa"></h2>
                     </div>
                 </div>
                 <div class="card">
@@ -199,6 +199,9 @@
         .then(function (resposta) {
             
             resposta.json().then((estufas) => {
+            
+                console.log(estufas.length)
+                h2_qtdEstufa.innerHTML = `${estufas.length}`
                 estufas.forEach((estufa) => {
                 document.getElementById("cardAquarios").innerHTML += `
                     <a href="./graficos.html" style="width: 29.5%;">
@@ -215,6 +218,21 @@
                     </a>
                 `
                 });
+            });
+        })
+        .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function contarQtdEstufas(){
+        fetch(`/aquarios/qtd/${sessionStorage.ID_EMPRESA}`, {
+            method: "GET",
+        })        
+        .then(function (resposta) {
+            console.log(`reposta: ${resposta}`)
+            resposta.json().then((qtd) => {
+               console.log(`Quantidade: ${qtd}` )
             });
         })
         .catch(function (resposta) {
