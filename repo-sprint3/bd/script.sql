@@ -226,6 +226,5 @@ JOIN
 WHERE 
     e.nome = 'Estufa A';
     
-
-    
+select * from usuario;
     
