@@ -68,14 +68,43 @@ const serial = async (
 
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
+            
+            if (temperatura > 19) {
+                await poolBancoDados.execute(
+                    'INSERT INTO alerta (temperatura, mensagem, fkSensor) VALUES  (?, ?, ?)',
+                    [sensorAnalogico, `Atenção!!, Temperatura está se aproximando do limite adequado!`, 1]
+                );
+                console.log("valores inseridos no banco: ", sensorAnalogico);    
+                
+            } else if (temperatura > 20) {
+                await poolBancoDados.execute(
+                    'INSERT INTO alerta (temperatura, mensagem, fkSensor) VALUES  (?, ?, ?)',
+                    [sensorAnalogico, `Temperatura fora do limite adequado! Se faz necessário ação imediata.`, 1]
+                );
+                console.log("valores inseridos no banco: ", sensorAnalogico);  
+            
+            } else if (temperatura < 9) {
+                await poolBancoDados.execute(
+                    'INSERT INTO alerta (temperatura, mensagem, fkSensor) VALUES  (?, ?, ?)',
+                    [sensorAnalogico, `Atenção!!, Temperatura está se aproximando do limite adequado!`, 1]
+                );
+                console.log("valores inseridos no banco: ", sensorAnalogico);  
 
+            } else if (temperatura < 8) {
+                await poolBancoDados.execute(
+                    'INSERT INTO alerta (temperatura, mensagem, fkSensor) VALUES  (?, ?, ?)',
+                    [sensorAnalogico, `Temperatura fora do limite adequado! Se faz necessário ação imediata.`, 1]
+                );
+                console.log("valores inseridos no banco: ", sensorAnalogico);  
+
+            } else {
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
                 'INSERT INTO medicao (temperatura, fkSensor) VALUES  (?, ?)',
                 [sensorAnalogico, 1]
             );
             console.log("valores inseridos no banco: ", sensorAnalogico);     
-
+            }
         }
 
     });

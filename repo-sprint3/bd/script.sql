@@ -191,8 +191,6 @@ JOIN sensor AS s ON m.fkSensor = s.idSensor
 JOIN estufa AS e ON s.fkEstufa = e.idEstufa
 WHERE e.idEstufa = 1 AND dataHora >= NOW() - INTERVAL 1 DAY;
 
-
-
 -- SELECT quantidade de alertas da ''ESTUFA A'' NA SEMANA
 SELECT COUNT(a.idAlerta) AS quantidade_alertas
 FROM alerta a
@@ -270,4 +268,5 @@ ON s.idSensor = m.fkSensor
 WHERE e.idEstufa = 1
 ORDER BY m.dataHora DESC
 LIMIT 1;
+
     
