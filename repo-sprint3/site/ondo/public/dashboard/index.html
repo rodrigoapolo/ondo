@@ -13,14 +13,13 @@
     <link rel="stylesheet" href="menuLateral.css">
     <link rel="stylesheet" href="graficos.css" />
     <script src="../js/sessao.js"></script>
-    <script src="../js/alerta.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
+<body onload="validarSessao(), buscarQTDEstufas()">
 
     <!-- menu -->
     <header class="menu_dashboard">
@@ -122,7 +121,7 @@
                         <img src="../assets/img/Dashboard/olho.svg" alt="">
                     </div>
                     <div class="kpi_dado">
-                        <h2>3</h2>
+                        <h2 id="qtd_estufas_monitoradas_kpi"></h2>
                     </div>
                 </div>
                 <div class="card">
@@ -131,7 +130,7 @@
                         <img src="../assets/img/Dashboard/termometro.svg" alt="">
                     </div>
                     <div class="kpi_dado">
-                        <h2>1</h2>
+                        <h2 id="qtd_estufas_adequadas_kpi"></h2>
                     </div>
 
                 </div>
@@ -141,7 +140,7 @@
                         <img src="../assets/img/Dashboard/termometro.svg" alt="">
                     </div>
                     <div class="kpi_dado">
-                        <h2>2</h2>
+                        <h2 id="qtd_estufas_inadequadas_kpi"></h2>
                     </div>
                 </div>
                 <div class="card">
@@ -155,7 +154,7 @@
 
                 </div>
             </div>
-            <div class="estufa_cards" id="cardAquarios">
+            <div class="estufa_cards" id="cardEstufas">
                 <!-- <a href="./graficos.html" style="width: 29.5%;">
                     <div class="card " id="div_check" style="width: 100%;">
                         <div class="kpi_titulo">
@@ -198,21 +197,63 @@
 
 <script>
 
-    function exibirAquarios() {
-        console.log(sessionStorage.ID_EMPRESA)
-        fetch(`/aquarios/${sessionStorage.ID_EMPRESA}`, {
+
+    function buscarQTDEstufas(){
+        fetch(`/home/estufas-monitoradas/${sessionStorage.ID_EMPRESA}`, {
             method: "GET",
         })
         .then(function (resposta) {
-            
             resposta.json().then((estufas) => {
+                qtd_estufas_monitoradas_kpi.innerHTML = estufas.qtdEstufas
+            });
+        })
+        .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function buscarTemperaturaAdequadas(){
+        fetch(`/home/temperaturas-adequadas/${sessionStorage.ID_EMPRESA}`, {
+            method: "GET",
+        })
+        .then(function (resposta) {
+            resposta.json().then((estufas) => {
+                qtd_estufas_adequadas_kpi.innerHTML = estufas.qtdEstufas
+            });
+        })
+        .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function buscarTemperaturaInadequadas(){
+        fetch(`/home/temperaturas-inadequadas/${sessionStorage.ID_EMPRESA}`, {
+            method: "GET",
+        })
+        .then(function (resposta) {
+            resposta.json().then((estufas) => {
+                qtd_estufas_inadequadas_kpi.innerHTML = estufas.qtdEstufas
+            });
+        })
+        .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function buscarEstufasEmpresa(){
+        fetch(`/home/lista-estufas/${sessionStorage.ID_EMPRESA}`, {
+            method: "GET",
+        })
+        .then(function (resposta) {
+            resposta.json().then((estufas) => {
+                cardEstufas.innerHTML = ''
                 estufas.forEach((estufa) => {
-                document.getElementById("cardAquarios").innerHTML += `
+                cardEstufas.innerHTML += `
                     <a href="./graficos.html" style="width: 29.5%;">
                         <div class="card " id="div_check" style="width: 100%;">
                             <div class="kpi_titulo">
                                 <span>${estufa.nome}</span>
-                                <h2 id="h2_temperatura_real" >20°C</h2>
+                                <h2 id="h2_temperatura_real" >${estufa.temperatura}°C</h2>
                             </div>
                             <div class="estufa_icone " id="div_icones">
                                 <img src="../assets/img/Dashboard/TempAlta.svg" alt="" class="termometro" style="display: none;" id="img_TempAlta">
@@ -228,6 +269,12 @@
                 console.log(`#ERRO: ${resposta}`);
         });
     }
+
+    setInterval(() => {
+        buscarTemperaturaAdequadas()
+        buscarTemperaturaInadequadas()
+        buscarEstufasEmpresa()
+    }, 1000);
 
 </script>
 

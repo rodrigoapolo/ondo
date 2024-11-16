@@ -12,7 +12,7 @@ DROP DATABASE ondo;
 
 CREATE DATABASE ondo;
 
-USE  ondo;
+USE ondo;
 
 CREATE TABLE usuario (
     idUsuario INT AUTO_INCREMENT PRIMARY KEY,
