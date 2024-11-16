@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="../css/dashboards.css"> -->
   <link rel="stylesheet" href="../css/style.css">
 
   <link rel="stylesheet" href="dashboard.css">
@@ -18,7 +17,9 @@
   <title>Grafico</title>
 </head>
 
-<body>
+<body onload="buscarTemperaturaMaxima(), buscarTemperaturaMinima(), buscarQuantidadeAlerta(),
+obterDadosGraficoBarraAlertaBaixo(barraAlertaAbaixo), obterDadosGraficoBarraAlertaAcima(barraAlertaAcima),
+buscarMensagemAlerta()">
   <header class="menu_dashboard">
     <nav class="menuLateral">
       <img src="../assets/img/logo_branco.png" alt="">
@@ -73,7 +74,7 @@
             <img src="../assets/img/Dashboard/termometro.svg" alt="">
           </div>
           <div class="kpi_dado">
-            <h2 id="h2_temperatura_real">20°C</h2>
+            <h2 id="h2_temperatura_real"></h2>
           </div>
         </div>
         <div class="card">
@@ -82,7 +83,7 @@
             <img src="../assets/img/Dashboard/danger.svg" alt="" class="img_sino">
           </div>
           <div class="kpi_dado">
-            <h2>10</h2>
+            <h2 id="quantidade_alerta_kpi"></h2>
           </div>
 
         </div>
@@ -92,7 +93,7 @@
             <img src="../assets/img/Dashboard/TempAlta.svg" alt="">
           </div>
           <div class="kpi_dado">
-            <h2>27°C</h2>
+            <h2 id="temperatura_maxima_kpi"></h2>
           </div>
 
         </div>
@@ -102,7 +103,7 @@
             <img src="../assets/img/Dashboard/TempBaixa.svg" alt="">
           </div>
           <div class="kpi_dado">
-            <h2>10°C</h2>
+            <h2 id="temperatura_minima_kpi"></h2>
           </div>
 
         </div>
@@ -113,7 +114,7 @@
 
           <div class="grafico">
             <!-- <h3>Análise de Temperaturas</h3> -->
-            <canvas id="grafico_barra" style="height: 100%; width: 100%;"></canvas>
+            <canvas id="grafico_barra_abaixo" style="height: 100%; width: 100%;"></canvas>
 
           </div>
         </div>
@@ -123,22 +124,9 @@
 
         <div style="display: flex;" class="grafico_container">
 
-          <div class="grafico">
-            <h3>Proporção de alertas</h3>
+          <div class="grafico">          
             <div class="container">
-              <div class="legenda">
-                <div class="legend-item">
-                  <div class="legend-box"
-                    style="background-color: rgba(255, 99, 132, 0.2); border: 1px solid rgba(255, 99, 132, 1);"></div>
-                  <span>Alertas</span>
-                </div>
-                <div class="legend-item">
-                  <div class="legend-box"
-                    style="background-color: rgba(54, 162, 235, 0.2); border: 1px solid rgba(54, 162, 235, 1);"></div>
-                  <span>Leituras de Temperatura</span>
-                </div>
-              </div>
-              <canvas id="grafico_pizza" style="padding-left: 20px;"></canvas>
+              <canvas id="grafico_barra_acima" style="padding-left: 20px;"></canvas>
             </div>
           </div>
         </div>
@@ -148,34 +136,13 @@
         <canvas class="grafico" id="grafico_linha"></canvas>
       </div>
 
-      <section class="notificacoes_recentes">
+      <section id="div_mensagem_alerta" class="notificacoes_recentes">
         <div class="titulos">
           <span>NO</span>
           <span>Localização</span>
           <span>Data</span>
           <span>Hora</span>
           <span>Mensagem</span>
-        </div>
-        <div class="dados">
-          <span>1</span>
-          <span>Principal</span>
-          <span>09/10/2024</span>
-          <span>09:30</span>
-          <span>Limite Excedido</span>
-        </div>
-        <div class="dados">
-          <span>2</span>
-          <span>Principal</span>
-          <span>111/10/2024</span>
-          <span>10:30</span>
-          <span>Limite Excedido</span>
-        </div>
-        <div class="dados">
-          <span>3</span>
-          <span>Principal</span>
-          <span>13/10/2024</span>
-          <span>12:30</span>
-          <span>Limite Excedido</span>
         </div>
       </section>
     </div>
@@ -185,30 +152,24 @@
 </html>
 
 <script>
-  const graficoBarra = document.getElementById("grafico_barra");
+  const graficoBarraAbaixo = document.getElementById("grafico_barra_abaixo");
   const graficoLinha = document.getElementById("grafico_linha");
-  const graficoPizza = document.getElementById("grafico_pizza");
+  const graficoBarraAcima = document.getElementById("grafico_barra_acima");
+  var idEstufaDashboard = 1;
 
   b_usuario.innerHTML = sessionStorage.NOME_RESPONSAVEL;
 
-  new Chart(graficoBarra, {
+  var barraAlertaAbaixo = new Chart(graficoBarraAbaixo, {
     type: "bar",
     data: {
       labels: ["Temperatura"],
       datasets: [
         {
-          label: "Média",
-          data: [18.5],
+          label: "Alerta",
           borderWidth: 1,
         },
         {
-          label: "Mínima",
-          data: [10],
-          borderWidth: 1,
-        },
-        {
-          label: "Máxima",
-          data: [27],
+          label: "Total de aferição",
           borderWidth: 1,
         },
       ],
@@ -217,7 +178,7 @@
       plugins: {
         title: {
           display: true, // Define se o título deve ser exibido
-          text: "Visão Geral das Temperaturas", // O texto do título
+          text: "Alerta abaixo da Temperatura", // O texto do título
           font: {
             size: 20, // Tamanho da fonte do título
             weight: "bold", // Peso da fonte do título
@@ -242,7 +203,20 @@
         {
           label: "Temperatura",
           borderWidth: 1,
+          borderColor: 'pink',
         },
+        {
+        label: 'Max',
+        data: [21, 21, 21, 21, 21, 21, 21, 21, 21, 21], // Dados para a Linha 1
+        borderColor: 'red', // Cor da linha
+        fill: false, // Sem preenchimento abaixo da linha
+      },
+      {
+        label: 'Min',
+        data: [8, 8, 8, 8, 8, 8, 8, 8, 8, 8], // Dados para a Linha 1
+        borderColor: 'blue', // Cor da linha
+        fill: false, // Sem preenchimento abaixo da linha
+      },
       ],
     },
     options: {
@@ -268,105 +242,89 @@
     },
   });
 
-  new Chart(graficoPizza, {
-    type: "pie",
+  var barraAlertaAcima = new Chart(graficoBarraAcima, {
+    type: "bar",
     data: {
-      labels: ["Total ", "Alertas acionados"],
+      labels: ["Temperatura"],
       datasets: [
         {
-          label: "Alertas do Dia",
-          data: [90, 10], // se a fatia toda é 100, subtrai os alertas para ele apresentar da forma certa 
-          backgroundColor: [
-            // Cores para cada fatia
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 99, 132, 0.2)"
-          ],
-          borderColor: [
-            // Cores das bordas
-
-            "rgba(54, 162, 235, 1)",
-            "rgba(255, 99, 132, 1)",
-          ],
-          borderWidth: 1, // Largura da borda
+          label: "Alerta",
+          borderWidth: 1,
+        },
+        {
+          label: "Total de aferição",
+          borderWidth: 1,
         },
       ],
     },
     options: {
-      responsive: true,
       plugins: {
-        datalabels: {
-          display: 'auto',
-          formatter: (value, ctx) => {
-            // Soma total dos dados do dataset
-            // let totalSum = 0;
-            // const data = ctx.chart.data.datasets[0].data;
-
-            // Loop para somar os valores
-            // for (let i = 0; i < data.length; i++) {
-            //   totalSum += data[i];
-            // }
-
-            // Cálculo da porcentagem usando a regra de três
-            var percentage = (value / 100) * 100;
-            // if (percentage == 100) {
-            //   percentage = 50
-            // }
-
-            return `${percentage.toFixed(1)}%`; // Retorna a porcentagem formatada
-          },
-        },
-        legend: {
-          display: false, // Exibir a legenda
-          // position: 'right', // Posiciona a legenda à direita
-          labels: {
-            boxWidth: 20, // Largura da caixa de legenda
-            font: {
-              size: 14, // Tamanho da fonte da legenda
-            },
-          },
-        },
         title: {
-          // position: 'top',
-          display: false, // Define se o título deve ser exibido
-          text: "Análise de Temperaturas", // O texto do título
+          display: true, // Define se o título deve ser exibido
+          text: "Alerta acima da Temperatura", // O texto do título
           font: {
             size: 20, // Tamanho da fonte do título
             weight: "bold", // Peso da fonte do título
           },
-
-        }
+          padding: {
+            top: 10, // Espaçamento acima do título
+            bottom: 30, // Espaçamento abaixo do título
+          },
+        },
       },
-
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
     },
-    plugins: [ChartDataLabels]
   });
 
-  var paginacao = {};
-  var tempo = {};
+  function obterDadosGraficoBarraAlertaBaixo(grafico) {
+    fetch(`/graficos/alerta-abaixo/${idEstufaDashboard}`,{
+      method: "GET",
+    })
+      .then(response => response.json())
+      .then(valores => {          
+          grafico.data.datasets[0].data.push(parseFloat(valores.quantidadeAlerta));
+          grafico.data.datasets[1].data.push(parseFloat(valores.total));
+          grafico.update();
+      })
+      .catch(error => console.error('Erro ao obter dados:', error));
+  }
 
-  function obterDados(grafico, endpoint) {
-    fetch('http://localhost:3300/sensores/' + endpoint)
+  function obterDadosGraficoBarraAlertaAcima(grafico) {
+    fetch(`/graficos/alerta-acima/${idEstufaDashboard}`,{
+      method: "GET",
+    })
+      .then(response => response.json())
+      .then(valores => {          
+          grafico.data.datasets[0].data.push(parseFloat(valores.quantidadeAlerta));
+          grafico.data.datasets[1].data.push(parseFloat(valores.total));
+          grafico.update();
+      })
+      .catch(error => console.error('Erro ao obter dados:', error));
+  }
+
+  function obterDadosGraficoLinha(grafico) {
+    fetch(`/graficos/lista-temperatura-dia/${idEstufaDashboard}`,{
+      method: "GET",
+    })
       .then(response => response.json())
       .then(valores => {
-        if (paginacao[endpoint] == null) {
-          paginacao[endpoint] = 0;
-        }
-        if (tempo[endpoint] == null) {
-          tempo[endpoint] = 0;
-        }
-
-        var ultimaPaginacao = paginacao[endpoint];
-        paginacao[endpoint] = valores.length;
-        valores = valores.slice(ultimaPaginacao);
 
         valores.forEach((valor) => {
           if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
             grafico.data.labels.shift();
             grafico.data.datasets[0].data.shift();
+            grafico.data.datasets[1].data.shift();
+            grafico.data.datasets[2].data.shift();
           }
 
           grafico.data.labels.push(valor.hora);
           grafico.data.datasets[0].data.push(parseFloat(valor.temperatura));
+          grafico.data.datasets[1].data.push(21);
+          grafico.data.datasets[2].data.push(8);
           grafico.update();
         });
       })
@@ -374,17 +332,93 @@
   }
 
   function temperaturaReal() {
-    fetch('http://localhost:3300/sensores/analogico')
-      .then(response => response.json())
-      .then(valores => {
-        var temperatura = valores[valores.length - 1];
-        h2_temperatura_real.innerHTML = temperatura.temperatura + "°C"
+    fetch(`/graficos/temperatura-atual/${idEstufaDashboard}`, {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((temperatura) => {
+          h2_temperatura_real.innerHTML = `${temperatura[0].temperatura_atual}°C`
+        });
       })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
   }
 
+  function buscarQuantidadeAlerta() {
+    fetch(`/graficos/quantidade-alerta/${idEstufaDashboard}`, {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((alertas) => {
+          quantidade_alerta_kpi.innerHTML = `${alertas[0].quantidade_alertas}`
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function buscarTemperaturaMaxima() {
+    fetch(`/graficos/temperatura-maxima/${idEstufaDashboard}`, {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((temperatura) => {
+          temperatura_maxima_kpi.innerHTML = `${temperatura[0].temperatura_maxima}°C`
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function buscarTemperaturaMinima() {
+    fetch(`/graficos/temperatura-minima/${idEstufaDashboard}`, {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((temperatura) => {
+          temperatura_minima_kpi.innerHTML = `${temperatura[0].temperatura_minima}°C`
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function buscarMensagemAlerta() {
+    fetch(`/graficos/lista-mensagem-alerta/${idEstufaDashboard}`, {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((mensagens) => {
+          console.log(mensagens)
+          mensagens.forEach((mensagem, index) =>{
+            console.log(mensagem)
+            var dataLocal = new Date(mensagem.data);
+            var dia = dataLocal.getDate().toString().padStart(2, '0');
+            var mes = (dataLocal.getMonth() + 1).toString().padStart(2, '0');
+            var ano = dataLocal.getFullYear();
+            var dataFormatadaPTBR = `${dia}/${mes}/${ano}`;
+            div_mensagem_alerta.innerHTML += `
+            <div class="dados">
+              <span>${index + 1}</span>
+              <span>${mensagem.localidade}</span>
+              <span>${dataFormatadaPTBR}</span>
+              <span>${mensagem.hora}</span>
+              <span>${mensagem.mensagem}</span>
+            </div>`
+          })
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
 
   setInterval(() => {
-    obterDados(linha, 'analogico');
+    obterDadosGraficoLinha(linha);
   }, 5000);
 
   setInterval(() => {
