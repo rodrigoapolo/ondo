@@ -238,29 +238,38 @@ SELECT COUNT(idEstufa) qtdEstufas
 FROM estufa
 WHERE fkEmpresa = 1;
 
--- Temperaturas adequadas
-SELECT COUNT(e.idEstufa) as qtdEstufa
+-- Temperaturas inadequadas
+SELECT COUNT(e.idEstufa) as qtdEstufas
 FROM estufa e JOIN sensor s
 ON e.idEstufa = s.fkEstufa
 JOIN medicao m
 ON s.idSensor = m.fkSensor
 WHERE e.fkEmpresa = 1 AND (m.temperatura > 21 OR m.temperatura < 8) AND m.dataHora >= NOW();
 
--- Temperaturas inadequadas
-SELECT COUNT(e.idEstufa) as qtdEstufa
+INSERT INTO medicao (temperatura, dataHora, fkSensor)
+VALUES 
+    (7.0, '2024-11-16 23:00:00', 1),
+    (22.45, '2024-11-16 23:00:00', 1);
+
+-- Temperaturas Adequadas
+SELECT COUNT(e.idEstufa) as qtdEstufas
 FROM estufa e JOIN sensor s
 ON e.idEstufa = s.fkEstufa
 JOIN medicao m
 ON s.idSensor = m.fkSensor
 WHERE e.fkEmpresa = 1 AND m.temperatura > 8 AND m.temperatura < 21 AND m.dataHora >= NOW();
 
+SELECT * FROM medicao;
+UPDATE medicao
+set temperatura = 14
+WHERE idMedicao = 14;
 
 -- Para pegar as estufa monitoradas
 SELECT idEstufa 
 FROM estufa
 WHERE fkEmpresa = 1;
 
-SELECT e.idEstufa, e.nome,  m.temperatura, m.dataHora
+SELECT e.idEstufa, e.nome, m.temperatura
 FROM estufa e JOIN sensor s
 ON e.idEstufa = s.fkEstufa
 JOIN medicao m
