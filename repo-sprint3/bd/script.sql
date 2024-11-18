@@ -8,9 +8,11 @@
 -- exit
 -- mysql -u api -p -P 3307
 -- Sptech#2024
+DROP DATABASE ondo;
+
 CREATE DATABASE ondo;
 
-USE  ondo;
+USE ondo;
 
 CREATE TABLE usuario (
     idUsuario INT AUTO_INCREMENT PRIMARY KEY,
@@ -37,8 +39,6 @@ CREATE TABLE empresa (
 );
 
 SELECT * FROM empresa;
-
-ALTER TABLE empresa RENAME COLUMN UF TO estado;
 
 -- Tabela estufa
 CREATE TABLE estufa (
@@ -148,84 +148,134 @@ VALUES
 SELECT * FROM alerta;
 
 -- criar select para aviso com o nome da estufa
-SELECT a.temperatura, a.mensagem, e.nome AS nomeEstufa
-FROM alerta a
-JOIN sensor s ON a.fkSensor = s.idSensor
-JOIN estufa e ON s.fkEstufa = e.idEstufa;
+SELECT s.localidade, date(a.dataHora) as 'data', time(dataHora) as hora, a.mensagem
+FROM alerta a JOIN sensor s
+ON a.fksensor = s.idSensor
+JOIN estufa e
+ON s.fkEstufa = e.idEstufa
+WHERE e.idEstufa = 1 AND a.dataHora >= NOW() - INTERVAL 7 DAY
+ORDER BY a.dataHora DESC;
 
-SELECT m.temperatura, m.dataHora, s.localidade, e.nome as 'Nome Estufa'	FROM medicao as m  JOIN sensor as s  ON m.fkSensor = s.idSensor  JOIN estufa as e   ON s.fkEstufa = e.idEstufa ORDER BY m.dataHora DESC;
-
-SELECT e.*,
-
-max(temperatura) FROM medicao;
-
-SELECT s.localidade, 
-       MAX(m.temperatura) AS temperatura_maxima
-FROM medicao AS m
-JOIN sensor AS s ON m.fkSensor = s.idSensor
+-- Temperatura altual de um estufa
+SELECT m.temperatura AS temperatura_atual
+FROM medicao AS m JOIN sensor AS s 
+ON m.fkSensor = s.idSensor
 JOIN estufa AS e ON s.fkEstufa = e.idEstufa
-WHERE e.nome = 'Estufa A'  
-GROUP BY s.localidade;
-
-SELECT s.localidade, 
-       MIN(m.temperatura) AS temperatura_maxima
-FROM medicao AS m
-JOIN sensor AS s ON m.fkSensor = s.idSensor
-JOIN estufa AS e ON s.fkEstufa = e.idEstufa
-WHERE e.nome = 'Estufa A'  
-GROUP BY s.localidade;
+WHERE e.idEstufa = 1
+ORDER BY m.dataHora DESC
+LIMIT 1;
 
 -- SELECT de temperatura MÁXIMA da ''ESTUFA A'' no ''Corredor principal'' 
-SELECT 
-    MAX(m.temperatura) AS temperatura_maxima
-FROM 
-    medicao AS m
-JOIN 
-    sensor AS s ON m.fkSensor = s.idSensor
-JOIN 
-    estufa AS e ON s.fkEstufa = e.idEstufa
-WHERE 
-    e.nome = 'Estufa A';
+SELECT MAX(m.temperatura) AS temperatura_maxima
+FROM medicao AS m JOIN sensor AS s 
+ON m.fkSensor = s.idSensor
+JOIN estufa AS e ON s.fkEstufa = e.idEstufa
+WHERE e.idEstufa = 1 AND dataHora >= NOW() - INTERVAL 1 DAY;
+
+INSERT INTO medicao (temperatura, dataHora, fkSensor)
+VALUES 
+    (21.45, '2024-11-15 10:00:00', 1),
+	(23.51, '2024-11-15 15:30:00', 1),
+    (23.52, '2024-11-15 11:30:00', 1),
+	(23.53, '2024-11-13 11:30:00', 1),
+    (23.54, '2024-11-14 11:30:00', 1),
+    (23.56, '2024-11-14 11:30:00', 1),
+    (24.25, '2024-11-14 12:45:00', 1);
+
     
     
 -- SELECT de temperatura MÍNIMA da ''ESTUFA A'' no ''Corredor principal''     
-    SELECT 
-    MIN(m.temperatura) AS temperatura_maxima
-FROM 
-    medicao AS m
-JOIN 
-    sensor AS s ON m.fkSensor = s.idSensor
-JOIN 
-    estufa AS e ON s.fkEstufa = e.idEstufa
-WHERE 
-    e.nome = 'Estufa A';
-    
--- SELECT de temperatura MÉDIA, MÍNIMA e MÁXIMA da ''ESTUFA A'' 
-SELECT 
-    ROUND(AVG(m.temperatura),2) AS temperatura_media,
-    MIN(m.temperatura) AS temperatura_minima,
-    MAX(m.temperatura) AS temperatura_maxima
-FROM 
-    medicao m
-JOIN 
-    sensor s ON m.fkSensor = s.idSensor
-JOIN 
-    estufa e ON s.fkEstufa = e.idEstufa
-WHERE 
-    e.nome = 'Estufa A';
+SELECT MIN(m.temperatura) AS temperatura_minima
+FROM medicao AS m
+JOIN sensor AS s ON m.fkSensor = s.idSensor
+JOIN estufa AS e ON s.fkEstufa = e.idEstufa
+WHERE e.idEstufa = 1 AND dataHora >= NOW() - INTERVAL 1 DAY;
 
--- SELECT quantidade de alertas da ''ESTUFA A''
-SELECT 
-    COUNT(a.idAlerta) AS quantidade_alertas
-FROM 
-    alerta a
-JOIN 
-    sensor s ON a.fkSensor = s.idSensor
-JOIN 
-    estufa e ON s.fkEstufa = e.idEstufa
-WHERE 
-    e.nome = 'Estufa A';
-    
+-- SELECT quantidade de alertas da ''ESTUFA A'' NA SEMANA
+SELECT COUNT(a.idAlerta) AS quantidade_alertas
+FROM alerta a
+JOIN sensor s ON a.fkSensor = s.idSensor
+JOIN estufa e ON s.fkEstufa = e.idEstufa
+WHERE e.idEstufa = 1 AND a.dataHora >= NOW() - INTERVAL 7 DAY;
+
+
+-- mostar a temperatura para o grafico de linha
+SELECT m.temperatura, TIME(m.dataHora) AS hora
+FROM medicao m JOIN sensor s
+ON m.fkSensor = s.idSensor
+JOIN estufa e
+ON s.fkEstufa = e.idEstufa
+WHERE e.idEstufa = 1 AND dataHora >= NOW() - INTERVAL 1 DAY
+ORDER BY m.dataHora DESC
+LIMIT 10;
 
     
+-- mostra a quantidade de alerta abaixo
+SELECT COUNT(a.idAlerta) AS quantidade_alertas
+FROM alerta a
+JOIN sensor s ON a.fkSensor = s.idSensor
+JOIN estufa e ON s.fkEstufa = e.idEstufa
+WHERE e.idEstufa = 1 AND a.dataHora >= NOW() - INTERVAL 7 DAY AND temperatura > 9.0;
+
+-- mostra a quantidade de alerta acima
+SELECT COUNT(a.idAlerta) AS quantidade_alertas
+FROM alerta a
+JOIN sensor s ON a.fkSensor = s.idSensor
+JOIN estufa e ON s.fkEstufa = e.idEstufa
+WHERE e.idEstufa = 1 AND a.dataHora >= NOW() - INTERVAL 7 DAY AND temperatura > 17.0;
+
+-- contar a quantidade de medicao
+select count(idMedicao) as total
+FROM medicao m JOIN sensor s
+ON m.fkSensor = s.idSensor
+JOIN estufa e
+ON s.fkEstufa = e.idEstufa
+WHERE e.idEstufa = 1 AND m.dataHora >= NOW() - INTERVAL 7 DAY;
+
+
+-- estufas monitoradas
+SELECT COUNT(idEstufa) qtdEstufas
+FROM estufa
+WHERE fkEmpresa = 1;
+
+-- Temperaturas inadequadas
+SELECT COUNT(e.idEstufa) as qtdEstufas
+FROM estufa e JOIN sensor s
+ON e.idEstufa = s.fkEstufa
+JOIN medicao m
+ON s.idSensor = m.fkSensor
+WHERE e.fkEmpresa = 1 AND (m.temperatura > 21 OR m.temperatura < 8) AND m.dataHora >= NOW();
+
+INSERT INTO medicao (temperatura, dataHora, fkSensor)
+VALUES 
+    (7.0, '2024-11-16 23:00:00', 1),
+    (22.45, '2024-11-16 23:00:00', 1);
+
+-- Temperaturas Adequadas
+SELECT COUNT(e.idEstufa) as qtdEstufas
+FROM estufa e JOIN sensor s
+ON e.idEstufa = s.fkEstufa
+JOIN medicao m
+ON s.idSensor = m.fkSensor
+WHERE e.fkEmpresa = 1 AND m.temperatura > 8 AND m.temperatura < 21 AND m.dataHora >= NOW();
+
+SELECT * FROM medicao;
+UPDATE medicao
+set temperatura = 14
+WHERE idMedicao = 14;
+
+-- Para pegar as estufa monitoradas
+SELECT idEstufa 
+FROM estufa
+WHERE fkEmpresa = 1;
+
+SELECT e.idEstufa, e.nome, m.temperatura
+FROM estufa e JOIN sensor s
+ON e.idEstufa = s.fkEstufa
+JOIN medicao m
+ON s.idSensor = m.fkSensor
+WHERE e.idEstufa = 1
+ORDER BY m.dataHora DESC
+LIMIT 1;
+
     

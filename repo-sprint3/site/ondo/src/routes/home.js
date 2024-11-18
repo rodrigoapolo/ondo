@@ -14,6 +14,10 @@ router.get("/temperaturas-inadequadas/:empresaID",function (req, res) {
     homeController.temperaturasInadequadas(req, res);
 });
 
+router.get("/quantidade-alerta-estufa/:empresaID",function (req, res) {
+    homeController.quantidadeAlertaEstufa(req, res);
+});
+
 router.get("/lista-estufas/:empresaID",function (req, res) {
     homeController.listaEsfufas(req, res);
 });

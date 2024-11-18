@@ -69,6 +69,29 @@ function temperaturasInadequadas(req, res) {
     });
 }
 
+function quantidadeAlertaEstufa(req, res) {
+
+    var idEmpresa = req.params.empresaID;
+
+    if (idEmpresa == undefined) {
+        res.status(400).send("Seu id da Estufa está undefined!");
+    } 
+
+
+    homeModel.quantidadeAlertaEstufa(idEmpresa)
+    .then(function (resultado) {
+        if (resultado[0].quantidade_alertas != 0) {
+            res.status(200).json(resultado[0]);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar a quantidade de alerta.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function listaEsfufas(req, res) {
 
     var idEmpresa = req.params.empresaID;
@@ -111,5 +134,6 @@ module.exports = {
     estufasMonitoradas,
     temperaturasAdequadas,
     temperaturasInadequadas,
-    listaEsfufas
+    listaEsfufas,
+    quantidadeAlertaEstufa
 }
