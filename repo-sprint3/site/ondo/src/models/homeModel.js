@@ -33,6 +33,18 @@ function temperaturasInadequadas(idEmpresa) {
   return database.executar(instrucaoSql);
 }
 
+function quantidadeAlertaEstufa(idEmpresa) {
+  var instrucaoSql = `SELECT COUNT(a.idAlerta) AS quantidade_alertas
+                      FROM alerta a
+                      JOIN sensor s ON a.fkSensor = s.idSensor
+                      JOIN estufa e ON s.fkEstufa = e.idEstufa
+                      WHERE e.fkEmpresa = ${idEmpresa} AND a.dataHora >= NOW() - INTERVAL 7 DAY;`;
+                        
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 function listaEsfufasEmpresa(idEmpresa) {
   var instrucaoSql = `SELECT idEstufa 
                       FROM estufa
@@ -61,5 +73,6 @@ module.exports = {
   temperaturasAdequadas,
   temperaturasInadequadas,
   listaEsfufasEmpresa,
-  buscarEstufa
+  buscarEstufa,
+  quantidadeAlertaEstufa
 }

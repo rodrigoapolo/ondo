@@ -149,7 +149,7 @@
                         <img src="../assets/img/Dashboard/danger_green.svg" alt="" class="img_sino">
                     </div>
                     <div class="kpi_dado">
-                        <h2>3</h2>
+                        <h2 id="qtd_alerta_estufas_kpi"></h2>
                     </div>
 
                 </div>
@@ -240,6 +240,23 @@
         });
     }
 
+    function buscarAlertaEstufas(){
+        fetch(`/home/quantidade-alerta-estufa/${sessionStorage.ID_EMPRESA}`, {
+            method: "GET",
+        })
+        .then(function (resposta) {
+            console.log(resposta)
+            resposta.json().then((alerta) => {
+                console.log(alerta)
+
+                qtd_alerta_estufas_kpi.innerHTML = alerta.quantidade_alertas
+            });
+        })
+        .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
     function buscarEstufasEmpresa(){
         fetch(`/home/lista-estufas/${sessionStorage.ID_EMPRESA}`, {
             method: "GET",
@@ -274,7 +291,8 @@
         buscarTemperaturaAdequadas()
         buscarTemperaturaInadequadas()
         buscarEstufasEmpresa()
-    }, 1000);
+        buscarAlertaEstufas()
+    }, 3000);
 
 </script>
 
