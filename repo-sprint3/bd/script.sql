@@ -198,6 +198,12 @@ JOIN sensor s ON a.fkSensor = s.idSensor
 JOIN estufa e ON s.fkEstufa = e.idEstufa
 WHERE e.idEstufa = 1 AND a.dataHora >= NOW() - INTERVAL 7 DAY;
 
+-- SELECT quantidade de alertas da empresa A'' NA SEMANA
+SELECT COUNT(a.idAlerta) AS quantidade_alertas
+FROM alerta a
+JOIN sensor s ON a.fkSensor = s.idSensor
+JOIN estufa e ON s.fkEstufa = e.idEstufa
+WHERE e.fkEmpresa = 1 AND a.dataHora >= NOW() - INTERVAL 7 DAY;
 
 -- mostar a temperatura para o grafico de linha
 SELECT m.temperatura, TIME(m.dataHora) AS hora
@@ -208,6 +214,20 @@ ON s.fkEstufa = e.idEstufa
 WHERE e.idEstufa = 1 AND dataHora >= NOW() - INTERVAL 1 DAY
 ORDER BY m.dataHora DESC
 LIMIT 10;
+
+-- mostra a quantidade alertas pelo dia
+SELECT 
+    DATE(a.dataHora) AS data,
+    COUNT(a.idAlerta) AS quantidade_alertas
+FROM alerta a
+JOIN sensor s ON a.fkSensor = s.idSensor
+JOIN estufa e ON s.fkEstufa = e.idEstufa
+WHERE 
+    e.idEstufa = 1 
+    AND a.dataHora >= NOW() - INTERVAL 7 DAY 
+    AND a.temperatura > 17.0
+GROUP BY DATE(a.dataHora)
+ORDER BY data;
 
     
 -- mostra a quantidade de alerta abaixo
@@ -278,4 +298,22 @@ WHERE e.idEstufa = 1
 ORDER BY m.dataHora DESC
 LIMIT 1;
 
+
+SELECT m.fkSensor, m.temperatura, m.dataHora
+FROM medicao m
+JOIN (
+    SELECT fkSensor, MAX(dataHora) AS ultimaMedicao
+    FROM medicao
+    where fkSensor IN((select idSensor from sensor where fkEstufa = 1 ))
+    GROUP BY fkSensor
+) ultimas ON m.fkSensor = ultimas.fkSensor AND m.dataHora = ultimas.ultimaMedicao;
+
+select * from medicao where fkSensor IN(1,2);
+update medicao 
+set dataHora = '2024-11-16 14:00:00'
+where idMedicao = 14;
+
+    SELECT fkSensor, MAX(dataHora) AS ultimaMedicao
+    FROM medicao
+    GROUP BY fkSensor;
     
