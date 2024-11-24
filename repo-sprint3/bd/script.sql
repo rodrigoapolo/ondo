@@ -217,18 +217,62 @@ LIMIT 10;
 
 -- mostra a quantidade alertas pelo dia
 SELECT 
-    DATE(a.dataHora) AS data,
+    DATE(a.dataHora) AS dataDia,
     COUNT(a.idAlerta) AS quantidade_alertas
 FROM alerta a
 JOIN sensor s ON a.fkSensor = s.idSensor
 JOIN estufa e ON s.fkEstufa = e.idEstufa
 WHERE 
     e.idEstufa = 1 
-    AND a.dataHora >= NOW() - INTERVAL 7 DAY 
-    AND a.temperatura > 17.0
+    AND a.dataHora >= NOW() - INTERVAL 30 DAY 
+    AND a.temperatura > 20.0
 GROUP BY DATE(a.dataHora)
-ORDER BY data;
+ORDER BY dataDia;
 
+select * from alerta;
+-- insert a baixo
+INSERT INTO alerta (temperatura, mensagem, fkSensor, dataHora) 
+VALUES 
+	(9.0, 'A temperatura exige atenção', 1, '2024-11-23 14:02:12'),
+    (8.0, 'A temperatura exige atenção', 1, '2024-11-23 13:02:12'),
+    (7.0, 'A temperatura exige atenção', 1, '2024-11-23 12:02:12'),
+    (9.5, 'A temperatura exige atenção', 1, '2024-11-22 11:02:12'),
+    (8.5, 'A temperatura exige atenção', 1, '2024-11-22 10:02:12'),
+    (15.0, 'A temperatura exige atenção', 1, '2024-11-22 15:02:12'),
+	(9.5, 'A temperatura exige atenção', 1, '2024-11-21 11:02:12'),
+    (8.5, 'A temperatura exige atenção', 1, '2024-11-21 10:02:12'),
+    (15.0, 'A temperatura exige atenção', 1, '2024-11-21 15:02:12'),
+	(9.0, 'A temperatura exige atenção', 2, '2024-11-23 09:02:12'),
+    (8.0, 'A temperatura exige atenção', 2, '2024-11-23 08:02:12'),
+    (7.0, 'A temperatura exige atenção', 2, '2024-11-23 08:30:12'),
+    (9.5, 'A temperatura exige atenção', 2, '2024-11-22 09:02:12'),
+    (8.5, 'A temperatura exige atenção', 2, '2024-11-22 10:00:12'),
+    (15.0, 'A temperatura exige atenção', 2, '2024-11-22 10:10:12'),
+    (8.5, 'A temperatura exige atenção', 2, '2024-11-21 18:02:12'),
+    (8.5, 'A temperatura exige atenção', 2, '2024-11-21 19:02:12'),
+    (8.5, 'A temperatura exige atenção', 2, '2024-11-21 20:02:12');
+
+-- acima
+INSERT INTO alerta (temperatura, mensagem, fkSensor, dataHora) 
+VALUES 
+	(20.0, 'A temperatura exige atenção', 1, '2024-11-23 14:02:12'),
+    (21.0, 'A temperatura exige atenção', 1, '2024-11-23 13:02:12'),
+    (22.0, 'A temperatura exige atenção', 1, '2024-11-23 12:02:12'),
+    (20.5, 'A temperatura exige atenção', 1, '2024-11-22 11:02:12'),
+    (21.5, 'A temperatura exige atenção', 1, '2024-11-22 10:02:12'),
+    (20.1, 'A temperatura exige atenção', 1, '2024-11-22 15:02:12'),
+	(21.9, 'A temperatura exige atenção', 1, '2024-11-21 11:02:12'),
+    (22.5, 'A temperatura exige atenção', 1, '2024-11-21 10:02:12'),
+    (20.3, 'A temperatura exige atenção', 1, '2024-11-21 15:02:12'),
+	(21.3, 'A temperatura exige atenção', 2, '2024-11-23 09:02:12'),
+    (20.2, 'A temperatura exige atenção', 2, '2024-11-23 08:02:12'),
+    (21.5, 'A temperatura exige atenção', 2, '2024-11-23 08:30:12'),
+    (20.0, 'A temperatura exige atenção', 2, '2024-11-22 09:02:12'),
+    (20.5, 'A temperatura exige atenção', 2, '2024-11-22 10:00:12'),
+    (21.0, 'A temperatura exige atenção', 2, '2024-11-22 10:10:12'),
+    (22.5, 'A temperatura exige atenção', 2, '2024-11-21 18:02:12'),
+    (20.5, 'A temperatura exige atenção', 2, '2024-11-21 19:02:12'),
+    (22.1, 'A temperatura exige atenção', 2, '2024-11-21 20:02:12');
     
 -- mostra a quantidade de alerta abaixo
 SELECT COUNT(a.idAlerta) AS quantidade_alertas
@@ -299,21 +343,26 @@ ORDER BY m.dataHora DESC
 LIMIT 1;
 
 
-SELECT m.fkSensor, m.temperatura, m.dataHora
+SELECT m.fkSensor, m.temperatura, m.dataHora, s.localidade
 FROM medicao m
 JOIN (
     SELECT fkSensor, MAX(dataHora) AS ultimaMedicao
     FROM medicao
     where fkSensor IN((select idSensor from sensor where fkEstufa = 1 ))
     GROUP BY fkSensor
-) ultimas ON m.fkSensor = ultimas.fkSensor AND m.dataHora = ultimas.ultimaMedicao;
+) ultimas ON m.fkSensor = ultimas.fkSensor AND m.dataHora = ultimas.ultimaMedicao
+JOIN sensor s
+on s.idSensor = m.fkSensor;
 
 select * from medicao where fkSensor IN(1,2);
 update medicao 
 set dataHora = '2024-11-16 14:00:00'
 where idMedicao = 14;
 
-    SELECT fkSensor, MAX(dataHora) AS ultimaMedicao
-    FROM medicao
-    GROUP BY fkSensor;
-    
+
+SELECT m.temperatura, TIME(m.dataHora) AS hora
+FROM medicao m 
+where m.fkSensor = 1 AND dataHora >= NOW() - INTERVAL 1 DAY
+ORDER BY m.dataHora DESC
+LIMIT 10;
+

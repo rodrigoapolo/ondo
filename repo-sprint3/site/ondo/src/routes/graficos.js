@@ -35,6 +35,14 @@ router.get("/lista-mensagem-alerta/:estufaID",function (req, res) {
     graficosController.listaMensagemAlerta(req, res);
 });
 
+router.get("/lista-temperatura-sensor-dia/:sensorID",function (req, res) {
+    graficosController.listaTemperaturaSensorDia(req, res);
+});
+
+router.get("/lista-temperatura-sensor/:estufaID",function (req, res) {
+    graficosController.listaTemperaturaSensor(req, res);
+});
+
 module.exports = router;
 
 

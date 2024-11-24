@@ -65,6 +65,18 @@ function listaTemperaturaDia(idEstufa) {
   return database.executar(instrucaoSql);
 }
 
+function listaTemperaturaSensorDia(idSensor) {
+  var instrucaoSql = `SELECT m.temperatura, TIME(m.dataHora) AS hora
+                      FROM medicao m 
+                      where m.fkSensor = ${idSensor} AND dataHora >= NOW() - INTERVAL 30 DAY
+                      ORDER BY m.dataHora DESC
+                      LIMIT 10;`;
+                        
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 function alertaAbaixo(idEstufa){
   var instrucaoSql = `SELECT 
                           DATE(a.dataHora) AS dataDia,
@@ -131,6 +143,23 @@ function listaMensagemAlerta(idEstufa){
   return database.executar(instrucaoSql);
 }
 
+function listaTemperaturaSensor(idEstufa){
+  var instrucaoSql = `SELECT m.fkSensor, m.temperatura, m.dataHora, s.localidade
+                      FROM medicao m
+                      JOIN (
+                          SELECT fkSensor, MAX(dataHora) AS ultimaMedicao
+                          FROM medicao
+                          where fkSensor IN((select idSensor from sensor where fkEstufa = ${idEstufa}))
+                          GROUP BY fkSensor
+                      ) ultimas ON m.fkSensor = ultimas.fkSensor AND m.dataHora = ultimas.ultimaMedicao
+                      JOIN sensor s
+                      on s.idSensor = m.fkSensor;`;
+    
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
   temperaturaAtual,
@@ -141,5 +170,7 @@ module.exports = {
   alertaAbaixo,
   totalAlerta,
   alertaAcima,
-  listaMensagemAlerta
+  listaMensagemAlerta,
+  listaTemperaturaSensor,
+  listaTemperaturaSensorDia
 }

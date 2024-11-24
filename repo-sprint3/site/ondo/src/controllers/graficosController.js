@@ -190,6 +190,49 @@ function listaMensagemAlerta(req, res) {
     });
 }
 
+function listaTemperaturaSensorDia(req, res){
+    var idSensor = req.params.sensorID;
+
+    if (idSensor == undefined) {
+        res.status(400).send("Seu id da Estufa está undefined!");
+    } 
+
+    graficosModel.listaTemperaturaSensorDia(idSensor)
+    .then(function (resultado) {
+        
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar a temperatura do sensor.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function listaTemperaturaSensor(req, res){
+    var idEstufa = req.params.estufaID;
+
+    if (idEstufa == undefined) {
+        res.status(400).send("Seu id da Estufa está undefined!");
+    } 
+
+    graficosModel.listaTemperaturaSensor(idEstufa)
+    .then(function (resultado) {
+        
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar a temperatura do sensor.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 module.exports = {
     temperaturaAtual,
     quantidadeAlerta,
@@ -198,5 +241,7 @@ module.exports = {
     listaTemperaturaDia,
     alertaAbaixo,
     alertaAcima,
-    listaMensagemAlerta
+    listaMensagemAlerta,
+    listaTemperaturaSensor,
+    listaTemperaturaSensorDia
 }
