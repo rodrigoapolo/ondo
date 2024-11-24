@@ -123,7 +123,8 @@ function listaMensagemAlerta(idEstufa){
                       JOIN estufa e
                       ON s.fkEstufa = e.idEstufa
                       WHERE e.idEstufa = ${idEstufa} AND a.dataHora >= NOW() - INTERVAL 7 DAY
-                      ORDER BY a.dataHora DESC;`;
+                      ORDER BY a.dataHora DESC
+                      LIMIT 10;`;
     
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
