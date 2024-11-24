@@ -127,15 +127,10 @@ function alertaAbaixo(req, res) {
     graficosModel.alertaAbaixo(idEstufa)
     .then(function (resultado) {
         
-        if (resultado[0].quantidade_alertas > 0) {
-            graficosModel.totalAlerta(idEstufa)
-            .then((totalBd) => {
-                res.status(200).json({
-                    quantidadeAlerta: resultado[0].quantidade_alertas,
-                    total: totalBd[0].total
-                });
+        if (resultado.length > 0) {
+            
+            res.status(200).json(resultado);
                 
-            })
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }
@@ -159,15 +154,8 @@ function alertaAcima(req, res) {
     graficosModel.alertaAcima(idEstufa)
     .then(function (resultado) {
         
-        if (resultado[0].quantidade_alertas > 0) {
-            graficosModel.totalAlerta(idEstufa)
-            .then((totalBd) => {
-                res.status(200).json({
-                    quantidadeAlerta: resultado[0].quantidade_alertas,
-                    total: totalBd[0].total
-                });
-                
-            })
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }

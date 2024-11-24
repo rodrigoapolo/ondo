@@ -66,11 +66,18 @@ function listaTemperaturaDia(idEstufa) {
 }
 
 function alertaAbaixo(idEstufa){
-  var instrucaoSql = `SELECT COUNT(a.idAlerta) AS quantidade_alertas
+  var instrucaoSql = `SELECT 
+                          DATE(a.dataHora) AS dataDia,
+                          COUNT(a.idAlerta) AS quantidadeAlertas
                       FROM alerta a
                       JOIN sensor s ON a.fkSensor = s.idSensor
                       JOIN estufa e ON s.fkEstufa = e.idEstufa
-                      WHERE temperatura < 8.0 AND e.idEstufa = ${idEstufa} AND a.dataHora >= NOW() - INTERVAL 7 DAY;`;
+                      WHERE 
+                          e.idEstufa = ${idEstufa} 
+                          AND a.dataHora >= NOW() - INTERVAL 7 DAY 
+                          AND a.temperatura < 10.0
+                      GROUP BY DATE(a.dataHora)
+                      ORDER BY dataDia;`;
 
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -78,11 +85,18 @@ function alertaAbaixo(idEstufa){
 }
 
 function alertaAcima(idEstufa){
-  var instrucaoSql = `SELECT COUNT(a.idAlerta) AS quantidade_alertas
+  var instrucaoSql = `SELECT 
+                          DATE(a.dataHora) AS dataDia,
+                          COUNT(a.idAlerta) AS quantidadeAlertas
                       FROM alerta a
                       JOIN sensor s ON a.fkSensor = s.idSensor
                       JOIN estufa e ON s.fkEstufa = e.idEstufa
-                      WHERE temperatura > 17 AND e.idEstufa = ${idEstufa} AND a.dataHora >= NOW() - INTERVAL 7 DAY;`;
+                      WHERE 
+                          e.idEstufa = ${idEstufa} 
+                          AND a.dataHora >= NOW() - INTERVAL 7 DAY 
+                          AND a.temperatura > 20.0
+                      GROUP BY DATE(a.dataHora)
+                      ORDER BY dataDia;`;
 
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);

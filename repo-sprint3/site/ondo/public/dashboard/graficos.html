@@ -163,16 +163,12 @@ buscarMensagemAlerta()">
   var barraAlertaAbaixo = new Chart(graficoBarraAbaixo, {
     type: "bar",
     data: {
-      labels: ["Temperatura"],
+      labels: [],
       datasets: [
         {
-          label: "Alerta",
+          label: "Alerta por dia.",
           borderWidth: 1,
-        },
-        {
-          label: "Total de aferição",
-          borderWidth: 1,
-        },
+        }
       ],
     },
     options: {
@@ -246,16 +242,14 @@ buscarMensagemAlerta()">
   var barraAlertaAcima = new Chart(graficoBarraAcima, {
     type: "bar",
     data: {
-      labels: ["Temperatura"],
+      labels: [],
       datasets: [
         {
-          label: "Alerta",
+          label: "Alerta por Dia.",
           borderWidth: 1,
-        },
-        {
-          label: "Total de aferição",
-          borderWidth: 1,
-        },
+          borderColor: '#ff0000',
+          backgroundColor: '#ff0000',
+        }
       ],
     },
     options: {
@@ -287,8 +281,18 @@ buscarMensagemAlerta()">
     })
       .then(response => response.json())
       .then(valores => {          
-          grafico.data.datasets[0].data.push(parseFloat(valores.quantidadeAlerta));
-          grafico.data.datasets[1].data.push(parseFloat(valores.total));
+
+          valores.forEach((valor) => {
+                            if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+                                grafico.data.labels.shift();
+                                grafico.data.datasets.data.shift();
+                            }
+                            var dataHora = new Date(valor.dataDia);
+                            var dataHoraBR = dataHora.toLocaleDateString("pt-BR", { timeZone: "America/Sao_Paulo" });
+                            grafico.data.labels.push(dataHoraBR);
+                            grafico.data.datasets[0].data.push(parseFloat(valor.quantidadeAlertas));
+                           
+                        });
           grafico.update();
       })
       .catch(error => console.error('Erro ao obter dados:', error));
@@ -300,8 +304,17 @@ buscarMensagemAlerta()">
     })
       .then(response => response.json())
       .then(valores => {          
-          grafico.data.datasets[0].data.push(parseFloat(valores.quantidadeAlerta));
-          grafico.data.datasets[1].data.push(parseFloat(valores.total));
+        valores.forEach((valor) => {
+                            if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+                                grafico.data.labels.shift();
+                                grafico.data.datasets.data.shift();
+                            }
+                            var dataHora = new Date(valor.dataDia);
+                            var dataHoraBR = dataHora.toLocaleDateString("pt-BR", { timeZone: "America/Sao_Paulo" });
+                            grafico.data.labels.push(dataHoraBR);
+                            grafico.data.datasets[0].data.push(parseFloat(valor.quantidadeAlertas));
+                           
+                        });
           grafico.update();
       })
       .catch(error => console.error('Erro ao obter dados:', error));
@@ -326,8 +339,9 @@ buscarMensagemAlerta()">
           grafico.data.datasets[0].data.push(parseFloat(valor.temperatura));
           grafico.data.datasets[1].data.push(21);
           grafico.data.datasets[2].data.push(8);
-          grafico.update();
+          
         });
+        grafico.update();
       })
       .catch(error => console.error('Erro ao obter dados:', error));
   }
@@ -396,7 +410,7 @@ buscarMensagemAlerta()">
         resposta.json().then((mensagens) => {
           console.log(mensagens)
           mensagens.forEach((mensagem, index) =>{
-            console.log(mensagem)
+        
             var dataLocal = new Date(mensagem.data);
             var dia = dataLocal.getDate().toString().padStart(2, '0');
             var mes = (dataLocal.getMonth() + 1).toString().padStart(2, '0');
