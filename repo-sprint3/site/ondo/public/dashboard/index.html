@@ -2,16 +2,18 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="icon" href="assets/img/wasabi.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estufas</title>
+    <title>ONDO | Estufas</title>
     <link rel="stylesheet" href="../css/style.css">
 
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="menuLateral.css">
     <link rel="stylesheet" href="graficos.css" />
+    <link rel="stylesheet" href="parametros.css" />
+
     <script src="../js/sessao.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -73,7 +75,35 @@
                 <h5>Bem vindo, <b id="b_usuario"></b></h5>
             </div>
         </div>
+
         <div class="content">
+            <div class="area-parametros-alerta">
+                <p class="titulo-legenda">
+                    Legenda - Parâmetros para Alertas
+                </p>
+                <div class="parametros-alerta">
+                    <div class="item-regua perigo-frio">
+                        <p>Perigo</p>
+                        <p>&lt;=8°C</p>
+                    </div>
+                    <div class="item-regua alerta-frio">
+                        <p>Alerta</p>
+                        <p>&lt;=10°C</p>
+                    </div>
+                    <div class="item-regua ideal">
+                        <p>Ideal</p>
+                        <p>16°C</p>
+                    </div>
+                    <div class="item-regua alerta-quente">
+                        <p>Alerta</p>
+                        <p>&gt;=20°C</p>
+                    </div>
+                    <div class="item-regua perigo-quente">
+                        <p>Perigo</p>
+                        <p>&gt;=21°C</p>
+                    </div>
+                </div>
+            </div>
             <div class="kpi_cards">
                 <div class="card">
             <!-- <script data-jsd-embedded data-key="72170b6e-c6b9-4e8e-9ef5-c38ca60baaf3" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>                <div class="card"> -->
@@ -115,11 +145,13 @@
 
                 </div>
             </div>
+
             <div class="estufa_cards" id="cardEstufas">
  
             </div>
 
         </div>
+        
     </main>
 
 </body>
