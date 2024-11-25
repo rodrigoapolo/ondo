@@ -289,7 +289,105 @@ VALUES
     (7.0, 'A temperatura exige atenção', 4, '2024-11-24 06:40:11'),
 	(6.5, 'A temperatura exige atenção', 4, '2024-11-24 06:32:12'),
     (6.5, 'A temperatura exige atenção', 4, '2024-11-25 06:12:16'),
-    (6.0, 'A temperatura exige atenção', 4, '2024-11-25 05:45:17');
+    (6.0, 'A temperatura exige atenção', 4, '2024-11-25 05:45:17'),
+    
+	(7.0, 'A temperatura exige atenção', 1, '2024-10-25 06:00:00'),
+    (5.5, 'A temperatura exige atenção', 1, '2024-10-25 12:00:00'),
+    (8.0, 'A temperatura exige atenção', 1, '2024-10-25 18:00:00'),
+    (6.3, 'A temperatura exige atenção', 1, '2024-10-26 06:00:00'),
+    (5.7, 'A temperatura exige atenção', 1, '2024-10-26 12:00:00'),
+    (7.9, 'A temperatura exige atenção', 1, '2024-10-26 18:00:00'),
+    (6.8, 'A temperatura exige atenção', 1, '2024-10-27 06:00:00'),
+    (4.9, 'A temperatura exige atenção', 1, '2024-10-27 12:00:00'),
+    (7.5, 'A temperatura exige atenção', 1, '2024-10-27 18:00:00'),
+    (8.2, 'A temperatura exige atenção', 1, '2024-10-28 06:00:00'),
+    (6.4, 'A temperatura exige atenção', 1, '2024-10-28 12:00:00'),
+    (5.8, 'A temperatura exige atenção', 1, '2024-10-28 18:00:00'),
+    (7.7, 'A temperatura exige atenção', 1, '2024-10-29 06:00:00'),
+    (5.2, 'A temperatura exige atenção', 1, '2024-10-29 12:00:00'),
+    (6.5, 'A temperatura exige atenção', 1, '2024-10-29 18:00:00'),
+    (7.8, 'A temperatura exige atenção', 1, '2024-10-30 06:00:00'),
+    (6.0, 'A temperatura exige atenção', 1, '2024-10-30 12:00:00'),
+    (8.1, 'A temperatura exige atenção', 1, '2024-10-30 18:00:00'),
+    (7.3, 'A temperatura exige atenção', 1, '2024-10-31 06:00:00'),
+    (5.6, 'A temperatura exige atenção', 1, '2024-10-31 12:00:00'),
+    (6.9, 'A temperatura exige atenção', 1, '2024-10-31 18:00:00'),
+    (8.0, 'A temperatura exige atenção', 1, '2024-11-01 06:00:00'),
+    (6.7, 'A temperatura exige atenção', 1, '2024-11-01 12:00:00'),
+    (5.4, 'A temperatura exige atenção', 1, '2024-11-01 18:00:00'),
+    (7.6, 'A temperatura exige atenção', 1, '2024-11-02 06:00:00'),
+    (6.2, 'A temperatura exige atenção', 1, '2024-11-02 12:00:00'),
+    (5.1, 'A temperatura exige atenção', 1, '2024-11-02 18:00:00'),
+    (7.2, 'A temperatura exige atenção', 1, '2024-11-03 06:00:00'),
+    (6.4, 'A temperatura exige atenção', 1, '2024-11-03 12:00:00'),
+    (8.0, 'A temperatura exige atenção', 1, '2024-11-03 18:00:00'),
+    (5.3, 'A temperatura exige atenção', 1, '2024-11-04 06:00:00'),
+    (6.8, 'A temperatura exige atenção', 1, '2024-11-04 12:00:00'),
+    (7.5, 'A temperatura exige atenção', 1, '2024-11-04 18:00:00'),
+    (5.9, 'A temperatura exige atenção', 1, '2024-11-05 06:00:00'),
+    (6.6, 'A temperatura exige atenção', 1, '2024-11-05 12:00:00'),
+    (8.0, 'A temperatura exige atenção', 1, '2024-11-05 18:00:00'),
+    (7.0, 'A temperatura exige atenção', 1, '2024-11-06 06:00:00'),
+    (6.3, 'A temperatura exige atenção', 1, '2024-11-06 12:00:00'),
+    (5.4, 'A temperatura exige atenção', 1, '2024-11-06 18:00:00'),
+    (8.2, 'A temperatura exige atenção', 1, '2024-11-07 06:00:00'),
+    (7.3, 'A temperatura exige atenção', 1, '2024-11-07 12:00:00'),
+    (6.1, 'A temperatura exige atenção', 1, '2024-11-07 18:00:00'),
+    (7.8, 'A temperatura exige atenção', 1, '2024-11-08 06:00:00'),
+    (5.6, 'A temperatura exige atenção', 1, '2024-11-08 12:00:00'),
+    (6.9, 'A temperatura exige atenção', 1, '2024-11-08 18:00:00'),
+    (7.4, 'A temperatura exige atenção', 1, '2024-11-09 06:00:00'),
+    (6.0, 'A temperatura exige atenção', 1, '2024-11-09 12:00:00'),
+    (8.1, 'A temperatura exige atenção', 1, '2024-11-09 18:00:00'),
+    
+	(6.8, 'A temperatura exige atenção', 1, '2024-11-10 06:00:00'),
+    (7.1, 'A temperatura exige atenção', 1, '2024-11-10 12:00:00'),
+    (5.2, 'A temperatura exige atenção', 1, '2024-11-10 18:00:00'),
+    (7.9, 'A temperatura exige atenção', 1, '2024-11-11 06:00:00'),
+    (6.5, 'A temperatura exige atenção', 1, '2024-11-11 12:00:00'),
+    (5.4, 'A temperatura exige atenção', 1, '2024-11-11 18:00:00'),
+    (7.7, 'A temperatura exige atenção', 1, '2024-11-12 06:00:00'),
+    (5.9, 'A temperatura exige atenção', 1, '2024-11-12 12:00:00'),
+    (6.6, 'A temperatura exige atenção', 1, '2024-11-12 18:00:00'),
+    (8.0, 'A temperatura exige atenção', 1, '2024-11-13 06:00:00'),
+    (6.4, 'A temperatura exige atenção', 1, '2024-11-13 12:00:00'),
+    (5.7, 'A temperatura exige atenção', 1, '2024-11-13 18:00:00'),
+    (7.2, 'A temperatura exige atenção', 1, '2024-11-14 06:00:00'),
+    (6.0, 'A temperatura exige atenção', 1, '2024-11-14 12:00:00'),
+    (5.5, 'A temperatura exige atenção', 1, '2024-11-14 18:00:00'),
+    (8.1, 'A temperatura exige atenção', 1, '2024-11-15 06:00:00'),
+    (7.6, 'A temperatura exige atenção', 1, '2024-11-15 12:00:00'),
+    (5.8, 'A temperatura exige atenção', 1, '2024-11-15 18:00:00'),
+    (7.4, 'A temperatura exige atenção', 1, '2024-11-16 06:00:00'),
+    (6.3, 'A temperatura exige atenção', 1, '2024-11-16 12:00:00'),
+    (5.9, 'A temperatura exige atenção', 1, '2024-11-16 18:00:00'),
+    (6.7, 'A temperatura exige atenção', 1, '2024-11-17 06:00:00'),
+    (7.8, 'A temperatura exige atenção', 1, '2024-11-17 12:00:00'),
+    (5.6, 'A temperatura exige atenção', 1, '2024-11-17 18:00:00'),
+    (7.3, 'A temperatura exige atenção', 1, '2024-11-18 06:00:00'),
+    (6.1, 'A temperatura exige atenção', 1, '2024-11-18 12:00:00'),
+    (8.0, 'A temperatura exige atenção', 1, '2024-11-18 18:00:00'),
+    (7.0, 'A temperatura exige atenção', 1, '2024-11-19 06:00:00'),
+    (5.4, 'A temperatura exige atenção', 1, '2024-11-19 12:00:00'),
+    (6.5, 'A temperatura exige atenção', 1, '2024-11-19 18:00:00'),
+    (8.2, 'A temperatura exige atenção', 1, '2024-11-20 06:00:00'),
+    (7.2, 'A temperatura exige atenção', 1, '2024-11-20 12:00:00'),
+    (5.3, 'A temperatura exige atenção', 1, '2024-11-20 18:00:00'),
+    (7.8, 'A temperatura exige atenção', 1, '2024-11-21 06:00:00'),
+    (6.9, 'A temperatura exige atenção', 1, '2024-11-21 12:00:00'),
+    (5.7, 'A temperatura exige atenção', 1, '2024-11-21 18:00:00'),
+    (6.8, 'A temperatura exige atenção', 1, '2024-11-22 06:00:00'),
+    (7.4, 'A temperatura exige atenção', 1, '2024-11-22 12:00:00'),
+    (5.2, 'A temperatura exige atenção', 1, '2024-11-22 18:00:00'),
+    (7.9, 'A temperatura exige atenção', 1, '2024-11-23 06:00:00'),
+    (6.0, 'A temperatura exige atenção', 1, '2024-11-23 12:00:00'),
+    (8.0, 'A temperatura exige atenção', 1, '2024-11-23 18:00:00'),
+    (7.1, 'A temperatura exige atenção', 1, '2024-11-24 06:00:00'),
+    (6.6, 'A temperatura exige atenção', 1, '2024-11-24 12:00:00'),
+    (5.9, 'A temperatura exige atenção', 1, '2024-11-24 18:00:00'),
+    (7.5, 'A temperatura exige atenção', 1, '2024-11-25 06:00:00'),
+    (6.7, 'A temperatura exige atenção', 1, '2024-11-25 12:00:00'),
+    (5.8, 'A temperatura exige atenção', 1, '2024-11-25 18:00:00');
     
 -- acima
 INSERT INTO alerta (temperatura, mensagem, fkSensor, dataHora) 
@@ -329,7 +427,108 @@ VALUES
     (22.1, 'A temperatura exige atenção', 4, '2024-11-24 15:12:12'),
 	(21.9, 'A temperatura exige atenção', 4, '2024-11-18 16:02:12'),
     (21.5, 'A temperatura exige atenção', 4, '2024-11-18 16:12:12'),
-    (21.3, 'A temperatura exige atenção', 4, '2024-11-18 17:02:12');
+    (21.3, 'A temperatura exige atenção', 4, '2024-11-18 17:02:12'),
+    
+	(20.5, 'A temperatura exige atenção', 1, '2024-10-25 06:00:00'),
+    (25.7, 'A temperatura exige atenção', 1, '2024-10-25 12:00:00'),
+    (30.2, 'A temperatura exige atenção', 1, '2024-10-25 18:00:00'),
+    (22.8, 'A temperatura exige atenção', 1, '2024-10-26 06:00:00'),
+    (27.3, 'A temperatura exige atenção', 1, '2024-10-26 12:00:00'),
+    (32.1, 'A temperatura exige atenção', 1, '2024-10-26 18:00:00'),
+    (21.9, 'A temperatura exige atenção', 1, '2024-10-27 06:00:00'),
+    (26.5, 'A temperatura exige atenção', 1, '2024-10-27 12:00:00'),
+    (33.0, 'A temperatura exige atenção', 1, '2024-10-27 18:00:00'),
+    (23.7, 'A temperatura exige atenção', 1, '2024-10-28 06:00:00'),
+    (28.4, 'A temperatura exige atenção', 1, '2024-10-28 12:00:00'),
+    (31.5, 'A temperatura exige atenção', 1, '2024-10-28 18:00:00'),
+    (24.5, 'A temperatura exige atenção', 1, '2024-10-29 06:00:00'),
+    (29.1, 'A temperatura exige atenção', 1, '2024-10-29 12:00:00'),
+    (34.7, 'A temperatura exige atenção', 1, '2024-10-29 18:00:00'),
+    (20.9, 'A temperatura exige atenção', 1, '2024-10-30 06:00:00'),
+    (27.8, 'A temperatura exige atenção', 1, '2024-10-30 12:00:00'),
+    (30.6, 'A temperatura exige atenção', 1, '2024-10-30 18:00:00'),
+    (22.5, 'A temperatura exige atenção', 1, '2024-10-31 06:00:00'),
+    (25.9, 'A temperatura exige atenção', 1, '2024-10-31 12:00:00'),
+    (31.7, 'A temperatura exige atenção', 1, '2024-10-31 18:00:00'),
+    (21.2, 'A temperatura exige atenção', 1, '2024-11-01 06:00:00'),
+    (26.8, 'A temperatura exige atenção', 1, '2024-11-01 12:00:00'),
+    (32.3, 'A temperatura exige atenção', 1, '2024-11-01 18:00:00'),
+    (23.1, 'A temperatura exige atenção', 1, '2024-11-02 06:00:00'),
+    (29.4, 'A temperatura exige atenção', 1, '2024-11-02 12:00:00'),
+    (30.8, 'A temperatura exige atenção', 1, '2024-11-02 18:00:00'),
+    (22.9, 'A temperatura exige atenção', 1, '2024-11-03 06:00:00'),
+    (28.6, 'A temperatura exige atenção', 1, '2024-11-03 12:00:00'),
+    (33.2, 'A temperatura exige atenção', 1, '2024-11-03 18:00:00'),
+    (20.7, 'A temperatura exige atenção', 1, '2024-11-04 06:00:00'),
+    (25.5, 'A temperatura exige atenção', 1, '2024-11-04 12:00:00'),
+    (31.9, 'A temperatura exige atenção', 1, '2024-11-04 18:00:00'),
+    (24.2, 'A temperatura exige atenção', 1, '2024-11-05 06:00:00'),
+    (27.7, 'A temperatura exige atenção', 1, '2024-11-05 12:00:00'),
+    (34.1, 'A temperatura exige atenção', 1, '2024-11-05 18:00:00'),
+    (22.6, 'A temperatura exige atenção', 1, '2024-11-06 06:00:00'),
+    (26.9, 'A temperatura exige atenção', 1, '2024-11-06 12:00:00'),
+    (32.5, 'A temperatura exige atenção', 1, '2024-11-06 18:00:00'),
+    (21.4, 'A temperatura exige atenção', 1, '2024-11-07 06:00:00'),
+    (25.8, 'A temperatura exige atenção', 1, '2024-11-07 12:00:00'),
+    (30.3, 'A temperatura exige atenção', 1, '2024-11-07 18:00:00'),
+    (24.0, 'A temperatura exige atenção', 1, '2024-11-08 06:00:00'),
+    (29.9, 'A temperatura exige atenção', 1, '2024-11-08 12:00:00'),
+    (34.0, 'A temperatura exige atenção', 1, '2024-11-08 18:00:00'),
+    (23.5, 'A temperatura exige atenção', 1, '2024-11-09 06:00:00'),
+    (27.1, 'A temperatura exige atenção', 1, '2024-11-09 12:00:00'),
+    (31.0, 'A temperatura exige atenção', 1, '2024-11-09 18:00:00');
+    
+    INSERT INTO alerta (temperatura, mensagem, fkSensor, dataHora) 
+VALUES 
+    (22.3, 'A temperatura exige atenção', 1, '2024-11-10 06:00:00'),
+    (26.4, 'A temperatura exige atenção', 1, '2024-11-10 12:00:00'),
+    (32.7, 'A temperatura exige atenção', 1, '2024-11-10 18:00:00'),
+    (23.8, 'A temperatura exige atenção', 1, '2024-11-11 06:00:00'),
+    (28.2, 'A temperatura exige atenção', 1, '2024-11-11 12:00:00'),
+    (31.9, 'A temperatura exige atenção', 1, '2024-11-11 18:00:00'),
+    (21.9, 'A temperatura exige atenção', 1, '2024-11-12 06:00:00'),
+    (27.3, 'A temperatura exige atenção', 1, '2024-11-12 12:00:00'),
+    (34.2, 'A temperatura exige atenção', 1, '2024-11-12 18:00:00'),
+    (24.1, 'A temperatura exige atenção', 1, '2024-11-13 06:00:00'),
+    (26.8, 'A temperatura exige atenção', 1, '2024-11-13 12:00:00'),
+    (31.5, 'A temperatura exige atenção', 1, '2024-11-13 18:00:00'),
+    (23.2, 'A temperatura exige atenção', 1, '2024-11-14 06:00:00'),
+    (25.9, 'A temperatura exige atenção', 1, '2024-11-14 12:00:00'),
+    (33.1, 'A temperatura exige atenção', 1, '2024-11-14 18:00:00'),
+    (22.7, 'A temperatura exige atenção', 1, '2024-11-15 06:00:00'),
+    (28.5, 'A temperatura exige atenção', 1, '2024-11-15 12:00:00'),
+    (30.4, 'A temperatura exige atenção', 1, '2024-11-15 18:00:00'),
+    (24.3, 'A temperatura exige atenção', 1, '2024-11-16 06:00:00'),
+    (29.2, 'A temperatura exige atenção', 1, '2024-11-16 12:00:00'),
+    (31.7, 'A temperatura exige atenção', 1, '2024-11-16 18:00:00'),
+    (23.6, 'A temperatura exige atenção', 1, '2024-11-17 06:00:00'),
+    (27.0, 'A temperatura exige atenção', 1, '2024-11-17 12:00:00'),
+    (32.8, 'A temperatura exige atenção', 1, '2024-11-17 18:00:00'),
+    (21.8, 'A temperatura exige atenção', 1, '2024-11-18 06:00:00'),
+    (26.7, 'A temperatura exige atenção', 1, '2024-11-18 12:00:00'),
+    (30.9, 'A temperatura exige atenção', 1, '2024-11-18 18:00:00'),
+    (24.0, 'A temperatura exige atenção', 1, '2024-11-19 06:00:00'),
+    (28.4, 'A temperatura exige atenção', 1, '2024-11-19 12:00:00'),
+    (33.5, 'A temperatura exige atenção', 1, '2024-11-19 18:00:00'),
+    (23.1, 'A temperatura exige atenção', 1, '2024-11-20 06:00:00'),
+    (27.9, 'A temperatura exige atenção', 1, '2024-11-20 12:00:00'),
+    (31.4, 'A temperatura exige atenção', 1, '2024-11-20 18:00:00'),
+    (22.5, 'A temperatura exige atenção', 1, '2024-11-21 06:00:00'),
+    (26.6, 'A temperatura exige atenção', 1, '2024-11-21 12:00:00'),
+    (30.2, 'A temperatura exige atenção', 1, '2024-11-21 18:00:00'),
+    (24.4, 'A temperatura exige atenção', 1, '2024-11-22 06:00:00'),
+    (29.7, 'A temperatura exige atenção', 1, '2024-11-22 12:00:00'),
+    (34.0, 'A temperatura exige atenção', 1, '2024-11-22 18:00:00'),
+    (21.7, 'A temperatura exige atenção', 1, '2024-11-23 06:00:00'),
+    (26.5, 'A temperatura exige atenção', 1, '2024-11-23 12:00:00'),
+    (31.6, 'A temperatura exige atenção', 1, '2024-11-23 18:00:00'),
+    (22.9, 'A temperatura exige atenção', 1, '2024-11-24 06:00:00'),
+    (28.1, 'A temperatura exige atenção', 1, '2024-11-24 12:00:00'),
+    (32.3, 'A temperatura exige atenção', 1, '2024-11-24 18:00:00'),
+    (24.2, 'A temperatura exige atenção', 1, '2024-11-25 06:00:00'),
+    (27.4, 'A temperatura exige atenção', 1, '2024-11-25 12:00:00'),
+    (30.8, 'A temperatura exige atenção', 1, '2024-11-25 18:00:00');
+
     
 -- SELECT de temperatura MÍNIMA da ''ESTUFA A'' no ''Corredor principal''     
 SELECT MIN(m.temperatura) AS temperatura_minima
@@ -474,3 +673,33 @@ LIMIT 10;
 select * from medicao;
 
 select * from alerta;
+
+SELECT 
+                          DATE(a.dataHora) AS dataDia,
+                          COUNT(a.idAlerta) AS quantidadeAlertas
+                      FROM alerta a
+                      JOIN sensor s ON a.fkSensor = s.idSensor
+                      JOIN estufa e ON s.fkEstufa = e.idEstufa
+                      WHERE 
+                          e.idEstufa = 1
+                          AND a.dataHora >= NOW() - INTERVAL 7 DAY 
+                          AND a.temperatura < 10.0
+                      GROUP BY DATE(a.dataHora)
+                      ORDER BY dataDia;
+                      
+                      
+				
+                  
+SELECT 
+                          DATE(a.dataHora) AS dataDia,
+                          COUNT(a.idAlerta) AS quantidadeAlertas
+                      FROM alerta a
+                      JOIN sensor s ON a.fkSensor = s.idSensor
+                      JOIN estufa e ON s.fkEstufa = e.idEstufa
+                      WHERE 
+                          e.idEstufa = 1 
+                          AND a.dataHora >= NOW() - INTERVAL 7 DAY 
+                          AND a.temperatura > 20.0
+                             GROUP BY DATE(a.dataHora)
+                      ORDER BY dataDia;
+                      
