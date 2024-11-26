@@ -68,7 +68,7 @@ function listaTemperaturaDia(idEstufa) {
 function listaTemperaturaSensorDia(idSensor) {
   var instrucaoSql = `SELECT m.temperatura, TIME(m.dataHora) AS hora
                       FROM medicao m 
-                      where m.fkSensor = ${idSensor} AND dataHora >= NOW() - INTERVAL 30 DAY
+                      where m.fkSensor = ${idSensor} AND dataHora >= NOW() - INTERVAL 7 DAY
                       ORDER BY m.dataHora DESC
                       LIMIT 10;`;
                         
