@@ -28,7 +28,7 @@
         <nav class="menuLateral">
             <img src="../assets/img/logo_branco.png" alt="">
             <ul class="container_lista">
-                
+
                 <li class="menu_item select">
                     <div class="container_img">
                         <img src="../assets/img/Dashboard/House_verde.svg" alt="">
@@ -59,7 +59,7 @@
                     <div class="container_img ">
                         <img src="../assets/img/Dashboard/sair.svg" alt="">
                     </div>
-                     <span onclick="limparSessao()">Sair</span>
+                    <span onclick="limparSessao()">Sair</span>
                 </li>
             </ul>
         </nav>
@@ -106,7 +106,7 @@
             </div>
             <div class="kpi_cards">
                 <div class="card">
-            <!-- <script data-jsd-embedded data-key="72170b6e-c6b9-4e8e-9ef5-c38ca60baaf3" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>                <div class="card"> -->
+                    <!-- <script data-jsd-embedded data-key="72170b6e-c6b9-4e8e-9ef5-c38ca60baaf3" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>                <div class="card"> -->
                     <div class="kpi_titulo">
                         <span>Estufas monitoradas</span>
                         <img src="../assets/img/Dashboard/olho.svg" alt="">
@@ -147,11 +147,15 @@
             </div>
 
             <div class="estufa_cards" id="cardEstufas">
- 
+                <a href="#" style="width: 29.5%;">
+                    <div class="card adicionar_estufa" id="div_check" style="width: 100%;">
+                            <img src="../assets/img/Dashboard/plus-solid.svg" alt="">
+                    </div>
+                </a>
             </div>
 
         </div>
-        
+
     </main>
 
 </body>
@@ -159,7 +163,7 @@
 <script>
     function menuAdm(){
         if(sessionStorage.ID_USUARIO == 4){
-            
+
         }
     }
 
@@ -167,70 +171,70 @@
         fetch(`/home/estufas-monitoradas/${sessionStorage.ID_EMPRESA}`, {
             method: "GET",
         })
-        .then(function (resposta) {
-            resposta.json().then((estufas) => {
-                qtd_estufas_monitoradas_kpi.innerHTML = estufas.qtdEstufas
-            });
-        })
-        .catch(function (resposta) {
+            .then(function (resposta) {
+                resposta.json().then((estufas) => {
+                    qtd_estufas_monitoradas_kpi.innerHTML = estufas.qtdEstufas
+                });
+            })
+            .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-        });
+            });
     }
 
     function buscarTemperaturaAdequadas(){
         fetch(`/home/temperaturas-adequadas/${sessionStorage.ID_EMPRESA}`, {
             method: "GET",
         })
-        .then(function (resposta) {
-            resposta.json().then((estufas) => {
-                qtd_estufas_adequadas_kpi.innerHTML = estufas.qtdEstufas
-            });
-        })
-        .catch(function (resposta) {
+            .then(function (resposta) {
+                resposta.json().then((estufas) => {
+                    qtd_estufas_adequadas_kpi.innerHTML = estufas.qtdEstufas
+                });
+            })
+            .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-        });
+            });
     }
 
     function buscarTemperaturaInadequadas(){
         fetch(`/home/temperaturas-inadequadas/${sessionStorage.ID_EMPRESA}`, {
             method: "GET",
         })
-        .then(function (resposta) {
-            resposta.json().then((estufas) => {
-                qtd_estufas_inadequadas_kpi.innerHTML = estufas.qtdEstufas
-            });
-        })
-        .catch(function (resposta) {
+            .then(function (resposta) {
+                resposta.json().then((estufas) => {
+                    qtd_estufas_inadequadas_kpi.innerHTML = estufas.qtdEstufas
+                });
+            })
+            .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-        });
+            });
     }
 
     function buscarAlertaEstufas(){
         fetch(`/home/quantidade-alerta-estufa/${sessionStorage.ID_EMPRESA}`, {
             method: "GET",
         })
-        .then(function (resposta) {
-            console.log(resposta)
-            resposta.json().then((alerta) => {
-                console.log(alerta)
+            .then(function (resposta) {
+                console.log(resposta)
+                resposta.json().then((alerta) => {
+                    console.log(alerta)
 
-                qtd_alerta_estufas_kpi.innerHTML = alerta.quantidade_alertas
-            });
-        })
-        .catch(function (resposta) {
+                    qtd_alerta_estufas_kpi.innerHTML = alerta.quantidade_alertas
+                });
+            })
+            .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-        });
+            });
     }
 
     function buscarEstufasEmpresa(){
         fetch(`/home/lista-estufas/${sessionStorage.ID_EMPRESA}`, {
             method: "GET",
         })
-        .then(function (resposta) {
-            resposta.json().then((estufas) => {
-                cardEstufas.innerHTML = ''
-                estufas.forEach((estufa) => {
-                cardEstufas.innerHTML += `
+            .then(function (resposta) {
+                resposta.json().then((estufas) => {
+                    cardEstufas.innerHTML = ''
+                    estufas.forEach((estufa) => {
+                        cardEstufas.innerHTML += `
                     <a href="./graficos.html" style="width: 29.5%;">
                         <div class="card " id="div_check" style="width: 100%;">
                             <div class="kpi_titulo">
@@ -244,12 +248,12 @@
                         </div>
                     </a>
                 `
+                    });
                 });
-            });
-        })
-        .catch(function (resposta) {
+            })
+            .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-        });
+            });
     }
 
     setInterval(() => {
