@@ -100,17 +100,46 @@ buscarMensagemAlerta()">
       <div class="kpi_cards">
         <div class="card">
           <div class="kpi_titulo">
-            <span>Temperaturas Atual</span>
-            <img src="../assets/img/Dashboard/termometro.svg" alt="">
+            <span>Sensores</span>
           </div>
           <div class="kpi_dado">
-            <h2 id="h2_temperatura_real"></h2>
+            <div class="container-kpi_estufas">
+
+              <dialog id="dialog_modal">
+                <div class="container_modal">
+                  <!-- Colocar o id do grafico -->
+                    <canvas class="grafico" id=""></canvas>
+                </div>
+        
+              </dialog>
+              <div class="kpi_dado_item">
+                <input type="radio" id="sensor1" name="sensor_select" value="1" onclick="openModal()">
+                <label for="sensor1">sensor 1</label><br>
+              </div>
+              <div class="kpi_dado_item">
+                <input type="radio" id="sensor2" name="sensor_select" value="sensor2">
+                <label for="sensor2">sensor 2</label><br>
+  
+              </div>
+              <div class="kpi_dado_item">
+                <input type="radio" id="sensor3" name="sensor_select" value="sensor3">
+                <label for="sensor3">sensor 3</label>
+  
+              </div>
+              <div class="kpi_dado_item">
+                <input type="radio" id="sensor4" name="sensor_select" value="sensor4">
+                <label for="sensor4">sensor 4</label>
+
+              </div>
+            </div>
           </div>
         </div>
         <div class="card">
           <div class="kpi_titulo">
-            <span>Alertas</span>
-            <img src="../assets/img/Dashboard/danger.svg" alt="" class="img_sino">
+            <span>Alertas
+              <h5>(em 1 semana)</h5>
+            </span>
+            <!-- <img src="../assets/img/Dashboard/danger.svg" alt="" class="img_sino"> -->
           </div>
           <div class="kpi_dado">
             <h2 id="quantidade_alerta_kpi"></h2>
@@ -119,7 +148,9 @@ buscarMensagemAlerta()">
         </div>
         <div class="card">
           <div class="kpi_titulo">
-            <span>Temperaturas Maxima</span>
+            <span>Temperaturas Maxima
+              <h5>(em 1 semana)</h5>
+            </span>
             <img src="../assets/img/Dashboard/TempAlta.svg" alt="">
           </div>
           <div class="kpi_dado">
@@ -129,7 +160,9 @@ buscarMensagemAlerta()">
         </div>
         <div class="card">
           <div class="kpi_titulo">
-            <span>Temperaturas Minima</span>
+            <span>Temperaturas Minima
+              <h5>(em 1 semana)</h5>
+            </span>
             <img src="../assets/img/Dashboard/TempBaixa.svg" alt="">
           </div>
           <div class="kpi_dado">
@@ -485,5 +518,11 @@ buscarMensagemAlerta()">
     temperaturaReal()
   }, 1000);
 
+  function openModal(event) {
+    console.log(event)
+    const modal = document.getElementById('dialog_modal');
+    const modalGrafico = modal.querySelector('.grafico');
+    modal.showModal();    
+  }
 
 </script>
