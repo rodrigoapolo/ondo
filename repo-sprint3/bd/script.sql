@@ -21,6 +21,9 @@ CREATE TABLE usuario (
 	senha VARCHAR(45) NOT NULL
 );
 
+ALTER TABLE usuario ADD COLUMN	tipoUsuario CHAR(10);
+
+select * from usuario;
 -- Tabela empresa
 CREATE TABLE empresa (
     idEmpresa INT AUTO_INCREMENT PRIMARY KEY,
@@ -61,7 +64,6 @@ CREATE TABLE sensor (
     FOREIGN KEY (fkEstufa) REFERENCES estufa(idEstufa)
 );
 
-
 -- Tabela temperatura
 CREATE TABLE medicao (
     idMedicao INT AUTO_INCREMENT,
@@ -89,6 +91,13 @@ VALUES
 ('John Doe', 'john.doe@example.com', MD5('senha123')),
 ('Jane Doe', 'jane.doe@example.com', MD5('senha456')),
 ('Admin User', 'admin@example.com', MD5('senha789'));
+
+UPDATE usuario set tipoUsuario = 'user'
+where idUsuario = 1;
+UPDATE usuario set tipoUsuario = 'user'
+where idUsuario = 2;
+UPDATE usuario set tipoUsuario = 'suporte'
+where idUsuario = 3;
 
 SELECT * FROM usuario;
 
