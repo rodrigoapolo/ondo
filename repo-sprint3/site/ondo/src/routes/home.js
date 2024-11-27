@@ -22,6 +22,10 @@ router.get("/lista-estufas/:empresaID",function (req, res) {
     homeController.listaEsfufas(req, res);
 });
 
+router.post("/inserirEstufa/:empresaID",function (req, res) {
+    homeController.inserirEstufa(req, res);
+});
+
 
 module.exports = router;
 

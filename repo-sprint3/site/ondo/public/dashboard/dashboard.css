@@ -145,6 +145,7 @@ dialog#dialog_modal {
     border-radius: 10px;
     display: flex;
     justify-content: center;
+    cursor: pointer;
 
 }
 

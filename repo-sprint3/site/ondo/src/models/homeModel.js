@@ -68,11 +68,23 @@ function buscarEstufa(idEstufa) {
   return database.executar(instrucaoSql);
 }
 
+function inserirEstufa(idEmpresa,nomeEstufa,tamanho,espaco) {
+  console.log('Inserindo a estufa no banco')
+  var instrucaoSql = `INSERT into estufa (nome,tamanho,espaco,fkEmpresa) 
+    values('${nomeEstufa}',${tamanho},${espaco},${idEmpresa});`;
+                        
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+
+
 module.exports = {
   estufasMonitoradas,
   temperaturasAdequadas,
   temperaturasInadequadas,
   listaEsfufasEmpresa,
   buscarEstufa,
-  quantidadeAlertaEstufa
+  quantidadeAlertaEstufa,
+  inserirEstufa
 }

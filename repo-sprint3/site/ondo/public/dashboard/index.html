@@ -70,7 +70,9 @@
     <main class="home_dashboard">
         <div class="boasVindas">
             <div class="container">
-                <script data-jsd-embedded data-key="72170b6e-c6b9-4e8e-9ef5-c38ca60baaf3" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
+                <script data-jsd-embedded data-key="72170b6e-c6b9-4e8e-9ef5-c38ca60baaf3"
+                    data-base-url="https://jsd-widget.atlassian.com"
+                    src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
                 <h3>Inicio</h3>
                 <h5>Bem vindo, <b id="b_usuario"></b></h5>
             </div>
@@ -146,12 +148,33 @@
                 </div>
             </div>
 
-            <div class="estufa_cards" id="cardEstufas">
-                <a href="#" style="width: 29.5%;">
+            <dialog id="dialog_modal">
+                <div class="ipt-container" id="div_nome">
+                    <label for="">Nome da Estufa</label>
+                    <input type="text" id="input_nome">
+                </div>
+                <div class="ipt-container" id="div_tamanho">
+                    <label for="">Tamanho</label>
+                    <input type="number" id="input_tamanho">
+                </div>
+                <div class="ipt-container" id="div_espaco">
+                    <label for="">Espaço entre plantas</label>
+                    <input type="number" id="input_espaco">
+
+                </div>
+                <div class="container-btn">
+                    <button class="botao btn_entrar" onclick="cadastrarEstufa()">Cadastrar</button>
+                </div>
+                <div onclick="closeDialog()">X</div>
+            </dialog>
+            <div class="estufa_cards" id="cardEstufas" onclick="openModal()">
+                <div style="width: 29.5%;">
                     <div class="card adicionar_estufa" id="div_check" style="width: 100%;">
-                            <img src="../assets/img/Dashboard/plus-solid.svg" alt="">
+                        <img src="../assets/img/Dashboard/plus-solid.svg" alt="">
                     </div>
-                </a>
+                </div>
+            </div>
+            <div class="estufa_cards" id="cardEstufas">
             </div>
 
         </div>
@@ -161,13 +184,13 @@
 </body>
 
 <script>
-    function menuAdm(){
-        if(sessionStorage.ID_USUARIO == 4){
+    function menuAdm() {
+        if (sessionStorage.ID_USUARIO == 4) {
 
         }
     }
 
-    function buscarQTDEstufas(){
+    function buscarQTDEstufas() {
         fetch(`/home/estufas-monitoradas/${sessionStorage.ID_EMPRESA}`, {
             method: "GET",
         })
@@ -181,7 +204,7 @@
             });
     }
 
-    function buscarTemperaturaAdequadas(){
+    function buscarTemperaturaAdequadas() {
         fetch(`/home/temperaturas-adequadas/${sessionStorage.ID_EMPRESA}`, {
             method: "GET",
         })
@@ -195,7 +218,7 @@
             });
     }
 
-    function buscarTemperaturaInadequadas(){
+    function buscarTemperaturaInadequadas() {
         fetch(`/home/temperaturas-inadequadas/${sessionStorage.ID_EMPRESA}`, {
             method: "GET",
         })
@@ -209,7 +232,7 @@
             });
     }
 
-    function buscarAlertaEstufas(){
+    function buscarAlertaEstufas() {
         fetch(`/home/quantidade-alerta-estufa/${sessionStorage.ID_EMPRESA}`, {
             method: "GET",
         })
@@ -226,7 +249,7 @@
             });
     }
 
-    function buscarEstufasEmpresa(){
+    function buscarEstufasEmpresa() {
         fetch(`/home/lista-estufas/${sessionStorage.ID_EMPRESA}`, {
             method: "GET",
         })
@@ -263,6 +286,42 @@
         buscarAlertaEstufas()
     }, 3000);
 
+    function openModal() {
+        var modal = document.getElementById('dialog_modal');
+        modal.showModal();
+    }
+
+    function cadastrarEstufa() {
+        var nomeVar = input_nome.value;
+        var tamanhoVar = input_tamanho.value;
+        var espacoVar = input_espaco.value;
+        fetch(`/home/inserirEstufa/${sessionStorage.ID_EMPRESA}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                tamanhoServer: tamanhoVar,
+                espacoServer: espacoVar
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                window.alert("Score atualizado com sucesso pelo usuario: " + sessionStorage.getItem("NOME_USUARIO") + "!");
+                window.location = "/dashboard/quizz.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar salvar o score! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+    function closeDialog() {
+        var modal = document.getElementById('dialog_modal');
+        modal.close();
+    }
 </script>
 
 </html>
