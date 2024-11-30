@@ -1,19 +1,5 @@
 var database = require("../database/config");
 
-function temperaturaAtual(idEstufa) {
-  var instrucaoSql = `SELECT m.temperatura AS temperatura_atual
-                      FROM medicao AS m JOIN sensor AS s 
-                      ON m.fkSensor = s.idSensor
-                      JOIN estufa AS e ON s.fkEstufa = e.idEstufa
-                      WHERE e.idEstufa = ${idEstufa}
-                      ORDER BY m.dataHora DESC
-                      LIMIT 1;`;
-                        
-
-  console.log("Executando a instrução SQL: \n" + instrucaoSql);
-  return database.executar(instrucaoSql);
-}
-
 function quantidadeAlerta(idEstufa) {
   var instrucaoSql = `SELECT COUNT(a.idAlerta) AS quantidade_alertas
                       FROM alerta a
@@ -162,7 +148,6 @@ function listaTemperaturaSensor(idEstufa){
 
 
 module.exports = {
-  temperaturaAtual,
   quantidadeAlerta,
   temperaturaMaxima,
   temperaturaMinima,

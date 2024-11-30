@@ -1,28 +1,5 @@
 var graficosModel = require("../models/graficosModel");
 
-function temperaturaAtual(req, res) {
-
-    var idEstufa = req.params.estufaID;
-
-    if (idEstufa == undefined) {
-        res.status(400).send("Seu id da Estufa está undefined!");
-    } 
-
-
-    graficosModel.temperaturaAtual(idEstufa)
-    .then(function (resultado) {
-        if (resultado[0].temperatura_atual != null) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar a temperatua atual.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
-}
-
 function quantidadeAlerta(req, res) {
 
     var idEstufa = req.params.estufaID;
@@ -234,7 +211,6 @@ function listaTemperaturaSensor(req, res){
     });
 }
 module.exports = {
-    temperaturaAtual,
     quantidadeAlerta,
     temperaturaMaxima,
     temperaturaMinima,

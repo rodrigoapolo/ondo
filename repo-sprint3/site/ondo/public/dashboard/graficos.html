@@ -20,7 +20,7 @@
 
 <body onload="buscarTemperaturaMaxima(), buscarTemperaturaMinima(), buscarQuantidadeAlerta(),
 obterDadosGraficoBarraAlertaBaixo(barraAlertaAbaixo), obterDadosGraficoBarraAlertaAcima(barraAlertaAcima),
-buscarMensagemAlerta()">
+buscarMensagemAlerta(), buscarSensoresEstufas()">
     <header class="menu_dashboard">
       <nav class="menuLateral">
           <img src="../assets/img/logo_branco.png" alt="">
@@ -103,35 +103,13 @@ buscarMensagemAlerta()">
             <span>Sensores</span>
           </div>
           <div class="kpi_dado">
-            <div class="container-kpi_estufas">
-
-              <dialog id="dialog_modal">
-                <div class="container_modal">
-                  <!-- Colocar o id do grafico -->
-                    <canvas class="grafico" id=""></canvas>
-                </div>
-        
-              </dialog>
-              <div class="kpi_dado_item">
-                <input type="radio" id="sensor1" name="sensor_select" value="1" onclick="openModal()">
-                <label for="sensor1">sensor 1</label><br>
+            <dialog id="dialog_modal">
+              <div class="container_modal">
+                <!-- Colocar o id do grafico -->
+                  <canvas class="grafico" id="grafico_linha_sensor"></canvas>
               </div>
-              <div class="kpi_dado_item">
-                <input type="radio" id="sensor2" name="sensor_select" value="sensor2">
-                <label for="sensor2">sensor 2</label><br>
-  
-              </div>
-              <div class="kpi_dado_item">
-                <input type="radio" id="sensor3" name="sensor_select" value="sensor3">
-                <label for="sensor3">sensor 3</label>
-  
-              </div>
-              <div class="kpi_dado_item">
-                <input type="radio" id="sensor4" name="sensor_select" value="sensor4">
-                <label for="sensor4">sensor 4</label>
-
-              </div>
-            </div>
+            </dialog>
+            <div id="card_radio_sensor" class="container-kpi_estufas"></div>
           </div>
         </div>
         <div class="card">
@@ -218,9 +196,68 @@ buscarMensagemAlerta()">
   const graficoBarraAbaixo = document.getElementById("grafico_barra_abaixo");
   const graficoLinha = document.getElementById("grafico_linha");
   const graficoBarraAcima = document.getElementById("grafico_barra_acima");
+  const graficoLinhaSensor = document.getElementById("grafico_linha_sensor");
   var idEstufaDashboard = 1;
 
   b_usuario.innerHTML = sessionStorage.NOME_RESPONSAVEL;
+
+  var linhaGraficoSensor = new Chart(graficoLinhaSensor, {
+    type: "line",
+    data: {
+      datasets: [
+        {
+          label: "Temperatura",
+          borderWidth: 1,
+          borderColor: 'pink',
+        },
+        {
+        label: 'Max',
+        data: [21, 21, 21, 21, 21, 21, 21, 21, 21, 21], // Dados para a Linha 1
+        borderColor: 'red', // Cor da linha
+        fill: false, // Sem preenchimento abaixo da linha
+      },
+      {
+        label: 'Min',
+        data: [20, 20, 20, 20, 20, 20, 20, 20, 20, 20], // Dados para a Linha 1
+        borderColor: 'red', // Cor da linha
+        fill: false, // Sem preenchimento abaixo da linha
+      },
+      {
+        label: 'Min',
+        data: [8, 8, 8, 8, 8, 8, 8, 8, 8, 8], // Dados para a Linha 1
+        borderColor: 'blue', // Cor da linha
+        fill: false, // Sem preenchimento abaixo da linha
+      },
+      {
+        label: 'Min',
+        data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10], // Dados para a Linha 1
+        borderColor: 'blue', // Cor da linha
+        fill: false, // Sem preenchimento abaixo da linha
+      },
+      ],
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true, // Define se o título deve ser exibido
+          text: "Variação da Temperatura por hora do ", // O texto do título
+          font: {
+            size: 20, // Tamanho da fonte do título
+            weight: "bold", // Peso da fonte do título
+          },
+          padding: {
+            top: 10, // Espaçamento acima do título
+            bottom: 30, // Espaçamento abaixo do título
+          },
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
 
   var barraAlertaAbaixo = new Chart(graficoBarraAbaixo, {
     type: "bar",
@@ -424,20 +461,6 @@ buscarMensagemAlerta()">
       .catch(error => console.error('Erro ao obter dados:', error));
   }
 
-  function temperaturaReal() {
-    fetch(`/graficos/temperatura-atual/${idEstufaDashboard}`, {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((temperatura) => {
-          h2_temperatura_real.innerHTML = `${temperatura[0].temperatura_atual}°C`
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
-
   function buscarQuantidadeAlerta() {
     fetch(`/graficos/quantidade-alerta/${idEstufaDashboard}`, {
       method: "GET",
@@ -515,14 +538,73 @@ buscarMensagemAlerta()">
   }, 5000);
 
   setInterval(() => {
-    temperaturaReal()
+    buscarSensoresEstufas()
   }, 1000);
 
-  function openModal(event) {
-    console.log(event)
+  function openModal(idSensor, nome) {
+    buscarTemperaturaSensorDia(idSensor)
     const modal = document.getElementById('dialog_modal');
-    const modalGrafico = modal.querySelector('.grafico');
+    setInterval(() => {
+      buscarTemperaturaSensorDia(idSensor)
+    }, 5000);
+    linhaGraficoSensor.options.plugins.title.text = `Variação da Temperatura por hora do ${nome}`
+   
     modal.showModal();    
+  }
+
+  function buscarSensoresEstufas(){
+    fetch(`/graficos/lista-temperatura-sensor/${idEstufaDashboard}`, {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((valores) => {
+          card_radio_sensor.innerHTML = ""
+            valores.forEach((valor) =>{
+            card_radio_sensor.innerHTML += `
+              <div class="kpi_dado_item">
+                <input type="radio" id="sensor${valor.fkSensor}" name="sensor_select" value="1" onclick="openModal(${valor.fkSensor}, '${valor.localidade}')">
+                <label for="sensor1">${valor.localidade} <span id="temperatura_sensor${valor.fkSensor}">${valor.temperatura}</span>°C</label><br>
+              </div>
+            `
+            })
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function buscarTemperaturaSensorDia(idSensor){
+    fetch(`/graficos/lista-temperatura-sensor-dia/${idSensor}`, {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((valores) => {
+         
+          valores.forEach((valor) => {
+          if (linhaGraficoSensor.data.labels.length == 10 && linhaGraficoSensor.data.datasets[0].data.length == 10) {
+            linhaGraficoSensor.data.labels.shift();
+            linhaGraficoSensor.data.datasets[0].data.shift();
+            linhaGraficoSensor.data.datasets[1].data.shift();
+            linhaGraficoSensor.data.datasets[2].data.shift();
+            linhaGraficoSensor.data.datasets[3].data.shift();
+            linhaGraficoSensor.data.datasets[4].data.shift();
+          }
+
+          linhaGraficoSensor.data.labels.push(valor.hora);
+          linhaGraficoSensor.data.datasets[0].data.push(parseFloat(valor.temperatura));
+          linhaGraficoSensor.data.datasets[1].data.push(21);
+          linhaGraficoSensor.data.datasets[2].data.push(20);
+          linhaGraficoSensor.data.datasets[3].data.push(8);
+          linhaGraficoSensor.data.datasets[4].data.push(10);
+          
+          });
+        linhaGraficoSensor.update();
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
   }
 
 </script>

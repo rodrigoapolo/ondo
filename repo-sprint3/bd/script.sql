@@ -683,32 +683,7 @@ select * from medicao;
 
 select * from alerta;
 
-SELECT 
-                          DATE(a.dataHora) AS dataDia,
-                          COUNT(a.idAlerta) AS quantidadeAlertas
-                      FROM alerta a
-                      JOIN sensor s ON a.fkSensor = s.idSensor
-                      JOIN estufa e ON s.fkEstufa = e.idEstufa
-                      WHERE 
-                          e.idEstufa = 1
-                          AND a.dataHora >= NOW() - INTERVAL 7 DAY 
-                          AND a.temperatura < 10.0
-                      GROUP BY DATE(a.dataHora)
-                      ORDER BY dataDia;
-                      
-                      
-				
-                  
-SELECT 
-                          DATE(a.dataHora) AS dataDia,
-                          COUNT(a.idAlerta) AS quantidadeAlertas
-                      FROM alerta a
-                      JOIN sensor s ON a.fkSensor = s.idSensor
-                      JOIN estufa e ON s.fkEstufa = e.idEstufa
-                      WHERE 
-                          e.idEstufa = 1 
-                          AND a.dataHora >= NOW() - INTERVAL 7 DAY 
-                          AND a.temperatura > 20.0
-                             GROUP BY DATE(a.dataHora)
-                      ORDER BY dataDia;
+
+
+
                       

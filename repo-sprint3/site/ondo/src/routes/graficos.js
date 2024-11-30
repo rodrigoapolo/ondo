@@ -2,10 +2,6 @@ const express = require("express");
 const router = express.Router();
 const graficosController = require("../controllers/graficosController");
 
-router.get("/temperatura-atual/:estufaID",function (req, res) {
-    graficosController.temperaturaAtual(req, res);
-});
-
 router.get("/quantidade-alerta/:estufaID",function (req, res) {
     graficosController.quantidadeAlerta(req, res);
 });
