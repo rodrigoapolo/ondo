@@ -81,8 +81,26 @@
 }
 
 dialog#dialog_modal {
+    background-color: #385f2f;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
     width: 65%;
     height: 65%;
+}
+.espaco_cadastrar{
+    background-color: #4e8342;
+    width: 50%;
+    margin-left: 5%;
+    padding: 60px;
+    border:  solid 2px black;
+    border-radius: 10px;
+}
+
+.ipt-container{
+    align-self: center;
+    font-weight: bold;
 }
 
 .container_modal {
@@ -116,7 +134,7 @@ dialog#dialog_modal {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-}
+}  vh
 
 .estufa_icone{
     display: flex;
@@ -152,4 +170,12 @@ dialog#dialog_modal {
 .adicionar_estufa img{
     width: 30px;
 
+}
+
+#input_nome{
+    width: 220px;
+}
+
+#input_tamanho{
+    width: 285px;
 }
