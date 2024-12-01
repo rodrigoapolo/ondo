@@ -89,18 +89,33 @@ dialog#dialog_modal {
     width: 65%;
     height: 65%;
 }
+
+#dialog_modal  h1{
+    color: white;
+    text-shadow: 4px 4px 6px black;
+}
 .espaco_cadastrar{
     background-color: #4e8342;
-    width: 50%;
+    width: 60%;
     margin-left: 5%;
+    font-size: 30px;
     padding: 60px;
     border:  solid 2px black;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .ipt-container{
     align-self: center;
     font-weight: bold;
+    margin-top: 20px;
+    color: white;
+    text-shadow: 4px 4px 6px black;
+    
+
 }
 
 .container_modal {
@@ -173,9 +188,77 @@ dialog#dialog_modal {
 }
 
 #input_nome{
-    width: 220px;
+    width: 240px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 4px solid black;
+    margin-left: 10px;
+
+
 }
 
 #input_tamanho{
-    width: 285px;
+    width: 345px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 4px solid black;
+    margin-left: 10px;
+
+}
+
+#input_espaco{
+    background-color: transparent;
+    border: none;
+    border-bottom: 4px solid black;
+    margin-left: 10px;
+
+}
+
+.fechar_cadastrar_estufa div {
+    position: absolute; 
+    top: 10px; 
+    font-size: 1000px;
+    right: 10px; 
+    font-size: 40px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    color: #000; 
+    transition: color 0.3s ease; 
+}
+
+.fechar_cadastrar_estufa div:hover {
+    color: #ff0000; 
+}
+
+.botao_btn_entrar  {
+    margin-top: 50px;
+    text-shadow: 4px 4px 6px black;
+    background-color: #4CAF50; 
+    color: white; 
+    border: none; 
+    width: 160px;
+    height: 80px;
+    padding: 10px 20px; 
+    font-size: 25px; 
+    font-weight: bold; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+.botao_btn_entrar:hover {
+    background-color: #45a049; 
+    transform: scale(1.05); 
+}
+
+.botao_btn_entrar:active {
+    background-color: #3e8e41; 
+    transform: scale(0.95); 
+}
+
+#erro_geral{
+    font-size: 30px;
+    color: white;
+    text-shadow: 4px 4px 6px black;
+    background-color: red;
 }

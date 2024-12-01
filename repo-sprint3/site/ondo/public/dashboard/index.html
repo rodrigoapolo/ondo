@@ -151,23 +151,29 @@
             <dialog id="dialog_modal">
                 <h1>Cadastrar estufa</h1>
                 <div class="espaco_cadastrar">
-                <div class="ipt-container" id="div_nome">
-                    <label for="">Nome da Estufa: </label>
-                    <input type="text" id="input_nome">
+                    <div class="ipt-container" id="div_nome">
+                        <label for="input_nome">Nome da Estufa:</label>
+                        <input type="text" id="input_nome" oninput="validarNome()">
+
+                    </div>
+                    <div class="ipt-container" id="div_tamanho">
+                        <label for="input_tamanho">Tamanho:</label>
+                        <input type="number" id="input_tamanho" oninput="validarTamanho()">
+
+                    </div>
+                    <div class="ipt-container" id="div_espaco">
+                        <label for="input_espaco">Espaço entre plantas:</label>
+                        <input type="number" id="input_espaco" oninput="validarEspaco()">
+
+                    </div>
                 </div>
-                <div class="ipt-container" id="div_tamanho">
-                    <label for="">Tamanho: </label>
-                    <input type="number" id="input_tamanho">
-                </div>
-                <div class="ipt-container" id="div_espaco">
-                    <label for="">Espaço entre plantas: </label>
-                    <input type="number" id="input_espaco">
-                </div>
-                </div>
+                <div id="erro_geral" class="erro"></div>
                 <div class="container-btn">
-                    <button class="botao btn_entrar" onclick="cadastrarEstufa()">Cadastrar</button>
+                    <button class="botao_btn_entrar" onclick="cadastrarEstufa()">Cadastrar</button>
                 </div>
-                <div onclick="closeDialog()">X</div>
+                <div class="fechar_cadastrar_estufa">
+                    <div onclick="closeDialog()">X</div>
+                </div>
             </dialog>
             <div class="estufa_cards" id="cardEstufas" onclick="openModal()">
                 <div style="width: 29.5%;">
@@ -186,6 +192,53 @@
 </body>
 
 <script>
+    function validarNome() {
+        var nomeInput = document.getElementById("input_nome");
+        var erro_geral = document.getElementById("erro_geral");
+
+        var nome = nomeInput.value
+    
+        if (nome.length >= 3) {
+            nomeInput.style.borderColor = "green";
+            erro_geral.innerHTML = "";
+        } else {
+            nomeInput.style.borderColor = "red";
+            erro_geral.innerHTML = "O nome deve ter pelo menos 3 caracteres.";
+
+        }
+    }
+    
+    function validarTamanho() {
+        var tamanhoInput = document.getElementById("input_tamanho");
+        var tamanho = parseFloat(tamanhoInput.value);
+        var erro_geral = document.getElementById("erro_geral");
+
+    
+        if (!isNaN(tamanho) && tamanho >= 50) {
+            tamanhoInput.style.borderColor = "green";
+            erro_geral.innerHTML = "";
+        } else {
+            tamanhoInput.style.borderColor = "red";
+            erro_geral.innerHTML = "O tamanho deve ser maior ou igual a 50.";
+
+            
+        }
+    }
+    
+    function validarEspaco() {
+        var espacoInput = document.getElementById("input_espaco");
+        var erro_geral = document.getElementById("erro_geral");
+        var espaco = parseFloat(espacoInput.value);
+    
+        if (!isNaN(espaco) && espaco >= 20) {
+            espacoInput.style.borderColor = "green";
+            erro_geral.innerHTML = ""
+        } else {
+            espacoInput.style.borderColor = "red";
+            erro_geral.innerHTML = "O espaço entre plantas deve ser maior ou igual a 20.";
+        }
+    }
+
     function menuAdm() {
         if (sessionStorage.ID_USUARIO == 4) {
 
@@ -319,6 +372,23 @@
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
         });
+
+            var nomeInput = document.getElementById("input_nome");
+            var tamanhoInput = document.getElementById("input_tamanho");
+            var espacoInput = document.getElementById("input_espaco");
+
+            var nomeValido = nomeInput.style.borderColor === "green";
+            var tamanhoValido = tamanhoInput.style.borderColor === "green";
+            var espacoValido = espacoInput.style.borderColor === "green";
+
+            if (nomeValido && tamanhoValido && espacoValido) {
+                alert("Estufa cadastrada com sucesso!");
+                closeDialog();
+            } else {
+                alert("Por favor, corrija os campos destacados antes de continuar.");
+                closeDialog();
+
+            }
     }
     function closeDialog() {
         var modal = document.getElementById('dialog_modal');
