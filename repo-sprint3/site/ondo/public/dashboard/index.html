@@ -149,7 +149,6 @@
 
                 </div>
             </div>
-
             <dialog id="dialog_modal">
                 <div class="estruturar_2" >
                 <div class="estruturar">
@@ -184,7 +183,8 @@
             </div>
         </div>
             </dialog>
-            <div class="estufa_cards" id="cardEstufas" onclick="openModal()">
+            <!-- <div class="estufa_cards" id="cardEstufas" onclick="openModal()"> -->
+            <div class="estufa_cards" onclick="openModal()">
                 <div style="width: 29.5%;">
                     <div class="card adicionar_estufa" id="div_check" style="width: 100%;">
                         <img src="../assets/img/Dashboard/plus-solid.svg" alt="">
@@ -206,7 +206,7 @@
         var erro_geral = document.getElementById("erro_geral");
 
         var nome = nomeInput.value
-    
+
         if (nome.length >= 3) {
             nomeInput.style.borderColor = "green";
             erro_geral.innerHTML = "";
@@ -216,13 +216,13 @@
 
         }
     }
-    
+
     function validarTamanho() {
         var tamanhoInput = document.getElementById("input_tamanho");
         var tamanho = parseFloat(tamanhoInput.value);
         var erro_geral = document.getElementById("erro_geral");
 
-    
+
         if (!isNaN(tamanho) && tamanho >= 50) {
             tamanhoInput.style.borderColor = "green";
             erro_geral.innerHTML = "";
@@ -230,15 +230,15 @@
             tamanhoInput.style.borderColor = "red";
             erro_geral.innerHTML = "O tamanho deve ser maior ou igual a 50.";
 
-            
+
         }
     }
-    
+
     function validarEspaco() {
         var espacoInput = document.getElementById("input_espaco");
         var erro_geral = document.getElementById("erro_geral");
         var espaco = parseFloat(espacoInput.value);
-    
+
         if (!isNaN(espaco) && espaco >= 20) {
             espacoInput.style.borderColor = "green";
             erro_geral.innerHTML = ""
@@ -382,23 +382,24 @@
             console.log(`#ERRO: ${resposta}`);
         });
 
-            var nomeInput = document.getElementById("input_nome");
-            var tamanhoInput = document.getElementById("input_tamanho");
-            var espacoInput = document.getElementById("input_espaco");
+        var nomeInput = document.getElementById("input_nome");
+        var tamanhoInput = document.getElementById("input_tamanho");
+        var espacoInput = document.getElementById("input_espaco");
 
-            var nomeValido = nomeInput.style.borderColor === "green";
-            var tamanhoValido = tamanhoInput.style.borderColor === "green";
-            var espacoValido = espacoInput.style.borderColor === "green";
+        var nomeValido = nomeInput.style.borderColor === "green";
+        var tamanhoValido = tamanhoInput.style.borderColor === "green";
+        var espacoValido = espacoInput.style.borderColor === "green";
 
-            if (nomeValido && tamanhoValido && espacoValido) {
-                alert("Estufa cadastrada com sucesso!");
-                closeDialog();
-            } else {
-                alert("Por favor, corrija os campos destacados antes de continuar.");
-                closeDialog();
+        if (nomeValido && tamanhoValido && espacoValido) {
+            // alert("Estufa cadastrada com sucesso!");
+            closeDialog();
+        } else {
+            // alert("Por favor, corrija os campos destacados antes de continuar.");
+            closeDialog();
 
-            }
+        }
     }
+
     function closeDialog() {
         var modal = document.getElementById('dialog_modal');
         modal.close();
