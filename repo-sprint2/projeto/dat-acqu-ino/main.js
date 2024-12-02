@@ -69,34 +69,37 @@ const serial = async (
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
             
-            if (temperatura > 19) {
+            if (sensorAnalogico == 19) {
                 await poolBancoDados.execute(
                     'INSERT INTO alerta (temperatura, mensagem, fkSensor) VALUES  (?, ?, ?)',
                     [sensorAnalogico, `Atenção!!, Temperatura está se aproximando do limite adequado!`, 1]
                 );
-                console.log("valores inseridos no banco: ", sensorAnalogico);    
+                console.log("valores inseridos no banco: ", sensorAnalogico);  
+                console.log("Alerta acimar de 19");    
                 
-            } else if (temperatura > 20) {
+            } else if (sensorAnalogico >= 20) {
                 await poolBancoDados.execute(
                     'INSERT INTO alerta (temperatura, mensagem, fkSensor) VALUES  (?, ?, ?)',
                     [sensorAnalogico, `Temperatura fora do limite adequado! Se faz necessário ação imediata.`, 1]
                 );
                 console.log("valores inseridos no banco: ", sensorAnalogico);  
+                console.log("Alerta acimar de 20");   
             
-            } else if (temperatura < 9) {
+            } else if (sensorAnalogico == 9) {
                 await poolBancoDados.execute(
                     'INSERT INTO alerta (temperatura, mensagem, fkSensor) VALUES  (?, ?, ?)',
                     [sensorAnalogico, `Atenção!!, Temperatura está se aproximando do limite adequado!`, 1]
                 );
-                console.log("valores inseridos no banco: ", sensorAnalogico);  
+                console.log("valores inseridos no banco: ", sensorAnalogico); 
+                console.log("Alerta abaixo de 9");    
 
-            } else if (temperatura < 8) {
+            } else if (sensorAnalogico <= 8) {
                 await poolBancoDados.execute(
                     'INSERT INTO alerta (temperatura, mensagem, fkSensor) VALUES  (?, ?, ?)',
                     [sensorAnalogico, `Temperatura fora do limite adequado! Se faz necessário ação imediata.`, 1]
                 );
                 console.log("valores inseridos no banco: ", sensorAnalogico);  
-
+                console.log("Alerta abaixo de 8");    
             } else {
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
