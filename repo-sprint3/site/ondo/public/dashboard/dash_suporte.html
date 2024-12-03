@@ -71,8 +71,6 @@
                 <h5>Bem vindo, <b id="b_usuario"></b></h5>
             </div>
 
-
-
         </div>
 
     </main>
@@ -152,10 +150,17 @@
             .then(function (resposta) {
                 resposta.json().then((estufas) => {
                     cardEstufas.innerHTML = ''
+                    var estilo = ''
                     estufas.forEach((estufa) => {
+
+                        if(estufa.temperatura == 20 || estufa.temperatura == 10){
+                            estilo = 'border-alert'
+                        }else if(estufa.temperatura < 8 || estufa.temperatura > 21){
+                            estilo = 'border-danger'
+                        } 
                         cardEstufas.innerHTML += `
                     <a href="./graficos.html" style="width: 29.5%;">
-                        <div class="card " id="div_check" style="width: 100%;">
+                        <div class="card ${estilo}" id="div_check" style="width: 100%;">
                             <div class="kpi_titulo">
                                 <span>${estufa.nome}</span>
                                 <h2 id="h2_temperatura_real" >${estufa.temperatura}°C</h2>
