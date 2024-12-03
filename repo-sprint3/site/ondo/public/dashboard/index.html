@@ -17,9 +17,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-        
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-        
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
 </head>
 
 <body onload="validarSessao(), buscarQTDEstufas()">
@@ -148,54 +148,56 @@
                 </div>
             </div>
             <dialog id="dialog_modal">
-                <div class="estruturar_2" >
-                <div class="estruturar">
-                <h1>Cadastrar estufa</h1>
-                <div class="espaco_cadastrar">
-                    <div class="ipt-container" id="div_nome">
-                        <i class="fas fa-seedling"></i>
-                        <label for="input_nome"></label>
-                        <input placeholder="Nome da Estufa" type="text" id="input_nome" oninput="validarNome()">
+                <div class="estruturar_2">
+                    <div class="estruturar">
+                        <h1>Cadastrar estufa</h1>
+                        <div class="espaco_cadastrar">
+                            <div class="ipt-container" id="div_nome">
+                                <i class="fas fa-seedling"></i>
+                                <label for="input_nome"></label>
+                                <input placeholder="Nome da Estufa" type="text" id="input_nome" oninput="validarNome()">
 
-                    </div>
-                    <div class="ipt-container" id="div_tamanho">
-                        <i class="fas fa-ruler-horizontal"></i>
-                        <label for="input_tamanho"></label>
-                        <input type="number" placeholder="Tamanho" id="input_tamanho" oninput="validarTamanho()">
+                            </div>
+                            <div class="ipt-container" id="div_tamanho">
+                                <i class="fas fa-ruler-horizontal"></i>
+                                <label for="input_tamanho"></label>
+                                <input type="number" placeholder="Tamanho" id="input_tamanho"
+                                    oninput="validarTamanho()">
 
-                    </div>
-                    <div class="ipt-container" id="div_espaco">
-                        <i class="fas fa-arrows-alt-h"></i>
-                        <label for="input_espaco"></label>
-                        <input type="number" id="input_espaco" placeholder="Espaço entre plantas" oninput="validarEspaco()">
+                            </div>
+                            <div class="ipt-container" id="div_espaco">
+                                <i class="fas fa-arrows-alt-h"></i>
+                                <label for="input_espaco"></label>
+                                <input type="number" id="input_espaco" placeholder="Espaço entre plantas"
+                                    oninput="validarEspaco()">
 
+                            </div>
+                        </div>
+                        <div id="erro_geral" class="erro"></div>
+                        <div class="container-btn">
+                            <button class="botao_btn_entrar" onclick="cadastrarEstufa()">Cadastrar</button>
+                        </div>
+                        <div class="fechar_cadastrar_estufa">
+                            <div onclick="closeDialog()">X</div>
+                        </div>
                     </div>
                 </div>
-                <div id="erro_geral" class="erro"></div>
-                <div class="container-btn">
-                    <button class="botao_btn_entrar" onclick="cadastrarEstufa()">Cadastrar</button>
-                </div>
-                <div class="fechar_cadastrar_estufa">
-                    <div onclick="closeDialog()">X</div>
-                </div>
-            </div>
-        </div>
             </dialog>
             <!-- <div class="estufa_cards" id="cardEstufas" onclick="openModal()"> -->
             <div class="estufa_cards">
-                <div style="width: 24.5%;"  onclick="openModal()">
+                <div style="width: 24.5%;" onclick="openModal()">
                     <div class="card adicionar_estufa" id="div_check" style="width: 100%;">
                         <img src="../assets/img/Dashboard/plus-solid.svg" alt="">
                     </div>
-                    
+
                 </div>
-                
+
                 <div id="cardEstufas" class="container-estufas">
-                    
+
                 </div>
             </div>
-            
-            <div class="estufa_cards" >
+
+            <div class="estufa_cards">
             </div>
 
         </div>
@@ -322,10 +324,18 @@
             .then(function (resposta) {
                 resposta.json().then((estufas) => {
                     cardEstufas.innerHTML = ''
+                    var estilo = ''
                     estufas.forEach((estufa) => {
-                        cardEstufas.innerHTML += `
+                        if (estufa.temperatura == 20 || estufa.temperatura == 10) {
+                            console.log('amarelo')
+                            estilo = 'border-alert'
+                        } else if (estufa.temperatura < 8 || estufa.temperatura > 21) {
+                            estilo = 'border-danger'
+                        }
+
+                    cardEstufas.innerHTML += `
                     <a href="./graficos.html" style="width: 48%;">
-                        <div class="card " id="div_check" style="width: 100%;">
+                        <div class="card ${estilo}" id="div_check" style="width: 100%;">
                             <div class="kpi_titulo">
                                 <span>${estufa.nome}</span>
                                 <h2 id="h2_temperatura_real" >${estufa.temperatura ? estufa.temperatura : 0}°C</h2>
