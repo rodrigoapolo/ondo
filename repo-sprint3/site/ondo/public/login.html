@@ -184,11 +184,18 @@
           sessionStorage.EMAIL_USUARIO = json.email;
           sessionStorage.NOME_RESPONSAVEL = json.responsavel;
           sessionStorage.ID_USUARIO = json.idUsuario;
+          sessionStorage.TIPO_USUARIO = json.tipoUsuario;
           sessionStorage.ID_EMPRESA = json.idEmpresa;
           sessionStorage.ESTUFA = JSON.stringify(json.estufa)
 
           setTimeout(function () {
-            window.location = "./dashboard/index.html";
+            if(sessionStorage.TIPO_USUARIO){
+
+              window.location = "./dashboard/dash_suporte.html";
+            }else{
+              window.location = "./dashboard/index.html";
+
+            }
           }, 1000); // apenas para exibir o loading
 
         });
