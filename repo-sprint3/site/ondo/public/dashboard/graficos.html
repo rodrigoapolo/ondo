@@ -300,31 +300,7 @@ buscarMensagemAlerta(), buscarSensoresEstufas()">
           label: "Temperatura",
           borderWidth: 1,
           borderColor: 'pink',
-        },
-        {
-        label: 'Max',
-        data: [21, 21, 21, 21, 21, 21, 21, 21, 21, 21], // Dados para a Linha 1
-        borderColor: 'red', // Cor da linha
-        fill: false, // Sem preenchimento abaixo da linha
-      },
-      {
-        label: 'Min',
-        data: [20, 20, 20, 20, 20, 20, 20, 20, 20, 20], // Dados para a Linha 1
-        borderColor: 'red', // Cor da linha
-        fill: false, // Sem preenchimento abaixo da linha
-      },
-      {
-        label: 'Min',
-        data: [8, 8, 8, 8, 8, 8, 8, 8, 8, 8], // Dados para a Linha 1
-        borderColor: 'blue', // Cor da linha
-        fill: false, // Sem preenchimento abaixo da linha
-      },
-      {
-        label: 'Min',
-        data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10], // Dados para a Linha 1
-        borderColor: 'blue', // Cor da linha
-        fill: false, // Sem preenchimento abaixo da linha
-      },
+        }
       ],
     },
     options: {
@@ -442,19 +418,12 @@ buscarMensagemAlerta(), buscarSensoresEstufas()">
           if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
             grafico.data.labels.shift();
             grafico.data.datasets[0].data.shift();
-            grafico.data.datasets[1].data.shift();
-            grafico.data.datasets[2].data.shift();
-            grafico.data.datasets[3].data.shift();
-            grafico.data.datasets[4].data.shift();
+
           }
 
           grafico.data.labels.push(valor.hora);
           grafico.data.datasets[0].data.push(parseFloat(valor.temperatura));
-          grafico.data.datasets[1].data.push(21);
-          grafico.data.datasets[2].data.push(20);
-          grafico.data.datasets[3].data.push(8);
-          grafico.data.datasets[4].data.push(10);
-          
+         
         });
         grafico.update();
       })
