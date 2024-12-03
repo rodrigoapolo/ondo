@@ -183,14 +183,18 @@
         </div>
             </dialog>
             <!-- <div class="estufa_cards" id="cardEstufas" onclick="openModal()"> -->
-            <div class="estufa_cards" onclick="openModal()">
-                <div style="width: 29.5%;">
+            <div class="estufa_cards">
+                <div style="width: 24.5%;"  onclick="openModal()">
                     <div class="card adicionar_estufa" id="div_check" style="width: 100%;">
                         <img src="../assets/img/Dashboard/plus-solid.svg" alt="">
                     </div>
                 </div>
+                <div id="cardEstufas" class="container-estufas">
+                    
+                </div>
             </div>
-            <div class="estufa_cards" id="cardEstufas">
+            
+            <div class="estufa_cards" >
             </div>
 
         </div>
@@ -228,8 +232,6 @@
         } else {
             tamanhoInput.style.borderColor = "red";
             erro_geral.innerHTML = "O tamanho deve ser maior ou igual a 50.";
-
-
         }
     }
 
@@ -321,7 +323,7 @@
                     cardEstufas.innerHTML = ''
                     estufas.forEach((estufa) => {
                         cardEstufas.innerHTML += `
-                    <a href="./graficos.html" style="width: 29.5%;">
+                    <a href="./graficos.html" style="width: 100%;">
                         <div class="card " id="div_check" style="width: 100%;">
                             <div class="kpi_titulo">
                                 <span>${estufa.nome}</span>
@@ -371,7 +373,7 @@
         }).then(function (resposta) {
             if (resposta.ok) {
                 window.alert("Score atualizado com sucesso pelo usuario: " + sessionStorage.getItem("NOME_USUARIO") + "!");
-                window.location = "/dashboard/quizz.html"
+                window.location = "/dashboard/index.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {

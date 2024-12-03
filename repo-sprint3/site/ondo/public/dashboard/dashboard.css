@@ -46,6 +46,7 @@
 .home_dashboard .content .estufa_cards .card{
     width: 29.5%;
     border-radius: 10px;
+    border: solid 4px transparent;
     background-color: white;
     height: 200px;
 }
@@ -190,7 +191,7 @@ dialog#dialog_modal {
 
 .adicionar_estufa{
     background-color: transparent !important;
-    border: solid 4px #1e2f1a;
+    border: solid 4px #1e2f1a !important;
     width: 29.5%;
     border-radius: 10px;
     display: flex;
@@ -203,6 +204,13 @@ dialog#dialog_modal {
     background-color: transparent;
     width: 30px;
 
+}
+
+.container-estufas{
+    gap: 20px;
+    display: flex;
+    width: 64%;
+    justify-content: space-between;
 }
 
 #input_nome{
