@@ -327,11 +327,13 @@
                     cardEstufas.innerHTML = ''
                     var estilo = ''
                     estufas.forEach((estufa) => {
-                        if (estufa.temperatura == 20 || estufa.temperatura == 10) {
+                        if (estufa.temperatura >= 20 && estufa.temperatura <= 21 || estufa.temperatura >= 10 && estufa.temperatura <=11) {
                             console.log('amarelo')
                             estilo = 'border-alert'
                         } else if (estufa.temperatura < 8 || estufa.temperatura > 21) {
                             estilo = 'border-danger'
+                        } else{
+                             estilo = 'check'
                         }
 
                     cardEstufas.innerHTML += `
