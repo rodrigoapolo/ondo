@@ -100,14 +100,14 @@ const serial = async (
                 );
                 console.log("valores inseridos no banco: ", sensorAnalogico);  
                 console.log("Alerta abaixo de 8");    
-            } else {
+            }
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
                 'INSERT INTO medicao (temperatura, fkSensor) VALUES  (?, ?)',
                 [sensorAnalogico, 1]
             );
             console.log("valores inseridos no banco: ", sensorAnalogico);     
-            }
+            
         }
 
     });
