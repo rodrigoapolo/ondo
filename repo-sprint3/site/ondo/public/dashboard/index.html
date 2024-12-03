@@ -327,7 +327,7 @@
                         <div class="card " id="div_check" style="width: 100%;">
                             <div class="kpi_titulo">
                                 <span>${estufa.nome}</span>
-                                <h2 id="h2_temperatura_real" >${estufa.temperatura}°C</h2>
+                                <h2 id="h2_temperatura_real" >${estufa.temperatura ? estufa.temperatura : 0}°C</h2>
                             </div>
                             <div class="estufa_icone " id="div_icones">
                                 <img src="../assets/img/Dashboard/TempAlta.svg" alt="" class="termometro" style="display: none;" id="img_TempAlta">

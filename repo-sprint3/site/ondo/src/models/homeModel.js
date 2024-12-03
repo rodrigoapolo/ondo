@@ -56,9 +56,9 @@ function listaEsfufasEmpresa(idEmpresa) {
 
 function buscarEstufa(idEstufa) {
   var instrucaoSql = `SELECT e.idEstufa, e.nome, m.temperatura
-                      FROM estufa e JOIN sensor s
+                      FROM estufa e LEFT JOIN sensor s
                       ON e.idEstufa = s.fkEstufa
-                      JOIN medicao m
+                      LEFT JOIN medicao m
                       ON s.idSensor = m.fkSensor
                       WHERE e.idEstufa = ${idEstufa}
                       ORDER BY m.dataHora DESC
