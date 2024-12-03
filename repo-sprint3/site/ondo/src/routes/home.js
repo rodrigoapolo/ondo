@@ -26,6 +26,13 @@ router.post("/inserirEstufa/:empresaID",function (req, res) {
     homeController.inserirEstufa(req, res);
 });
 
+router.post("/inserirSensor/",function (req, res) {
+    homeController.inserirSensor(req, res);
+});
+
+router.get("/listarAll/:idEmpresa",function (req, res) {
+    homeController.estufasPorEmpresa(req, res);
+});
 
 module.exports = router;
 

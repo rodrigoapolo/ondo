@@ -11,6 +11,13 @@ function listar(idUsuario) {
 
   return database.executar(instrucaoSql);
 }
+function listarAll() {
+  console.log('buscando Empresas')
+  var instrucaoSql = `select razaoSocial, idEmpresa from empresa;
+  `;
+
+  return database.executar(instrucaoSql);
+}
 
 function buscarPorCnpj(cnpj) {
   var instrucaoSql = `SELECT * FROM empresa WHERE cnpj = '${cnpj}'`;
@@ -24,4 +31,4 @@ function cadastrar(cnpj, razaoSocial, nomeFantasia, cep, bairro, logradouro, num
   return database.executar(instrucaoSql);
 }
 
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar };
+module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar, listarAll };

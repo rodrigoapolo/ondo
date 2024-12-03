@@ -60,6 +60,7 @@ body{
     height: 35px;
     padding: 5px 12px;
     width: 65%;
+    cursor: pointer;
 }
 
 .container_lista .select {

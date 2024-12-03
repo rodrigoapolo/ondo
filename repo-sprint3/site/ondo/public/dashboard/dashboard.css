@@ -167,7 +167,7 @@ dialog#dialog_modal {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-}  vh
+}  
 
 .estufa_icone{
     display: flex;
@@ -209,9 +209,11 @@ dialog#dialog_modal {
 .container-estufas{
     gap: 20px;
     display: flex;
+    flex-wrap: wrap;
     width: 64%;
     justify-content: space-between;
 }
+
 
 #input_nome{
     width: 240px;
@@ -250,7 +252,6 @@ dialog#dialog_modal {
     font-size: 16px;
     background-color: #f9f9f9;
     box-sizing: border-box;
-
 }
 
 .fechar_cadastrar_estufa div {

@@ -8,6 +8,14 @@ function estufasMonitoradas(idEstufa) {
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
 }
+function estufasPorEmpresa(idEmpresa) {
+  var instrucaoSql = `SELECT idEstufa, nome
+                      FROM estufa
+                      WHERE fkEmpresa = ${idEmpresa};`;
+                        
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
 
 function temperaturasAdequadas(idEmpresa) {
   var instrucaoSql = `SELECT COUNT(e.idEstufa) as qtdEstufas
@@ -77,6 +85,15 @@ function inserirEstufa(idEmpresa,nomeEstufa,tamanho,espaco) {
   return database.executar(instrucaoSql);
 }
 
+function inserirSensor(idEstufa,local,tipoSensor) {
+  console.log('Inserindo a estufa no banco')
+  var instrucaoSql = `INSERT INTO sensor (localidade, tipo, fkEstufa) values
+    ('${local}','${tipoSensor}', ${idEstufa});`;
+                        
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 
 
 module.exports = {
@@ -86,5 +103,7 @@ module.exports = {
   listaEsfufasEmpresa,
   buscarEstufa,
   quantidadeAlertaEstufa,
-  inserirEstufa
+  inserirEstufa,
+  estufasPorEmpresa,
+  inserirSensor
 }

@@ -13,6 +13,13 @@ function listar(req, res) {
     res.status(200).json(resultado);
   });
 }
+function listarAll(req, res) {
+  empresaModel.listarAll()
+  .then((resultado) => {
+    console.log("Resultado do listar todos: " + resultado)
+    res.status(200).json(resultado);
+  });
+}
 
 function buscarPorId(req, res) {
   var id = req.params.id;
@@ -53,4 +60,5 @@ module.exports = {
   buscarPorId,
   cadastrar,
   listar,
+  listarAll
 };
