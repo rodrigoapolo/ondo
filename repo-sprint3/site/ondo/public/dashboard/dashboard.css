@@ -46,9 +46,18 @@
 .home_dashboard .content .estufa_cards .card{
     width: 29.5%;
     border-radius: 10px;
-    border: solid 4px transparent;
+    border: solid 2px white;
     background-color: white;
     height: 200px;
+}
+
+
+.border-alert{
+    border: solid 2px yellow !important;
+}
+
+.border-danger{
+    border: solid 2px red !important;
 }
 
 .kpi_cards .card .kpi_titulo{
