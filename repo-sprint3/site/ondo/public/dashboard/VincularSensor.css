@@ -194,6 +194,17 @@
     transition: border-color 0.3s ease;
 }
 
+.ipt-container select {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #fff;
+    color: #000000;
+    font-size: 16px;
+    padding: 10px;
+    transition: border-color 0.3s ease;
+}
+
 
 
 
@@ -250,6 +261,31 @@
 }
 
 #input_espaco{
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-left: 40px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+
+}
+
+#select_empresas{
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-left: 40px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+#select_estufas{
     width: 100%;
     padding: 15px;
     border: 1px solid #ccc;
