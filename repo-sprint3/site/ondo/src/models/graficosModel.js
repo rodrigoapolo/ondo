@@ -37,14 +37,10 @@ function temperaturaMinima(idEstufa) {
 }
 
 function listaTemperaturaDia(idEstufa) {
-  var instrucaoSql = `SELECT m.temperatura, TIME(m.dataHora) AS hora
-                      FROM medicao m JOIN sensor s
-                      ON m.fkSensor = s.idSensor
-                      JOIN estufa e
-                      ON s.fkEstufa = e.idEstufa
-                      WHERE e.idEstufa = ${idEstufa} AND dataHora >= NOW() - INTERVAL 1 DAY
-                      ORDER BY m.dataHora DESC
-                      LIMIT 10;`;
+  var instrucaoSql = `SELECT temperatura, TIME(dataHora) AS hora
+ from medicao where fkSensor = 1
+ ORDER BY dataHora desc
+ LIMIT 10;`;
                         
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
