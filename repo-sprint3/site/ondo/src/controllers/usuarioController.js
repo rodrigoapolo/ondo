@@ -27,6 +27,7 @@ function autenticar(req, res) {
                                     res.json({
                                         idEmpresa: resultadoEmpresas[0].idEmpresa,
                                         idUsuario: resultadoAutenticar[0].idUsuario,
+                                        tipoUsuario: resultadoAutenticar[0].tipoUsuario,
                                         cnpj: resultadoEmpresas[0].cnpj,
                                         razão_social : resultadoEmpresas[0].razão_social,
                                         nome_fantasia: resultadoEmpresas[0].nome_fantasia,

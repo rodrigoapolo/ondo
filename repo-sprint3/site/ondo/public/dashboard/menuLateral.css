@@ -60,6 +60,7 @@ body{
     height: 35px;
     padding: 5px 12px;
     width: 65%;
+    cursor: pointer;
 }
 
 .container_lista .select {
@@ -86,7 +87,7 @@ body{
 }
 
 .menu_item:hover {
-    color: #1E2F1A;
+    color: white;
     border: solid 2px white;
 }
 

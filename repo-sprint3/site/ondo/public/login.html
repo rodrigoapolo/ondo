@@ -2,11 +2,12 @@
 <html lang="pt-br">
 
 <head>
+      <link rel="shortcut icon" href="../assets/icon/wasabi.png" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link rel="stylesheet" href="./css/login.css">
-  
+
   <script src="./js/sessao.js"></script>
 
 
@@ -14,12 +15,12 @@
 
 <body>
   <div class="container">
-    <div class="login">
-      <div class="alerta_erro">
-        <div class="card_erro" id="cardErro">
-            <span id="mensagem_erro"></span>
-        </div>
+    <div class="alerta_erro">
+      <div class="card_erro" id="cardErro">
+        <span id="mensagem_erro"></span>
+      </div>
     </div>
+    <div class="login">
       <a href="index.html">
         <img class="img_btn_voltar" src="assets/img/btn_voltar.png" alt="btn voltar">
       </a>
@@ -44,7 +45,7 @@
         <button class="botao btn_entrar" onclick="entrar()">Entrar</button>
         <a class="texCadastro" href="cadastro.html">Ainda não tem uma conta?</a>
       </div>
-      
+
       <div class="img_logo_ondo"></div>
     </div>
     <div class="image-wasabi"></div>
@@ -53,7 +54,7 @@
       <img src="./assets/circle-loading.gif" id="loading-gif">
     </div>
 
-  <div id="div_erros_login"></div>
+    <div id="div_erros_login"></div>
   </div>
 </body>
 
@@ -148,15 +149,15 @@
     aguardar();
     var emailVar = ipt_email.value;
     var senhaVar = ipt_senha.value;
-    
+
     console.log(emailVar, senhaVar)
     if (emailVar == "" || senhaVar == "") {
       cardErro.style.display = "block"
       mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
       finalizarAguardar();
+      setInterval(sumirMensagem, 5000)
       return false;
-    }
-    else {
+    }else {
       setInterval(sumirMensagem, 5000)
     }
 
@@ -183,11 +184,18 @@
           sessionStorage.EMAIL_USUARIO = json.email;
           sessionStorage.NOME_RESPONSAVEL = json.responsavel;
           sessionStorage.ID_USUARIO = json.idUsuario;
+          sessionStorage.TIPO_USUARIO = json.tipoUsuario;
           sessionStorage.ID_EMPRESA = json.idEmpresa;
           sessionStorage.ESTUFA = JSON.stringify(json.estufa)
 
           setTimeout(function () {
-            window.location = "./dashboard/index.html";
+            if(sessionStorage.TIPO_USUARIO == 'suporte'){
+
+              window.location = "./dashboard/dash_suporte.html";
+            }else{
+              window.location = "./dashboard/index.html";
+
+            }
           }, 1000); // apenas para exibir o loading
 
         });

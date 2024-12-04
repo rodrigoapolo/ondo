@@ -5,21 +5,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/style.css">
-
+  <link rel="icon" href="../assets/img/wasabi.png" type="image/x-icon">
   <link rel="stylesheet" href="dashboard.css">
   <link rel="stylesheet" href="menuLateral.css">
   <link rel="stylesheet" href="graficos.css" />
+  <link rel="stylesheet" href="parametros.css">
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
 
-  <title>Grafico</title>
+  <title>ONDO | Grafico</title>
 </head>
 
 <body onload="buscarTemperaturaMaxima(), buscarTemperaturaMinima(), buscarQuantidadeAlerta(),
 obterDadosGraficoBarraAlertaBaixo(barraAlertaAbaixo), obterDadosGraficoBarraAlertaAcima(barraAlertaAcima),
-buscarMensagemAlerta()">
+buscarMensagemAlerta(), buscarSensoresEstufas()">
   <header class="menu_dashboard">
     <nav class="menuLateral">
       <img src="../assets/img/logo_branco.png" alt="">
@@ -31,30 +32,30 @@ buscarMensagemAlerta()">
           <a href="./index.html">Home</a>
         </li>
         <li class="menu_item select">
-          <div class="container_img disable" style="height: 25px;">
+          <div class="container_img " style="height: 25px;">
             <img src="../assets/img/Dashboard/chart-line-solid_verde.svg" alt="">
           </div>
           <a href="graficos.html">Graficos</a>
         </li>
-        <li class="menu_item disable">
-          <div class="container_img disable">
+        <!-- <li class="menu_item">
+          <div class="container_img ">
             <img src="../assets/img/Dashboard/bell-regular_branco.svg" alt="">
           </div>
-          <a href="notificacao.html">Notificação</a>
+          <a href="bobIA.html">BobIA</a>
         </li>
 
         <li class="menu_item disable">
-          <div class="container_img disable">
+          <div class="container_img ">
             <img src="../assets/img/Dashboard/info_branco.svg" alt="">
           </div>
           <a href="help.html">Ajuda e Suporte</a>
-        </li>
+        </li> -->
 
-        <li class="menu_item disable">
-          <div class="container_img disable">
+        <li class="menu_item">
+          <div class="container_img ">
             <img src="../assets/img/Dashboard/sair.svg" alt="">
           </div>
-          <a href="../index.html">Sair</a>
+          <span onclick="limparSessao()">Sair</span>
         </li>
       </ul>
     </nav>
@@ -67,20 +68,58 @@ buscarMensagemAlerta()">
       </div>
     </div>
     <div class="content">
+      <script data-jsd-embedded data-key="72170b6e-c6b9-4e8e-9ef5-c38ca60baaf3"
+        data-base-url="https://jsd-widget.atlassian.com"
+        src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
+      <div class="area-parametros-alerta">
+        <p class="titulo-legenda">
+          Legenda - Parâmetros para Alertas
+        </p>
+        <div class="parametros-alerta">
+          <div class="item-regua perigo-frio">
+            <p>Perigo</p>
+            <p>&lt;=8°C</p>
+          </div>
+          <div class="item-regua alerta-frio">
+            <p>Alerta</p>
+            <p>&lt;=10°C</p>
+          </div>
+          <div class="item-regua ideal">
+            <p>Ideal</p>
+            <p>15°C</p>
+        </div>
+        <div class="item-regua alerta-quente">
+            <p>Alerta</p>
+            <p>&gt;=19°C</p>
+        </div>
+        <div class="item-regua perigo-quente">
+            <p>Perigo</p>
+            <p>&gt;=21°C</p>
+        </div>
+        </div>
+      </div>
+
       <div class="kpi_cards">
         <div class="card">
           <div class="kpi_titulo">
-            <span>Temperaturas Atual</span>
-            <img src="../assets/img/Dashboard/termometro.svg" alt="">
+            <span>Sensores</span>
           </div>
           <div class="kpi_dado">
-            <h2 id="h2_temperatura_real"></h2>
+            <dialog id="dialog_modal">
+              <div class="container_modal">
+                <!-- Colocar o id do grafico -->
+                <canvas class="grafico" id="grafico_linha_sensor"></canvas>
+              </div>
+            </dialog>
+            <div id="card_radio_sensor" class="container-kpi_estufas"></div>
           </div>
         </div>
         <div class="card">
           <div class="kpi_titulo">
-            <span>Alertas</span>
-            <img src="../assets/img/Dashboard/danger.svg" alt="" class="img_sino">
+            <span>Alertas
+              <h5>(em 1 semana)</h5>
+            </span>
+            <!-- <img src="../assets/img/Dashboard/danger.svg" alt="" class="img_sino"> -->
           </div>
           <div class="kpi_dado">
             <h2 id="quantidade_alerta_kpi"></h2>
@@ -89,7 +128,9 @@ buscarMensagemAlerta()">
         </div>
         <div class="card">
           <div class="kpi_titulo">
-            <span>Temperaturas Maxima</span>
+            <span>Temperaturas Maxima
+              <h5>(em 1 dia)</h5>
+            </span>
             <img src="../assets/img/Dashboard/TempAlta.svg" alt="">
           </div>
           <div class="kpi_dado">
@@ -99,7 +140,9 @@ buscarMensagemAlerta()">
         </div>
         <div class="card">
           <div class="kpi_titulo">
-            <span>Temperaturas Minima</span>
+            <span>Temperaturas Minima
+              <h5>(em 1 dia)</h5>
+            </span>
             <img src="../assets/img/Dashboard/TempBaixa.svg" alt="">
           </div>
           <div class="kpi_dado">
@@ -124,7 +167,7 @@ buscarMensagemAlerta()">
 
         <div style="display: flex;" class="grafico_container">
 
-          <div class="grafico">          
+          <div class="grafico">
             <div class="container">
               <canvas id="grafico_barra_acima" style="padding-left: 20px;"></canvas>
             </div>
@@ -155,23 +198,80 @@ buscarMensagemAlerta()">
   const graficoBarraAbaixo = document.getElementById("grafico_barra_abaixo");
   const graficoLinha = document.getElementById("grafico_linha");
   const graficoBarraAcima = document.getElementById("grafico_barra_acima");
+  const graficoLinhaSensor = document.getElementById("grafico_linha_sensor");
   var idEstufaDashboard = 1;
 
   b_usuario.innerHTML = sessionStorage.NOME_RESPONSAVEL;
 
+  var linhaGraficoSensor = new Chart(graficoLinhaSensor, {
+    type: "line",
+    data: {
+      datasets: [
+        {
+          label: "Temperatura",
+          borderWidth: 1,
+          borderColor: 'green',
+        
+
+        },
+        // {
+        //   label: 'Max',
+        //   data: [21, 21, 21, 21, 21, 21, 21, 21, 21, 21], // Dados para a Linha 1
+        //   borderColor: 'red', // Cor da linha
+        //   fill: false, // Sem preenchimento abaixo da linha
+        // },
+        // {
+        //   label: 'Min',
+        //   data: [20, 20, 20, 20, 20, 20, 20, 20, 20, 20], // Dados para a Linha 1
+        //   borderColor: 'red', // Cor da linha
+        //   fill: false, // Sem preenchimento abaixo da linha
+        // },
+        // {
+        //   label: 'Min',
+        //   data: [8, 8, 8, 8, 8, 8, 8, 8, 8, 8], // Dados para a Linha 1
+        //   borderColor: 'blue', // Cor da linha
+        //   fill: false, // Sem preenchimento abaixo da linha
+        // },
+        // {
+        //   label: 'Min',
+        //   data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10], // Dados para a Linha 1
+        //   borderColor: 'blue', // Cor da linha
+        //   fill: false, // Sem preenchimento abaixo da linha
+        // },
+      ],
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true, // Define se o título deve ser exibido
+          text: "Variação da Temperatura por hora do ", // O texto do título
+          font: {
+            size: 20, // Tamanho da fonte do título
+            weight: "bold", // Peso da fonte do título
+          },
+          padding: {
+            top: 10, // Espaçamento acima do título
+            bottom: 30, // Espaçamento abaixo do título
+          },
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+
   var barraAlertaAbaixo = new Chart(graficoBarraAbaixo, {
     type: "bar",
     data: {
-      labels: ["Temperatura"],
+      labels: [],
       datasets: [
         {
-          label: "Alerta",
+          label: "Alerta por dia.",
           borderWidth: 1,
-        },
-        {
-          label: "Total de aferição",
-          borderWidth: 1,
-        },
+        }
       ],
     },
     options: {
@@ -203,20 +303,10 @@ buscarMensagemAlerta()">
         {
           label: "Temperatura",
           borderWidth: 1,
-          borderColor: 'pink',
-        },
-        {
-        label: 'Max',
-        data: [21, 21, 21, 21, 21, 21, 21, 21, 21, 21], // Dados para a Linha 1
-        borderColor: 'red', // Cor da linha
-        fill: false, // Sem preenchimento abaixo da linha
-      },
-      {
-        label: 'Min',
-        data: [8, 8, 8, 8, 8, 8, 8, 8, 8, 8], // Dados para a Linha 1
-        borderColor: 'blue', // Cor da linha
-        fill: false, // Sem preenchimento abaixo da linha
-      },
+          borderColor: 'green',
+          backgroundColor: 'green',
+
+        }
       ],
     },
     options: {
@@ -245,16 +335,14 @@ buscarMensagemAlerta()">
   var barraAlertaAcima = new Chart(graficoBarraAcima, {
     type: "bar",
     data: {
-      labels: ["Temperatura"],
+      labels: [],
       datasets: [
         {
-          label: "Alerta",
+          label: "Alerta por Dia.",
           borderWidth: 1,
-        },
-        {
-          label: "Total de aferição",
-          borderWidth: 1,
-        },
+          borderColor: '#ff0000',
+          backgroundColor: '#ff0000',
+        }
       ],
     },
     options: {
@@ -281,33 +369,52 @@ buscarMensagemAlerta()">
   });
 
   function obterDadosGraficoBarraAlertaBaixo(grafico) {
-    fetch(`/graficos/alerta-abaixo/${idEstufaDashboard}`,{
+    fetch(`/graficos/alerta-abaixo/${idEstufaDashboard}`, {
       method: "GET",
     })
       .then(response => response.json())
-      .then(valores => {          
-          grafico.data.datasets[0].data.push(parseFloat(valores.quantidadeAlerta));
-          grafico.data.datasets[1].data.push(parseFloat(valores.total));
-          grafico.update();
+      .then(valores => {
+
+        valores.forEach((valor) => {
+          if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+            grafico.data.labels.shift();
+            grafico.data.datasets.data.shift();
+          }
+          var dataHora = new Date(valor.dataDia);
+          var dataHoraBR = dataHora.toLocaleDateString("pt-BR", { timeZone: "America/Sao_Paulo" });
+          grafico.data.labels.push(dataHoraBR);
+          grafico.data.datasets[0].data.push(parseFloat(valor.quantidadeAlertas));
+
+        });
+        grafico.update();
       })
       .catch(error => console.error('Erro ao obter dados:', error));
   }
 
   function obterDadosGraficoBarraAlertaAcima(grafico) {
-    fetch(`/graficos/alerta-acima/${idEstufaDashboard}`,{
+    fetch(`/graficos/alerta-acima/${idEstufaDashboard}`, {
       method: "GET",
     })
       .then(response => response.json())
-      .then(valores => {          
-          grafico.data.datasets[0].data.push(parseFloat(valores.quantidadeAlerta));
-          grafico.data.datasets[1].data.push(parseFloat(valores.total));
-          grafico.update();
+      .then(valores => {
+        valores.forEach((valor) => {
+          if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+            grafico.data.labels.shift();
+            grafico.data.datasets.data.shift();
+          }
+          var dataHora = new Date(valor.dataDia);
+          var dataHoraBR = dataHora.toLocaleDateString("pt-BR", { timeZone: "America/Sao_Paulo" });
+          grafico.data.labels.push(dataHoraBR);
+          grafico.data.datasets[0].data.push(parseFloat(valor.quantidadeAlertas));
+
+        });
+        grafico.update();
       })
       .catch(error => console.error('Erro ao obter dados:', error));
   }
 
   function obterDadosGraficoLinha(grafico) {
-    fetch(`/graficos/lista-temperatura-dia/${idEstufaDashboard}`,{
+    fetch(`/graficos/lista-temperatura-dia/${idEstufaDashboard}`, {
       method: "GET",
     })
       .then(response => response.json())
@@ -317,32 +424,16 @@ buscarMensagemAlerta()">
           if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
             grafico.data.labels.shift();
             grafico.data.datasets[0].data.shift();
-            grafico.data.datasets[1].data.shift();
-            grafico.data.datasets[2].data.shift();
+
           }
 
           grafico.data.labels.push(valor.hora);
           grafico.data.datasets[0].data.push(parseFloat(valor.temperatura));
-          grafico.data.datasets[1].data.push(21);
-          grafico.data.datasets[2].data.push(8);
-          grafico.update();
+
         });
+        grafico.update();
       })
       .catch(error => console.error('Erro ao obter dados:', error));
-  }
-
-  function temperaturaReal() {
-    fetch(`/graficos/temperatura-atual/${idEstufaDashboard}`, {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((temperatura) => {
-          h2_temperatura_real.innerHTML = `${temperatura[0].temperatura_atual}°C`
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
   }
 
   function buscarQuantidadeAlerta() {
@@ -394,8 +485,8 @@ buscarMensagemAlerta()">
       .then(function (resposta) {
         resposta.json().then((mensagens) => {
           console.log(mensagens)
-          mensagens.forEach((mensagem, index) =>{
-            console.log(mensagem)
+          mensagens.forEach((mensagem, index) => {
+
             var dataLocal = new Date(mensagem.data);
             var dia = dataLocal.getDate().toString().padStart(2, '0');
             var mes = (dataLocal.getMonth() + 1).toString().padStart(2, '0');
@@ -422,8 +513,78 @@ buscarMensagemAlerta()">
   }, 5000);
 
   setInterval(() => {
-    temperaturaReal()
+    buscarSensoresEstufas()
   }, 1000);
 
+  function openModal(idSensor, nome) {
+    buscarTemperaturaSensorDia(idSensor)
+    const modal = document.getElementById('dialog_modal');
+    setInterval(() => {
+      buscarTemperaturaSensorDia(idSensor)
+    }, 5000);
+    linhaGraficoSensor.options.plugins.title.text = `Variação da Temperatura por hora do ${nome}`
+
+    modal.showModal();
+  }
+
+  function buscarSensoresEstufas() {
+    fetch(`/graficos/lista-temperatura-sensor/${idEstufaDashboard}`, {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((valores) => {
+          card_radio_sensor.innerHTML = ""
+
+          var estilo = '';
+          valores.forEach((valor) => {
+            if (valor.temperatura >= 19 && valor.temperatura <= 21 || valor.temperatura >= 10 && valor.temperatura <= 11) {
+              estilo = 'yellow'
+            } else if (valor.temperatura < 8 || valor.temperatura > 21) {
+              estilo = 'red'
+            } else if (valor.temperatura > 8 && valor.temperatura < 21){
+              estilo = 'green'
+            }
+            card_radio_sensor.innerHTML += `
+              <div class="kpi_dado_item">
+                <input type="radio" id="sensor${valor.fkSensor}" name="sensor_select" value="1" onclick="openModal(${valor.fkSensor}, '${valor.localidade}')">
+                <label for="sensor1">${valor.localidade} <span id="temperatura_sensor${valor.fkSensor}"> <b style="color:${estilo};"> ${valor.temperatura}°C </b></span></label><br>
+              </div>
+            `
+          })
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function buscarTemperaturaSensorDia(idSensor) {
+    fetch(`/graficos/lista-temperatura-sensor-dia/${idSensor}`, {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((valores) => {
+
+          valores.forEach((valor) => {
+            if (linhaGraficoSensor.data.labels.length == 10 && linhaGraficoSensor.data.datasets[0].data.length == 10) {
+              linhaGraficoSensor.data.labels.shift();
+              linhaGraficoSensor.data.datasets[0].data.shift();
+              linhaGraficoSensor.data.datasets[1].data.shift();
+              linhaGraficoSensor.data.datasets[2].data.shift();
+              linhaGraficoSensor.data.datasets[3].data.shift();
+              linhaGraficoSensor.data.datasets[4].data.shift();
+            }
+
+            linhaGraficoSensor.data.labels.push(valor.hora);
+            linhaGraficoSensor.data.datasets[0].data.push(parseFloat(valor.temperatura));
+
+          });
+          linhaGraficoSensor.update();
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
 
 </script>
