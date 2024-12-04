@@ -196,7 +196,7 @@ dialog#dialog_modal {
 }
 
 .check {
-    border: solid 2px #57C354;
+    border: solid 2px #57C354 !important;
 }
 
 .adicionar_estufa{

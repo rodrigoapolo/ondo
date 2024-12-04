@@ -41,7 +41,7 @@
                     </div>
                     <a href="graficos.html">Graficos</a>
                 </li>
-                <li class="menu_item" id="li_bobIA">
+                <!-- <li class="menu_item" id="li_bobIA">
                     <div class="container_img ">
                         <img src="../assets/img/Dashboard/bell-regular_branco.svg" alt="">
                     </div>
@@ -53,7 +53,7 @@
                         <img src="../assets/img/Dashboard/info_branco.svg" alt="">
                     </div>
                     <a href="help.html">Ajuda e Suporte</a>
-                </li>
+                </li> -->
 
                 <li class="menu_item">
                     <div class="container_img ">
@@ -94,11 +94,11 @@
                     </div>
                     <div class="item-regua ideal">
                         <p>Ideal</p>
-                        <p>16°C</p>
+                        <p>15°C</p>
                     </div>
                     <div class="item-regua alerta-quente">
                         <p>Alerta</p>
-                        <p>&gt;=20°C</p>
+                        <p>&gt;=19°C</p>
                     </div>
                     <div class="item-regua perigo-quente">
                         <p>Perigo</p>
@@ -327,11 +327,11 @@
                     var estilo = ''
                     estufas.forEach((estufa) => {
                         if (estufa.temperatura >= 20 && estufa.temperatura <= 21 || estufa.temperatura >= 10 && estufa.temperatura <=11) {
-                            console.log('amarelo')
+
                             estilo = 'border-alert'
                         } else if (estufa.temperatura < 8 || estufa.temperatura > 21) {
                             estilo = 'border-danger'
-                        } else{
+                        } else if (estufa.temperatura > 8 && estufa.temperatura < 21){
                              estilo = 'check'
                         }
 
@@ -343,8 +343,6 @@
                                 <h2 id="h2_temperatura_real" >${estufa.temperatura ? estufa.temperatura : 0}°C</h2>
                             </div>
                             <div class="estufa_icone " id="div_icones">
-                                <img src="../assets/img/Dashboard/TempAlta.svg" alt="" class="termometro" style="display: none;" id="img_TempAlta">
-                                <img src="../assets/img/Dashboard/danger.svg" alt="">
                             </div>
                         </div>
                     </a>
