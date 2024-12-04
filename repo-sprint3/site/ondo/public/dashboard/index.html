@@ -383,7 +383,7 @@
             })
         }).then(function (resposta) {
             if (resposta.ok) {
-                window.alert("Score atualizado com sucesso pelo usuario: " + sessionStorage.getItem("NOME_USUARIO") + "!");
+                window.alert("Score atualizado com sucesso pelo usuario: " + sessionStorage.getItem("NOME_RESPONSAVEL") + "!");
                 window.location = "/dashboard/index.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");

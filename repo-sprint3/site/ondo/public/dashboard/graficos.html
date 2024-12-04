@@ -541,7 +541,7 @@ buscarMensagemAlerta(), buscarSensoresEstufas()">
               estilo = 'yellow'
             } else if (valor.temperatura < 8 || valor.temperatura > 21) {
               estilo = 'red'
-            } else if (estufa.temperatura > 8 && estufa.temperatura < 21){
+            } else if (valor.temperatura > 8 && valor.temperatura < 21){
               estilo = 'green'
             }
             card_radio_sensor.innerHTML += `
@@ -577,10 +577,6 @@ buscarMensagemAlerta(), buscarSensoresEstufas()">
 
             linhaGraficoSensor.data.labels.push(valor.hora);
             linhaGraficoSensor.data.datasets[0].data.push(parseFloat(valor.temperatura));
-            // linhaGraficoSensor.data.datasets[1].data.push(21);
-            // linhaGraficoSensor.data.datasets[2].data.push(20);
-            // linhaGraficoSensor.data.datasets[3].data.push(8);
-            // linhaGraficoSensor.data.datasets[4].data.push(10);
 
           });
           linhaGraficoSensor.update();
