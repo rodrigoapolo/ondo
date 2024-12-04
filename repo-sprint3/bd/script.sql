@@ -537,6 +537,118 @@ VALUES
     (24.2, 'A temperatura exige atenção', 1, '2024-11-25 06:00:00'),
     (27.4, 'A temperatura exige atenção', 1, '2024-11-25 12:00:00'),
     (30.8, 'A temperatura exige atenção', 1, '2024-11-25 18:00:00');
+    
+    
+    INSERT INTO medicao (temperatura, dataHora, fkSensor)
+VALUES 
+    (21.45, '2024-12-01 10:00:00', 1),
+	(23.51, '2024-12-01 15:30:00', 1),
+    (23.52, '2024-12-01 11:30:00', 1),
+	(23.53, '2024-12-02 11:30:00', 1),
+    (23.54, '2024-12-02 11:30:00', 1),
+    (23.56, '2024-12-02 11:30:00', 1),
+    (24.25, '2024-12-02 12:45:00', 1);
+
+INSERT INTO medicao (temperatura, dataHora, fkSensor)
+VALUES 
+	(11.45, '2024-12-03 10:00:00', 1),
+	(12.11, '2024-12-03 11:30:00', 1),
+    (13.62, '2024-12-03 12:30:00', 1),
+	(14.23, '2024-12-03 13:30:00', 1),
+    (14.34, '2024-12-03 14:30:00', 1),
+    (15.46, '2024-12-03 15:30:00', 1),
+    (16.75, '2024-12-03 16:45:00', 1),
+    (16.45, '2024-12-04 17:00:00', 1),
+	(17.11, '2024-12-04 18:30:00', 1),
+    (17.62, '2024-12-04 19:30:00', 1),
+	(18.23, '2024-12-03 20:30:00', 1),
+    (18.34, '2024-12-03 21:30:00', 1),
+    (16.46, '2024-12-03 21:40:00', 1),
+    (15.75, '2024-12-03 22:45:00', 1),
+    (12.45, '2024-12-04 10:00:00', 2),
+	(13.11, '2024-12-04 11:30:00', 2),
+    (13.62, '2024-12-04 12:30:00', 2),
+	(14.23, '2024-12-02 13:30:00', 2),
+    (14.34, '2024-12-03 14:30:00', 2),
+    (14.46, '2024-12-03 15:30:00', 2),
+    (15.75, '2024-12-03 16:45:00', 2),
+    (15.45, '2024-12-04 17:00:00', 2),
+	(16.11, '2024-12-04 18:30:00', 2),
+    (16.62, '2024-12-04 19:30:00', 2),
+	(17.23, '2024-12-02 20:30:00', 2),
+    (16.34, '2024-12-03 21:30:00', 2),
+    (16.46, '2024-12-03 22:30:00', 2),
+    (15.75, '2024-12-03 22:45:00', 2),
+    (11.45, '2024-12-04 10:00:00', 3),
+	(12.11, '2024-12-04 11:30:00', 3),
+    (12.62, '2024-12-04 12:30:00', 3),
+	(13.23, '2024-12-02 13:30:00', 3),
+    (13.34, '2024-12-03 14:30:00', 3),
+    (13.46, '2024-12-03 15:30:00', 3),
+    (14.75, '2024-12-03 16:45:00', 3),
+    (15.75, '2024-12-03 17:45:00', 3),
+    (16.45, '2024-12-04 18:00:00', 3),
+	(17.11, '2024-12-04 18:30:00', 3),
+    (17.62, '2024-12-04 19:30:00', 3),
+	(14.23, '2024-12-02 20:30:00', 3),
+    (13.34, '2024-12-03 21:30:00', 3),
+    (12.46, '2024-12-03 21:35:00', 3),
+    (11.45, '2024-12-04 10:00:00', 4),
+	(13.11, '2024-12-04 11:30:00', 4),
+    (13.62, '2024-12-04 12:30:00', 4),
+	(14.23, '2024-12-02 13:30:00', 4),
+    (14.34, '2024-12-03 14:30:00', 4),
+    (15.46, '2024-12-03 15:30:00', 4),
+    (15.75, '2024-12-03 15:45:00', 4),
+    (16.75, '2024-12-03 16:45:00', 4),
+    (17.75, '2024-12-03 17:45:00', 4),
+    (18.45, '2024-12-04 18:00:00', 4),
+	(19.11, '2024-12-04 18:30:00', 4),
+    (19.62, '2024-12-04 18:40:00', 4),
+	(17.23, '2024-12-02 19:30:00', 4),
+    (17.34, '2024-12-03 19:40:00', 4),
+    (17.46, '2024-12-03 20:30:00', 4),
+    (16.75, '2024-12-03 21:45:00', 4);
+
+INSERT INTO medicao (temperatura, dataHora, fkSensor)
+VALUES 
+    -- Sensor 5 - Últimos 7 dias
+    (9.0, '2024-11-27 08:30:00', 5),
+    (10.5, '2024-11-28 09:30:00', 5),
+    (12.3, '2024-11-29 10:30:00', 5),
+    (11.8, '2024-11-30 11:30:00', 5),
+    (8.9, '2024-12-01 12:30:00', 5),
+    (7.4, '2024-12-02 13:30:00', 5),
+    (5.2, '2024-12-03 14:30:00', 5),
+
+    -- Sensor 6 - Últimos 7 dias
+    (3.0, '2024-11-27 07:33:00', 6),
+    (5.6, '2024-11-28 08:33:00', 6),
+    (6.2, '2024-11-29 09:33:00', 6),
+    (7.5, '2024-11-30 10:33:00', 6),
+    (4.8, '2024-12-01 11:33:00', 6),
+    (5.1, '2024-12-02 12:33:00', 6),
+    (6.7, '2024-12-03 13:33:00', 6);
+
+INSERT INTO alerta (temperatura, mensagem, fkSensor, dataHora)
+VALUES 
+    -- Sensor 5 - Últimos 7 dias
+    (9.3, 'A temperatura exige atenção', 5, '2024-11-27 08:00:00'),
+    (10.4, 'A temperatura exige atenção', 5, '2024-11-28 08:30:00'),
+    (8.1, 'A temperatura exige atenção', 5, '2024-11-29 09:00:00'),
+    (18.2, 'A temperatura exige atenção', 5, '2024-11-30 09:30:00'),
+    (19.5, 'A temperatura exige atenção', 5, '2024-12-01 10:00:00'),
+    (07.8, 'A temperatura exige atenção', 5, '2024-12-02 10:30:00'),
+    (06.7, 'A temperatura exige atenção', 5, '2024-12-03 11:00:00'),
+
+    -- Sensor 6 - Últimos 7 dias
+    (22.1, 'A temperatura exige atenção', 6, '2024-11-27 07:00:00'),
+    (23.2, 'A temperatura exige atenção', 6, '2024-11-28 07:30:00'),
+    (24.4, 'A temperatura exige atenção', 6, '2024-11-29 08:00:00'),
+    (25.6, 'A temperatura exige atenção', 6, '2024-11-30 08:30:00'),
+    (11.7, 'A temperatura exige atenção', 6, '2024-12-01 09:00:00'),
+    (07.8, 'A temperatura exige atenção', 6, '2024-12-02 09:30:00'),
+    (05.9, 'A temperatura exige atenção', 6, '2024-12-03 10:00:00');
 
     
 -- SELECT de temperatura MÍNIMA da ''ESTUFA A'' no ''Corredor principal''     
@@ -584,8 +696,6 @@ WHERE
 GROUP BY DATE(a.dataHora)
 ORDER BY dataDia;
 
-select * from alerta;
-    
 -- mostra a quantidade de alerta abaixo
 SELECT COUNT(a.idAlerta) AS quantidade_alertas
 FROM alerta a
@@ -654,7 +764,6 @@ WHERE e.idEstufa = 1
 ORDER BY m.dataHora DESC
 LIMIT 1;
 
-
 SELECT m.fkSensor, m.temperatura, m.dataHora, s.localidade
 FROM medicao m
 JOIN (
@@ -671,19 +780,54 @@ update medicao
 set dataHora = '2024-11-16 14:00:00'
 where idMedicao = 14;
 
-
 SELECT m.temperatura, TIME(m.dataHora) AS hora
 FROM medicao m 
 where m.fkSensor = 1 AND dataHora >= NOW() - INTERVAL 1 DAY
 ORDER BY m.dataHora DESC
 LIMIT 10;
 
+select e.razaoSocial, z.nome, z.idEstufa
+FROM empresa as e
+JOIN estufa as z
+ON e.idEmpresa = z.fkEmpresa
+GROUP BY razaoSocial;
 
-select * from medicao;
+SELECT e.razaoSocial, z.nome, z.idEstufa
+FROM empresa AS e
+JOIN estufa AS z
+ON e.idEmpresa = z.fkEmpresa
+GROUP BY e.razaoSocial, z.nome, z.idEstufa;
 
-select * from alerta;
+SELECT 
+    e.razaoSocial, 
+    GROUP_CONCAT(z.nome SEPARATOR ', ') AS estufas,
+    GROUP_CONCAT(z.idEstufa SEPARATOR ', ') AS idsEstufas
+FROM empresa AS e
+JOIN estufa AS z
+ON e.idEmpresa = z.fkEmpresa
+GROUP BY e.razaoSocial;
 
-
-
-
+SELECT COUNT(e.idEstufa) as qtdEstufas
+FROM estufa e JOIN sensor s
+ON e.idEstufa = s.fkEstufa
+JOIN medicao m
+ON s.idSensor = m.fkSensor;
                       
+-- estufas adequadas
+SELECT COUNT(DISTINCT e.idEstufa) AS quantidadeEstufasAdequadas
+FROM estufa e
+JOIN sensor s ON e.idEstufa = s.fkEstufa
+JOIN medicao m ON s.idSensor = m.fkSensor
+WHERE e.fkEmpresa = 1
+  AND m.temperatura > 8 
+  AND m.temperatura < 21
+  AND m.dataHora >= NOW();
+
+-- estufas inadequadas
+SELECT COUNT(DISTINCT e.idEstufa) AS quantidadeEstufasInadequadas
+FROM estufa e
+JOIN sensor s ON e.idEstufa = s.fkEstufa
+JOIN medicao m ON s.idSensor = m.fkSensor
+WHERE e.fkEmpresa = 1
+  AND (m.temperatura < 10 OR m.temperatura > 19)
+  AND m.dataHora >= NOW();
