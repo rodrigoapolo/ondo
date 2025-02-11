@@ -1,0 +1,335 @@
+.home_dashboard{
+    width: 80%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+}
+
+.boasVindas{
+    background-color: white;
+    height: 65px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.home_dashboard .content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.home_dashboard .content .kpi_cards{
+    display: flex;
+}
+
+.home_dashboard .content .kpi_cards .card {
+    width: 21.6%;
+    height: 163px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.home_dashboard .content .estufa_cards, .home_dashboard .content .kpi_cards{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.home_dashboard .content .estufa_cards .card{
+    width: 29.5%;
+    border-radius: 10px;
+    border: solid 2px white;
+    background-color: white;
+    height: 200px;
+}
+
+
+.border-alert{
+    border: solid 2px yellow !important;
+}
+
+.border-danger{
+    border: solid 2px red !important;
+}
+
+.kpi_cards .card .kpi_titulo{
+    font-size: 16px;
+    padding: 15px;
+    display: flex;
+    font-weight: 600;
+    height: 39px;
+    color: #1E2F1A;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+}
+
+.kpi_cards .card .kpi_titulo span{
+    width: 50%;
+}
+
+.card .kpi_dado{
+    color: #1E2F1A;
+}
+
+.kpi_dado label{
+    font-size: 16px;
+}
+
+.container-kpi_estufas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+dialog#dialog_modal {
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    width: 65%;
+    height: 65%;
+}
+
+#dialog_modal  h1{
+    color: #333; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.espaco_cadastrar{
+    width: 90%;
+    height: 100%;
+    background-color: #f7f9fc;
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ipt-container {
+    position: relative;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.ipt-container input {
+    width: 60%;
+    height: 80%;
+    padding: 12px 15px 12px 40px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ipt-container input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+}
+.ipt-container i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #4CAF50;
+    font-size: 18px;
+}
+
+.container_modal {
+    width: 100%;
+    height: 100%;
+}
+
+
+.kpi_titulo img{
+    width: 25px;
+    height: 25px;
+}
+
+.img_sino{
+    width: 22px;
+}
+
+.estufa_cards .card{
+    display: flex;
+    justify-content: center;
+}
+
+.estufa_cards .card .kpi_titulo{
+    font-size: 16px;
+    padding: 35px 0;
+    gap: 20px;
+    display: flex;
+    font-weight: 600;
+    color: #1E2F1A;
+    width: 60%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}  
+
+.estufa_icone{
+    display: flex;
+    padding: 30px 0;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.estufa_icone .termometro{
+    width: 25px;
+}
+
+.danger {
+    border: solid 2px #C35454;
+}
+
+.check {
+    border: solid 2px #57C354 !important;
+}
+
+.adicionar_estufa{
+    background-color: transparent !important;
+    border: solid 4px #1e2f1a !important;
+    width: 29.5%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+
+}
+
+.adicionar_estufa img{
+    background-color: transparent;
+    width: 30px;
+
+}
+
+.container-estufas{
+    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 64%;
+    justify-content: space-between;
+}
+
+
+#input_nome{
+    width: 240px;
+    border: none;
+    border-bottom: 4px solid black;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-left: 40px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+#input_tamanho{
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-left: 40px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+#input_espaco{
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-left: 40px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+.fechar_cadastrar_estufa div {
+    position: absolute; 
+    top: 10px; 
+    font-size: 1000px;
+    right: 10px; 
+    font-size: 40px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    color: #000; 
+    transition: color 0.3s ease; 
+}
+
+.fechar_cadastrar_estufa div:hover {
+    color: #ff0000; 
+}
+
+.botao_btn_entrar {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px 20px;
+    background: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.botao_btn_entrar:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.botao_btn_entrar:active {
+    background-color: #3e8e41;
+    transform: scale(0.95);
+}
+
+#erro_geral{
+    font-size: 20px;
+    color: white;
+    text-shadow: 4px 4px 6px black;
+    background-color: red;
+}
+
+.estruturar{
+    display: flex;
+    flex-direction: column;
+    align-items:center ;
+    justify-content: center;
+    display: flex;
+    width: 100%; 
+    max-width: 700px;
+    height: auto;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    align-self: center;
+}
+
+.estruturar_2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

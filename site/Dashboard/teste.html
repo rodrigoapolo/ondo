@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico com Legenda Personalizada</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <style>
+        .chart-legend {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .chart-legend ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .chart-legend li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .chart-legend span {
+            display: inline-block;
+            width: 20px;
+            height: 12px;
+            margin-right: 10px;
+            background-color: #ccc;
+        }
+
+
+        /* Estilos para a legenda */
+        .custom-legend {
+            display: flex;
+            flex-direction: column;
+            /* Coluna para cada item da legenda */
+            align-items: flex-start;
+            /* Alinhamento à esquerda */
+            margin-left: 20px;
+            /* Margem para afastar da esquerda */
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            /* Centralizar verticalmente */
+            margin-bottom: 5px;
+            /* Espaçamento entre itens */
+        }
+
+        .legend-box {
+            width: 20px;
+            /* Tamanho da caixa da legenda */
+            height: 20px;
+            /* Altura da caixa da legenda */
+            margin-right: 10px;
+            /* Espaçamento entre a caixa e o texto */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <canvas id="myChart" style="height: 40vh; width: 40vw;"></canvas>
+    </div>
+
+    <!-- Legenda Personalizada -->
+    <div class="custom-legend">
+        <div class="legend-item">
+            <div class="legend-box"
+                style="background-color: rgba(255, 99, 132, 0.2); border: 1px solid rgba(255, 99, 132, 1);"></div>
+            <span>Temperatura</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-box"
+                style="background-color: rgba(54, 162, 235, 0.2); border: 1px solid rgba(54, 162, 235, 1);"></div>
+            <span>Umidade</span>
+        </div>
+    </div>
+    <div class="chart-legend">
+        <ul>
+            <li><span style="background-color: #FF6384"></span>Dataset 1</li>
+            <li><span style="background-color: #36A2EB"></span>Dataset 2</li>
+            <li><span style="background-color: #FFCE56"></span>Dataset 3</li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const labels = ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
+
+    var somaDados = 100;
+
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Temperatura',
+                    data: [10, 20, 30, 40],
+                    borderWidth: 1,
+                    borderColor: '#FF6384',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                },
+                // {
+                //     label: 'Umidade',
+                //     data: [80, 82, 80, 85, 80, 83],
+                //     borderWidth: 1,
+                //     borderColor: '#2299E9',
+                //     backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                // }
+            ]
+        },
+        options: {
+            plugins: {
+
+                datalabels: {
+                    // display: 'auto',
+                    // color: 'black',
+                    // font: {
+                    //     weight: 'bold'
+                    // },
+                    formatter: (value, ctx) => {
+                        // Supondo que você tenha um array de dados
+                        const data = ctx.dataset.data; // Aqui você ainda acessa os dados do dataset
+                        let totalSum = 100;
+                        // Calcular a porcentagem
+                        const percentage = (value / totalSum) * 100;
+
+                        // Retorna o valor formatado
+                        return `${percentage.toFixed(1)}%`;
+                    }
+                },
+                legend: {
+                    display: false, // Desabilita a legenda padrão
+                },
+            },
+        },
+        plugins: [ChartDataLabels]
+    });
+
+
+</script>

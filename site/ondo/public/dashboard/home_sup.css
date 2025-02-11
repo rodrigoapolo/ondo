@@ -1,0 +1,270 @@
+.home_dashboard{
+    width: 80%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+}
+
+.boasVindas{
+    background-color: white;
+    height: 65px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.home_dashboard .content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.home_dashboard .content .kpi_cards{
+    display: flex;
+}
+
+.home_dashboard .content .kpi_cards .card {
+    width: 21.6%;
+    height: 163px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.home_dashboard .content .estufa_cards, .home_dashboard .content .kpi_cards{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.home_dashboard .content .estufa_cards .card{
+    width: 29.5%;
+    border-radius: 10px;
+    background-color: white;
+    height: 200px;
+}
+
+.kpi_cards .card .kpi_titulo{
+    font-size: 16px;
+    padding: 15px;
+    display: flex;
+    font-weight: 600;
+    height: 39px;
+    color: #1E2F1A;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+}
+
+.kpi_cards .card .kpi_titulo span{
+    width: 50%;
+}
+
+.card .kpi_dado{
+    color: #1E2F1A;
+}
+
+.kpi_dado label{
+    font-size: 16px;
+}
+
+.container-kpi_estufas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+dialog#dialog_modal {
+    background-color: #385f2f;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    width: 65%;
+    height: 65%;
+}
+
+#dialog_modal  h1{
+    color: white;
+    text-shadow: 4px 4px 6px black;
+}
+.espaco_cadastrar{
+    background-color: #4e8342;
+    width: 60%;
+    margin-left: 5%;
+    font-size: 30px;
+    padding: 60px;
+    border:  solid 2px black;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ipt-container{
+    align-self: center;
+    font-weight: bold;
+    margin-top: 20px;
+    color: white;
+    text-shadow: 4px 4px 6px black;
+    
+
+}
+
+.container_modal {
+    width: 100%;
+    height: 100%;
+}
+
+
+.kpi_titulo img{
+    width: 25px;
+    height: 25px;
+}
+
+.img_sino{
+    width: 22px;
+}
+
+.estufa_cards .card{
+    display: flex;
+    justify-content: center;
+}
+
+.estufa_cards .card .kpi_titulo{
+    font-size: 16px;
+    padding: 35px 0;
+    gap: 20px;
+    display: flex;
+    font-weight: 600;
+    color: #1E2F1A;
+    width: 60%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}  vh
+
+.estufa_icone{
+    display: flex;
+    padding: 30px 0;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.estufa_icone .termometro{
+    width: 25px;
+}
+
+.danger {
+    border: solid 2px #C35454;
+}
+
+.check {
+    border: solid 2px #57C354;
+}
+
+.adicionar_estufa{
+    background-color: transparent !important;
+    border: solid 4px #1e2f1a;
+    width: 29.5%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+
+}
+
+.adicionar_estufa img{
+    width: 30px;
+
+}
+
+#input_nome{
+    width: 240px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 4px solid black;
+    margin-left: 10px;
+
+
+}
+
+#input_tamanho{
+    width: 345px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 4px solid black;
+    margin-left: 10px;
+
+}
+
+#input_espaco{
+    background-color: transparent;
+    border: none;
+    border-bottom: 4px solid black;
+    margin-left: 10px;
+
+}
+
+.fechar_cadastrar_estufa div {
+    position: absolute; 
+    top: 10px; 
+    font-size: 1000px;
+    right: 10px; 
+    font-size: 40px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    color: #000; 
+    transition: color 0.3s ease; 
+}
+
+.fechar_cadastrar_estufa div:hover {
+    color: #ff0000; 
+}
+
+.botao_btn_entrar  {
+    margin-top: 50px;
+    text-shadow: 4px 4px 6px black;
+    background-color: #4CAF50; 
+    color: white; 
+    border: none; 
+    width: 160px;
+    height: 80px;
+    padding: 10px 20px; 
+    font-size: 25px; 
+    font-weight: bold; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+.botao_btn_entrar:hover {
+    background-color: #45a049; 
+    transform: scale(1.05); 
+}
+
+.botao_btn_entrar:active {
+    background-color: #3e8e41; 
+    transform: scale(0.95); 
+}
+
+#erro_geral{
+    font-size: 30px;
+    color: white;
+    text-shadow: 4px 4px 6px black;
+    background-color: red;
+}
+
+.form_vincular{
+    width: 100%;
+    background-color: #000;
+}
+
